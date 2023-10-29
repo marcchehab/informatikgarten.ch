@@ -1,4 +1,8 @@
-@import "@portaljs/remark-callouts/styles.css";
+/* @import "@portaljs/remark-callouts/styles.css"; */
+@import "ig_layout.css";
+@import "ig_typography.css";
+@import "ig_callouts.css";
+@import "TurtleEditor.css";
 
 .nav-logo {
   height: 2.25rem;

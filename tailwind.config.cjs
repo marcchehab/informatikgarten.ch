@@ -26,7 +26,7 @@ module.exports = {
       colors: {
         background: {
           DEFAULT: colors.white,
-          dark: colors.slate[900],
+          dark: colors.neutral[900],
         },
         primary: {
           DEFAULT: colors.gray[700],
@@ -34,7 +34,7 @@ module.exports = {
         },
         secondary: {
           DEFAULT: colors.sky[400],
-          dark: colors.sky[400],
+          dark: colors.indigo[400],
         },
       },
     },
