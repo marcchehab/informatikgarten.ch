@@ -2,6 +2,7 @@ import React from "react";
 
 import { MDXRemote } from "next-mdx-remote";
 import { Mermaid, Pre } from "@portaljs/core";
+import TurtleEditor from "./TurtleEditor";
 
 import layouts from "../layouts";
 
@@ -12,6 +13,7 @@ import layouts from "../layouts";
 const components = {
     mermaid: Mermaid,
     pre: Pre,
+    TurtleEditor: TurtleEditor,
 };
 
 export default function MdxPage({ source, frontMatter }) {
