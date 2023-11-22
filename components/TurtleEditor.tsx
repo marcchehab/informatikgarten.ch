@@ -1,7 +1,9 @@
 import Editor, { Monaco } from "@monaco-editor/react";
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import type { AppProps } from "next/app";
 import { NavItem, NavGroup } from "@portaljs/core";
+import { set } from "date-fns";
+import { error } from "console";
 
 let SkLoaded = false;
 const svgFullscreen =
@@ -22,7 +24,7 @@ interface CanvasContainer extends HTMLElement {
 }
 
 interface Turtlescene extends HTMLElement {
-  wrapper: HTMLElement;
+  wrapper: TurtleWrapper;
   id: string;
   RUNNING: boolean;
 
@@ -72,7 +74,7 @@ class Turtlescene {
     )[0] as HTMLElement;
     this.outputpre = document.getElementById(this.id + "_outputpre");
     this.startstop = document.getElementById(this.id + "_startstop");
-    // this.startstop.addEventListener('click', e => this.startstophandler());
+    // this.startstop.addEventListener("click", (e) => this.starthandler());
     this.resetcode = document.getElementById(this.id + "_resetcode");
     this.resetcode.addEventListener("click", (e) => this.resetcodehandler());
     this.fullscreenbutton = document.getElementById(this.id + "_fullscreen");
@@ -220,6 +222,7 @@ class Turtlescene {
   //     }
   // }
   // starthandler (obj = this) {
+  //   console.log("Starting Turtle");
   //     obj.startstop.innerHTML = "⛔ Stop";
   //     obj.RUNNING = true;
   //     obj.runpython();
@@ -267,65 +270,6 @@ class Turtlescene {
   }
 }
 
-// Initialize all turtle scenes
-// function initTurtlescenes() {
-//   const turtlewrappers = document.getElementsByClassName("turtlewrapper");
-//   for (let i = 0; i < turtlewrappers.length; i++) {
-//     if (turtlewrappers[i].turtlesceneobj !== undefined) {
-//       continue;
-//     } // SPA routing deactivated
-//     const turtlescene = new Turtlescene(turtlewrappers[i]);
-//     turtlewrappers[i].turtlesceneobj = turtlescene;
-//   }
-// }
-// document.addEventListener("nav", () => {
-//   initTurtlescenes();
-// });
-
-function loadScript(FILE_URL, async = true, type = "text/javascript") {
-  return new Promise((resolve, reject) => {
-    try {
-      const scriptEle = document.createElement("script");
-      scriptEle.type = type;
-      scriptEle.async = async;
-      scriptEle.src = FILE_URL;
-
-      scriptEle.addEventListener("load", (ev) => {
-        resolve({ status: true });
-      });
-
-      scriptEle.addEventListener("error", (ev) => {
-        reject({
-          status: false,
-          message: `Failed to load the script ${FILE_URL}`,
-        });
-      });
-
-      document.body.appendChild(scriptEle);
-    } catch (error) {
-      reject(error);
-    }
-  });
-}
-
-const loadSkulpt = (fnc, arg) => {
-  loadScript("/static/skulpt.min.js")
-    .then(() => {
-      SkLoaded = true;
-      console.log("Skulpt loaded successfully");
-      loadScript("/static/skulpt-stdlib.js")
-        .then(() => {
-          console.log("Skulpt stdlib loaded successfully");
-          fnc(arg);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-};
 export interface CustomAppProps {
   meta: {
     showToc: boolean;
@@ -339,14 +283,83 @@ export interface CustomAppProps {
   siteMap?: Array<NavItem | NavGroup>;
   [key: string]: any;
 }
+declare global {
+  interface Window {
+    pyodide: any;
+    loadPyodide: any;
+  }
+}
+enum errorlevel {
+  output = "output",
+  warning = "warning",
+  error = "error",
+}
+type outputElement = [errorlevel | null, string | null];
 function TurtleEditor(props) {
+  const [output, setOutput] = useState([] as outputElement[]);
   const editorRef = useRef(null);
   const id = useRef(props["id"] ?? Math.random().toString(36).substring(7));
   function handleEditorDidMount(editor: any, monaco: Monaco) {
     editorRef.current = editor;
   }
-  const vstheme = "vs-dark"; // document.documentElement.classList.contains("dark") ? "vs-dark" : "vs";
+  const vstheme = "vs-dark"; // document.body.classList.contains('dark') ? "vs-dark" : "vs";
+  async function starthandler(obj = this) {
+    if (editorRef.current) {
+      const code = editorRef.current.getValue();
+      runPythonCode(code);
+    }
+  }
+  useEffect(() => {
+    if (!window.pyodide) {
+      const loadPyodide = async () => {
+        await window
+          //reroute stderr
+          .loadPyodide({
+            stdout: (msg: string) => {
+              if (msg.trim() !== '') {
+                setOutput((output) => [...output, [errorlevel.output, msg]]);
+              }
+            },
+            stderr: (msg: string) => {
+              if (msg.trim() !== '') {
+                setOutput((output) => [...output, [errorlevel.error, msg]]);
+              }
+            },
+          })
+          .then((pyodide: any) => {
+            window.pyodide = pyodide;
+            (async () => {
+              await pyodide.loadPackage("micropip").then(() => {
+                const micropip = pyodide.pyimport("micropip");
+                micropip.install("/turtle-0.0.1-py3-none-any.whl");
+              });
+            })();
+          });
+      };
+      loadPyodide();
+    }
+  }, []);
 
+  const runPythonCode = (pythonCode: string) => {
+    if (window.pyodide) {
+      setOutput([]);
+      try {
+        window.pyodide.runPython(pythonCode);
+      } catch (e) {
+        console.log(e.message);
+        const lineregex = /^\s+File "<exec>"/g;
+        e = e.message.split("\n");
+        const index = e.findIndex((value) => lineregex.test(value));
+        if (index) {
+          e = e.slice(index);
+          e[0] = e[0].replace('  File "<exec>", ', "Error on ");
+        }
+        // Create list of output elements
+        e = e.map((value) => [errorlevel.error, value]);
+        setOutput((output) => [...output, ...e]);
+      }
+    }
+  };
   return (
     <div>
       <div id={id.current} className="turtlewrapper">
@@ -376,7 +389,11 @@ function TurtleEditor(props) {
             className="canvascontainer"
           ></div>
         </div>
-        <a id={`${id.current}_startstop`} className="startstop">
+        <a
+          id={`${id.current}_startstop`}
+          className="startstop"
+          onClick={starthandler}
+        >
           ▶️ Start
         </a>
         <a id={`${id.current}_resetcode`} className="resetcode">
@@ -388,7 +405,11 @@ function TurtleEditor(props) {
           type="button"
         ></button>
       </div>
-      <pre id={`${id.current}_outputpre`} className="outputpre"></pre>
+      <pre id={`${id.current}_outputpre`} className="outputpre">
+        {output.map(([errorlevel, msg]) => (
+          <span key={msg} className={errorlevel}>{msg}</span>
+        ))}
+      </pre>
     </div>
   );
 }
