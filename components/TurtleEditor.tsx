@@ -14,21 +14,14 @@ import useEditor from "./TurtleEditor/useEditor";
 // });
 // gui.init();
 
-let newPosX = 0,
-    newPosY = 0,
-    startPosX = 0,
-    startPosY = 0;
 
-interface TurtleWrapper extends HTMLElement {
-    turtlesceneobj: TurtleEditor;
-}
 interface GraphicsWrapper extends HTMLElement {
     x: number;
     y: number;
 }
 
 interface TurtleEditor extends HTMLElement {
-    wrapper: TurtleWrapper;
+    wrapper: HTMLElement;
     config: {};
     id: string;
     RUNNING: boolean;
@@ -87,7 +80,7 @@ type outputElement = [errorlevel | null, string | null];
 function TurtleEditor({ children, ...props }) {
 
     const savetimeout = undefined;
-    const initcode = children.props.children;
+    const initCode = children.props.children;
     const [output, setOutput] = useState([] as outputElement[]);
 
     const autosave = () => {
@@ -103,6 +96,10 @@ function TurtleEditor({ children, ...props }) {
     const resetcodehandler = () => {
         this.editor.setValue(this.initcode);
     };
+    let newPosX = 0,
+        newPosY = 0,
+        startPosX = 0,
+        startPosY = 0;
 
     const runPythonCode = (pythonCode: string) => {
         if (window.pyodide) {
@@ -128,8 +125,9 @@ function TurtleEditor({ children, ...props }) {
     const [config, setConfig] = useEditor({
       vstheme: "vs-dark",
       CodeEditorScript: useRef(null),
-      runPythonCode: runPythonCode,
+      run: runPythonCode,
       codeeditor: useRef(null),
+      initCode: initCode
   });
     const id = useRef(props["id"] ?? Math.random().toString(36).substring(7)); // document.body.classList.contains('dark') ? "vs-dark" : "vs";
     useEffect(() => {

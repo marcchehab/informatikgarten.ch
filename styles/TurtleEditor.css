@@ -59,7 +59,7 @@
   position: relative;
   overflow: hidden;
   cursor: grab;
-  & .GraphicsWrapper {
+  & .graphicswrapper {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -109,7 +109,7 @@
   flex: none;
   width: 3px;
   cursor: col-resize;
-  background-color: var(--tertiary);
+  background-color: rgba(255, 255, 255);
   opacity: 0.3;
   &:hover {
     opacity: 0.8;
