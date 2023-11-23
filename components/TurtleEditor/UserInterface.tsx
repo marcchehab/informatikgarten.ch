@@ -5,11 +5,11 @@ This class contains all things related to HTML user interface.
 */
 
 const svgFullscreen =
-  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M2 7V2H7" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M22 7V2H17" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7 22L2 22L2 17" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M17 22L22 22L22 17" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg>';
+    '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M2 7V2H7" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M22 7V2H17" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7 22L2 22L2 17" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M17 22L22 22L22 17" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg>';
 const svgCollapsescreen =
-  '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrows-angle-contract" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707zM15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707z"/> </svg>';
+    '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrows-angle-contract" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707zM15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707z"/> </svg>';
 
-  // this.GraphicsWrapper.addEventListener("mousedown", (e) =>
+// this.GraphicsWrapper.addEventListener("mousedown", (e) =>
 // this.grabCanvasHandler.bind(this)
 // );
 // this.canvasdiv.addEventListener("wheel", (e) => this.zoomCanvas.bind(this));
@@ -35,15 +35,22 @@ export default function UserInterface(props: any) {
     const runPythonCode = props.runPythonCode;
     const fullscreenbuttonRef = useRef(null);
     const graphicswrapperRef = useRef(null);
+    const graphicspanelRef = useRef(null);
 
     const [config, setConfig] = props.configState;
     const editorpanel = useRef(null);
     const updateDimensions = () => {
-        if (editorpanel.current === undefined || config.codeeditor.current === null) {
-          return;
+        if (
+            editorpanel.current === undefined ||
+            config.codeeditor.current === null
+        ) {
+            return;
         }
         const width = editorpanel.current.clientWidth - 10;
-        const contentHeight = Math.min(1000, config.codeeditor.current.getContentHeight() + 50);
+        const contentHeight = Math.min(
+            1000,
+            config.codeeditor.current.getContentHeight() + 50
+        );
         editorpanel.current.style.width = `${width}px`;
         //editorpanel.current.style.height = `${contentHeight}px`;
         //editorpanel.current.style.padding = 0;
@@ -52,31 +59,34 @@ export default function UserInterface(props: any) {
 
     const fullScreenHandler = () => {
         if (wrapperRef.current.classList.contains("fullscreen")) {
-          wrapperRef.current.classList.remove("fullscreen");
-          fullscreenbuttonRef.current.innerHTML = svgFullscreen;
+            wrapperRef.current.classList.remove("fullscreen");
+            fullscreenbuttonRef.current.innerHTML = svgFullscreen;
         } else {
-          wrapperRef.current.classList.add("fullscreen");
-          fullscreenbuttonRef.current.innerHTML = svgCollapsescreen;
+            wrapperRef.current.classList.add("fullscreen");
+            fullscreenbuttonRef.current.innerHTML = svgCollapsescreen;
         }
-        this.canvascontainer.style.removeProperty("top");
-        this.canvascontainer.style.removeProperty("left");
-        this.updateDimensions();
+        graphicswrapperRef.current.style.removeProperty("top");
+        graphicswrapperRef.current.style.removeProperty("left");
+        updateDimensions();
     };
 
     const initResizer = () => {
         this.resizer_x = 0;
         this.resizer_y = 0;
         this.resizer.addEventListener("mousedown", (e) => {
-          this.resizecontroller = new AbortController();
-          this.resizer_x = e.clientX;
-          this.resizer_y = e.clientY;
-          window.addEventListener("mousemove", this.resize.bind(this), {
-            signal: this.resizecontroller.signal,
-          });
-          window.addEventListener("mouseup", this.stopResize.bind(this), {
-            signal: this.resizecontroller.signal,
-          });
+            this.resizecontroller = new AbortController();
+            this.resizer_x = e.clientX;
+            this.resizer_y = e.clientY;
+            window.addEventListener("mousemove", resize);
+            window.addEventListener("mouseup", stopResize);
         });
+
+        useEffect(() => {
+            return () => {
+                window.removeEventListener("mousemove", resize);
+                window.removeEventListener("mouseup", stopResize);
+            };
+        }, [resize, stopResize]);
     };
 
     useEffect(() => {
@@ -117,14 +127,21 @@ export default function UserInterface(props: any) {
                     />
                 </pre>
                 <div className="resizer"> </div>
-                <div className="graphicspanel panel">
-                    <div className="graphicswrapper" ref={graphicswrapperRef}></div>
+                <div className="graphicspanel panel" ref={graphicspanelRef}>
+                    <div
+                        className="graphicswrapper"
+                        ref={graphicswrapperRef}
+                    ></div>
                 </div>
                 <a className="startstop" onClick={starthandler}>
                     ▶️ Start
                 </a>
                 <a className="resetcode">Reset Code</a>
-                <button className="fullscreen-button" type="button" ref={fullscreenbuttonRef}></button>
+                <button
+                    className="fullscreen-button"
+                    type="button"
+                    ref={fullscreenbuttonRef}
+                ></button>
             </div>
             <pre className="outputpre">
                 {output.map(([errorlevel, msg]) => (
