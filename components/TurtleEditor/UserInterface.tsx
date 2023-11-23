@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import { runPythonCode } from "../TurtleEditor";
 import Editor, { Monaco } from "@monaco-editor/react";
 /*
 This class contains all things related to HTML user interface.
@@ -15,7 +14,7 @@ const svgCollapsescreen =
 // );
 // this.canvasdiv.addEventListener("wheel", (e) => this.zoomCanvas.bind(this));
 // this.canvasScale = 1;
-// this.resizer = this.wrapper.getElementsByClassName(
+// this.resizer = wrapperRef.current.getElementsByClassName(
 // "resizer"
 // )[0] as HTMLElement;
 // this.outputpre = document.getElementById(this.id + "_outputpre");
@@ -23,35 +22,41 @@ const svgCollapsescreen =
 // // this.startstop.addEventListener("click", (e) => this.starthandler());
 // this.resetcode = document.getElementById(this.id + "_resetcode");
 // this.resetcode.addEventListener("click", (e) => this.resetcodehandler());
-// this.fullscreenbutton = document.getElementById(this.id + "_fullscreen");
-// this.fullscreenbutton.innerHTML = svgFullscreen;
-// this.fullscreenbutton.addEventListener("click", (e) =>
+// fullscreenbuttonRef.current = document.getElementById(this.id + "_fullscreen");
+// fullscreenbuttonRef.current.innerHTML = svgFullscreen;
+// fullscreenbuttonRef.current.addEventListener("click", (e) =>
 // this.fullScreenHandler()
 // );
 // this.ignoreEvent = false;
 
 export default function UserInterface(props: any) {
     const output = props.output;
+    const wrapperRef = useRef(null);
+    const runPythonCode = props.runPythonCode;
+    const fullscreenbuttonRef = useRef(null);
+    const graphicswrapperRef = useRef(null);
+
     const [config, setConfig] = props.configState;
+    const editorpanel = useRef(null);
     const updateDimensions = () => {
-        if (this.editordiv === undefined) {
+        if (editorpanel.current === undefined || config.codeeditor.current === null) {
           return;
         }
-        const width = this.editordiv.clientWidth - 10;
-        const contentHeight = Math.min(1000, this.editor.getContentHeight() + 50);
-        this.editordiv.style.width = `${width}px`;
-        //this.editordiv.style.height = `${contentHeight}px`;
-        //this.editordiv.style.padding = 0;
-        //this.editordiv.style.border = 0;
+        const width = editorpanel.current.clientWidth - 10;
+        const contentHeight = Math.min(1000, config.codeeditor.current.getContentHeight() + 50);
+        editorpanel.current.style.width = `${width}px`;
+        //editorpanel.current.style.height = `${contentHeight}px`;
+        //editorpanel.current.style.padding = 0;
+        //editorpanel.current.style.border = 0;
     };
 
     const fullScreenHandler = () => {
-        if (this.wrapper.classList.contains("fullscreen")) {
-          this.wrapper.classList.remove("fullscreen");
-          this.fullscreenbutton.innerHTML = svgFullscreen;
+        if (wrapperRef.current.classList.contains("fullscreen")) {
+          wrapperRef.current.classList.remove("fullscreen");
+          fullscreenbuttonRef.current.innerHTML = svgFullscreen;
         } else {
-          this.wrapper.classList.add("fullscreen");
-          this.fullscreenbutton.innerHTML = svgCollapsescreen;
+          wrapperRef.current.classList.add("fullscreen");
+          fullscreenbuttonRef.current.innerHTML = svgCollapsescreen;
         }
         this.canvascontainer.style.removeProperty("top");
         this.canvascontainer.style.removeProperty("left");
@@ -91,15 +96,15 @@ export default function UserInterface(props: any) {
     }
     return (
         <div>
-            <div className="turtlewrapper">
-                <pre className="monacoeditor panel">
+            <div className="turtlewrapper" ref={wrapperRef}>
+                <pre className="monacoeditor panel" ref={editorpanel}>
                     <Editor
                         height="90vh"
                         defaultLanguage="python"
                         automatic-layout="true"
                         onMount={handleEditorDidMount}
                         theme={config.vstheme}
-                        defaultValue={props.children.props.children}
+                        defaultValue={props.children}
                         options={{
                             minimap: { enabled: false },
                             scrollbar: { horizontal: "hidden" },
@@ -113,13 +118,13 @@ export default function UserInterface(props: any) {
                 </pre>
                 <div className="resizer"> </div>
                 <div className="graphicspanel panel">
-                    <div className="GraphicsWrapper"></div>
+                    <div className="graphicswrapper" ref={graphicswrapperRef}></div>
                 </div>
                 <a className="startstop" onClick={starthandler}>
                     ▶️ Start
                 </a>
                 <a className="resetcode">Reset Code</a>
-                <button className="fullscreen-button" type="button"></button>
+                <button className="fullscreen-button" type="button" ref={fullscreenbuttonRef}></button>
             </div>
             <pre className="outputpre">
                 {output.map(([errorlevel, msg]) => (

@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import type { AppProps } from "next/app";
 import { NavItem, NavGroup } from "@portaljs/core";
 import { GUIBase, GUIOptions } from "@basthon/gui-base";
-import TurtleOutput from "./TurtleEditor/TurtleOutput";
+// import TurtleOutput from "./TurtleEditor/TurtleOutput.ts.bak";
 import UserInterface from "./TurtleEditor/UserInterface";
 import useEditor from "./TurtleEditor/useEditor";
 
@@ -85,13 +85,10 @@ enum errorlevel {
 type outputElement = [errorlevel | null, string | null];
 
 function TurtleEditor({ children, ...props }) {
-    const [config, setConfig] = useEditor({
-        vstheme: "vs-dark",
-        CodeEditorScript: useRef(null),
-    });
 
     const savetimeout = undefined;
     const initcode = children.props.children;
+    const [output, setOutput] = useState([] as outputElement[]);
 
     const autosave = () => {
         if (this.savetimeout !== undefined) {
@@ -107,7 +104,7 @@ function TurtleEditor({ children, ...props }) {
         this.editor.setValue(this.initcode);
     };
 
-    export const runPythonCode = (pythonCode: string) => {
+    const runPythonCode = (pythonCode: string) => {
         if (window.pyodide) {
             setOutput([]);
             try {
@@ -127,6 +124,13 @@ function TurtleEditor({ children, ...props }) {
             }
         }
     };
+    
+    const [config, setConfig] = useEditor({
+      vstheme: "vs-dark",
+      CodeEditorScript: useRef(null),
+      runPythonCode: runPythonCode,
+      codeeditor: useRef(null),
+  });
     const id = useRef(props["id"] ?? Math.random().toString(36).substring(7)); // document.body.classList.contains('dark') ? "vs-dark" : "vs";
     useEffect(() => {
         if (!window.pyodide) {
