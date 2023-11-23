@@ -36,6 +36,10 @@ export default function UserInterface(props: any) {
     const fullscreenbuttonRef = useRef(null);
     const graphicswrapperRef = useRef(null);
     const graphicspanelRef = useRef(null);
+    const resizerRef = useRef(null);
+    let resizer_x = 0;
+    let resizer_y = 0;
+    let resizecontroller;
 
     const [config, setConfig] = props.configState;
     const editorpanel = useRef(null);
@@ -71,23 +75,46 @@ export default function UserInterface(props: any) {
     };
 
     const initResizer = () => {
-        this.resizer_x = 0;
-        this.resizer_y = 0;
-        this.resizer.addEventListener("mousedown", (e) => {
-            this.resizecontroller = new AbortController();
-            this.resizer_x = e.clientX;
-            this.resizer_y = e.clientY;
+        resizer_x = 0;
+        resizer_y = 0;
+        resizerRef.current.addEventListener("mousedown", (e) => {
+            resizecontroller = new AbortController();
+            resizer_x = e.clientX;
+            resizer_y = e.clientY;
             window.addEventListener("mousemove", resize);
             window.addEventListener("mouseup", stopResize);
         });
-
-        useEffect(() => {
-            return () => {
-                window.removeEventListener("mousemove", resize);
-                window.removeEventListener("mouseup", stopResize);
-            };
-        }, [resize, stopResize]);
     };
+
+    const resize = (e) => {
+        const dx = e.clientX - resizer_x;
+        const dy = e.clientY - resizer_y;
+        const leftPanel = editorpanel.current;
+        const rightPanel = graphicspanelRef.current;
+        const parentoffset = wrapperRef.current.offsetWidth;
+        const newLeftWidth =
+            ((leftPanel.offsetWidth + dx) * 100) / parentoffset;
+        const newRightWidth =
+            ((rightPanel.offsetWidth - dx) * 100) / parentoffset;
+        leftPanel.style.width = `${newLeftWidth}%`;
+        rightPanel.style.width = `${newRightWidth}%`;
+        resizer_x = e.clientX;
+        resizer_y = e.clientY;
+    };
+
+    const stopResize = (e) => {
+        resizecontroller.abort();
+        updateDimensions();
+        // window.removeEventListener('mousemove', this.resize);
+        // window.removeEventListener('mouseup', this.stopResize);
+    };
+
+    useEffect(() => {
+        return () => {
+            window.removeEventListener("mousemove", resize);
+            window.removeEventListener("mouseup", stopResize);
+        };
+    }, [resize, stopResize]);
 
     useEffect(() => {
         updateDimensions();
@@ -126,7 +153,7 @@ export default function UserInterface(props: any) {
                         }}
                     />
                 </pre>
-                <div className="resizer"> </div>
+                <div className="resizer" ref={resizerRef}> </div>
                 <div className="graphicspanel panel" ref={graphicspanelRef}>
                     <div
                         className="graphicswrapper"
