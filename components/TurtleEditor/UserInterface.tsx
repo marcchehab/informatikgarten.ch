@@ -4,11 +4,65 @@ import Editor, { Monaco } from "@monaco-editor/react";
 This class contains all things related to HTML user interface.
 */
 
-const svgFullscreen =
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M2 7V2H7" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M22 7V2H17" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7 22L2 22L2 17" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M17 22L22 22L22 17" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg>;
-const svgCollapsescreen =
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrows-angle-contract" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707zM15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707z"/> </svg>;
-
+const svgFullscreen = (
+    <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        {" "}
+        <path
+            d="M2 7V2H7"
+            stroke="black"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />{" "}
+        <path
+            d="M22 7V2H17"
+            stroke="black"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />{" "}
+        <path
+            d="M7 22L2 22L2 17"
+            stroke="black"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />{" "}
+        <path
+            d="M17 22L22 22L22 17"
+            stroke="black"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />{" "}
+    </svg>
+);
+const svgCollapsescreen = (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        className="bi bi-arrows-angle-contract"
+        viewBox="0 0 16 16"
+    >
+        {" "}
+        <path
+            fill-rule="evenodd"
+            d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707zM15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707z"
+        />{" "}
+    </svg>
+);
+interface GraphicsWrapper extends HTMLElement {
+    x: number;
+    y: number;
+}
 // this.GraphicsWrapper.addEventListener("mousedown", (e) =>
 // this.grabCanvasHandler.bind(this)
 // );
@@ -33,7 +87,7 @@ export default function UserInterface(props: any) {
     const output = props.output;
     const wrapperRef = useRef(null);
     const runPythonCode = props.run;
-    const [fullscreen, setFullscreen] = useState(false)
+    const [fullscreen, setFullscreen] = useState(false);
     const graphicswrapperRef = useRef(null);
     const graphicspanelRef = useRef(null);
     const resizerRef = useRef(null);
@@ -98,8 +152,8 @@ export default function UserInterface(props: any) {
     };
 
     const stopResize = (e) => {
-        window.removeEventListener('mousemove', resize);
-        window.removeEventListener('mouseup', stopResize);
+        window.removeEventListener("mousemove", resize);
+        window.removeEventListener("mouseup", stopResize);
         resizecontroller.abort();
         updateDimensions();
     };
@@ -120,7 +174,12 @@ export default function UserInterface(props: any) {
     }
     return (
         <div>
-            <div className={fullscreen ? "turtlewrapper fullscreen" : "turtlewrapper"} ref={wrapperRef}>
+            <div
+                className={
+                    fullscreen ? "turtlewrapper fullscreen" : "turtlewrapper"
+                }
+                ref={wrapperRef}
+            >
                 <pre className="monacoeditor panel" ref={editorpanel}>
                     <Editor
                         height="90vh"
@@ -140,7 +199,9 @@ export default function UserInterface(props: any) {
                         }}
                     />
                 </pre>
-                <div className="resizer" ref={resizerRef}> </div>
+                <div className="resizer" ref={resizerRef}>
+                    {" "}
+                </div>
                 <div className="graphicspanel panel" ref={graphicspanelRef}>
                     <div
                         className="graphicswrapper"
@@ -155,7 +216,9 @@ export default function UserInterface(props: any) {
                     className="fullscreen-button"
                     type="button"
                     onClick={fullScreenHandler}
-                >{fullscreen ? svgCollapsescreen : svgFullscreen}</button>
+                >
+                    {fullscreen ? svgCollapsescreen : svgFullscreen}
+                </button>
             </div>
             <pre className="outputpre">
                 {output.map(([errorlevel, msg]) => (
