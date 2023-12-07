@@ -9,6 +9,23 @@ export default {
         config.infrastructureLogging = {
             level: "error",
         };
+
+        // Add the copy-webpack-plugin
+        config.plugins.push(
+            new CopyPlugin({
+                patterns: [
+                    {
+                        from: "node_modules/stackframe/stackframe.js",
+                        to: path.resolve(
+                            process.cwd(),
+                            "public",
+                            "stackframe.js"
+                        ),
+                    },
+                ],
+            })
+        );
+
         return config;
     },
 };
