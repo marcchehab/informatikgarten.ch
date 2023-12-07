@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Editor, { Monaco } from "@monaco-editor/react";
+import TurtleOutput from "./TurtleOutput";
 /*
 This class contains all things related to HTML user interface.
 */
@@ -16,30 +17,30 @@ const svgFullscreen = (
         <path
             d="M2 7V2H7"
             stroke="black"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
         />{" "}
         <path
             d="M22 7V2H17"
             stroke="black"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
         />{" "}
         <path
             d="M7 22L2 22L2 17"
             stroke="black"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
         />{" "}
         <path
             d="M17 22L22 22L22 17"
             stroke="black"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
         />{" "}
     </svg>
 );
@@ -86,7 +87,6 @@ interface GraphicsWrapper extends HTMLElement {
 export default function UserInterface(props: any) {
     const output = props.output;
     const wrapperRef = useRef(null);
-    const runPythonCode = props.run;
     const [fullscreen, setFullscreen] = useState(false);
     const graphicswrapperRef = useRef(null);
     const graphicspanelRef = useRef(null);
@@ -96,6 +96,7 @@ export default function UserInterface(props: any) {
     let resizecontroller;
 
     const [config, setConfig] = props.configState;
+    const runPythonCode = config.runPythonCode;
     const initCode = config.initCode;
     const editorpanel = useRef(null);
     const updateDimensions = () => {
@@ -203,10 +204,11 @@ export default function UserInterface(props: any) {
                     {" "}
                 </div>
                 <div className="graphicspanel panel" ref={graphicspanelRef}>
+                    
                     <div
                         className="graphicswrapper"
                         ref={graphicswrapperRef}
-                    ></div>
+                    ><TurtleOutput data={props.data} /></div>
                 </div>
                 <a className="startstop" onClick={starthandler}>
                     ▶️ Start

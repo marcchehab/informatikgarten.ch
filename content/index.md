@@ -9,8 +9,10 @@ Now I'm just **adding this** to test
 
 <TurtleEditor id="really_my_editor">
 print("hallo!")
-weirdä scheiss
-Joa
+import turtle
+eva = turtle.Turtle()
+eva.forward(100)
+turtle.done()
 </TurtleEditor>
 
 [[Python/Testeintrag]]

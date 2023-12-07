@@ -1,20 +1,17 @@
-import TurtleEditor from "../TurtleEditor";
+import GUI from "./gui";
 
 declare global {
   interface Window {
     MathJax?: any;
   }
 }
-/*
-This class handles output of Turtle Graphics.
-*/
-export default class TurtleOutput {
-  private _TurtleEditor : TurtleEditor;
-  private _elem : TurtleOutputContainer;
 
-  public constructor(TurtleEditor: TurtleEditor) {
-    this._TurtleEditor = TurtleEditor;
-    this._elem = TurtleEditor.ui.turtleOutputContainer;
+export default class Graphics {
+  private _gui: GUI;
+  private _elem = document.getElementById("graphics");
+
+  public constructor(gui: GUI) {
+    this._gui = gui;
   }
 
   /**
