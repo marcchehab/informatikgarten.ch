@@ -1,172 +1,178 @@
 :root {
-  --turtle-color: var(--tertiary);
-  --editor-bg: #1e1f1f;
-  &.light {
-    --editor-bg: #f5f5f5;
-  }
+    --turtle-color: var(--color-accent);
+    --editor-bg: #1e1f1f;
+    &.light {
+        --editor-bg: #f5f5f5;
+    }
 }
+
 .turtlewrapper {
-  display: flex;
-  justify-content: stretch;
-  align-items: stretch;
-  overflow: hidden;
-  position: relative;
-  z-index:0;
-  background-color: var(--editor-bg);
-  height: 200px;
-  & .panel {
-    width: 50%;
-    flex: 1 1 auto;
-    padding: 0;
-    border: 0;
-    margin: 0;
-    border-radius: 0;
-    padding-bottom: 35px;
-  }
-  & .startstop {
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
-    cursor: pointer;
-    margin: 10px;
-  }
-  & .resetcode {
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
-    cursor: pointer;
-    margin: 10px;
-    z-index: 101;
-  }
-  &.fullscreen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 100;
-  }
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+    background-color: var(--editor-bg);
+    height: 200px;
+    & .panel {
+        width: 50%;
+        flex: 1 1 auto;
+        padding: 0;
+        border: 0;
+        margin: 0;
+        border-radius: 0;
+        padding-bottom: 35px;
+    }
+    & .startstop {
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        cursor: pointer;
+        margin: 10px;
+    }
+    & .resetcode {
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        cursor: pointer;
+        margin: 10px;
+        z-index: 101;
+    }
+    &.fullscreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+    }
+    & a {
+        text-decoration: none !important;
+    }
 }
+
 .monacoeditor {
-  overflow: hidden;
-  /* background-color: var(--light); */
-  & .editor-container {
-    height: calc(100% - 35px);
-    width: 100%;
-  }
+    overflow: hidden;
+    /* background-color: var(--light); */
+    & .editor-container {
+        height: calc(100% - 35px);
+        width: 100%;
+    }
 }
 .graphicspanel {
-  background-color: rgba(255, 255, 255, 0.1);
-  position: relative;
-  overflow: hidden;
-  cursor: grab;
-  z-index: -1;
-  & .graphicswrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  &:active {
-    cursor: grabbing;
-  }
+    background-color: rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    cursor: grab;
+    z-index: -1;
+    & .graphicswrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    &:active {
+        cursor: grabbing;
+    }
 }
 .outputpre {
-  background-color: var(--editor-bg);
-  font-family: Consolas, "Courier New", monospace;
-  color: var(--gray);
-  width: 100%;
-  overflow-x: auto;
-  padding: 0px;
-  border-radius: 3%;
-  counter-reset: line;
-  border-top: 3px solid var(--tertiary);
-  opacity: 0.3;
-  margin-top: 0px;
-  &:not(:empty) {
-    opacity: 0.8;
-  }
-  & span {
-    display: block;
-    line-height: 1.5rem;
-    &::before {
-      counter-increment: line;
-      content: counter(line);
-      display: inline-block;
-      border-right: 1px solid #ddd;
-      padding: 0 0.5em;
-      margin-right: 0.5em;
-      color: #888;
+    background-color: var(--editor-bg);
+    font-family: Consolas, "Courier New", monospace;
+    color: var(--gray);
+    width: 100%;
+    overflow-x: auto;
+    padding: 0px;
+    border-radius: 3%;
+    counter-reset: line;
+    border-top: 3px solid var(--tertiary);
+    opacity: 0.3;
+    margin-top: 0px;
+    &:not(:empty) {
+        opacity: 0.8;
     }
-    &.warning {
-      color: var(--callout-warning);
+    & span {
+        display: block;
+        line-height: 1.5rem;
+        &::before {
+            counter-increment: line;
+            content: counter(line);
+            display: inline-block;
+            border-right: 1px solid #ddd;
+            padding: 0 0.5em;
+            margin-right: 0.5em;
+            color: #888;
+        }
+        &.warning {
+            color: var(--callout-warning);
+        }
+        &.error {
+            color: var(--callout-danger);
+        }
     }
-    &.error {
-      color: var(--callout-danger);
-    }
-  }
 }
 
 .resizer {
-  flex: none;
-  width: 3px;
-  cursor: col-resize;
-  background-color: rgba(255, 255, 255);
-  opacity: 0.3;
-  &:hover {
-    opacity: 0.8;
-  }
-  /* Increasing clicking area with pseudo-elements */
-  &::before, &::after {
-    content: "";
-    position: absolute;
-    height: 100%;
-  }
-  &::before {
-    width: 10px;
-    margin-left: -10px;
-  }
-  &::after {
-    width: 13px;
-    z-index: 1000;
-  }
+    flex: none;
+    width: 3px;
+    cursor: col-resize;
+    background-color: rgba(255, 255, 255);
+    opacity: 0.3;
+    &:hover {
+        opacity: 0.8;
+    }
+    /* Increasing clicking area with pseudo-elements */
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        height: 100%;
+    }
+    &::before {
+        width: 10px;
+        margin-left: -10px;
+    }
+    &::after {
+        width: 13px;
+        z-index: 1000;
+    }
 }
 
 .fullscreen-button {
-  position: absolute;
-  display: flex;
-  float: right;
-  right: 0;
-  top: 10px;
-  padding: 0.4rem;
-  margin: -0.2rem 0.3rem;
-  color: var(--gray);
-  border-color: var(--dark);
-  background-color: var(--light);
-  border: 1px solid;
-  border-radius: 5px;
-  opacity: 0;
-  transition: 0.2s;
-  z-index: 101;
+    position: absolute;
+    display: flex;
+    float: right;
+    right: 0;
+    top: 10px;
+    padding: 0.4rem;
+    margin: -0.2rem 0.3rem;
+    color: var(--gray);
+    border-color: var(--dark);
+    background-color: var(--light);
+    border: 1px solid;
+    border-radius: 5px;
+    opacity: 0;
+    transition: 0.2s;
+    z-index: 101;
 
-  & > svg {
-    fill: var(--light);
-    filter: contrast(0.3);
-  }
+    & > svg {
+        fill: var(--light);
+        filter: contrast(0.3);
+    }
 
-  &:hover {
-    cursor: pointer;
-    border-color: var(--secondary);
-  }
+    &:hover {
+        cursor: pointer;
+        border-color: var(--secondary);
+    }
 
-  &:focus {
-    outline: 0;
-  }
+    &:focus {
+        outline: 0;
+    }
 }
 
 .turtlewrapper {
-  &:hover > .fullscreen-button {
-    opacity: 1;
-    transition: 0.2s;
-  }
+    &:hover > .fullscreen-button {
+        opacity: 1;
+        transition: 0.2s;
+    }
 }

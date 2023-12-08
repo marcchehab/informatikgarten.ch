@@ -54,11 +54,6 @@ function TurtleEditor({ children, ...props }) {
     const startstopRef = useRef(null);
     const wrapperRef = useRef(null);
 
-    let newPosX = 0,
-        newPosY = 0,
-        startPosX = 0,
-        startPosY = 0;
-
     let savetimeout = undefined;
     const [output, setOutput] = useState([] as outputElement[]);
 
@@ -89,9 +84,7 @@ function TurtleEditor({ children, ...props }) {
 
     // Handling of the runlevel
     useEffect(() => {
-        console.log("useEffect");
         if (typeof Sk !== 'undefined') {
-            console.log("Sk is defined");
             if (currentRunLevel == RunLevel.stopped) {
                 Sk.execLimit = 1;
             } else if (currentRunLevel == RunLevel.running) {
@@ -109,10 +102,8 @@ function TurtleEditor({ children, ...props }) {
         if (Sk) {
             const canvas = graphicswrapperRef.current;
             const startstop = startstopRef.current;
-            // Sk.pre = this.hash + "_turtleoutput";
             Sk.configure({
                 output: (out) => setOutput((output) => [...output, [out, errorlevel.output]]),
-                // read: this.builtinRead.bind(this),
                 inputfunTakesPrompt: true,
                 __future__: Sk.python3,
                 python3: true,

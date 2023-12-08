@@ -2,14 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import Editor, { Monaco } from "@monaco-editor/react";
 import { RunLevel } from "../TurtleEditor";
 import { SvgCollapsescreen, SvgFullscreen } from "./UIelements";
-/*
-This class contains all things related to HTML user interface.
-*/
-
-interface GraphicsWrapper extends HTMLElement {
-    x: number;
-    y: number;
-}
 
 export default function UserInterface(props: any) {
     const output = props.output;
@@ -41,10 +33,13 @@ export default function UserInterface(props: any) {
             config.codeeditor.current.getContentHeight() + 50
         );
         editorpanel.current.style.width = `${width}px`;
-        //editorpanel.current.style.height = `${contentHeight}px`;
-        //editorpanel.current.style.padding = 0;
-        //editorpanel.current.style.border = 0;
     };
+
+    let newPosX = 0,
+        newPosY = 0,
+        startPosX = 0,
+        startPosY = 0,
+        canvasScale = 1;
 
     const fullScreenHandler = () => {
         setFullscreen(!fullscreen);
@@ -88,9 +83,54 @@ export default function UserInterface(props: any) {
         updateDimensions();
     };
 
+    const grabCanvasHandler = (e) => {
+        e.preventDefault();
+
+        // get the starting position of the cursor
+        startPosX = e.clientX;
+        startPosY = e.clientY;
+        const mouseMoveHandler = (e) => canvasMove(e);
+        document.addEventListener("mousemove", mouseMoveHandler);
+
+        document.addEventListener("mouseup", function () {
+            document.removeEventListener("mousemove", mouseMoveHandler);
+        });
+    };
+
+    const canvasMove = (e) => {
+        // calculate the new position
+        newPosX = startPosX - e.clientX;
+        newPosY = startPosY - e.clientY;
+
+        // with each move we also want to update the start X and Y
+        startPosX = e.clientX;
+        startPosY = e.clientY;
+
+        // set the element's new position:
+        graphicswrapperRef.current.style.top =
+            graphicswrapperRef.current.offsetTop - newPosY + "px";
+        graphicswrapperRef.current.style.left =
+            graphicswrapperRef.current.offsetLeft - newPosX + "px";
+    };
+
     useEffect(() => {
         updateDimensions();
         initResizer();
+        if (graphicswrapperRef) {
+            const zoomCanvas = (e) => {
+                e.preventDefault();
+                canvasScale += e.deltaY * -0.001;
+                graphicswrapperRef.current.style.transform = `translate(-50%, -50%) scale(${canvasScale}, ${canvasScale})`;
+            };
+            graphicswrapperRef.current.addEventListener("wheel", zoomCanvas);
+
+            return () => {
+                graphicswrapperRef.current.removeEventListener(
+                    "wheel",
+                    zoomCanvas
+                );
+            };
+        }
     }, []);
 
     function handleEditorDidMount(editor: any, monaco: Monaco) {
@@ -133,12 +173,21 @@ export default function UserInterface(props: any) {
                     {" "}
                 </div>
                 <div className="graphicspanel panel" ref={graphicspanelRef}>
-                    <div className="graphicswrapper" ref={graphicswrapperRef}>
-                    </div>
+                    <div
+                        className="graphicswrapper"
+                        ref={graphicswrapperRef}
+                        onMouseDown={grabCanvasHandler}
+                    ></div>
                 </div>
                 <a
                     className="startstop"
-                    onClick={() => setCurrentRunLevel(currentRunLevel === RunLevel.stopped ? RunLevel.running : RunLevel.stopped)}
+                    onClick={() =>
+                        setCurrentRunLevel(
+                            currentRunLevel === RunLevel.stopped
+                                ? RunLevel.running
+                                : RunLevel.stopped
+                        )
+                    }
                     ref={startstopRef}
                 >
                     {currentRunLevel}
@@ -149,11 +198,10 @@ export default function UserInterface(props: any) {
                     type="button"
                     onClick={fullScreenHandler}
                 >
-                    {fullscreen ? <SvgCollapsescreen /> : <SvgFullscreen /> }
+                    {fullscreen ? <SvgCollapsescreen /> : <SvgFullscreen />}
                 </button>
             </div>
             <pre className="outputpre">
-                {console.log("OUT: ", output)}
                 {output.map(([msg, errorlevel]) => (
                     <span key={msg} className={errorlevel}>
                         {msg}
