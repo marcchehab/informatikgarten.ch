@@ -1,94 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import Editor, { Monaco } from "@monaco-editor/react";
-import TurtleOutput from "./TurtleOutput";
+import { RunLevel } from "../TurtleEditor";
+import { SvgCollapsescreen, SvgFullscreen } from "./UIelements";
 /*
 This class contains all things related to HTML user interface.
 */
 
-const svgFullscreen = (
-    <svg
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-    >
-        {" "}
-        <path
-            d="M2 7V2H7"
-            stroke="black"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        />{" "}
-        <path
-            d="M22 7V2H17"
-            stroke="black"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        />{" "}
-        <path
-            d="M7 22L2 22L2 17"
-            stroke="black"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        />{" "}
-        <path
-            d="M17 22L22 22L22 17"
-            stroke="black"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        />{" "}
-    </svg>
-);
-const svgCollapsescreen = (
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        fill="currentColor"
-        className="bi bi-arrows-angle-contract"
-        viewBox="0 0 16 16"
-    >
-        {" "}
-        <path
-            fill-rule="evenodd"
-            d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707zM15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707z"
-        />{" "}
-    </svg>
-);
 interface GraphicsWrapper extends HTMLElement {
     x: number;
     y: number;
 }
-// this.GraphicsWrapper.addEventListener("mousedown", (e) =>
-// this.grabCanvasHandler.bind(this)
-// );
-// this.canvasdiv.addEventListener("wheel", (e) => this.zoomCanvas.bind(this));
-// this.canvasScale = 1;
-// this.resizer = wrapperRef.current.getElementsByClassName(
-// "resizer"
-// )[0] as HTMLElement;
-// this.outputpre = document.getElementById(this.id + "_outputpre");
-// this.startstop = document.getElementById(this.id + "_startstop");
-// // this.startstop.addEventListener("click", (e) => this.starthandler());
-// this.resetcode = document.getElementById(this.id + "_resetcode");
-// this.resetcode.addEventListener("click", (e) => this.resetcodehandler());
-// fullscreenbuttonRef.current = document.getElementById(this.id + "_fullscreen");
-// fullscreenbuttonRef.current.innerHTML = svgFullscreen;
-// fullscreenbuttonRef.current.addEventListener("click", (e) =>
-// this.fullScreenHandler()
-// );
-// this.ignoreEvent = false;
 
 export default function UserInterface(props: any) {
     const output = props.output;
-    const wrapperRef = useRef(null);
+    const [currentRunLevel, setCurrentRunLevel] = props.runlevel;
     const [fullscreen, setFullscreen] = useState(false);
-    const graphicswrapperRef = useRef(null);
     const graphicspanelRef = useRef(null);
     const resizerRef = useRef(null);
     let resizer_x = 0;
@@ -98,6 +24,9 @@ export default function UserInterface(props: any) {
     const [config, setConfig] = props.configState;
     const runPythonCode = config.runPythonCode;
     const initCode = config.initCode;
+    const wrapperRef = config.wrapperRef;
+    const graphicswrapperRef = config.graphicswrapperRef;
+    const startstopRef = config.startstopRef;
     const editorpanel = useRef(null);
     const updateDimensions = () => {
         if (
@@ -168,9 +97,9 @@ export default function UserInterface(props: any) {
         config.codeeditor.current = editor;
     }
     async function starthandler(obj = this) {
+        console.log("start");
         if (config.codeeditor.current) {
-            const code = config.codeeditor.current.getValue();
-            runPythonCode(code);
+            setCurrentRunLevel(RunLevel.running);
         }
     }
     return (
@@ -204,14 +133,15 @@ export default function UserInterface(props: any) {
                     {" "}
                 </div>
                 <div className="graphicspanel panel" ref={graphicspanelRef}>
-                    
-                    <div
-                        className="graphicswrapper"
-                        ref={graphicswrapperRef}
-                    ><TurtleOutput data={props.data} /></div>
+                    <div className="graphicswrapper" ref={graphicswrapperRef}>
+                    </div>
                 </div>
-                <a className="startstop" onClick={starthandler}>
-                    ▶️ Start
+                <a
+                    className="startstop"
+                    onClick={() => setCurrentRunLevel(currentRunLevel === RunLevel.stopped ? RunLevel.running : RunLevel.stopped)}
+                    ref={startstopRef}
+                >
+                    {currentRunLevel}
                 </a>
                 <a className="resetcode">Reset Code</a>
                 <button
@@ -219,11 +149,12 @@ export default function UserInterface(props: any) {
                     type="button"
                     onClick={fullScreenHandler}
                 >
-                    {fullscreen ? svgCollapsescreen : svgFullscreen}
+                    {fullscreen ? <SvgCollapsescreen /> : <SvgFullscreen /> }
                 </button>
             </div>
             <pre className="outputpre">
-                {output.map(([errorlevel, msg]) => (
+                {console.log("OUT: ", output)}
+                {output.map(([msg, errorlevel]) => (
                     <span key={msg} className={errorlevel}>
                         {msg}
                     </span>
