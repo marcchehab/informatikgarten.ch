@@ -37,7 +37,7 @@ Nach der Klassendiskussion ergänzen wir den Eintrag im Theorieheft.
 > - Wiederholungsschleifen können auch **verschachtelt** werden. 
 > - Die innere Schleife (blau) wird bei jedem Durchlauf der äusseren Schleife (orange) komplett ausgeführt. Das heisst die Linien 8 und 9 werden insgesamt zwölfmal ausgeführt.
 > 
-> ![[attachments/Pasted image 20230821160158.png]]
+> ![[Pasted image 20230821160158.png]]
 
 > [!example] Falls noch Zeit bleibt ⏲️
 > 

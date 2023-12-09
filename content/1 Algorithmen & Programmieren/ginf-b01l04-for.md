@@ -122,7 +122,7 @@ Tipp für die nächste Aufgabe: Die mathematischen Grundoperationen kann man bei
 > ```
 > Wobei 360 ineffizient und unnötig ist – eine kleinere Zahl sieht ebenfalls kreisförmig aus.
 
-![[attachments/Pasted image 20230821172657.png]]
+![[Pasted image 20230821172657.png]]
 
 > [!question] Ändern Sie Ihren Code ab, damit ein Stern aus der Anzahl `ecken` Strahlen entsteht, z.B. hier mit `ecken = 6`. 
 > 
@@ -135,7 +135,7 @@ Tipp für die nächste Aufgabe: Die mathematischen Grundoperationen kann man bei
 > 	eva.right(360/ecken)
 > ```
 
-![[attachments/Pasted image 20230821174051.png]]
+![[Pasted image 20230821174051.png]]
 > [!question] Schreiben Sie ein Programm, das eine Variable `stufen` definiert und dann eine entsprechend lange Treppe zeichnet.
 > 
 > ```
@@ -161,7 +161,7 @@ Zu `for`-Schleife merken wir uns Folgendes:
  >
 > Eine einfache Wiederholung mit `for` für ein Quadrat:
 > 
-> ![[attachments/Pasted image 20230821211452.png]]
+> ![[Pasted image 20230821211452.png]]
 > 
 > Wir passen die **Zahl bei `range(...)`** an, um die **Anzahl Wiederholungen** zu ändern. Dort kann man auch **Variablen** verwenden.
 

@@ -72,7 +72,7 @@ Mit diesem Wissen über `range(...)` und die Zählervariabel sollte folgende Üb
 
 Nutzen Sie Ihre Funktion `xeck(ecken)` der letzten Lektion und **nutzen Sie die Zählervariabel i Ihrer `for`-Schleife**, um alle Figuren von einem Dreieck bis und mit einem Zwölfeck zu zeichnet.
 
-![[attachments/Pasted image 20230904190230.png]]
+![[Pasted image 20230904190230.png]]
 
 > [!question] Lösung
 > 
@@ -104,7 +104,7 @@ Versuchen Sie nun, eine Pyramide aus Quadraten zu bauen. Zerlegen Sie sich das P
 1. Die Pyramide besteht aus Reihen
 2. Die Reihen bestehen aus Quadraten
 
-![[attachments/Pasted image 20230917122710.png]]
+![[Pasted image 20230917122710.png]]
 
 > [!question] Beginnen wir mit einer Funktion `reihe(breite)`, die uns eine Reihe aus Quadraten macht und die Turtle wieder an den Ausgangspunkt setzt. Zusätzlich habe ich im Hauptprogramm eine globale Variabel `s = 30` für die Seitenlängen kreiert. 
 > 
@@ -121,7 +121,7 @@ Versuchen Sie nun, eine Pyramide aus Quadraten zu bauen. Zerlegen Sie sich das P
 
 Nun müssen wir solche Reihen **aufeinanderstabeln**. Überlegen Sie sich dazu, wo die Turtle nach einer Reihe am Schluss steht (orange) und wo sie zu Beginn der nächsten Reihe stehen sollte (grün).
 
-![[attachments/Pasted image 20230917141440.png|400]]
+![[Pasted image 20230917141440.png|400]]
 
 > [!question] Schreiben Sie eine `for`-Schleife, die eine sechs Quadrate hohe Pyramide baut.
 > 
@@ -145,7 +145,7 @@ Nun müssen wir solche Reihen **aufeinanderstabeln**. Überlegen Sie sich dazu, 
 >     eva.forward(s/2)
 > ```
 
-![[attachments/Pasted image 20230917152249.png]]
+![[Pasted image 20230917152249.png]]
 
 > [!question] Verständnisfrage: Was müssten Sie im Code ändern, um diese Figur zu erzeugen 👆 ?
 > 
@@ -163,7 +163,7 @@ Nun müssen wir solche Reihen **aufeinanderstabeln**. Überlegen Sie sich dazu, 
 
 ### Übung 6: Zwei Pyramiden aus Quadraten
 
-![[attachments/Pasted image 20230917144702.png]]
+![[Pasted image 20230917144702.png]]
 
 > [!question] 👆 Versuchen Sie mit den bestehenden Funktionen diese Figur reproduzieren.
 > 
@@ -205,7 +205,7 @@ Nun müssen wir solche Reihen **aufeinanderstabeln**. Überlegen Sie sich dazu, 
 
 ### Übung 7: Pyramide aus Dreiecken
 
-![[attachments/Pasted image 20230917143015.png]]
+![[Pasted image 20230917143015.png]]
 
 > [!question] Versuchen Sie eine Pyramide aus Dreiecken zu bauen.
 > 
@@ -237,7 +237,7 @@ Nun müssen wir solche Reihen **aufeinanderstabeln**. Überlegen Sie sich dazu, 
 > ```
 
 
-![[attachments/Pasted image 20230917161806.png]]
+![[Pasted image 20230917161806.png]]
 
 > [!question] 👆 Versuchen Sie mit den bestehenden Funktionen diese Figur reproduzieren.
 > 
@@ -283,7 +283,7 @@ Nun müssen wir solche Reihen **aufeinanderstabeln**. Überlegen Sie sich dazu, 
 
 Challenge: Versuchen Sie eine Funktion `blume(blaetter)` zu kreieren mit einem Parameter für die Anzahl Blätter.
 
-![[attachments/Pasted image 20230918063405.png]]
+![[Pasted image 20230918063405.png]]
 > [!question] Lösung zur Blume
 > 
 > Der Schlüssel liegt darin, die verschiedenen **Bausteine Schritt für Schritt** zu programmieren.

@@ -60,7 +60,7 @@ blume()
 
 ### Übung 1
 
-![[attachments/Pasted image 20230904192011.png]]
+![[Pasted image 20230904192011.png]]
 > [!question] Schreiben Sie eine Funktion `rechteck()`, die ein Rechteck wie oben zeichnet 👆.
 > 
 > ```python
@@ -80,7 +80,7 @@ blume()
 
 Eine Funktion kann alle anderen Funktionen gebrauchen.
 
-![[attachments/Pasted image 20230904192315.png]]
+![[Pasted image 20230904192315.png]]
 > [!question] Nutzen Sie Ihre Funktion `rechteck()` in einer zweiten Funktion `treppe(stufen)`, die uns eine Treppe mit Anzahl `stufen` zeichnet – oben beispielsweise mit `treppen(8)` aufgerufen.
 > 
 > ```python
@@ -112,7 +112,7 @@ for i in range(6):
 	eva.right(360/6)
 ```
 
-![[attachments/Pasted image 20230904183640.png]]
+![[Pasted image 20230904183640.png]]
 > [!question] Erstellen Sie eine Funktion `sechseck()` und führen Sie sie zweimal so aus, dass die Form einer Acht wie oben 👆 entsteht.
 > 
 > ```python
@@ -126,7 +126,7 @@ for i in range(6):
 > sechseck()
 > ```
 ### Übung 4
-![[attachments/Pasted image 20230904183937.png]]
+![[Pasted image 20230904183937.png]]
 > [!question] Nutzen Sie `sechseck()` und machen Sie eine Blume 🌺 aus 10 gleichmässig rotierten Sechsecken.
 > 
 > ```python
@@ -140,7 +140,7 @@ for i in range(6):
 > 	eva.right(360/10)
 > ```
 ### Übung 5
-![[attachments/Pasted image 20230904184720.png]]
+![[Pasted image 20230904184720.png]]
 > [!question] Verändern Sie die Funktion zu einer Funktion `xeck(ecken)`, bei der man die Anzahl Ecken der Figur als Argument übergeben kann. Machen Sie dann ein Dreieck, ein Viereck und ein Siebeneck.
 > 
 > ```python
@@ -158,7 +158,7 @@ for i in range(6):
 
 Für folgende Aufgabe müssen Sie wissen, wie man [[ginf-b01l06-verschachteltfor#Variabeln während den Wiederholungen verändern|Variabeln während einer Wiederholungsschleife verändert]].
 
-![[attachments/Pasted image 20230904190230.png]]
+![[Pasted image 20230904190230.png]]
 > [!question] Nutzen Sie Ihre Funktion `xeck(ecken)` und schreiben Sie eine **Wiederholungsschleife**, die alle Figuren von einem Dreieck bis zu einem Zwölfeck zeichnet.
 > 
 > ```python
@@ -184,10 +184,10 @@ Für folgende Aufgabe müssen Sie wissen, wie man [[ginf-b01l06-verschachteltfor
 > - Mit **`def` zuerst definieren** – der Funktion also einen <mark style="background-color: #12C2FF; color: black;padding:2px;border-radius:3px;">Namen</mark> geben und bestimmen, was sie tut (Linie 1 - 4).
 > - Die Funktion **ausführen** – der Computer findet die Funktion im Speicher anhand ihres <mark style="background-color: #12C2FF; color: black;padding:2px;border-radius:3px;">Namens</mark> (Linie 5). 
 > 
-> ![[attachments/Pasted image 20230904194355.png]]
+> ![[Pasted image 20230904194355.png]]
 > 
 > Manchmal möchten wir einer Funktion **Informationen übergeben**. Hier wird beispielsweise der Wert <mark style="background-color: #15FF74; color: black;padding:2px;border-radius:3px;">6</mark> als **Argument** der Funktion übergeben und in das **Parameter** <mark style="background-color: #15FF74; color: black;padding:2px;border-radius:3px;">ecken</mark> der Funktion abgefüllt.
-> ![[attachments/Pasted image 20230904194406.png]]
+> ![[Pasted image 20230904194406.png]]
 > Wichtig: Parameter (<mark style="background-color: #15FF74; color: black;padding:2px;border-radius:3px;">ecken</mark>) werden bei jeder Ausführung **temporär** kreiert und wieder zerstört!
 
 

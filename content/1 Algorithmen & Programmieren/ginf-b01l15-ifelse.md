@@ -202,7 +202,7 @@ print ( x < 3 or x % 5 == 0 ) # True, weil x ist zwar nicht kleiner als 3, aber 
 ```
 
 Sie kennen die Logik von `not`, `and` und `or` wahrscheinlich aus der Mengenlehre aus der Mathematik unter dem Schlagwort "Boolesche Algebra".
-![[attachments/Pasted image 20231024073757.png]]
+![[Pasted image 20231024073757.png]]
 
 Entsprechend heissen heissen die Datentypen von `True` und `False` auch "boolean".
 ### Aufgabe 5

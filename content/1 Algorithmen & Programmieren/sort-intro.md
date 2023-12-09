@@ -6,7 +6,7 @@ Dazu müssen wir uns zwei Gegebenheiten vor Augen halten:
 
 Die Situation ist für Computer also so, wie wenn wir Menschen **optisch identische Büchsen dem Gewicht nach sortieren** müssten. Wir müssen sie in die Hand nehmen und einzeln vergleichen. Und die Frage ist: Wie geht das wohl am schnellsten?
 
-![[attachments/Pasted image 20230528143949.png]]
+![[Pasted image 20230528143949.png]]
 
 [[../_index|Zum Anfang zurück]]
 [[sort-bubblesort|Bubble Sort]]

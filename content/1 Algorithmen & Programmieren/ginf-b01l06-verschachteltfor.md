@@ -23,7 +23,7 @@ for i in range(2):
 > 1. Lösen Sie Ü1 und Ü2 für sich alleine. 
 > 2. Besprechen Sie Ihre Lösungen.
 
-![[attachments/Pasted image 20230821191611.png]]
+![[Pasted image 20230821191611.png]]
 
 > [!question] Ü1: ☝️ Machen Sie diese Figur nach.
 > ```python
@@ -34,7 +34,7 @@ for i in range(2):
 > 	eva.right(90)
 > ```
  
-![[attachments/Pasted image 20230828121835.png]]
+![[Pasted image 20230828121835.png]]
 > [!question] Ü2:☝️ Machen Sie diese Figur nach.
 > ```python
 > for i in range(3):
@@ -50,7 +50,7 @@ for i in range(2):
 > 2. Eine Person löst Ü3, die andere Ü4. 
 > 3. Dann erklären Sie einander Ihre Denkweise und Ihre Lösung.
 
-![[attachments/Pasted image 20230828122043.png]]
+![[Pasted image 20230828122043.png]]
 
 > [!question] Ü3:☝️ Machen Sie diese Figur nach mit einer **Variabel `quadrate`** für die Anzahl Quadrate.
 > ```python
@@ -63,7 +63,7 @@ for i in range(2):
 > 	eva.forward(70)
 > ```
 
-![[attachments/Pasted image 20230828123551.png]]
+![[Pasted image 20230828123551.png]]
 
 > [!question] Ü4:☝️ Machen Sie diese Figur nach mit einer **Variabel `quadrate`** für die Anzahl Quadrate.
 > ```python
@@ -85,7 +85,7 @@ Zum Verschachteln von `for`-Schleifen merken wir uns Folgendes:
 > ## Verschachteln von for-Schleifen
 > `for`-Schleifen kann man **verschachteln**. Auch der Körper des inneren Codeblocks (hellblau) braucht wieder **einen Einzug mehr** als erste Linie des blauen Blocks mit dem Doppelpunkt.
 > 
-> ![[attachments/Pasted image 20230821212025.png]]
+> ![[Pasted image 20230821212025.png]]
 > 
 > Man muss aufpassen, **nicht zweimal die Variable `i` zu gebrauchen**. Typischerweise verwenden wir `i` und `j`.
 
@@ -101,7 +101,7 @@ print("Jetzt hat die Variabel den Wert: ", zahl)
 
 Versuchen Sie mit diesem Wissen Folgendes: 
 
-![[attachments/Pasted image 20230821192319.png]]
+![[Pasted image 20230821192319.png]]
 > [!question] ☝️ Schreiben Sie ein Programm, das hintereinander zuerst ein Dreieck, dann ein Viereck, dann ein Fünfeck und zuletzt ein Sechseck zeichnet.
 > ```python
 > ecken = 3
@@ -125,7 +125,7 @@ Versuchen Sie mit diesem Wissen Folgendes:
 > 
 > Eine Herausforderung zum Schluss: Diskutieren und versuchen Sie, **eine Blume mit fünf Blüten** zu zeichnen. Das sieht am Schluss so aus:
 > 
-> ![[attachments/Pasted image 20230821185337.png]]
+> ![[Pasted image 20230821185337.png]]
 > 
 > Überlegen Sie sich, oder diskutieren Sie, wie Sie die Blume **in einfachere Schritte aufteilen könnten** und beginnen Sie mit dem einfachsten Teil.
 

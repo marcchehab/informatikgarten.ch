@@ -133,11 +133,11 @@ Mit diesen wenigen Zeilen Code können Sie Ihrer Schildkröte "eva" also bereits
 > 
 > Versuchen Sie mal folgende Figuren nachzumachen. (Grösse und Farbe müssen nicht stimmen.)
 
-![[attachments/Pasted image 20230627134624.png||invert]]
-![[attachments/Pasted image 20230627134824.png||invert]]
-![[attachments/Pasted image 20230627134709.png||invert]]
-![[attachments/Pasted image 20230627135005.png||invert]]
-![[attachments/Pasted image 20230807132453.png||invert]]
+![[Pasted image 20230627134624.png||invert]]
+![[Pasted image 20230627134824.png||invert]]
+![[Pasted image 20230627134709.png||invert]]
+![[Pasted image 20230627135005.png||invert]]
+![[Pasted image 20230807132453.png||invert]]
 
 
 > [!NOTE] Eintrag ins Theorieheft
@@ -149,7 +149,7 @@ Mit diesen wenigen Zeilen Code können Sie Ihrer Schildkröte "eva" also bereits
 > - `eva = turtle.Turtle()` erzeugt eine Turtle mit dem Namen `eva`.
 > - Die Turtle befolgt die Anweisungen **Schritt für Schritt**.
 > - Die Turtle dreht sich um den **Aussenwinkel**.
-> ![[attachments/Pasted image 20230818101343.png]]
+> ![[Pasted image 20230818101343.png]]
 
 
 [[ginf-b01l01-algo|Zurück zu L01]]

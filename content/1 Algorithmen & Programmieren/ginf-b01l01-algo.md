@@ -82,7 +82,7 @@ Algorithmen können aber auch einer **Programmiersprache implementiert oder umge
 > 
 > Falls Sie zu viel Zeit haben, können Sie anschliessend je eine eigene Pixelgrafik zeichnen und dann erklären. Das könnte dann so aussehen.
 > 
-> ![[attachments/Pasted image 20230815060449.png]]
+> ![[Pasted image 20230815060449.png]]
 
 [[ginf-intro|Zurück zum Intro]]
 [[ginf-b01l02-turtleintro|Los geht's mit Python!]]
