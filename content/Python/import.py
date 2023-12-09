@@ -1,0 +1,3 @@
+from funktionen import *
+
+testfunktion()

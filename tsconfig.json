@@ -24,6 +24,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["types.d.ts", "next-env.d.ts", "**/*.tsx", "**/*.ts", "components/TurtleEditor/TurtleOutput.ts.bak"],
+  "include": ["types.d.ts", "next-env.d.ts", "**/*.tsx", "**/*.ts", "components/TurtleEditor/TurtleOutput.ts.bak", "components/TurtleEditor/turtle-editor-plugin.js"],
   "exclude": ["node_modules"]
 }

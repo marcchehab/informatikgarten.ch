@@ -8,11 +8,12 @@ Now I'm just **adding this** to test
 *Testing* a link here
 
 <TurtleEditor id="really_my_editor">
-print("hallo!")
+{`print("hallo!")
+
 import turtle
+
 eva = turtle.Turtle()
-eva.forward(100)
-turtle.done()
+eva.forward(100)`}
 </TurtleEditor>
 
 [[Python/Testeintrag]]

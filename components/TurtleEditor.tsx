@@ -46,9 +46,8 @@ function loadScript(scriptUrl, defer = false) {
 }
 
 function TurtleEditor({ children, ...props }) {
-    
     const [currentRunLevel, setCurrentRunLevel] = useState(RunLevel.stopped);
-    const initCode = children.props.children;
+    const initCode = children;
     const codeeditor = useRef(null);
     const graphicswrapperRef = useRef(null);
     const startstopRef = useRef(null);

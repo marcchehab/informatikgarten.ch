@@ -6,6 +6,7 @@ import { SvgCollapsescreen, SvgFullscreen } from "./UIelements";
 export default function UserInterface(props: any) {
     const output = props.output;
     const [currentRunLevel, setCurrentRunLevel] = props.runlevel;
+    const [position, setPosition] = useState({ top: 0, left: 0 });
     const [fullscreen, setFullscreen] = useState(false);
     const graphicspanelRef = useRef(null);
     const resizerRef = useRef(null);
@@ -13,8 +14,13 @@ export default function UserInterface(props: any) {
     let resizer_y = 0;
     let resizecontroller;
 
+    let newPosX = 0,
+        newPosY = 0,
+        startPosX = 0,
+        startPosY = 0,
+        canvasScale = 1;
+
     const [config, setConfig] = props.configState;
-    const runPythonCode = config.runPythonCode;
     const initCode = config.initCode;
     const wrapperRef = config.wrapperRef;
     const graphicswrapperRef = config.graphicswrapperRef;
@@ -34,12 +40,6 @@ export default function UserInterface(props: any) {
         );
         editorpanel.current.style.width = `${width}px`;
     };
-
-    let newPosX = 0,
-        newPosY = 0,
-        startPosX = 0,
-        startPosY = 0,
-        canvasScale = 1;
 
     const fullScreenHandler = () => {
         setFullscreen(!fullscreen);
@@ -89,7 +89,19 @@ export default function UserInterface(props: any) {
         // get the starting position of the cursor
         startPosX = e.clientX;
         startPosY = e.clientY;
-        const mouseMoveHandler = (e) => canvasMove(e);
+        const mouseMoveHandler = (e) => {
+            // calculate the new position
+            newPosX = startPosX - e.clientX;
+            newPosY = startPosY - e.clientY;
+
+            // with each move we also want to update the start X and Y
+            startPosX = e.clientX;
+            startPosY = e.clientY;
+            setPosition({
+                top: graphicswrapperRef.current.offsetTop - newPosY,
+                left: graphicswrapperRef.current.offsetLeft - newPosX,
+            });
+        };
         document.addEventListener("mousemove", mouseMoveHandler);
 
         document.addEventListener("mouseup", function () {
@@ -97,26 +109,10 @@ export default function UserInterface(props: any) {
         });
     };
 
-    const canvasMove = (e) => {
-        // calculate the new position
-        newPosX = startPosX - e.clientX;
-        newPosY = startPosY - e.clientY;
-
-        // with each move we also want to update the start X and Y
-        startPosX = e.clientX;
-        startPosY = e.clientY;
-
-        // set the element's new position:
-        graphicswrapperRef.current.style.top =
-            graphicswrapperRef.current.offsetTop - newPosY + "px";
-        graphicswrapperRef.current.style.left =
-            graphicswrapperRef.current.offsetLeft - newPosX + "px";
-    };
-
     useEffect(() => {
         updateDimensions();
         initResizer();
-        if (graphicswrapperRef) {
+        if (graphicswrapperRef.current) {
             const zoomCanvas = (e) => {
                 e.preventDefault();
                 canvasScale += e.deltaY * -0.001;
@@ -125,10 +121,12 @@ export default function UserInterface(props: any) {
             graphicswrapperRef.current.addEventListener("wheel", zoomCanvas);
 
             return () => {
-                graphicswrapperRef.current.removeEventListener(
-                    "wheel",
-                    zoomCanvas
-                );
+                if (graphicswrapperRef.current) {
+                    graphicswrapperRef.current.removeEventListener(
+                        "wheel",
+                        zoomCanvas
+                    );
+                }
             };
         }
     }, []);
@@ -136,12 +134,12 @@ export default function UserInterface(props: any) {
     function handleEditorDidMount(editor: any, monaco: Monaco) {
         config.codeeditor.current = editor;
     }
-    async function starthandler(obj = this) {
-        console.log("start");
-        if (config.codeeditor.current) {
-            setCurrentRunLevel(RunLevel.running);
-        }
-    }
+    // async function starthandler(obj = this) {
+    //     console.log("start");
+    //     if (config.codeeditor.current) {
+    //         setCurrentRunLevel(RunLevel.running);
+    //     }
+    // }
     return (
         <div>
             <div
@@ -177,6 +175,11 @@ export default function UserInterface(props: any) {
                         className="graphicswrapper"
                         ref={graphicswrapperRef}
                         onMouseDown={grabCanvasHandler}
+                        style={{
+                            position: "absolute",
+                            top: position.top,
+                            left: position.left,
+                        }}
                     ></div>
                 </div>
                 <a
@@ -202,8 +205,8 @@ export default function UserInterface(props: any) {
                 </button>
             </div>
             <pre className="outputpre">
-                {output.map(([msg, errorlevel]) => (
-                    <span key={msg} className={errorlevel}>
+                {output.map(([msg, errorlevel], index) => (
+                    <span key={index} className={errorlevel}>
                         {msg}
                     </span>
                 ))}
