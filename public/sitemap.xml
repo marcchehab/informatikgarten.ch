@@ -6,25 +6,23 @@
 
   <url>
     <loc
-      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/ginf-b01l0506-notizen</loc
-    >
-  </url>
-
-  <url>
-    <loc
       >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/ginf-b01l03-wiederholungen</loc
     >
   </url>
 
   <url>
+    <loc>https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren</loc>
+  </url>
+
+  <url>
     <loc
-      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/ginf-b01l0102-notizen</loc
+      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/material_to_sort/sort-bubblesort</loc
     >
   </url>
 
   <url>
     <loc
-      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/sort-intro</loc
+      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/material_to_sort/sort-intro</loc
     >
   </url>
 
@@ -36,25 +34,13 @@
 
   <url>
     <loc
-      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/ginf-b01l0910-notizen</loc
+      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/Material%20f%C3%BCr%20Lehrperson/ginf-b01l0506-notizen</loc
     >
   </url>
 
   <url>
     <loc
-      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/ginf-b01l0708-notizen</loc
-    >
-  </url>
-
-  <url>
-    <loc
-      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/sort-old</loc
-    >
-  </url>
-
-  <url>
-    <loc
-      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/ginf-intro</loc
+      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/Material%20f%C3%BCr%20Lehrperson/ginf-b01l0102-notizen</loc
     >
   </url>
 
@@ -66,13 +52,7 @@
 
   <url>
     <loc
-      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/Untitled</loc
-    >
-  </url>
-
-  <url>
-    <loc
-      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/ginf-b01l1112</loc
+      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/Material%20f%C3%BCr%20Lehrperson/ginf-b01l0304-notizen</loc
     >
   </url>
 
@@ -90,13 +70,7 @@
 
   <url>
     <loc
-      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/TigerJython</loc
-    >
-  </url>
-
-  <url>
-    <loc
-      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/sort-bubblesort</loc
+      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/material_to_sort/sort-old</loc
     >
   </url>
 
@@ -126,13 +100,19 @@
 
   <url>
     <loc
+      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/Material%20f%C3%BCr%20Lehrperson/ginf-b01l0910-notizen</loc
+    >
+  </url>
+
+  <url>
+    <loc
       >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/ginf-b01l01-algo</loc
     >
   </url>
 
   <url>
     <loc
-      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/ginf-b01l0304-notizen</loc
+      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/material_to_sort/TigerJython</loc
     >
   </url>
 
@@ -155,6 +135,18 @@
   <url>
     <loc
       >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/ginf-b01l02-turtleintro</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/Material%20f%C3%BCr%20Lehrperson/ginf-b01l0708-notizen</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/1%20Algorithmen%20&%20Programmieren/Material%20f%C3%BCr%20Lehrperson/ginf-b01l1112</loc
     >
   </url>
 </urlset>

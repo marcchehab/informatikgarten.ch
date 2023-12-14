@@ -4,9 +4,9 @@ import { RunLevel } from "../TurtleEditor";
 import { SvgCollapsescreen, SvgFullscreen } from "./UIelements";
 
 export default function UserInterface(props: any) {
-    const output = props.output;
+    const [output, setOutput] = props.outputState;
     const [currentRunLevel, setCurrentRunLevel] = props.runlevel;
-    const [position, setPosition] = useState({ top: 0, left: 0 });
+    const [position, setPosition] = useState({ top: null, left: null });
     const [fullscreen, setFullscreen] = useState(false);
     const graphicspanelRef = useRef(null);
     const resizerRef = useRef(null);
@@ -184,12 +184,13 @@ export default function UserInterface(props: any) {
                 </div>
                 <a
                     className="startstop"
-                    onClick={() =>
+                    onClick={() => {
+                        setOutput([]);
                         setCurrentRunLevel(
                             currentRunLevel === RunLevel.stopped
                                 ? RunLevel.running
                                 : RunLevel.stopped
-                        )
+                        )}
                     }
                     ref={startstopRef}
                 >

@@ -17,6 +17,13 @@ module.exports = {
       maxWidth: {
         "8xl": "88rem",
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: "80ch",
+          }
+        }
+      },
       fontFamily: {
         sans: ["ui-sans-serif", ...defaultTheme.fontFamily.sans],
         serif: ["ui-serif", ...defaultTheme.fontFamily.serif],

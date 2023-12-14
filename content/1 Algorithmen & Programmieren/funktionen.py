@@ -1,2 +1,0 @@
-def testfunktion():
-    print("Hallo?")

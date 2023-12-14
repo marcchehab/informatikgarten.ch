@@ -7,6 +7,8 @@ import useEditor from "./TurtleEditor/useEditor";
 import { set } from "date-fns";
 import { wrap } from "module";
 
+// TODO switch to signals https://www.youtube.com/watch?v=SO8lBVWF2Y8
+
 declare global {
     interface Window {
         pyodide: any;
@@ -27,7 +29,7 @@ export enum RunLevel {
     running = "⛔ Stop",
 }
 
-type outputElement = [string | null, errorlevel | null];
+export type outputElement = [string | null, errorlevel | null];
 
 function loadScript(scriptUrl, defer = false) {
     const script = document.createElement("script");
@@ -83,7 +85,7 @@ function TurtleEditor({ children, ...props }) {
 
     // Handling of the runlevel
     useEffect(() => {
-        if (typeof Sk !== 'undefined') {
+        if (typeof Sk !== "undefined") {
             if (currentRunLevel == RunLevel.stopped) {
                 Sk.execLimit = 1;
             } else if (currentRunLevel == RunLevel.running) {
@@ -102,7 +104,11 @@ function TurtleEditor({ children, ...props }) {
             const canvas = graphicswrapperRef.current;
             const startstop = startstopRef.current;
             Sk.configure({
-                output: (out) => setOutput((output) => [...output, [out, errorlevel.output]]),
+                output: (out) =>
+                    setOutput((output) => [
+                        ...output,
+                        [out, errorlevel.output],
+                    ]),
                 inputfunTakesPrompt: true,
                 __future__: Sk.python3,
                 python3: true,
@@ -125,16 +131,21 @@ function TurtleEditor({ children, ...props }) {
             });
             myPromise.then(
                 function (mod) {
-                    console.log("Turtle was a success", mod);
+                    console.log("Turtle was a success");
                     setCurrentRunLevel(RunLevel.stopped);
                 },
                 function (err) {
-                    console.log(err.toString());
                     setCurrentRunLevel(RunLevel.stopped);
                     if (err.tp$name === "TimeoutError" && Sk.execLimit == 1) {
-                        setOutput([...output, ["Abgebrochen", errorlevel.warning]]);
+                        setOutput([
+                            ...output,
+                            ["Abgebrochen", errorlevel.warning],
+                        ]);
                     } else {
-                        setOutput([...output, [err.toString(), errorlevel.error]]);
+                        setOutput([
+                            ...output,
+                            [err.toString(), errorlevel.error],
+                        ]);
                     }
                 }
             );
@@ -153,7 +164,11 @@ function TurtleEditor({ children, ...props }) {
 
     return (
         <div>
-            <UserInterface configState={[config, setConfig]} output={output} runlevel={[currentRunLevel, setCurrentRunLevel]}/>
+            <UserInterface
+                configState={[config, setConfig]}
+                outputState={[output, setOutput]}
+                runlevel={[currentRunLevel, setCurrentRunLevel]}
+            />
         </div>
     );
 }

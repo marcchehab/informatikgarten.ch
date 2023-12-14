@@ -85,7 +85,10 @@ const MyApp = ({ Component, pageProps }: AppProps<CustomAppProps>) => {
             defaultTheme={siteConfig.theme.default}
             forcedTheme={siteConfig.theme.default ? null : "light"}
         >
-            <DefaultSeo defaultTitle={siteConfig.title} {...siteConfig.nextSeo} />
+            <DefaultSeo
+                defaultTitle={siteConfig.title}
+                {...siteConfig.nextSeo}
+            />
             {/* Global Site Tag (gtag.js) - Google Analytics */}
             {siteConfig.analytics && (
                 <>

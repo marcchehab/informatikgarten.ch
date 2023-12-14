@@ -7,7 +7,7 @@ Wenn Sie programmieren können, haben Sie **Zugang zu schier unendlicher Rechenl
 Beginnen wir mit einer Demonstration: Suchen Sie im Kopf **alle Primzahlen bis 100** und schätzen Sie, wie lange Sie gebraucht haben. Ich habe Ihnen hier ein Programm geschrieben, dass genau dieselbe Aufgabe löst, indem es einfach **alle ungeraden Zahlen bis 100 durchtestet**. Was denken Sie, wie lange hat der Computer? Drücken Sie einfach mal auf **"Start"**. (Natürlich müssen Sie das Programm (noch) nicht verstehen. )
 
 <TurtleEditor id="somed">
-import time
+{`import time
 
 kandidat = 1
 maximum = 100
@@ -29,7 +29,7 @@ def findprimes(maximum):
 
 result = findprimes(maximum)
 print("Unsere Liste:", result[0])
-print("Zeit in Millisekunden:", result[1]*1000)
+print("Zeit in Millisekunden:", result[1]*1000)`}
 </TurtleEditor>
 
 Wow! Das ging schnell! Man merkt eigentlich gar nicht, dass überhaupt Zeit verstrichen ist - *so* schnell ging das. Zum Glück hat Ihr Computer zusätzlich auch noch die Zeit für uns (ungefähr) gemessen: Es ging **einige Millisekunden** - also Tausendstelsekunden, oder 10{{< sup -3 >}} Sekunden, oder 10e-3 Sekunden - um für jede ungerade Zahl zwischen 2 und 100 alle möglichen Divisoren durchzutesten und so die Primzahlen herauszusuchen. 

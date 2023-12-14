@@ -1,3 +1,0 @@
-from funktionen import *
-
-testfunktion()
