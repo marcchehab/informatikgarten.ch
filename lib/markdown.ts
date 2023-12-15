@@ -1,7 +1,7 @@
 import matter from "gray-matter";
 import mdxMermaid from "mdx-mermaid";
 import { h } from "hastscript";
-import remarkCallouts from "@/custom_modules/portaljs-callout-foldable/packages/remark-callouts/dist/index";
+import remarkCallouts from "@/custom_modules/remark-callouts/dist/index";
 import remarkEmbed from "@portaljs/remark-embed";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
