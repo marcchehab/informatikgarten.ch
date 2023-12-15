@@ -1,8 +1,9 @@
-import React from "react";
+import { useRef } from "react";
 
 import { MDXRemote } from "next-mdx-remote";
 import { Mermaid, Pre } from "@portaljs/core";
 import TurtleEditor from "./TurtleEditor";
+import Callout from "./Callout";
 
 import layouts from "../layouts";
 
@@ -14,6 +15,7 @@ const components = {
     mermaid: Mermaid,
     pre: Pre,
     TurtleEditor: TurtleEditor,
+    blockquote: Callout,
 };
 
 export default function MdxPage({ source, frontMatter }) {

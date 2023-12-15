@@ -10,9 +10,6 @@ export default function Document() {
             <body>
                 <Main />
                 <NextScript />
-                
-                {/* Temporary solution from old website to collapse callouts */}
-                <script src="/foldlist.js"></script>
             </body>
         </Html>
     )
