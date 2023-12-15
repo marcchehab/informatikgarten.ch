@@ -1,7 +1,11 @@
+import { useRef } from "react";
+
 import { MDXRemote } from "next-mdx-remote";
 import { Mermaid, Pre } from "@portaljs/core";
+import TurtleEditor from "./TurtleEditor";
+import Callout from "./Callout";
 
-import layouts from "@/layouts";
+import layouts from "../layouts";
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -10,11 +14,8 @@ import layouts from "@/layouts";
 const components = {
     mermaid: Mermaid,
     pre: Pre,
-    table: (props) => (
-        <div className="overflow-x-auto">
-            <table {...props} />
-        </div>
-    ),
+    TurtleEditor: TurtleEditor,
+    blockquote: Callout,
 };
 
 export default function MdxPage({ source, frontMatter }) {
@@ -27,7 +28,7 @@ export default function MdxPage({ source, frontMatter }) {
     };
 
     return (
-        <main id="mdxpage" className="prose max-w-none mx-auto">
+        <main id="mdxpage" className="prose mx-auto">
             <Layout>
                 <MDXRemote {...source} components={components} />
             </Layout>

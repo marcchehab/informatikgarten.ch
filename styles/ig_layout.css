@@ -1,0 +1,3 @@
+pre:not(.outputpre) {
+  background: var(--callout-bg-color) !important;
+}

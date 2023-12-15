@@ -17,6 +17,13 @@ module.exports = {
       maxWidth: {
         "8xl": "88rem",
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: "80ch",
+          }
+        }
+      },
       fontFamily: {
         sans: ["ui-sans-serif", ...defaultTheme.fontFamily.sans],
         serif: ["ui-serif", ...defaultTheme.fontFamily.serif],
@@ -26,7 +33,7 @@ module.exports = {
       colors: {
         background: {
           DEFAULT: colors.white,
-          dark: colors.slate[900],
+          dark: colors.neutral[900],
         },
         primary: {
           DEFAULT: colors.gray[700],
@@ -34,7 +41,7 @@ module.exports = {
         },
         secondary: {
           DEFAULT: colors.sky[400],
-          dark: colors.sky[400],
+          dark: colors.indigo[400],
         },
       },
     },

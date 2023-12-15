@@ -1,0 +1,118 @@
+:root {
+  --color-accent: hsl(180, 100%, 42%);
+  --bg: rgb(255 255 255);
+  &.dark {
+    --color-accent: hsl(180, 100%, 50%);
+    --bg: rgb(23 23 23);
+    
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong:not(.callout-title *) {
+  color: var(--color-accent) !important;
+  .heading-link {
+    background: var(--color-accent) !important;
+    &:hover {
+      opacity: 0.5 !important;
+    }
+    svg {
+      fill: var(--bg) !important;
+    }
+  }
+}
+
+h2 {
+  filter: hue-rotate(40deg);
+}
+h3 {
+  filter: hue-rotate(80deg);
+}
+h4 {
+  filter: hue-rotate(120deg);
+}
+h5 {
+  filter: hue-rotate(160deg);
+}
+h6,
+strong:not(.callout-title *) {
+  filter: hue-rotate(200deg);
+}
+
+:root.dark article img.invert {
+  filter: invert(1) contrast(0.76);
+}
+article img.inline {
+  display: inline;
+}
+
+/* // Mermaid stuff */
+.mermaid {
+  /* // overflow: hidden; */
+  svg {
+    max-width: 100% !important;
+    .cluster rect {
+      display: none;
+    }
+    .node rect,
+    .node circle,
+    .node ellipse,
+    .node polygon,
+    .node path {
+      fill: var(--bg) !important;
+      stroke: var(--color-accent) !important;
+    }
+    .nodeLabel,
+    .cluster-label {
+      color: var(--tw-prose-body) !important;
+    }
+  }
+}
+
+g.cluster.default.flowchart-label > rect:first-child {
+  /* // display: none; */
+  fill: var(--light) !important;
+}
+.nodes .clusters .nodeLabel {
+  color: var(--color-accent) !important;
+  font-family: var(--font-header);
+  font-weight: 900;
+}
+
+.nodes .nodeLabel {
+  color: var(--dark) !important;
+  font-family: var(--font-body);
+}
+
+.marker {
+  stroke: var(--color-accent) !important;
+  stroke-width: 0;
+  fill: var(--color-accent) !important;
+}
+
+.edgePaths path {
+  stroke: var(--color-accent) !important;
+}
+
+article iframe {
+  width: 100%;
+  &:not([height]) {
+    aspect-ratio: 16 / 9;
+    height: 100%;
+  }
+}
+
+p img:only-child {
+  margin: 0px;
+}
+p:has(img:only-child) {
+  margin: 0px;
+  + blockquote {
+    margin-top: -5px;
+  }
+}
