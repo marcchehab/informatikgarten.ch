@@ -247,7 +247,7 @@ Entsprechend heissen heissen die Datentypen von `True` und `False` auch "boolean
 > 	print(x == "beispiel") # Das druck True aus
 > 	print(x == "sonstetwas") # Das druck False aus
 > 	```
-> - Vergleichszeichen (<, >, <=, >=) vergleichen Zahlen
+> - Vergleichszeichen (`<`, `>`, `<=`, `>=`) vergleichen Zahlen
 > 	```` 
 > 	y = 5
 > 	print(y > 3) # Das wertet zu True aus
