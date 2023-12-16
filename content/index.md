@@ -1,3 +1,7 @@
+---
+title: Testtile as property in frontmatter
+---
+
 # Gradient
 ## for
 ### heading
