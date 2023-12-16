@@ -19,7 +19,6 @@ Danach würde ich nach Lust und Laune die Sektionen durchschauen.
 - Interessiert dich Robotik, oder hast du Lego Mindstorms? Dann versuch mal [die Sektion "Robotik"](https://www.programmierkonzepte.ch/index.php?inhalt_links=navigation.inc.php&inhalt_mitte=robotik/robotik.inc.php).
 - Interessiert dich die Informatik selbst? Dann empfehle ich  die Sektion ["Internet"](https://www.programmierkonzepte.ch/index.php?inhalt_links=navigation.inc.php&inhalt_mitte=internet/internet.inc.php).
 
-
 ![[4 Informatikgarten/content/attachments/programming.gif]]
 
 <nav class="bottomnav">
