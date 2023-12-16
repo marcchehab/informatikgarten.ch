@@ -12,7 +12,7 @@ import layouts from "../layouts";
 // to handle import statements. Instead, you must include components in scope
 // here.
 
-function extractTextFromChildren(children) {
+function extractTextFromChildren(children: React.ReactNode): string {
     if (typeof children === 'string') {
       return children;
     }
@@ -21,8 +21,8 @@ function extractTextFromChildren(children) {
       return children.map(extractTextFromChildren).join('');
     }
   
-    if (React.isValidElement(children) && children.props.children) {
-      return extractTextFromChildren(children.props.children);
+    if (React.isValidElement(children) && (children as React.ReactElement).props.children) {
+      return extractTextFromChildren((children as React.ReactElement).props.children);
     }
   
     return '';
