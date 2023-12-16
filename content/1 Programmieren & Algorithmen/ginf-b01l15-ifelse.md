@@ -26,7 +26,7 @@ In diesem Beispiel wird die Nachricht nur dann ausgegeben, wenn das Wetter "sonn
 Beachten Sie, dass zwei Gleichheitszeichen verwendet werden:
 - Ein einzelnes Gleichheitszeichen `=` ist beim Programmieren **kein *Ver*gleich**, sondern eine **Wert*zuweisung*** - z.B. oft für eine Variabel.
 - Zwei Gleichheitsszeichen `==` sind ein **Vergleich**. Also eine Frage, **ob** zwei Werte gleich sind.
-- Vergleichsoperatoren >, >=, <=, < können Zahlenwerte vergleichen.
+- Vergleichsoperatoren `>`, `>=`, `<=`, `<` können Zahlenwerte vergleichen.
 
 Die Werte dieser Bedingungen oder Tests beim `if`-Statement können Sie direkt mit `print()` ausdrucken.
 
