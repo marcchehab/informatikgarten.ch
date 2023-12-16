@@ -1,5 +1,5 @@
 ---
-title: "B01L01: Einführung ins algorithmische Denken mit Pseudocode"
+title: "B01L01: Algorithmisches Denken & Pseudocode"
 slug: b01l01-pseudocode
 ---
 
@@ -7,7 +7,7 @@ slug: b01l01-pseudocode
 > 
 > Übungen verteilen und machen wir jeweils in OneNote. Sie finden alles [in diesem Notizbuch](https://kswe-my.sharepoint.com/:o:/g/personal/cha_kswe_ch/EoV9M1uM6bdBuBRAetwQGdgB4LmAyYwvPxW6xpmzYIY3SQ?e=V2Q19j).
 > 
-> Beginnen Sie mit [[1 Programmieren & Algorithmen/index|diesem Intro]], um zu zeigen, wie **extrem schnell** moderne Computer sind. 
+> Beginnen Sie mit [[ginf-b01l00-intro|diesem Intro]], um zu zeigen, wie **extrem schnell** moderne Computer sind. 
 > 
 > Dann Frage: Wie haben es Informatiker nur geschaft, eine solche Maschine zu bauen? Indem sie **grosse Probleme in kleine Probleme aufgeteilt haben**. Genau das nutzen wir auch beim Programmieren.
 > 
@@ -84,5 +84,5 @@ Algorithmen können aber auch einer **Programmiersprache implementiert oder umge
 > 
 > ![[Pasted image 20230815060449.png]]
 
-[[1 Programmieren & Algorithmen/index|Zurück zum Intro]]
+[[ginf-b01l00-intro|Zurück zum Intro]]
 [[ginf-b01l02-turtleintro|Los geht's mit Python!]]

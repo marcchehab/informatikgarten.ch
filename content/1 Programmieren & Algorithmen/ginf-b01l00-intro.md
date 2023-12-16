@@ -1,5 +1,5 @@
 ---
-title: Wieso Sie programmieren lernen sollten
+title: "B01L00: Wieso Sie programmieren lernen sollten"
 ---
 
 Wenn Sie programmieren können, haben Sie **Zugang zu schier unendlicher Rechenleistung**. Mit dem Grundwissen, das Sie hier lernen werden, können Sie diese Rechenleistung für was auch immer Sie interessiert einsetzen - seien es interaktive Grafiken, Spiele, Musik, oder eigene Roboter.
