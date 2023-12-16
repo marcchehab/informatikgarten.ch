@@ -2,6 +2,31 @@
 title: Testtile as property in frontmatter
 ---
 Well let's see
+
+```
+this is
+
+random code
+```
+
+now lang
+```python
+a = 2
+def hallo(velo):
+    print(testing)
+
+
+hallo("test")
+```
+
+now turtle
+
+```turtle {id: tada}
+import turtle
+
+random code
+```
+
 # Gradient
 ## for
 ### heading
@@ -11,14 +36,14 @@ Well let's see
 Well and some text here.
 # Codeeditor for Python with zoomable Turtle
 
-<TurtleEditor id="really_my_editor">
-{`print("hallo!")
+```turtle
+print("hallo!")
 
 import turtle
 
 eva = turtle.Turtle()
-eva.forward(100)`}
-</TurtleEditor>
+eva.forward(100)
+```
 
 # Testing callouts
 
@@ -64,6 +89,7 @@ Diesen Algorithmus kann man **in einer Programmiersprache implementieren**, z.B.
 ```python
 zahl1 = input("Bitte geben Sie die erste Zahl an")
 zahl2 = input("Bitte geben Sie die zweite Zahl an")
+
 ergebnis = zahl1 + zahl2
 print(ergebnis)
 ```

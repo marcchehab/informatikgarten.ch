@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 
 import { MDXRemote } from "next-mdx-remote";
 import { Mermaid, Pre } from "@portaljs/core";
@@ -11,9 +11,36 @@ import layouts from "../layouts";
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
 // to handle import statements. Instead, you must include components in scope
 // here.
+
+function extractTextFromChildren(children) {
+    if (typeof children === 'string') {
+      return children;
+    }
+  
+    if (Array.isArray(children)) {
+      return children.map(extractTextFromChildren).join('');
+    }
+  
+    if (React.isValidElement(children) && children.props.children) {
+      return extractTextFromChildren(children.props.children);
+    }
+  
+    return '';
+  }
+
+const TurtleEditorWrapper = ({ className, children }) => {
+
+    // If it's not Turtle, use Pre
+    if (!className || !className.includes("language-turtle")) {
+        return <Pre className={className}>{children}</Pre>;
+    }
+    // If we're here, it's Turtle
+    return <TurtleEditor className={className}>{extractTextFromChildren(children)}</TurtleEditor>;
+}
+
 const components = {
     mermaid: Mermaid,
-    pre: Pre,
+    pre: TurtleEditorWrapper,
     TurtleEditor: TurtleEditor,
     blockquote: Callout,
 };

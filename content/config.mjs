@@ -12,6 +12,9 @@ const config = {
     // links to the pages you want to link to in the navbar
     navLinks: [{ href: "/about", name: "About" }],
     showSidebar: true,
+    search: {
+      provider: "kbar",
+    },
   
     // this is possiblle
     // navbarTitle: {

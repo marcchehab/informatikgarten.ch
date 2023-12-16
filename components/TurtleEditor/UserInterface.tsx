@@ -21,7 +21,6 @@ export default function UserInterface(props: any) {
         canvasScale = 1;
 
     const [config, setConfig] = props.configState;
-    const initCode = config.initCode;
     const wrapperRef = config.wrapperRef;
     const graphicswrapperRef = config.graphicswrapperRef;
     const startstopRef = config.startstopRef;
@@ -29,21 +28,20 @@ export default function UserInterface(props: any) {
     const updateDimensions = () => {
         if (
             editorpanel.current === undefined ||
-            config.codeeditor.current === null
+            config.codeeditorRef.current === null
         ) {
             return;
         }
         const width = editorpanel.current.clientWidth - 10;
         const contentHeight = Math.min(
             1000,
-            config.codeeditor.current.getContentHeight() + 50
+            config.codeeditorRef.current.getContentHeight() + 50
         );
         editorpanel.current.style.width = `${width}px`;
     };
 
     const fullScreenHandler = () => {
         setFullscreen(!fullscreen);
-        console.log(fullscreen);
         graphicswrapperRef.current.style.removeProperty("top");
         graphicswrapperRef.current.style.removeProperty("left");
         updateDimensions();
@@ -131,15 +129,30 @@ export default function UserInterface(props: any) {
         }
     }, []);
 
-    function handleEditorDidMount(editor: any, monaco: Monaco) {
-        config.codeeditor.current = editor;
-    }
-    // async function starthandler(obj = this) {
-    //     console.log("start");
-    //     if (config.codeeditor.current) {
-    //         setCurrentRunLevel(RunLevel.running);
-    //     }
-    // }
+    const handleEditorDidMount = (editor: any, monaco: Monaco) => {
+        config.codeeditorRef.current = editor;
+
+        // Restore
+        const savedCode = localStorage.getItem(config.idRef.current);
+        if (savedCode && config.codeeditorRef.current) {
+            config.codeeditorRef.current.setValue(savedCode);
+            console.log("autosave restored");
+        }
+
+        // Autosave
+        editor.onDidChangeModelContent(() => {
+            const currentCode = editor.getValue();
+            localStorage[config.idRef.current] = currentCode;
+            console.log("autosaved");
+        });
+    };
+
+    const resetCode = () => {
+        if (config.codeeditorRef.current) {
+            config.codeeditorRef.current.setValue(config.initCode);
+        }
+    };
+
     return (
         <div>
             <div
@@ -155,7 +168,7 @@ export default function UserInterface(props: any) {
                         automatic-layout="true"
                         onMount={handleEditorDidMount}
                         theme={config.vstheme}
-                        defaultValue={initCode}
+                        defaultValue={config.initCode}
                         options={{
                             minimap: { enabled: false },
                             scrollbar: { horizontal: "hidden" },
@@ -190,13 +203,15 @@ export default function UserInterface(props: any) {
                             currentRunLevel === RunLevel.stopped
                                 ? RunLevel.running
                                 : RunLevel.stopped
-                        )}
-                    }
+                        );
+                    }}
                     ref={startstopRef}
                 >
                     {currentRunLevel}
                 </a>
-                <a className="resetcode">Reset Code</a>
+                <a className="resetcode" onClick={resetCode}>
+                    Reset Code
+                </a>
                 <button
                     className="fullscreen-button"
                     type="button"

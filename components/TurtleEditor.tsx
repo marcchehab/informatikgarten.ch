@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import type { AppProps } from "next/app";
 import { NavItem, NavGroup } from "@portaljs/core";
 // import TurtleOutput from "./TurtleEditor/TurtleOutput.ts.bak";
@@ -6,6 +7,7 @@ import UserInterface from "./TurtleEditor/UserInterface";
 import useEditor from "./TurtleEditor/useEditor";
 import { set } from "date-fns";
 import { wrap } from "module";
+import { url } from "inspector";
 
 // TODO switch to signals https://www.youtube.com/watch?v=SO8lBVWF2Y8
 
@@ -47,28 +49,25 @@ function loadScript(scriptUrl, defer = false) {
     });
 }
 
+let turtleCounter = 0;
+
 function TurtleEditor({ children, ...props }) {
+    const url = useRouter().asPath;
+    const idRef = useRef(props["id"] ?? url + "-" + turtleCounter);
+    turtleCounter += 1;
+    useRouter().events.on('routeChangeStart', () => turtleCounter = 0);
+
     const [currentRunLevel, setCurrentRunLevel] = useState(RunLevel.stopped);
-    const initCode = children;
-    const codeeditor = useRef(null);
+
+    const initCode = typeof children === "string" ? children : "invalid code";
+
+    const codeeditorRef = useRef(null);
     const graphicswrapperRef = useRef(null);
     const startstopRef = useRef(null);
     const wrapperRef = useRef(null);
 
-    let savetimeout = undefined;
     const [output, setOutput] = useState([] as outputElement[]);
 
-    const autosave = () => {
-        if (savetimeout !== undefined) {
-            clearTimeout(savetimeout);
-        }
-        savetimeout = setTimeout(() => {
-            const code = config.codeeditor.current.getValue();
-            localStorage[config.id.current] =
-                config.codeeditor.current.getValue();
-            console.log("Autosaved code to localstorage, you're welcome 👍");
-        }, 1000);
-    };
     useEffect(() => {
         loadScript("/skulpt.min.js", true)
             .then(() => {
@@ -89,14 +88,14 @@ function TurtleEditor({ children, ...props }) {
             if (currentRunLevel == RunLevel.stopped) {
                 Sk.execLimit = 1;
             } else if (currentRunLevel == RunLevel.running) {
-                runPythonCode(config.codeeditor.current.getValue());
+                runPythonCode(codeeditorRef.current.getValue());
                 Sk.execLimit = Number.POSITIVE_INFINITY;
             }
         }
     }, [currentRunLevel]);
 
     const resetcodehandler = () => {
-        config.codeeditor.current.setValue(initCode);
+        codeeditorRef.current.setValue(initCode);
     };
 
     function runPythonCode(pythonCode: string) {
@@ -125,7 +124,7 @@ function TurtleEditor({ children, ...props }) {
                 return Sk.importMainWithBody(
                     "<stdin>",
                     false,
-                    codeeditor.current.getValue(),
+                    codeeditorRef.current.getValue(),
                     true
                 );
             });
@@ -153,9 +152,9 @@ function TurtleEditor({ children, ...props }) {
     }
 
     const [config, setConfig] = useEditor({
-        id: useRef(props["id"] ?? Math.random().toString(36).substring(7)),
+        idRef: idRef,
         vstheme: "vs-dark",
-        codeeditor: codeeditor,
+        codeeditorRef: codeeditorRef,
         initCode: initCode,
         wrapperRef: wrapperRef,
         graphicswrapperRef: graphicswrapperRef,
