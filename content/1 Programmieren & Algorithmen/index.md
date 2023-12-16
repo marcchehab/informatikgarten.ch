@@ -32,9 +32,9 @@ print("Unsere Liste:", result[0])
 print("Zeit in Millisekunden:", result[1]*1000)
 ```
 
-Wow! Das ging schnell! Man merkt eigentlich gar nicht, dass überhaupt Zeit verstrichen ist - *so* schnell ging das. Zum Glück hat Ihr Computer zusätzlich auch noch die Zeit für uns (ungefähr) gemessen: Es ging **einige Millisekunden** - also Tausendstelsekunden, oder 10{{< sup -3 >}} Sekunden, oder 10e-3 Sekunden - um für jede ungerade Zahl zwischen 2 und 100 alle möglichen Divisoren durchzutesten und so die Primzahlen herauszusuchen. 
+Wow! Das ging schnell! Man merkt eigentlich gar nicht, dass überhaupt Zeit verstrichen ist - *so* schnell ging das. Zum Glück hat Ihr Computer zusätzlich auch noch die Zeit für uns (ungefähr) gemessen: Es ging **einige Millisekunden** - also Tausendstelsekunden, oder 10<sup>-3</sup> Sekunden, oder 10e-3 Sekunden - um für jede ungerade Zahl zwischen 2 und 100 alle möglichen Divisoren durchzutesten und so die Primzahlen herauszusuchen. 
 
-Und: Das geht noch viel schneller! Erstens ist diese Web-Umgebung echt träge und ineffizient. Ein "echtes" Programm auf Ihrem Computer könnte das **einige 100-mal schneller** ausrechnen. Mein Laptop braucht z.B. für den gleichen Algorithmus nur gerade **2.5 Mikrosekunden** - also Millionstelsekunden, oder 10{{< sup -6 >}} Sekunden, oder 10e-6 Sekunden. Das ist rund 400-mal schneller!
+Und: Das geht noch viel schneller! Erstens ist diese Web-Umgebung echt träge und ineffizient. Ein "echtes" Programm auf Ihrem Computer könnte das **einige 100-mal schneller** ausrechnen. Mein Laptop braucht z.B. für den gleichen Algorithmus nur gerade **2.5 Mikrosekunden** - also Millionstelsekunden, oder 10<sup>-6</sup> Sekunden, oder 10e-6 Sekunden. Das ist rund 400-mal schneller!
 
 Auch da ist die Limite der Optimierung immer noch nicht erreicht: 
 1. Der Prozess nutzt nur einen von vier Kernen in meinem Prozessor. Man könnte die verschiedenen Kerne **parallel rechnen** lassen. Auf einer Grafikkarte wäre das noch extremer: Die haben Tausende Kerne, die parallel rechnen!
