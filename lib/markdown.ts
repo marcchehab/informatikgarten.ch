@@ -1,7 +1,7 @@
 import matter from "gray-matter";
 import mdxMermaid from "mdx-mermaid";
 import { h } from "hastscript";
-import remarkCallouts from "@/custom_modules/remark-callouts/dist/index";
+import remarkCallouts from "@portaljs/remark-callouts";
 import remarkEmbed from "@portaljs/remark-embed";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
@@ -9,7 +9,7 @@ import remarkSmartypants from "remark-smartypants";
 import remarkToc from "remark-toc";
 // TODO adjust remark-wiki-link API to:
 // import remarkWikiLink, { getPermalinks } from "@portaljs/remark-wiki-link";
-import { remarkWikiLink, getPermalinks } from "@portaljs/remark-wiki-link";
+import { remarkWikiLink, getPermalinks } from "@/custom_modules/remark-wiki-link/src";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";

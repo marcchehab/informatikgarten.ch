@@ -44,7 +44,8 @@ html {
 }
 
 #mdxpage iframe {
-  height: 80vh;
+  aspect-ratio: 16/9;
+  width: 100%;
 }
 
 /* :not(.unstyled) :is(h2, h3, h4, h5, h6):not(.blogitem-title) { */

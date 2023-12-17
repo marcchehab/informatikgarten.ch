@@ -99,14 +99,6 @@ g.cluster.default.flowchart-label > rect:first-child {
   stroke: var(--color-accent) !important;
 }
 
-article iframe {
-  width: 100%;
-  &:not([height]) {
-    aspect-ratio: 16 / 9;
-    height: 100%;
-  }
-}
-
 p img:only-child {
   margin: 0px;
 }
