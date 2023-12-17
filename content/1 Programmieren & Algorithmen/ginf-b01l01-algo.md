@@ -1,20 +1,21 @@
 ---
-title: "B01L01: Algorithmisches Denken & Pseudocode"
+title: "B01L01: Einführung ins algorithmische Denken mit Pseudocode"
+slug: b01l01-pseudocode
 ---
-> [!info] Lernziele
+
+> [!info] Notiz für Lehrer
 > 
-> - Sie können die zwei Hautptmerkmale von Algorithmen erklären: **Eindeutigkeit** und **Endlichkeit**.
+> Übungen verteilen und machen wir jeweils in OneNote. Sie finden alles [in diesem Notizbuch](https://kswe-my.sharepoint.com/:o:/g/personal/cha_kswe_ch/EoV9M1uM6bdBuBRAetwQGdgB4LmAyYwvPxW6xpmzYIY3SQ?e=V2Q19j).
+> 
+> Beginnen Sie mit [[1 Programmieren & Algorithmen/index|diesem Intro]], um zu zeigen, wie **extrem schnell** moderne Computer sind. 
+> 
+> Dann Frage: Wie haben es Informatiker nur geschaft, eine solche Maschine zu bauen? Indem sie **grosse Probleme in kleine Probleme aufgeteilt haben**. Genau das nutzen wir auch beim Programmieren.
+> 
+> **Übergang zu Algorithmen**: Grosses Problem in kleine Schritte zerlegen. Wird auch bei Kochrezepten, Möbelbauen und Lego so gemacht. Man muss nur Einzelschritte können, Ergebnis entsteht von alleine.
 
 Der Begriff Algorithmus umfasst eine breite Spanne von Verfahren in der Mathematik und der Informatik. Folglich lesen sich Definitionen je nach Quelle ein wenig unterschiedlich.
-## Was sind Algorithmen?
-![[Pasted image 20231215140647.png]]
-![[b02_binary_decimal.mp4]]
 
-> [!info]- Testvideo
-> 
-> ja das ist ein test
-> ![[b02_binary_decimal.mp4]]
-> Hallo
+## Was sind Algorithmen?
 
 Stellen Sie sich einen **Algorithmus wie ein Kochrezept** vor. Es ist eine genaue Anleitung, die Ihnen Schritt für Schritt sagt, was Sie tun müssen, um ein bestimmtes Ergebnis oder Ziel zu erreichen. Bei einem Rezept folgen Sie den Anweisungen, um ein Gericht zu kochen. Bei einem Algorithmus folgen Sie den Anweisungen, um ein bestimmtes Problem zu lösen oder eine Aufgabe zu erledigen.
 
@@ -41,9 +42,8 @@ In der Informatik ist ein Algorithmus also die Beschreibung eines Ablaufs, der d
 **Eindeutigkeit**: Die Anweisungen des Algorithmus müssen klar und präzise sein. Es darf keinen Raum für Mehrdeutigkeit geben.
 - Jeder **Schritt** muss so beschrieben sein, so dass er immer auf die gleiche Weise durchgeführt wird.
 - Die **Schrittabfolge** muss eindeutig klar sein.
-- Achtung: Das **Ergebnis muss nicht eindeutig** sein, wenn Sie z.B. würfeln oder eine Zufallszahl generieren.
 
-**Nicht unendlich**:
+**Nicht unendlich**: 
 - Die **Anzahl Schritte** im Algorithmus muss endlich sein.
 - Die **Zeit**, die der Algorithmus braucht, sollte endlich sein. Anders gesagt: Der Algorithmus sollte in allen Fällen ein Ende haben.
 
@@ -84,5 +84,5 @@ Algorithmen können aber auch einer **Programmiersprache implementiert oder umge
 > 
 > ![[Pasted image 20230815060449.png]]
 
-[[ginf-b01l00-intro|Zurück zum Intro]]
+[[1 Programmieren & Algorithmen/index|Zurück zum Intro]]
 [[ginf-b01l02-turtleintro|Los geht's mit Python!]]
