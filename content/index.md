@@ -2,31 +2,6 @@
 title: Testtile as property in frontmatter
 ---
 Well let's see
-
-```
-this is
-
-random code
-```
-
-now lang
-```python
-a = 2
-def hallo(velo):
-    print(testing)
-
-
-hallo("test")
-```
-
-now turtle
-
-```turtle {id: tada}
-import turtle
-
-random code
-```
-
 # Gradient
 ## for
 ### heading
@@ -36,14 +11,14 @@ random code
 Well and some text here.
 # Codeeditor for Python with zoomable Turtle
 
-```turtle
-print("hallo!")
+<TurtleEditor id="really_my_editor">
+{`print("hallo!")
 
 import turtle
 
 eva = turtle.Turtle()
-eva.forward(100)
-```
+eva.forward(100)`}
+</TurtleEditor>
 
 # Testing callouts
 
@@ -52,14 +27,14 @@ collapsed
 > 
 > Übungen verteilen und machen wir jeweils in OneNote. Sie finden alles [in diesem Notizbuch](https://kswe-my.sharepoint.com/:o:/g/personal/cha_kswe_ch/EoV9M1uM6bdBuBRAetwQGdgB4LmAyYwvPxW6xpmzYIY3SQ?e=V2Q19j).
 > 
-> Beginnen Sie mit [[ginf-b01l00-intro|diesem Intro]], um zu zeigen, wie **extrem schnell** moderne Computer sind. 
+> Beginnen Sie mit [[1 Programmieren & Algorithmen/index|diesem Intro]], um zu zeigen, wie **extrem schnell** moderne Computer sind. 
 
 open
 > [!info]+ Notiz für Lehrer
 > 
 > Übungen verteilen und machen wir jeweils in OneNote. Sie finden alles [in diesem Notizbuch](https://kswe-my.sharepoint.com/:o:/g/personal/cha_kswe_ch/EoV9M1uM6bdBuBRAetwQGdgB4LmAyYwvPxW6xpmzYIY3SQ?e=V2Q19j).
 > 
-> Beginnen Sie mit [[ginf-b01l00-intro|diesem Intro]], um zu zeigen, wie **extrem schnell** moderne Computer sind. 
+> Beginnen Sie mit [[1 Programmieren & Algorithmen/index|diesem Intro]], um zu zeigen, wie **extrem schnell** moderne Computer sind. 
 > 
 
 nothing special
@@ -69,7 +44,7 @@ nothing special
 > 
 
 blockquote
-> Beginnen Sie mit [[ginf-b01l00-intro|diesem Intro]], um zu zeigen, wie **extrem schnell** moderne Computer sind. 
+> Beginnen Sie mit [[1 Programmieren & Algorithmen/index|diesem Intro]], um zu zeigen, wie **extrem schnell** moderne Computer sind. 
 > 
 > Dann Frage: Wie haben es Informatiker nur geschaft, eine solche Maschine zu bauen? Indem sie **grosse Probleme in kleine Probleme aufgeteilt haben**. Genau das nutzen wir auch beim Programmieren.
 > 
@@ -89,7 +64,6 @@ Diesen Algorithmus kann man **in einer Programmiersprache implementieren**, z.B.
 ```python
 zahl1 = input("Bitte geben Sie die erste Zahl an")
 zahl2 = input("Bitte geben Sie die zweite Zahl an")
-
 ergebnis = zahl1 + zahl2
 print(ergebnis)
 ```
