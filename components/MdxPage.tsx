@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import { MDXRemote } from "next-mdx-remote";
 import { Mermaid, Pre } from "@portaljs/core";
 import TurtleEditor from "./TurtleEditor";
-import Callout from "./Callout";
+import { Callout } from "@portaljs/remark-callouts";
 
 import layouts from "../layouts";
 
