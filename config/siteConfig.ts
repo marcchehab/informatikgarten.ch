@@ -11,6 +11,8 @@ const siteConfig: any = {
     ...defaultConfig.theme,
     ...userConfig?.theme,
   },
+  profileIcon: '/_ig/profile.svg',
+  loginIcon: '/_ig/login.svg',
 };
 
 export default siteConfig;

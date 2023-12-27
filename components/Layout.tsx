@@ -22,6 +22,7 @@ import type {
     TocSection
 } from "@portaljs/core"
 
+import NavWithAuth from "@/components/NavWithAuth";
 
 interface Props extends React.PropsWithChildren {
     showComments: boolean;
@@ -96,7 +97,7 @@ export const Layout: React.FC<Props> = ({
                     )}
                 >
                     <div className="h-[4rem] flex flex-col justify-center max-w-8xl mx-auto p-4 md:px-8">
-                        <Nav
+                        <NavWithAuth
                             title={nav.title}
                             logo={nav.logo}
                             links={nav.links}
@@ -107,7 +108,7 @@ export const Layout: React.FC<Props> = ({
                             version={nav.version}
                         >
                             {showSidebar && <SiteToc currentPath={urlPath} nav={siteMap} />}
-                        </Nav>
+                        </NavWithAuth>
                     </div>
                 </div>
                 {/* wrapper for sidebar, main content and ToC */}

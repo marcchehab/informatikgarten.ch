@@ -3,11 +3,7 @@ import { DefaultSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import type { AppProps } from "next/app";
-import {
-    SearchProvider,
-    pageview,
-    ThemeProvider,
-} from "@portaljs/core";
+import { SearchProvider, pageview, ThemeProvider } from "@portaljs/core";
 import type { NavGroup, NavItem } from "@portaljs/core";
 
 import { Layout } from "@/components/Layout";
@@ -17,6 +13,7 @@ import "tailwindcss/tailwind.css";
 import "@/styles/docsearch.css";
 import "@/styles/global.css";
 import "@/styles/prism.css";
+import { SessionProvider } from "next-auth/react";
 
 export interface CustomAppProps {
     meta: {
@@ -34,7 +31,7 @@ export interface CustomAppProps {
 
 const MyApp = ({ Component, pageProps }: AppProps<CustomAppProps>) => {
     const router = useRouter();
-    const { meta, siteMap } = pageProps;
+    const { meta, siteMap, session } = pageProps;
 
     const layoutProps = {
         showToc: meta?.showToc,
@@ -76,25 +73,29 @@ const MyApp = ({ Component, pageProps }: AppProps<CustomAppProps>) => {
     }, [router.events]);
 
     return (
-        <ThemeProvider
-            disableTransitionOnChange
-            attribute="class"
-            defaultTheme={siteConfig.theme.default}
-            forcedTheme={siteConfig.theme.default ? null : "light"}
-        >
-            <DefaultSeo defaultTitle={siteConfig.title} {...siteConfig.nextSeo} />
-            {/* Global Site Tag (gtag.js) - Google Analytics */}
-            {siteConfig.analytics && (
-                <>
-                    <Script
-                        strategy="afterInteractive"
-                        src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.analytics}`}
-                    />
-                    <Script
-                        id="gtag-init"
-                        strategy="afterInteractive"
-                        dangerouslySetInnerHTML={{
-                            __html: `
+        <SessionProvider session={session}>
+            <ThemeProvider
+                disableTransitionOnChange
+                attribute="class"
+                defaultTheme={siteConfig.theme.default}
+                forcedTheme={siteConfig.theme.default ? null : "light"}
+            >
+                <DefaultSeo
+                    defaultTitle={siteConfig.title}
+                    {...siteConfig.nextSeo}
+                />
+                {/* Global Site Tag (gtag.js) - Google Analytics */}
+                {siteConfig.analytics && (
+                    <>
+                        <Script
+                            strategy="afterInteractive"
+                            src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.analytics}`}
+                        />
+                        <Script
+                            id="gtag-init"
+                            strategy="afterInteractive"
+                            dangerouslySetInnerHTML={{
+                                __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
@@ -102,16 +103,17 @@ const MyApp = ({ Component, pageProps }: AppProps<CustomAppProps>) => {
                 page_path: window.location.pathname,
               });
             `,
-                        }}
-                    />
-                </>
-            )}
-            <SearchProvider searchConfig={siteConfig.search}>
-                <Layout {...layoutProps}>
-                    <Component {...pageProps} />
-                </Layout>
-            </SearchProvider>
-        </ThemeProvider>
+                            }}
+                        />
+                    </>
+                )}
+                <SearchProvider searchConfig={siteConfig.search}>
+                    <Layout {...layoutProps}>
+                        <Component {...pageProps} />
+                    </Layout>
+                </SearchProvider>
+            </ThemeProvider>
+        </SessionProvider>
     );
 };
 

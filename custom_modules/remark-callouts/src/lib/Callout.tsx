@@ -19,4 +19,4 @@ const Callout = ({ className, children }) => {
     );
 };
 
-export {Callout};
+export { Callout };
