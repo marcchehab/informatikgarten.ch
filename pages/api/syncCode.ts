@@ -1,10 +1,22 @@
+import { getSession } from 'next-auth/react';
 import { kv } from '@vercel/kv';
- 
-export async function exampleCommands() {
+import { NextApiRequest, NextApiResponse } from 'next';
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   try {
-    const userId = await kv.hgetall('user:me');
-    console.log(userId);
+    const session = await getSession({ req });
+
+    if (!session) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    const userData = await kv.hgetall('user:me');
+    res.status(200).json(userData);
   } catch (error) {
-    console.log(error);
+    console.error('Error fetching user data:', error);
+    res.status(500).json({ error: 'Error fetching user data' });
   }
 }

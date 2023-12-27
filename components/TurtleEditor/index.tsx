@@ -1,13 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import type { AppProps } from "next/app";
-import { NavItem, NavGroup } from "@portaljs/core";
-// import TurtleOutput from "./TurtleEditor/TurtleOutput.ts.bak";
-import UserInterface from "./TurtleEditor/UserInterface";
-import useEditor from "./TurtleEditor/useEditor";
-import { set } from "date-fns";
-import { wrap } from "module";
-import { url } from "inspector";
+import UserInterface from "./UI";
 
 // TODO switch to signals https://www.youtube.com/watch?v=SO8lBVWF2Y8
 
@@ -94,10 +87,6 @@ function TurtleEditor({ children, ...props }) {
         }
     }, [currentRunLevel]);
 
-    const resetcodehandler = () => {
-        codeeditorRef.current.setValue(initCode);
-    };
-
     function runPythonCode(pythonCode: string) {
         if (Sk) {
             const canvas = graphicswrapperRef.current;
@@ -151,7 +140,7 @@ function TurtleEditor({ children, ...props }) {
         }
     }
 
-    const [config, setConfig] = useEditor({
+    const [config, setConfig] = useState({
         idRef: idRef,
         vstheme: "vs-dark",
         codeeditorRef: codeeditorRef,

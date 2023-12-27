@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Editor, { Monaco } from "@monaco-editor/react";
 import { RunLevel } from "../TurtleEditor";
-import { SvgCollapsescreen, SvgFullscreen } from "./UIelements";
+import { SvgCollapsescreen, SvgFullscreen } from "./UI-elements";
 
 export default function UserInterface(props: any) {
     const [output, setOutput] = props.outputState;

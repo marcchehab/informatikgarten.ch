@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
-import {exampleCommands} from './api/syncCode';
+import { useState, useEffect } from 'react';
+
 
 export default function About() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await exampleCommands();
-      console.log(result);
-      setData(result);
+      const res = await fetch('/api/syncCode');
+      const userData = await res.json();
+      setData(userData);
     };
 
     fetchData();
@@ -16,7 +16,7 @@ export default function About() {
 
   return (
     <div>
-      {data ? `Data: ${data}` : 'Loading...'}
+      {data ? `Data: ${JSON.stringify(data)}` : 'Loading...'}
     </div>
   );
 }

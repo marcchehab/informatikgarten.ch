@@ -9,9 +9,9 @@ async function refreshAccessToken(token) {
 
         const body = new URLSearchParams({
             client_id:
-                process.env.AZURE_AD_CLIENT_ID || 'azure-ad-client-id',
+                env.AZURE_AD_CLIENT_ID || 'azure-ad-client-id',
             client_secret:
-                process.env.AZURE_AD_CLIENT_SECRET ||
+                env.AZURE_AD_CLIENT_SECRET ||
                 'azure-ad-client-secret',
             scope: 'email openid profile User.Read offline_access',
             grant_type: 'refresh_token',
