@@ -39,7 +39,10 @@ function LoginBtn() {
     if (session) {
         return (
             <>
-                <button onClick={() => router.push("/dashboard")}>
+                <button
+                    title="Go to dashboard"
+                    onClick={() => router.push("/dashboard")}
+                >
                     <ProfileIcon className="w-8 h-8 fill-white opacity-50 m-4 hover:opacity-70" />
                 </button>
             </>
@@ -48,6 +51,7 @@ function LoginBtn() {
     return (
         <>
             <button
+                title="Login"
                 onClick={() =>
                     signIn(
                         "azure-ad",

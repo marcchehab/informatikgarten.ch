@@ -1,7 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import Editor, { Monaco } from "@monaco-editor/react";
-import { RunLevel } from "../TurtleEditor";
-import { SvgCollapsescreen, SvgFullscreen } from "./UI-elements";
+import { RunLevel } from "./";
+import { autosaveHandler, browseHistory } from "./autosave";
+import {
+    ChevronLeftIcon,
+    ChevronRightIcon,
+    ResetIcon,
+    ExpandIcon,
+    CollapseIcon,
+    PlayIcon,
+    StopIcon,
+} from "@sanity/icons";
 
 export default function UserInterface(props: any) {
     const [output, setOutput] = props.outputState;
@@ -13,6 +22,7 @@ export default function UserInterface(props: any) {
     let resizer_x = 0;
     let resizer_y = 0;
     let resizecontroller;
+    const codeHistory = [];
 
     let newPosX = 0,
         newPosY = 0,
@@ -110,6 +120,7 @@ export default function UserInterface(props: any) {
     useEffect(() => {
         updateDimensions();
         initResizer();
+        
         if (graphicswrapperRef.current) {
             const zoomCanvas = (e) => {
                 e.preventDefault();
@@ -129,28 +140,31 @@ export default function UserInterface(props: any) {
         }
     }, []);
 
-    const handleEditorDidMount = (editor: any, monaco: Monaco) => {
+    const handleEditorDidMount = (editor: any) => {
         config.codeeditorRef.current = editor;
 
-        // Restore
-        const savedCode = localStorage.getItem(config.idRef.current);
-        if (savedCode && config.codeeditorRef.current) {
-            config.codeeditorRef.current.setValue(savedCode);
-            console.log("autosave restored");
+        // Restore code from history
+        const history = config.historyRef.current;
+        if (history[0] !== undefined) {
+            editor.setValue(history[0]);
         }
 
-        // Autosave
+        // Autosave to local storage
         editor.onDidChangeModelContent(() => {
-            const currentCode = editor.getValue();
-            localStorage[config.idRef.current] = currentCode;
-            console.log("autosaved");
+            autosaveHandler(config);
         });
     };
 
+    // Reset code to original
     const resetCode = () => {
         if (config.codeeditorRef.current) {
             config.codeeditorRef.current.setValue(config.initCode);
         }
+    };
+
+    const RunLevelIcons = {
+        [RunLevel.stopped]: <PlayIcon />,
+        [RunLevel.running]: <StopIcon />,
     };
 
     return (
@@ -161,7 +175,7 @@ export default function UserInterface(props: any) {
                 }
                 ref={wrapperRef}
             >
-                <pre className="monacoeditor panel" ref={editorpanel}>
+                <pre className="monacoeditor panel relative" ref={editorpanel}>
                     <Editor
                         height="90vh"
                         defaultLanguage="python"
@@ -179,10 +193,22 @@ export default function UserInterface(props: any) {
                             // wrappingStrategy: 'advanced',
                         }}
                     />
+                    <div className="absolute right-2 bottom-2 z-10 flex space-x-1 items-center text-2xl">
+                        <a title="Undo" className="cursor-pointer" onClick={() => browseHistory(config, 1)}>
+                            <ChevronLeftIcon />
+                        </a>
+                        <a title="Redo" className="cursor-pointer" onClick={() => browseHistory(config, -1)}>
+                            <ChevronRightIcon className="" />
+                        </a>
+                        <a className="cursor-pointer" title="Reset Code" onClick={resetCode}>
+                            <ResetIcon className="stroke-current" />
+                        </a>
+                    </div>
                 </pre>
                 <div className="resizer" ref={resizerRef}>
                     {" "}
                 </div>
+
                 <div className="graphicspanel panel" ref={graphicspanelRef}>
                     <div
                         className="graphicswrapper"
@@ -195,8 +221,9 @@ export default function UserInterface(props: any) {
                         }}
                     ></div>
                 </div>
+
                 <a
-                    className="startstop"
+                    className="absolute left-2 bottom-2 z-10 cursor-pointer text-2xl"
                     onClick={() => {
                         setOutput([]);
                         setCurrentRunLevel(
@@ -207,17 +234,15 @@ export default function UserInterface(props: any) {
                     }}
                     ref={startstopRef}
                 >
-                    {currentRunLevel}
+                    {RunLevelIcons[currentRunLevel]}
                 </a>
-                <a className="resetcode" onClick={resetCode}>
-                    Reset Code
-                </a>
+
                 <button
-                    className="fullscreen-button"
+                    className="fullscreen-button absolute right-2 top-2 p-1 text-2x1"
                     type="button"
                     onClick={fullScreenHandler}
                 >
-                    {fullscreen ? <SvgCollapsescreen /> : <SvgFullscreen />}
+                    {fullscreen ? <CollapseIcon /> : <ExpandIcon />}
                 </button>
             </div>
             <pre className="outputpre">

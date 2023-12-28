@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import UserInterface from "./UI";
+import { saveBeforeUnload, restoreHandler } from "./autosave";
 
 // TODO switch to signals https://www.youtube.com/watch?v=SO8lBVWF2Y8
 
@@ -20,8 +21,8 @@ enum errorlevel {
 }
 
 export enum RunLevel {
-    stopped = "▶️ Play",
-    running = "⛔ Stop",
+    stopped,
+    running,
 }
 
 export type outputElement = [string | null, errorlevel | null];
@@ -45,14 +46,17 @@ function loadScript(scriptUrl, defer = false) {
 let turtleCounter = 0;
 
 function TurtleEditor({ children, ...props }) {
-    const url = useRouter().asPath;
+    const router = useRouter();
+    const url = router.asPath;
     const idRef = useRef(props["id"] ?? url + "-" + turtleCounter);
     turtleCounter += 1;
-    useRouter().events.on('routeChangeStart', () => turtleCounter = 0);
+    useRouter().events.on("routeChangeStart", () => (turtleCounter = 0));
 
     const [currentRunLevel, setCurrentRunLevel] = useState(RunLevel.stopped);
 
     const initCode = typeof children === "string" ? children : "invalid code";
+    const historyRef = useRef(restoreHandler(idRef.current));
+    const historyIndexRef = useRef(-1);
 
     const codeeditorRef = useRef(null);
     const graphicswrapperRef = useRef(null);
@@ -73,6 +77,22 @@ function TurtleEditor({ children, ...props }) {
             .catch(() => {
                 console.error("Script loading skulpt.min.js failed!");
             });
+
+        // Function to handle the beforeunload event
+        function handleBeforeUnload() {
+            saveBeforeUnload(config);
+        }
+
+        // Add event listener when the component mounts
+        window.addEventListener("beforeunload", handleBeforeUnload);
+        router.events.on('routeChangeStart', handleBeforeUnload);
+
+        // Return a function to be run when the component unmounts
+        return () => {
+            // Remove event listener when the component unmounts
+            window.removeEventListener("beforeunload", handleBeforeUnload);
+            router.events.off('routeChangeStart', handleBeforeUnload);
+        };
     }, []);
 
     // Handling of the runlevel
@@ -146,7 +166,9 @@ function TurtleEditor({ children, ...props }) {
         codeeditorRef: codeeditorRef,
         initCode: initCode,
         wrapperRef: wrapperRef,
+        historyRef: historyRef,
         graphicswrapperRef: graphicswrapperRef,
+        historyIndexRef: historyIndexRef,
         runPythonCode: runPythonCode,
     });
 
