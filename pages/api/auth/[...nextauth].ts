@@ -71,7 +71,7 @@ export const authOptions = {
                 };
             }
 
-            if (Date.now() < token.accessTokenExpires - 100000 || 0) {
+            if (Date.now() < Number(token.accessTokenExpires) - 100000 || 0) {
                 return token;
             }
             return refreshAccessToken(token);

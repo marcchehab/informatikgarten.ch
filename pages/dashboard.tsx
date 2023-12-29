@@ -4,13 +4,9 @@ import { signOut, useSession } from 'next-auth/react';
 // import styles from '@/styles/Home.module.css';
 import Link from 'next/link';
 
-interface ExtendedSession extends Session {
-  accessToken?: string;
-}
-
 const Dashboard = () => {
   const { data: sessionData, status } = useSession();
-  const data = sessionData as ExtendedSession;
+  const data = sessionData;
 
   return status === 'authenticated' ? (
     <div style={{ textAlign: 'center' }}>
@@ -19,7 +15,6 @@ const Dashboard = () => {
         <>
           <div>{`Name : ${data.user?.name}`}</div>
           <div>{`Email : ${data.user?.email}`}</div>
-          <div>{`Token: ${data.accessToken}`}</div>
         </>
       )}
       <button

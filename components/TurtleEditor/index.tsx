@@ -49,13 +49,14 @@ function TurtleEditor({ children, ...props }) {
     const router = useRouter();
     const url = router.asPath;
     const idRef = useRef(props["id"] ?? url + "-" + turtleCounter);
+    const configRef = useRef(null);
     turtleCounter += 1;
     useRouter().events.on("routeChangeStart", () => (turtleCounter = 0));
 
     const [currentRunLevel, setCurrentRunLevel] = useState(RunLevel.stopped);
 
     const initCode = typeof children === "string" ? children : "invalid code";
-    const historyRef = useRef(restoreHandler(idRef.current));
+    const historyRef = useRef(null);
     const historyIndexRef = useRef(-1);
 
     const codeeditorRef = useRef(null);
@@ -66,6 +67,9 @@ function TurtleEditor({ children, ...props }) {
     const [output, setOutput] = useState([] as outputElement[]);
 
     useEffect(() => {
+        // Restore
+        historyRef.current = restoreHandler(configRef);
+        // Load skulpt and skulpt-stdlib
         loadScript("/skulpt.min.js", true)
             .then(() => {
                 loadScript("/skulpt-stdlib.js", true).catch(() => {
@@ -80,7 +84,7 @@ function TurtleEditor({ children, ...props }) {
 
         // Function to handle the beforeunload event
         function handleBeforeUnload() {
-            saveBeforeUnload(config);
+            saveBeforeUnload(configRef);
         }
 
         // Add event listener when the component mounts
@@ -160,22 +164,23 @@ function TurtleEditor({ children, ...props }) {
         }
     }
 
-    const [config, setConfig] = useState({
+    configRef.current = {
         idRef: idRef,
         vstheme: "vs-dark",
         codeeditorRef: codeeditorRef,
         initCode: initCode,
         wrapperRef: wrapperRef,
         historyRef: historyRef,
-        graphicswrapperRef: graphicswrapperRef,
         historyIndexRef: historyIndexRef,
+        graphicswrapperRef: graphicswrapperRef,
         runPythonCode: runPythonCode,
-    });
+        autosaveCounterRef: useRef(0),
+    };
 
     return (
         <div>
             <UserInterface
-                configState={[config, setConfig]}
+                configRef={configRef}
                 outputState={[output, setOutput]}
                 runlevel={[currentRunLevel, setCurrentRunLevel]}
             />

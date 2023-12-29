@@ -1,12 +1,13 @@
 const config = {
     // title will be displayed on the top of your site
-    title: "🪴 informatikgarten.ch",
+    title: "informatikgarten.ch",
+    navbarTitle: {text: "🪴 informatikgarten.ch"},
     // adding a description helps with SEO
     description: "IT-Unterricht von Marc Chéhab",
     // author of site displayed on the bottom of your site
     author: "Marc Chéhab",
     // logo image
-    authorLogo: "/images/logo.svg",
+    // logo: "/icon.png",
     // url to author website
     domain: "https://informatikgarten.ch",
     // links to the pages you want to link to in the navbar

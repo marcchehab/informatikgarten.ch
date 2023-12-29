@@ -1,53 +1,84 @@
-let autosaveCounter = 0;
 const HISTORY_THRESHOLD = 10;
 const HISTORY_SIZE = 500;
 
-export const autosaveHandler = (config) => {
+export const autosaveHandler = (configRef) => {
     // If browsing history, don't autosave
-    if (config.historyIndexRef.current === -1) { return; };
+    if (configRef.current.historyIndexRef.current !== -1) { return; };
 
-    autosaveCounter++;
-    const currentCode = config.codeeditorRef.current.getValue();
-    const history = config.historyRef.current;
+    configRef.current.autosaveCounterRef.current++;
+    const currentCode = configRef.current.codeeditorRef.current.getValue();
+    const history = configRef.current.historyRef.current;
 
-    console.log("autosaved");
-    history[0] = currentCode;
+    // console.log("autosaved", history.length);
+    history[0] = { timestamp: Date.now(), code: currentCode };
 
-    if (autosaveCounter % HISTORY_THRESHOLD === 0) {
-        console.log("stored in history");
-        history.unshift(currentCode);
+    if (configRef.current.autosaveCounterRef.current % HISTORY_THRESHOLD === 1) {
+        history.unshift({ timestamp: Date.now(), code: currentCode });
         history.length > HISTORY_SIZE ?? history.pop();
+        console.log("stored in history", history.length);
     }
 };
 
-export const saveBeforeUnload = (config) => {
-
-    const currentCode = config.codeeditorRef.current.getValue();
-    const history = config.historyRef.current;
-    history.unshift(currentCode);
-    localStorage.setItem(config.idRef.current, JSON.stringify(history));
-    console.log("history saved to local storage");
+export const saveBeforeUnload = (configRef) => {
+    const currentCode = configRef.current.codeeditorRef.current.getValue();
+    const history = configRef.current.historyRef.current;
+    // Check if code was changed from initcode
+    if (history.length === 1 && history[0].code === currentCode) {
+        return;
+    }
+    history[0] = { timestamp: Date.now(), code: currentCode };
+    localStorage.setItem(configRef.current.idRef.current, JSON.stringify(history));
+    console.log("History saved to localStorage", history.length);
 };
 
-export const restoreHandler = (id: string) => {
-    const savedString = localStorage.getItem(id);
-    if (savedString) {
-        const savedHistory = JSON.parse(savedString) as string[];
-        console.log("history restored from local storage");
-        return savedHistory;
+export const restoreHandler = (configRef) => {
+    let result = [];
+    const localString = localStorage.getItem(configRef.current.idRef.current);
+    if (localString) {
+        result.push(...JSON.parse(localString));
+        result.sort((a, b) => b.timestamp - a.timestamp);
+        console.log("History restored from localStorage", history.length);
     }
-    return [] as string[];
+    loadFromCloud(configRef);
+    return result;
 };
 
-export const browseHistory = (config, delta: number) => {
+export const saveToCloud = async (configRef) => {
+    // const currentCode = configRef.current.codeeditorRef.current.getValue();
+    const history = configRef.current.historyRef.current;
+    // history.unshift({timestamp: Date.now(), code: currentCode});
 
-    const history = config.historyRef.current;
-    const newIndex = Math.max(config.historyIndexRef.current, 0) + delta;
-    console.log("browsing history", history, newIndex);
+    const response = await fetch('/api/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({history}),
+    });
 
-    if (newIndex >= 0 && newIndex < history.length-1 ) {
-        config.historyIndexRef.current = newIndex;
-        config.codeeditorRef.current.setValue(history[newIndex]);
-        // config.codeeditorRef.current.focus();
+    console.log(`History saved to cloud`, history.length);
+};
+
+export const loadFromCloud = async (configRef) => {
+
+    const res = await fetch('/api/load');
+    const withRemoteHistory = await res.json();
+
+    if (!Array.isArray(withRemoteHistory)) {
+        console.error('Error: /api/load did not return an array');
+        return;
     }
-}
+
+    withRemoteHistory.push(...configRef.current.historyRef.current);
+    withRemoteHistory.sort((a, b) => b.timestamp - a.timestamp);
+    // remove duplicates
+    const seen = new Set();
+    const newHistory = withRemoteHistory.filter(item => {
+        const duplicate = seen.has(item.timestamp);
+        seen.add(item.timestamp);
+        return !duplicate;
+    });
+
+
+    configRef.current.historyIndexRef.current = -1;
+    configRef.current.historyRef.current = newHistory;
+    // setRedoDisabled(true);
+};

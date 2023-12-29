@@ -6,7 +6,7 @@ export default function About() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch('/api/syncCode');
+      const res = await fetch('/api/load');
       const userData = await res.json();
       setData(userData);
     };

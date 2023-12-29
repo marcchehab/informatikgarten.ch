@@ -1,22 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import Editor, { Monaco } from "@monaco-editor/react";
 import { RunLevel } from "./";
-import { autosaveHandler, browseHistory } from "./autosave";
-import {
-    ChevronLeftIcon,
-    ChevronRightIcon,
-    ResetIcon,
-    ExpandIcon,
-    CollapseIcon,
-    PlayIcon,
-    StopIcon,
-} from "@sanity/icons";
+import { autosaveHandler, saveToCloud } from "./autosave";
+import FeatherIcon from "feather-icons-react";
 
 export default function UserInterface(props: any) {
     const [output, setOutput] = props.outputState;
     const [currentRunLevel, setCurrentRunLevel] = props.runlevel;
     const [position, setPosition] = useState({ top: null, left: null });
     const [fullscreen, setFullscreen] = useState(false);
+    const [undoDisabled, setUndoDisabled] = useState(true);
+    const [redoDisabled, setRedoDisabled] = useState(true);
+    const codeControlRef = useRef(null);
     const graphicspanelRef = useRef(null);
     const resizerRef = useRef(null);
     let resizer_x = 0;
@@ -30,22 +25,22 @@ export default function UserInterface(props: any) {
         startPosY = 0,
         canvasScale = 1;
 
-    const [config, setConfig] = props.configState;
-    const wrapperRef = config.wrapperRef;
-    const graphicswrapperRef = config.graphicswrapperRef;
-    const startstopRef = config.startstopRef;
+    const configRef = props.configRef;
+    const wrapperRef = configRef.current.wrapperRef;
+    const graphicswrapperRef = configRef.current.graphicswrapperRef;
+    const startstopRef = configRef.current.startstopRef;
     const editorpanel = useRef(null);
     const updateDimensions = () => {
         if (
             editorpanel.current === undefined ||
-            config.codeeditorRef.current === null
+            configRef.current.codeeditorRef.current === null
         ) {
             return;
         }
         const width = editorpanel.current.clientWidth - 10;
         const contentHeight = Math.min(
             1000,
-            config.codeeditorRef.current.getContentHeight() + 50
+            configRef.current.codeeditorRef.current.getContentHeight() + 50
         );
         editorpanel.current.style.width = `${width}px`;
     };
@@ -117,55 +112,103 @@ export default function UserInterface(props: any) {
         });
     };
 
+    const zoomCanvasFnc = (e) => {
+        e.preventDefault();
+        canvasScale += e.deltaY * -0.001;
+        graphicswrapperRef.current.style.transform = `translate(-50%, -50%) scale(${canvasScale}, ${canvasScale})`;
+    };
+
+    const handleDocClick = (e) => {
+        if (
+            codeControlRef &&
+            codeControlRef.current &&
+            configRef.current.historyIndexRef.current !== -1 &&
+            !codeControlRef.current.contains(e.target)
+        ) {
+            configRef.current.historyIndexRef.current = -1;
+            autosaveHandler(configRef);
+            setRedoDisabled(true);
+        }
+    };
+
     useEffect(() => {
         updateDimensions();
         initResizer();
-        
-        if (graphicswrapperRef.current) {
-            const zoomCanvas = (e) => {
-                e.preventDefault();
-                canvasScale += e.deltaY * -0.001;
-                graphicswrapperRef.current.style.transform = `translate(-50%, -50%) scale(${canvasScale}, ${canvasScale})`;
-            };
-            graphicswrapperRef.current.addEventListener("wheel", zoomCanvas);
 
-            return () => {
-                if (graphicswrapperRef.current) {
-                    graphicswrapperRef.current.removeEventListener(
-                        "wheel",
-                        zoomCanvas
-                    );
-                }
-            };
+        if (graphicswrapperRef && graphicswrapperRef.current) {
+            graphicswrapperRef.current.addEventListener("wheel", zoomCanvasFnc);
         }
+        document.addEventListener("mousedown", handleDocClick);
+
+        return () => {
+            if (graphicswrapperRef && graphicswrapperRef.current) {
+                graphicswrapperRef.current.removeEventListener(
+                    "wheel",
+                    zoomCanvasFnc
+                );
+            }
+            document.removeEventListener("mousedown", handleDocClick);
+        };
     }, []);
 
     const handleEditorDidMount = (editor: any) => {
-        config.codeeditorRef.current = editor;
+        configRef.current.codeeditorRef.current = editor;
 
         // Restore code from history
-        const history = config.historyRef.current;
+        const history = configRef.current.historyRef.current;
+        
         if (history[0] !== undefined) {
-            editor.setValue(history[0]);
+            editor.setValue(history[0].code);
+        }
+        if (history.length > 1) {
+            setUndoDisabled(false);
         }
 
         // Autosave to local storage
         editor.onDidChangeModelContent(() => {
-            autosaveHandler(config);
+            autosaveHandler(configRef);
         });
     };
 
     // Reset code to original
     const resetCode = () => {
-        if (config.codeeditorRef.current) {
-            config.codeeditorRef.current.setValue(config.initCode);
+        if (configRef.current.codeeditorRef.current) {
+            configRef.current.codeeditorRef.current.setValue(
+                configRef.current.initCode
+            );
         }
     };
 
     const RunLevelIcons = {
-        [RunLevel.stopped]: <PlayIcon />,
-        [RunLevel.running]: <StopIcon />,
+        [RunLevel.stopped]: <FeatherIcon size="16" icon="play" />,
+        [RunLevel.running]: <FeatherIcon size="16" icon="pause" fill="red" />,
     };
+
+    const browseHistory = (config, delta: number) => {
+        const history = configRef.current.historyRef.current;
+        const newIndex =
+            Math.max(configRef.current.historyIndexRef.current, 0) + delta;
+        // console.log(`browsing history to ${newIndex}`);
+
+        if (newIndex >= 0 && newIndex < history.length - 1) {
+            configRef.current.historyIndexRef.current = newIndex;
+            configRef.current.codeeditorRef.current.setValue(history[newIndex].code);
+        }
+        setUndoDisabled(
+            configRef.current.historyIndexRef.current >=
+                configRef.current.historyRef.current.length - 1
+        );
+        setRedoDisabled(configRef.current.historyIndexRef.current <= 0);
+    };
+
+    const resetall = (config) => {
+        configRef.current.historyRef.current = [];
+        configRef.current.historyIndexRef.current = -1;
+        configRef.current.codeeditorRef.current.setValue(
+            configRef.current.initCode
+        );
+        localStorage.removeItem(configRef.current.idRef.current);
+    }
 
     return (
         <div>
@@ -181,8 +224,8 @@ export default function UserInterface(props: any) {
                         defaultLanguage="python"
                         automatic-layout="true"
                         onMount={handleEditorDidMount}
-                        theme={config.vstheme}
-                        defaultValue={config.initCode}
+                        theme={configRef.current.vstheme}
+                        defaultValue={configRef.current.initCode}
                         options={{
                             minimap: { enabled: false },
                             scrollbar: { horizontal: "hidden" },
@@ -193,15 +236,36 @@ export default function UserInterface(props: any) {
                             // wrappingStrategy: 'advanced',
                         }}
                     />
-                    <div className="absolute right-2 bottom-2 z-10 flex space-x-1 items-center text-2xl">
-                        <a title="Undo" className="cursor-pointer" onClick={() => browseHistory(config, 1)}>
-                            <ChevronLeftIcon />
+                    <div
+                        className="absolute right-2 bottom-2 z-10 flex space-x-1 items-center text-2xl"
+                        ref={codeControlRef}
+                    >
+                        <a title="Reset all" onClick={() => resetall(configRef)}><FeatherIcon size="16" icon="x-square" /></a>
+                        <a title="Save" onClick={() => saveToCloud(configRef)}><FeatherIcon size="16" icon="upload-cloud" /></a>
+                        <a
+                            title="Undo"
+                            className={
+                                undoDisabled ? "opacity-50" : "cursor-pointer"
+                            }
+                            onClick={() => browseHistory(configRef, 1)}
+                        >
+                            <FeatherIcon size="16" icon="chevron-left" />
                         </a>
-                        <a title="Redo" className="cursor-pointer" onClick={() => browseHistory(config, -1)}>
-                            <ChevronRightIcon className="" />
+                        <a
+                            title="Redo"
+                            className={
+                                redoDisabled ? "opacity-50" : "cursor-pointer"
+                            }
+                            onClick={() => browseHistory(configRef, -1)}
+                        >
+                            <FeatherIcon size="16" icon="chevron-right" />
                         </a>
-                        <a className="cursor-pointer" title="Reset Code" onClick={resetCode}>
-                            <ResetIcon className="stroke-current" />
+                        <a
+                            className="cursor-pointer"
+                            title="Reset Code"
+                            onClick={resetCode}
+                        >
+                            <FeatherIcon size="16" icon="rotate-ccw" />
                         </a>
                     </div>
                 </pre>
@@ -242,7 +306,7 @@ export default function UserInterface(props: any) {
                     type="button"
                     onClick={fullScreenHandler}
                 >
-                    {fullscreen ? <CollapseIcon /> : <ExpandIcon />}
+                    {fullscreen ? <FeatherIcon size="16" icon="minimize-2" /> : <FeatherIcon size="16" icon="maximize-2" />}
                 </button>
             </div>
             <pre className="outputpre">
