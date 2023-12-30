@@ -10,6 +10,7 @@ import parse from "@/lib/markdown";
 import siteConfig from "@/config/siteConfig";
 import type { CustomAppProps } from "./_app";
 
+// TODO: Remove this
 console.log("url is ", process.env.NEXTAUTH_URL);
 
 interface SlugPageProps extends CustomAppProps {
