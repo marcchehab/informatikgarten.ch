@@ -1,22 +1,20 @@
-import { useState, useEffect } from 'react';
-
+import { useState, useEffect } from "react";
 
 export default function About() {
-  const [data, setData] = useState(null);
+    const [data, setData] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch('/api/load');
-      const userData = await res.json();
-      setData(userData);
-    };
+    // TODO: Remove this
+    console.log("url is ", process.env.NEXTAUTH_URL);
 
-    fetchData();
-  }, []);
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await fetch("/api/load");
+            const userData = await res.json();
+            setData(userData);
+        };
 
-  return (
-    <div>
-      {data ? `Data: ${JSON.stringify(data)}` : 'Loading...'}
-    </div>
-  );
+        fetchData();
+    }, []);
+
+    return <div>{data ? `Data: ${JSON.stringify(data)}` : "Loading..."}</div>;
 }
