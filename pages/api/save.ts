@@ -1,7 +1,7 @@
 import { getServerSession } from 'next-auth';
 import { kv } from '@vercel/kv';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { authOptions } from 'pages/api/auth/[...nextauth]'
+import { authOptions } from '@/pages/api/auth/[...nextauth]'
 
 const HISTORY_SIZE = 10;
 
