@@ -15,9 +15,9 @@ slug: b01l01-pseudocode
 
 Der Begriff Algorithmus umfasst eine breite Spanne von Verfahren in der Mathematik und der Informatik. Folglich lesen sich Definitionen je nach Quelle ein wenig unterschiedlich.
 just testing
-![[icon.png]]
+![[/assets/icon.png]]
 video
-![[microbit-uebung1-shakesad.mp4]]
+![[/assets/microbit-uebung1-shakesad.mp4]]
 ## Was sind Algorithmen?
 
 Stellen Sie sich einen **Algorithmus wie ein Kochrezept** vor. Es ist eine genaue Anleitung, die Ihnen Schritt für Schritt sagt, was Sie tun müssen, um ein bestimmtes Ergebnis oder Ziel zu erreichen. Bei einem Rezept folgen Sie den Anweisungen, um ein Gericht zu kochen. Bei einem Algorithmus folgen Sie den Anweisungen, um ein bestimmtes Problem zu lösen oder eine Aufgabe zu erledigen.
