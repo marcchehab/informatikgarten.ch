@@ -5,7 +5,7 @@ import { authOptions } from 'pages/api/auth/[...nextauth]'
 
 const HISTORY_SIZE = 10;
 
-export default async function handler(req, res) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     // Check if user is authenticated
     const session = await getServerSession(req, res, authOptions);
