@@ -5,7 +5,7 @@ const env = process.env;
 
 async function refreshAccessToken(token) {
     try {
-        const url = `https://login.microsoftonline.com/${env.AZURE_AD_TENANT_ID}/oauth2/v2.0/token`;
+        const url = `https://login.microsoftonline.com/common/oauth2/v2.0/token`;
 
         const body = new URLSearchParams({
             client_id:
@@ -16,6 +16,8 @@ async function refreshAccessToken(token) {
             scope: 'email openid profile User.Read offline_access',
             grant_type: 'refresh_token',
             refresh_token: token.refreshToken,
+			authorization: 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize',
+			token: 'https://login.microsoftonline.com/common/oauth2/v2.0/token',
         });
 
         const response = await fetch(url, {
@@ -51,11 +53,9 @@ export const authOptions = {
         AzureADProvider({
             clientId: `${env.AZURE_AD_CLIENT_ID}`,
             clientSecret: `${env.AZURE_AD_CLIENT_SECRET}`,
-            tenantId: `${env.AZURE_AD_TENANT_ID}`,
-            authorization: {
-                params: { scope: 'openid email profile User.Read  offline_access' },
-            },
             httpOptions: { timeout: 10000 },
+			authorization: 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize',
+			token: 'https://login.microsoftonline.com/common/oauth2/v2.0/token',
         }),
     ],
     callbacks: {
