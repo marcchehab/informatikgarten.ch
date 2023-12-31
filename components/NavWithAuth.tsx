@@ -38,8 +38,7 @@ function LoginBtn() {
                 onClick={() =>
                     signIn(
                         "azure-ad",
-                        { callbackUrl: "/dashboard" },
-                        { prompt: "login" }
+                        { callbackUrl: "/dashboard" }
                     )
                 }
             >

@@ -85,7 +85,6 @@ export const authOptions = {
             return session;
         },
     },
-    secret: `${env.NEXTAUTH_SECRET}`,
 };
 
 export default NextAuth(authOptions);

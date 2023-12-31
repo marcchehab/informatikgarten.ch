@@ -3,9 +3,6 @@ import { useState, useEffect } from "react";
 export default function About() {
     const [data, setData] = useState(null);
 
-    // TODO: Remove this
-    console.log("url is ", process.env.NEXTAUTH_URL);
-
     useEffect(() => {
         const fetchData = async () => {
             const res = await fetch("/api/load");
