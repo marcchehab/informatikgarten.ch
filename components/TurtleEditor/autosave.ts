@@ -1,84 +1,147 @@
 const HISTORY_THRESHOLD = 10;
-const HISTORY_SIZE = 500;
+const HISTORY_SIZE = 100;
 
-export const autosaveHandler = (configRef) => {
+// Reset code to original
+export const resetCode = (c) => {
+    if (c.codeeditorRef.current) {
+        c.codeeditorRef.current.setValue(c.initCode);
+        c.historyRef.current.unshift({ timestamp: Date.now(), code: c.initCode });
+        // console.log(c.historyRef.current)
+        c.historyIndexRef.current = -1;
+        c.setUndo(c.historyRef.current.length > 1);
+        c.setRedo(false);
+    }
+};
+
+export const autosaveHandler = (c) => {
     // If browsing history, don't autosave
-    if (configRef.current.historyIndexRef.current !== -1) { return; };
+    if (c.historyIndexRef.current !== -1) { return; };
 
-    configRef.current.autosaveCounterRef.current++;
-    const currentCode = configRef.current.codeeditorRef.current.getValue();
-    const history = configRef.current.historyRef.current;
+    // Autosaving in first history item
+    const currentCode = c.codeeditorRef.current.getValue();
+    const history = c.historyRef.current;
+    if (c.autosaveCounterRef.current === 0) {
+        history[0] = { timestamp: Date.now(), code: currentCode };
+    }
+    c.autosaveCounterRef.current++;
 
-    // console.log("autosaved", history.length);
-    history[0] = { timestamp: Date.now(), code: currentCode };
-
-    if (configRef.current.autosaveCounterRef.current % HISTORY_THRESHOLD === 1) {
+    // Every nr of HISTORY_THRESHOLD, save to history
+    if (c.autosaveCounterRef.current % HISTORY_THRESHOLD === 0) {
         history.unshift({ timestamp: Date.now(), code: currentCode });
         history.length > HISTORY_SIZE ?? history.pop();
         console.log("stored in history", history.length);
+        saveToRemote(c);
     }
 };
 
-export const saveBeforeUnload = (configRef) => {
-    const currentCode = configRef.current.codeeditorRef.current.getValue();
-    const history = configRef.current.historyRef.current;
-    // Check if code was changed from initcode
-    if (history.length === 1 && history[0].code === currentCode) {
+export const saveBeforeUnload = (c) => {
+    console.log("saveBeforeUnload");
+    const history = c.historyRef.current;
+    // Check if code was changed from last time
+    if (c.autosaveCounterRef.current === 0) {
+        console.log("INFO: unchanged code in", c.idRef.current);
         return;
     }
-    history[0] = { timestamp: Date.now(), code: currentCode };
-    localStorage.setItem(configRef.current.idRef.current, JSON.stringify(history));
-    console.log("History saved to localStorage", history.length);
+    localStorage.setItem(c.idRef.current, JSON.stringify(history));
+    console.log("INFO: History saved to localStorage", history.length);
 };
 
-export const restoreHandler = (configRef) => {
+export const restoreHandler = (c) => {
     let result = [];
-    const localString = localStorage.getItem(configRef.current.idRef.current);
-    if (localString) {
+    const localString = localStorage.getItem(c.idRef.current);
+    if (localString !== null && localString !== undefined && localString !== "[]") {
         result.push(...JSON.parse(localString));
-        result.sort((a, b) => b.timestamp - a.timestamp);
-        console.log("History restored from localStorage", history.length);
+        // result.sort((a, b) => b.timestamp - a.timestamp);
+        console.log("INFO: History restored from localStorage", result.length);
+        c.setUndo(result.length > 1);
+        c.setRedo(false);
+    } else {
+        console.log("INFO: No history found in localStorage");
+        result.push({ timestamp: 0, code: c.initCode });
     }
-    loadFromCloud(configRef);
-    return result;
+    c.historyRef.current = result;
+
+    // Check if remote history is newer than local history
+    c.lastTimestampPromiseRef.current
+        .then(res => res.text())
+        .then(remoteTimestamp => {
+            if (!isNaN(remoteTimestamp)) {
+                if (!result.length && result[0].timestamp > Number(remoteTimestamp)) {
+                    console.log("local history is newer than remote history");
+                    return;
+                }
+                loadFromRemote(c);
+            }
+        });
 };
 
-export const saveToCloud = async (configRef) => {
-    // const currentCode = configRef.current.codeeditorRef.current.getValue();
-    const history = configRef.current.historyRef.current;
-    // history.unshift({timestamp: Date.now(), code: currentCode});
+// as of 3/2024 this takes ~200ms
+export const saveToRemote = async (c) => {
+    // Filter timestamps that are already on remote, add new ones to remoteTimestampsRef
+    console.time("saveToRemote");
+    const localUniqueHistory = c.historyRef.current.filter(item => {
+        const newItem = !c.remoteTimestampsRef.current.has(item.timestamp);
+        c.remoteTimestampsRef.current.add(item.timestamp);
+        return newItem;
+    });
+    const editorId = c.idRef.current;
 
-    const response = await fetch('/api/save', {
+    console.time("query to remote");
+    fetch('/api/savecode', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({history}),
-    });
+        body: JSON.stringify({ editorId, history: localUniqueHistory }),
+    }).then(() => console.timeEnd("query to remote"));
 
-    console.log(`History saved to cloud`, history.length);
+    console.log(`New items saved to remote`, localUniqueHistory.length);
+    console.timeEnd("saveToRemote");
 };
 
-export const loadFromCloud = async (configRef) => {
-
-    const res = await fetch('/api/load');
+export const loadFromRemote = async (c) => {
+    console.log("INFO: trying to load from remote");
+    const editorId = c.idRef.current;
+    const res = await fetch(`/api/loadcode?editorId=${encodeURIComponent(editorId)}`);
     const withRemoteHistory = await res.json();
 
+    // check if response is an array
     if (!Array.isArray(withRemoteHistory)) {
-        console.error('Error: /api/load did not return an array');
+        console.error('ERROR: /api/loadcode did not return an array');
         return;
     }
 
-    withRemoteHistory.push(...configRef.current.historyRef.current);
+    // check if there are any items in the array
+    if (withRemoteHistory.length === 0) {
+        console.log('INFO: No remote history found');
+        return;
+    }
+
+    // cache all remote timestamps
+    withRemoteHistory.forEach(item => c.remoteTimestampsRef.current.add(item.timestamp));
+
+    // merge with local history
+    withRemoteHistory.push(...c.historyRef.current);
     withRemoteHistory.sort((a, b) => b.timestamp - a.timestamp);
+
     // remove duplicates
     const seen = new Set();
     const newHistory = withRemoteHistory.filter(item => {
         const duplicate = seen.has(item.timestamp);
+        if (duplicate) { console.log("duplicate detected!", item.timestamp); }
         seen.add(item.timestamp);
         return !duplicate;
     });
 
+    c.historyIndexRef.current = 999; // prevent autosave
+    c.historyRef.current = newHistory;
+    if (c.codeeditorRef && c.codeeditorRef.current) {
+        c.codeeditorRef.current.setValue(newHistory[0].code);
+    }
+    c.setUndo(newHistory.length > 1);
+    c.setRedo(false);
+    c.historyIndexRef.current = -1; // re-enable autosave
+    c.autosaveCounterRef.current = 100; // make sure it's saved to localStorage
+};
 
-    configRef.current.historyIndexRef.current = -1;
-    configRef.current.historyRef.current = newHistory;
-    // setRedoDisabled(true);
+export const getLastTimestampPromise = async (id) => {
+    return fetch(`/api/lasttimestamp?editorId=${encodeURIComponent(id)}`);
 };

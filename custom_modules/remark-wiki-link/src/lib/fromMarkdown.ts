@@ -157,6 +157,7 @@ function fromMarkdown(opts: FromMarkdownOptions = {}) {
           className: classNames,
           controls: true,
           alt: displayName,
+          
         };
         wikiLink.data.hChildren = [{ type: "element", tagName: "source", properties: { src: hrefTemplate(link) }, children: [] }];
       } else {

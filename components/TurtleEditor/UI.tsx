@@ -1,16 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import Editor, { Monaco } from "@monaco-editor/react";
 import { RunLevel } from "./";
-import { autosaveHandler, saveToCloud } from "./autosave";
+import { autosaveHandler, saveToRemote, resetCode } from "./autosave";
 import FeatherIcon from "feather-icons-react";
+import { set } from "date-fns";
 
 export default function UserInterface(props: any) {
+    const c = props.configRef.current;
     const [output, setOutput] = props.outputState;
     const [currentRunLevel, setCurrentRunLevel] = props.runlevel;
     const [position, setPosition] = useState({ top: null, left: null });
     const [fullscreen, setFullscreen] = useState(false);
-    const [undoDisabled, setUndoDisabled] = useState(true);
-    const [redoDisabled, setRedoDisabled] = useState(true);
+    const [undoBool, setUndo] = useState(false);
+    c.setUndo = setUndo;
+    const [redoBool, setRedo] = useState(false);
+    c.setRedo = setRedo;
     const codeControlRef = useRef(null);
     const graphicspanelRef = useRef(null);
     const resizerRef = useRef(null);
@@ -25,30 +29,26 @@ export default function UserInterface(props: any) {
         startPosY = 0,
         canvasScale = 1;
 
-    const configRef = props.configRef;
-    const wrapperRef = configRef.current.wrapperRef;
-    const graphicswrapperRef = configRef.current.graphicswrapperRef;
-    const startstopRef = configRef.current.startstopRef;
     const editorpanel = useRef(null);
     const updateDimensions = () => {
         if (
             editorpanel.current === undefined ||
-            configRef.current.codeeditorRef.current === null
+            c.codeeditorRef.current === null
         ) {
             return;
         }
         const width = editorpanel.current.clientWidth - 10;
         const contentHeight = Math.min(
             1000,
-            configRef.current.codeeditorRef.current.getContentHeight() + 50
+            c.codeeditorRef.current.getContentHeight() + 50
         );
         editorpanel.current.style.width = `${width}px`;
     };
 
     const fullScreenHandler = () => {
         setFullscreen(!fullscreen);
-        graphicswrapperRef.current.style.removeProperty("top");
-        graphicswrapperRef.current.style.removeProperty("left");
+        c.graphicswrapperRef.current.style.removeProperty("top");
+        c.graphicswrapperRef.current.style.removeProperty("left");
         updateDimensions();
     };
 
@@ -68,7 +68,7 @@ export default function UserInterface(props: any) {
         const dy = e.clientY - resizer_y;
         const leftPanel = editorpanel.current;
         const rightPanel = graphicspanelRef.current;
-        const parentoffset = wrapperRef.current.offsetWidth;
+        const parentoffset = c.wrapperRef.current.offsetWidth;
         const newLeftWidth =
             ((leftPanel.offsetWidth + dx) * 100) / parentoffset;
         const newRightWidth =
@@ -101,8 +101,8 @@ export default function UserInterface(props: any) {
             startPosX = e.clientX;
             startPosY = e.clientY;
             setPosition({
-                top: graphicswrapperRef.current.offsetTop - newPosY,
-                left: graphicswrapperRef.current.offsetLeft - newPosX,
+                top: c.graphicswrapperRef.current.offsetTop - newPosY,
+                left: c.graphicswrapperRef.current.offsetLeft - newPosX,
             });
         };
         document.addEventListener("mousemove", mouseMoveHandler);
@@ -115,19 +115,19 @@ export default function UserInterface(props: any) {
     const zoomCanvasFnc = (e) => {
         e.preventDefault();
         canvasScale += e.deltaY * -0.001;
-        graphicswrapperRef.current.style.transform = `translate(-50%, -50%) scale(${canvasScale}, ${canvasScale})`;
+        c.graphicswrapperRef.current.style.transform = `translate(-50%, -50%) scale(${canvasScale}, ${canvasScale})`;
     };
 
     const handleDocClick = (e) => {
         if (
             codeControlRef &&
             codeControlRef.current &&
-            configRef.current.historyIndexRef.current !== -1 &&
+            c.historyIndexRef.current !== -1 &&
             !codeControlRef.current.contains(e.target)
         ) {
-            configRef.current.historyIndexRef.current = -1;
-            autosaveHandler(configRef);
-            setRedoDisabled(true);
+            c.historyIndexRef.current = -1;
+            autosaveHandler(c);
+            setRedo(true);
         }
     };
 
@@ -135,14 +135,17 @@ export default function UserInterface(props: any) {
         updateDimensions();
         initResizer();
 
-        if (graphicswrapperRef && graphicswrapperRef.current) {
-            graphicswrapperRef.current.addEventListener("wheel", zoomCanvasFnc);
+        if (c.graphicswrapperRef && c.graphicswrapperRef.current) {
+            c.graphicswrapperRef.current.addEventListener(
+                "wheel",
+                zoomCanvasFnc
+            );
         }
         document.addEventListener("mousedown", handleDocClick);
 
         return () => {
-            if (graphicswrapperRef && graphicswrapperRef.current) {
-                graphicswrapperRef.current.removeEventListener(
+            if (c.graphicswrapperRef && c.graphicswrapperRef.current) {
+                c.graphicswrapperRef.current.removeEventListener(
                     "wheel",
                     zoomCanvasFnc
                 );
@@ -152,31 +155,22 @@ export default function UserInterface(props: any) {
     }, []);
 
     const handleEditorDidMount = (editor: any) => {
-        configRef.current.codeeditorRef.current = editor;
+        c.codeeditorRef.current = editor;
 
         // Restore code from history
-        const history = configRef.current.historyRef.current;
-        
+        const history = c.historyRef.current;
+
         if (history[0] !== undefined) {
             editor.setValue(history[0].code);
         }
         if (history.length > 1) {
-            setUndoDisabled(false);
+            setUndo(true);
         }
 
         // Autosave to local storage
         editor.onDidChangeModelContent(() => {
-            autosaveHandler(configRef);
+            autosaveHandler(c);
         });
-    };
-
-    // Reset code to original
-    const resetCode = () => {
-        if (configRef.current.codeeditorRef.current) {
-            configRef.current.codeeditorRef.current.setValue(
-                configRef.current.initCode
-            );
-        }
     };
 
     const RunLevelIcons = {
@@ -184,31 +178,33 @@ export default function UserInterface(props: any) {
         [RunLevel.running]: <FeatherIcon size="16" icon="pause" fill="red" />,
     };
 
-    const browseHistory = (config, delta: number) => {
-        const history = configRef.current.historyRef.current;
-        const newIndex =
-            Math.max(configRef.current.historyIndexRef.current, 0) + delta;
-        // console.log(`browsing history to ${newIndex}`);
-
-        if (newIndex >= 0 && newIndex < history.length - 1) {
-            configRef.current.historyIndexRef.current = newIndex;
-            configRef.current.codeeditorRef.current.setValue(history[newIndex].code);
+    const browseHistory = (c, delta: number) => {
+        const history = c.historyRef.current;
+        if (history.length <= 1) {
+            setUndo(false);
+            setRedo(false);
+            return;
         }
-        setUndoDisabled(
-            configRef.current.historyIndexRef.current >=
-                configRef.current.historyRef.current.length - 1
-        );
-        setRedoDisabled(configRef.current.historyIndexRef.current <= 0);
+        const newIndex = Math.max(c.historyIndexRef.current, 0) + delta;
+        console.log(`browsing history to ${newIndex} of ${history.length-1}`);
+
+        if (newIndex >= 0 && newIndex < history.length) {
+            c.historyIndexRef.current = newIndex;
+            c.codeeditorRef.current.setValue(history[newIndex].code);
+        }
+        setUndo(newIndex < c.historyRef.current.length - 1);
+        setRedo(newIndex > 0);
     };
 
-    const resetall = (config) => {
-        configRef.current.historyRef.current = [];
-        configRef.current.historyIndexRef.current = -1;
-        configRef.current.codeeditorRef.current.setValue(
-            configRef.current.initCode
-        );
-        localStorage.removeItem(configRef.current.idRef.current);
-    }
+    const resetall = (c) => {
+        console.log("resetting all");
+        c.historyRef.current = [];
+        c.historyIndexRef.current = -1;
+        c.codeeditorRef.current.setValue(c.initCode);
+        localStorage.removeItem(c.idRef.current);
+        setUndo(false);
+        setRedo(false);
+    };
 
     return (
         <div>
@@ -216,7 +212,7 @@ export default function UserInterface(props: any) {
                 className={
                     fullscreen ? "turtlewrapper fullscreen" : "turtlewrapper"
                 }
-                ref={wrapperRef}
+                ref={c.wrapperRef}
             >
                 <pre className="monacoeditor panel relative" ref={editorpanel}>
                     <Editor
@@ -224,8 +220,8 @@ export default function UserInterface(props: any) {
                         defaultLanguage="python"
                         automatic-layout="true"
                         onMount={handleEditorDidMount}
-                        theme={configRef.current.vstheme}
-                        defaultValue={configRef.current.initCode}
+                        theme={c.vstheme}
+                        defaultValue={c.initCode}
                         options={{
                             minimap: { enabled: false },
                             scrollbar: { horizontal: "hidden" },
@@ -240,30 +236,34 @@ export default function UserInterface(props: any) {
                         className="absolute right-2 bottom-2 z-10 flex space-x-1 items-center text-2xl"
                         ref={codeControlRef}
                     >
-                        <a title="Reset all" onClick={() => resetall(configRef)}><FeatherIcon size="16" icon="x-square" /></a>
-                        <a title="Save" onClick={() => saveToCloud(configRef)}><FeatherIcon size="16" icon="upload-cloud" /></a>
+                        <a title="Reset all" onClick={() => resetall(c)}>
+                            <FeatherIcon size="16" icon="x-square" />
+                        </a>
+                        <a title="Save" onClick={() => saveToRemote(c)}>
+                            <FeatherIcon size="16" icon="upload-cloud" />
+                        </a>
                         <a
                             title="Undo"
                             className={
-                                undoDisabled ? "opacity-50" : "cursor-pointer"
+                                undoBool ? "cursor-pointer" : "opacity-50"
                             }
-                            onClick={() => browseHistory(configRef, 1)}
+                            onClick={() => {if (undoBool) browseHistory(c, 1)}}
                         >
                             <FeatherIcon size="16" icon="chevron-left" />
                         </a>
                         <a
                             title="Redo"
                             className={
-                                redoDisabled ? "opacity-50" : "cursor-pointer"
+                                redoBool ? "cursor-pointer" : "opacity-50"
                             }
-                            onClick={() => browseHistory(configRef, -1)}
+                            onClick={() => {if (redoBool) browseHistory(c, -1)}}
                         >
                             <FeatherIcon size="16" icon="chevron-right" />
                         </a>
                         <a
                             className="cursor-pointer"
                             title="Reset Code"
-                            onClick={resetCode}
+                            onClick={() => resetCode(c)}
                         >
                             <FeatherIcon size="16" icon="rotate-ccw" />
                         </a>
@@ -276,7 +276,7 @@ export default function UserInterface(props: any) {
                 <div className="graphicspanel panel" ref={graphicspanelRef}>
                     <div
                         className="graphicswrapper"
-                        ref={graphicswrapperRef}
+                        ref={c.graphicswrapperRef}
                         onMouseDown={grabCanvasHandler}
                         style={{
                             position: "absolute",
@@ -296,7 +296,7 @@ export default function UserInterface(props: any) {
                                 : RunLevel.stopped
                         );
                     }}
-                    ref={startstopRef}
+                    ref={c.startstopRef}
                 >
                     {RunLevelIcons[currentRunLevel]}
                 </a>
@@ -306,7 +306,11 @@ export default function UserInterface(props: any) {
                     type="button"
                     onClick={fullScreenHandler}
                 >
-                    {fullscreen ? <FeatherIcon size="16" icon="minimize-2" /> : <FeatherIcon size="16" icon="maximize-2" />}
+                    {fullscreen ? (
+                        <FeatherIcon size="16" icon="minimize-2" />
+                    ) : (
+                        <FeatherIcon size="16" icon="maximize-2" />
+                    )}
                 </button>
             </div>
             <pre className="outputpre">

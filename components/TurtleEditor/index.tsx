@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import UserInterface from "./UI";
-import { saveBeforeUnload, restoreHandler } from "./autosave";
+import { saveBeforeUnload, restoreHandler, getLastTimestampPromise } from "./autosave";
 
 // TODO switch to signals https://www.youtube.com/watch?v=SO8lBVWF2Y8
 
@@ -49,6 +49,7 @@ function TurtleEditor({ children, ...props }) {
     const router = useRouter();
     const url = router.asPath;
     const idRef = useRef(props["id"] ?? url + "-" + turtleCounter);
+    const lastTimestampPromiseRef = useRef(getLastTimestampPromise(idRef.current));
     const configRef = useRef(null);
     turtleCounter += 1;
     useRouter().events.on("routeChangeStart", () => (turtleCounter = 0));
@@ -68,7 +69,7 @@ function TurtleEditor({ children, ...props }) {
 
     useEffect(() => {
         // Restore
-        historyRef.current = restoreHandler(configRef);
+        restoreHandler(configRef.current);
         // Load skulpt and skulpt-stdlib
         loadScript("/skulpt.min.js", true)
             .then(() => {
@@ -84,7 +85,7 @@ function TurtleEditor({ children, ...props }) {
 
         // Function to handle the beforeunload event
         function handleBeforeUnload() {
-            saveBeforeUnload(configRef);
+            saveBeforeUnload(configRef.current);
         }
 
         // Add event listener when the component mounts
@@ -175,6 +176,8 @@ function TurtleEditor({ children, ...props }) {
         graphicswrapperRef: graphicswrapperRef,
         runPythonCode: runPythonCode,
         autosaveCounterRef: useRef(0),
+        lastTimestampPromiseRef: lastTimestampPromiseRef,
+        remoteTimestampsRef: useRef(new Set()),
     };
 
     return (
