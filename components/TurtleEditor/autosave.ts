@@ -66,8 +66,8 @@ export const restoreHandler = (c) => {
         .then(res => res.text())
         .then(remoteTimestamp => {
             if (!isNaN(remoteTimestamp)) {
-                if (!result.length && result[0].timestamp > Number(remoteTimestamp)) {
-                    console.log("local history is newer than remote history");
+                if (result.length && result[0].timestamp >= Number(remoteTimestamp)) {
+                    console.log("localTimestamp newer than remoteTimestamp");
                     return;
                 }
                 loadFromRemote(c);
@@ -126,7 +126,7 @@ export const loadFromRemote = async (c) => {
     const seen = new Set();
     const newHistory = withRemoteHistory.filter(item => {
         const duplicate = seen.has(item.timestamp);
-        if (duplicate) { console.log("duplicate detected!", item.timestamp); }
+        if (duplicate) { console.log("WARNING: Duplicate detected!", item.timestamp); }
         seen.add(item.timestamp);
         return !duplicate;
     });

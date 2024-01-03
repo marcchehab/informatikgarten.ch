@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { db } from '@vercel/postgres';
+import { sql } from '@vercel/postgres';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 
@@ -27,15 +27,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Get editor string from request
     const editorString = req.body.editorId;
 
-    // Open database connection
-    const client = await db.connect();
-
     // Get user's id from users table
-    let userResult = await client.sql`SELECT id FROM users WHERE email=${session.user.email}`;
+    let userResult = await sql`SELECT id FROM users WHERE email=${session.user.email}`;
 
     // If user doesn't exist, create a new user
     if (userResult.rows.length === 0) {
-      userResult = await client.sql`
+      userResult = await sql`
           INSERT INTO users (email, is_teacher) 
           VALUES (${session.user.email}, false)
           RETURNING id
@@ -48,7 +45,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // Save data to database
     for (const item of req.body.history.slice(0, REMOTE_HISTORY_SIZE)) {
-      await client.sql`INSERT INTO code (user_id, timestamp, codeeditor_string, code) VALUES (${userId}, ${item.timestamp}, ${editorString}, ${item.code})`;
+      await sql`INSERT INTO code (user_id, timestamp, codeeditor_string, code) VALUES (${userId}, ${item.timestamp}, ${editorString}, ${item.code})`;
     }
 
     res.status(200).json({ message: 'Data saved successfully' });
