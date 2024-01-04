@@ -4,6 +4,7 @@ import { RunLevel } from "./";
 import { autosaveHandler, saveToRemote, resetCode } from "./autosave";
 import FeatherIcon from "feather-icons-react";
 import { set } from "date-fns";
+import log from "../logger";
 
 export default function UserInterface(props: any) {
     const c = props.configRef.current;
@@ -186,7 +187,7 @@ export default function UserInterface(props: any) {
             return;
         }
         const newIndex = Math.max(c.historyIndexRef.current, 0) + delta;
-        console.log(`browsing history to ${newIndex} of ${history.length-1}`);
+        log("DEBUG", `Browsing history to ${newIndex} of ${history.length-1}`);
 
         if (newIndex >= 0 && newIndex < history.length) {
             c.historyIndexRef.current = newIndex;
@@ -197,7 +198,7 @@ export default function UserInterface(props: any) {
     };
 
     const resetall = (c) => {
-        console.log("resetting all");
+        log("INFO", "Resetting all");
         c.historyRef.current = [];
         c.historyIndexRef.current = -1;
         c.codeeditorRef.current.setValue(c.initCode);
@@ -238,9 +239,6 @@ export default function UserInterface(props: any) {
                     >
                         <a title="Reset all" onClick={() => resetall(c)}>
                             <FeatherIcon size="16" icon="x-square" />
-                        </a>
-                        <a title="Save" onClick={() => saveToRemote(c)}>
-                            <FeatherIcon size="16" icon="upload-cloud" />
                         </a>
                         <a
                             title="Undo"

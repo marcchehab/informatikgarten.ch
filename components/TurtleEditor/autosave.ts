@@ -1,3 +1,5 @@
+import log from "../logger";
+
 const HISTORY_THRESHOLD = 10;
 const HISTORY_SIZE = 100;
 
@@ -6,7 +8,6 @@ export const resetCode = (c) => {
     if (c.codeeditorRef.current) {
         c.codeeditorRef.current.setValue(c.initCode);
         c.historyRef.current.unshift({ timestamp: Date.now(), code: c.initCode });
-        // console.log(c.historyRef.current)
         c.historyIndexRef.current = -1;
         c.setUndo(c.historyRef.current.length > 1);
         c.setRedo(false);
@@ -29,21 +30,21 @@ export const autosaveHandler = (c) => {
     if (c.autosaveCounterRef.current % HISTORY_THRESHOLD === 0) {
         history.unshift({ timestamp: Date.now(), code: currentCode });
         history.length > HISTORY_SIZE ?? history.pop();
-        console.log("stored in history", history.length);
+        log('INFO', "Stored in history", history.length);
         saveToRemote(c);
     }
 };
 
 export const saveBeforeUnload = (c) => {
-    console.log("saveBeforeUnload");
+    log("DEBUG", "saveBeforeUnload");
     const history = c.historyRef.current;
     // Check if code was changed from last time
     if (c.autosaveCounterRef.current === 0) {
-        console.log("INFO: unchanged code in", c.idRef.current);
+        log("INFO", "unchanged code in", c.idRef.current);
         return;
     }
     localStorage.setItem(c.idRef.current, JSON.stringify(history));
-    console.log("INFO: History saved to localStorage", history.length);
+    log("INFO", "History saved to localStorage", history.length);
 };
 
 export const restoreHandler = (c) => {
@@ -52,11 +53,11 @@ export const restoreHandler = (c) => {
     if (localString !== null && localString !== undefined && localString !== "[]") {
         result.push(...JSON.parse(localString));
         // result.sort((a, b) => b.timestamp - a.timestamp);
-        console.log("INFO: History restored from localStorage", result.length);
+        log("INFO", "History restored from localStorage", result.length);
         c.setUndo(result.length > 1);
         c.setRedo(false);
     } else {
-        console.log("INFO: No history found in localStorage");
+        log("INFO", "No history found in localStorage");
         result.push({ timestamp: 0, code: c.initCode });
     }
     c.historyRef.current = result;
@@ -67,7 +68,7 @@ export const restoreHandler = (c) => {
         .then(remoteTimestamp => {
             if (!isNaN(remoteTimestamp)) {
                 if (result.length && result[0].timestamp >= Number(remoteTimestamp)) {
-                    console.log("localTimestamp newer than remoteTimestamp");
+                    log("INFO", "localTimestamp older than remoteTimestamp");
                     return;
                 }
                 loadFromRemote(c);
@@ -93,12 +94,12 @@ export const saveToRemote = async (c) => {
         body: JSON.stringify({ editorId, history: localUniqueHistory }),
     }).then(() => console.timeEnd("query to remote"));
 
-    console.log(`New items saved to remote`, localUniqueHistory.length);
+    log("INFO", "New items saved to remote", localUniqueHistory.length);
     console.timeEnd("saveToRemote");
 };
 
 export const loadFromRemote = async (c) => {
-    console.log("INFO: trying to load from remote");
+    log("INFO", "Loading from remote");
     const editorId = c.idRef.current;
     const res = await fetch(`/api/loadcode?editorId=${encodeURIComponent(editorId)}`);
     const withRemoteHistory = await res.json();
@@ -111,7 +112,7 @@ export const loadFromRemote = async (c) => {
 
     // check if there are any items in the array
     if (withRemoteHistory.length === 0) {
-        console.log('INFO: No remote history found');
+        log("INFO", "No remote history found");
         return;
     }
 
@@ -126,7 +127,7 @@ export const loadFromRemote = async (c) => {
     const seen = new Set();
     const newHistory = withRemoteHistory.filter(item => {
         const duplicate = seen.has(item.timestamp);
-        if (duplicate) { console.log("WARNING: Duplicate detected!", item.timestamp); }
+        if (duplicate) { log("WARNING", "Duplicate detected!", item.timestamp); }
         seen.add(item.timestamp);
         return !duplicate;
     });

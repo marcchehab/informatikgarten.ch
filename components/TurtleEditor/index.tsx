@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import UserInterface from "./UI";
 import { saveBeforeUnload, restoreHandler, getLastTimestampPromise } from "./autosave";
+import log from "../logger";
 
 // TODO switch to signals https://www.youtube.com/watch?v=SO8lBVWF2Y8
 
@@ -74,13 +75,11 @@ function TurtleEditor({ children, ...props }) {
         loadScript("/skulpt.min.js", true)
             .then(() => {
                 loadScript("/skulpt-stdlib.js", true).catch(() => {
-                    console.error(
-                        "Script loading skulpt-stdlib.min.js failed!"
-                    );
+                    log("ERROR", "Script loading skulpt-stdlib.js failed!");
                 });
             })
             .catch(() => {
-                console.error("Script loading skulpt.min.js failed!");
+                log("ERROR", "Script loading skulpt.min.js failed!");
             });
 
         // Function to handle the beforeunload event
@@ -144,7 +143,7 @@ function TurtleEditor({ children, ...props }) {
             });
             myPromise.then(
                 function (mod) {
-                    console.log("Turtle was a success");
+                    log("INFO", "Turtle was a success");
                     setCurrentRunLevel(RunLevel.stopped);
                 },
                 function (err) {

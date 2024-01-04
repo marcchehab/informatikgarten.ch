@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { sql } from '@vercel/postgres';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
+import log from '@/components/logger';
 
 const REMOTE_HISTORY_SIZE = 10;
 
@@ -37,7 +38,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           VALUES (${session.user.email}, false)
           RETURNING id
       `;
-      console.log('New user created:', userResult.rows[0].id);
+      log("DEBUG", "New user created:", userResult.rows[0].id);
     }
 
     // Get user's id
