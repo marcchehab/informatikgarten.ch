@@ -5,9 +5,11 @@ import { autosaveHandler, saveToRemote, resetCode } from "./autosave";
 import FeatherIcon from "feather-icons-react";
 import { set } from "date-fns";
 import log from "../logger";
+import { useTheme } from "next-themes";
 
 export default function UserInterface(props: any) {
     const c = props.configRef.current;
+    c.theme = useTheme().theme;
     const [output, setOutput] = props.outputState;
     const [currentRunLevel, setCurrentRunLevel] = props.runlevel;
     const [position, setPosition] = useState({ top: null, left: null });
@@ -187,7 +189,10 @@ export default function UserInterface(props: any) {
             return;
         }
         const newIndex = Math.max(c.historyIndexRef.current, 0) + delta;
-        log("DEBUG", `Browsing history to ${newIndex} of ${history.length-1}`);
+        log(
+            "DEBUG",
+            `Browsing history to ${newIndex} of ${history.length - 1}`
+        );
 
         if (newIndex >= 0 && newIndex < history.length) {
             c.historyIndexRef.current = newIndex;
@@ -230,7 +235,7 @@ export default function UserInterface(props: any) {
                             // scrollBeyondLastLine: false,
                             wordWrap: "on",
                             // quickSuggestions: false,
-                            wrappingStrategy: 'advanced',
+                            wrappingStrategy: "advanced",
                         }}
                     />
                     <div
@@ -245,7 +250,9 @@ export default function UserInterface(props: any) {
                             className={
                                 undoBool ? "cursor-pointer" : "opacity-50"
                             }
-                            onClick={() => {if (undoBool) browseHistory(c, 1)}}
+                            onClick={() => {
+                                if (undoBool) browseHistory(c, 1);
+                            }}
                         >
                             <FeatherIcon size="16" icon="chevron-left" />
                         </a>
@@ -254,7 +261,9 @@ export default function UserInterface(props: any) {
                             className={
                                 redoBool ? "cursor-pointer" : "opacity-50"
                             }
-                            onClick={() => {if (redoBool) browseHistory(c, -1)}}
+                            onClick={() => {
+                                if (redoBool) browseHistory(c, -1);
+                            }}
                         >
                             <FeatherIcon size="16" icon="chevron-right" />
                         </a>
