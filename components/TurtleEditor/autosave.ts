@@ -31,7 +31,9 @@ export const autosaveHandler = (c) => {
         history.unshift({ timestamp: Date.now(), code: currentCode });
         history.length > HISTORY_SIZE ?? history.pop();
         log('INFO', "Stored in history", history.length);
-        saveToRemote(c);
+
+        // If user is logged in, save to remote
+        if (c.session) saveToRemote(c);
     }
 };
 
@@ -63,6 +65,7 @@ export const restoreHandler = (c) => {
     c.historyRef.current = localHistory;
 
     // Check if remote history is newer than local history
+    if (!c.session) return;
     c.lastTimestampPromiseRef.current
         .then(res => res.text())
         .then(remoteTimestamp => {
@@ -143,5 +146,5 @@ export const loadFromRemote = async (c) => {
 };
 
 export const getLastTimestampPromise = async (id) => {
-    return fetch(`/api/lasttimestamp?editorId=${encodeURIComponent(id)}`);
+    if (c.session) return fetch(`/api/lasttimestamp?editorId=${encodeURIComponent(id)}`);
 };

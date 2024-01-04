@@ -10,8 +10,8 @@ import {
     Footer,
     EditThisPage,
     TableOfContents,
-    SiteToc,
 } from "@portaljs/core";
+import { SiteToc } from "@/custom_modules/SiteToc";
 import type {
     NavItem,
     NavGroup,

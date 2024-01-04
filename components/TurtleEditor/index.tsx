@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import UserInterface from "./UI";
 import { saveBeforeUnload, restoreHandler, getLastTimestampPromise } from "./autosave";
 import log from "../logger";
+import { useSession } from "next-auth/react";
 
 // TODO switch to signals https://www.youtube.com/watch?v=SO8lBVWF2Y8
 
@@ -50,12 +51,14 @@ function TurtleEditor({ children, ...props }) {
     const router = useRouter();
     const url = router.asPath;
     const idRef = useRef(props["id"] ?? url + "-" + turtleCounter);
-    const lastTimestampPromiseRef = useRef(getLastTimestampPromise(idRef.current));
     const configRef = useRef(null);
     turtleCounter += 1;
     useRouter().events.on("routeChangeStart", () => (turtleCounter = 0));
 
     const [currentRunLevel, setCurrentRunLevel] = useState(RunLevel.stopped);
+    const { data: session } = useSession();
+    const lastTimestampPromiseRef = useRef(null);
+    if (session) lastTimestampPromiseRef.current = getLastTimestampPromise(idRef.current);
 
     const initCode = typeof children === "string" ? children : "invalid code";
     const historyRef = useRef(null);
@@ -166,6 +169,7 @@ function TurtleEditor({ children, ...props }) {
 
     configRef.current = {
         idRef: idRef,
+        session: session,
         theme: "dark",
         codeeditorRef: codeeditorRef,
         initCode: initCode,
