@@ -221,7 +221,7 @@ export default function UserInterface(props: any) {
                         defaultLanguage="python"
                         automatic-layout="true"
                         onMount={handleEditorDidMount}
-                        theme={c.vstheme}
+                        theme={c.theme == "dark" ? "vs-dark" : "vs"}
                         defaultValue={c.initCode}
                         options={{
                             minimap: { enabled: false },

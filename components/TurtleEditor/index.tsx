@@ -1,3 +1,4 @@
+import { useTheme } from "next-themes";
 import React, { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import UserInterface from "./UI";
@@ -54,6 +55,7 @@ function TurtleEditor({ children, ...props }) {
     const configRef = useRef(null);
     turtleCounter += 1;
     useRouter().events.on("routeChangeStart", () => (turtleCounter = 0));
+    const [mounted, setMounted] = useState(false);
 
     const [currentRunLevel, setCurrentRunLevel] = useState(RunLevel.stopped);
 
@@ -69,6 +71,7 @@ function TurtleEditor({ children, ...props }) {
     const [output, setOutput] = useState([] as outputElement[]);
 
     useEffect(() => {
+        setMounted(true);
         // Restore
         restoreHandler(configRef.current);
         // Load skulpt and skulpt-stdlib
@@ -164,9 +167,15 @@ function TurtleEditor({ children, ...props }) {
         }
     }
 
+    let currentTheme = "dark";
+    if (mounted) {
+        const {theme} = useTheme();
+        currentTheme = theme;
+    }
+
     configRef.current = {
         idRef: idRef,
-        vstheme: "vs-dark",
+        theme: currentTheme,
         codeeditorRef: codeeditorRef,
         initCode: initCode,
         wrapperRef: wrapperRef,
