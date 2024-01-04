@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://informatikgarten.ch/about</loc>
+    <loc>https://informatikgarten.ch/dashboard</loc>
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/dashboard</loc>
+    <loc>https://informatikgarten.ch/old_about</loc>
   </url>
 
   <url>
@@ -18,6 +18,10 @@
     <loc
       >https://informatikgarten.ch/1%20Programmieren%20&%20Algorithmen/ginf-b01l05-verschachteltwiederholen</loc
     >
+  </url>
+
+  <url>
+    <loc>https://informatikgarten.ch/about</loc>
   </url>
 
   <url>

@@ -48,27 +48,27 @@ export const saveBeforeUnload = (c) => {
 };
 
 export const restoreHandler = (c) => {
-    let result = [];
+    let localHistory = [];
     const localString = localStorage.getItem(c.idRef.current);
     if (localString !== null && localString !== undefined && localString !== "[]") {
-        result.push(...JSON.parse(localString));
+        localHistory.push(...JSON.parse(localString));
         // result.sort((a, b) => b.timestamp - a.timestamp);
-        log("INFO", "History restored from localStorage", result.length);
-        c.setUndo(result.length > 1);
+        log("INFO", "History restored from localStorage", localHistory.length);
+        c.setUndo(localHistory.length > 1);
         c.setRedo(false);
     } else {
         log("INFO", "No history found in localStorage");
-        result.push({ timestamp: 0, code: c.initCode });
+        localHistory.push({ timestamp: 0, code: c.initCode });
     }
-    c.historyRef.current = result;
+    c.historyRef.current = localHistory;
 
     // Check if remote history is newer than local history
     c.lastTimestampPromiseRef.current
         .then(res => res.text())
         .then(remoteTimestamp => {
             if (!isNaN(remoteTimestamp)) {
-                if (result.length && result[0].timestamp >= Number(remoteTimestamp)) {
-                    log("INFO", "localTimestamp older than remoteTimestamp");
+                if (localHistory.length && localHistory[0].timestamp >= Number(remoteTimestamp)) {
+                    log("INFO", "localTimestamp newer than remoteTimestamp");
                     return;
                 }
                 loadFromRemote(c);
@@ -76,7 +76,6 @@ export const restoreHandler = (c) => {
         });
 };
 
-// as of 3/2024 this takes ~200ms
 export const saveToRemote = async (c) => {
     // Filter timestamps that are already on remote, add new ones to remoteTimestampsRef
     console.time("saveToRemote");

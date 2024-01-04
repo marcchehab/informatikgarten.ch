@@ -1,5 +1,5 @@
 ---
-title: Testtile as property in frontmatter
+title: Testfile as property in frontmatter
 ---
 Well let's see
 # Gradient
