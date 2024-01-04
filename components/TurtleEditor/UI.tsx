@@ -217,7 +217,7 @@ export default function UserInterface(props: any) {
             >
                 <pre className="monacoeditor panel relative" ref={editorpanel}>
                     <Editor
-                        height="90vh"
+                        // height="90vh"
                         defaultLanguage="python"
                         automatic-layout="true"
                         onMount={handleEditorDidMount}
@@ -227,10 +227,10 @@ export default function UserInterface(props: any) {
                             minimap: { enabled: false },
                             scrollbar: { horizontal: "hidden" },
                             overviewRulerLanes: 0,
-                            scrollBeyondLastLine: false,
+                            // scrollBeyondLastLine: false,
                             wordWrap: "on",
-                            quickSuggestions: false,
-                            // wrappingStrategy: 'advanced',
+                            // quickSuggestions: false,
+                            wrappingStrategy: 'advanced',
                         }}
                     />
                     <div
