@@ -14,10 +14,6 @@ slug: b01l01-pseudocode
 > **Übergang zu Algorithmen**: Grosses Problem in kleine Schritte zerlegen. Wird auch bei Kochrezepten, Möbelbauen und Lego so gemacht. Man muss nur Einzelschritte können, Ergebnis entsteht von alleine.
 
 Der Begriff Algorithmus umfasst eine breite Spanne von Verfahren in der Mathematik und der Informatik. Folglich lesen sich Definitionen je nach Quelle ein wenig unterschiedlich.
-just testing
-![[/assets/icon.png]]
-video
-![[/assets/microbit-uebung1-shakesad.mp4]]
 ## Was sind Algorithmen?
 
 Stellen Sie sich einen **Algorithmus wie ein Kochrezept** vor. Es ist eine genaue Anleitung, die Ihnen Schritt für Schritt sagt, was Sie tun müssen, um ein bestimmtes Ergebnis oder Ziel zu erreichen. Bei einem Rezept folgen Sie den Anweisungen, um ein Gericht zu kochen. Bei einem Algorithmus folgen Sie den Anweisungen, um ein bestimmtes Problem zu lösen oder eine Aufgabe zu erledigen.
@@ -85,7 +81,7 @@ Algorithmen können aber auch einer **Programmiersprache implementiert oder umge
 > 
 > Falls Sie zu viel Zeit haben, können Sie anschliessend je eine eigene Pixelgrafik zeichnen und dann erklären. Das könnte dann so aussehen.
 > 
-> ![[Pasted image 20230815060449.png]]
+> ![[/assets/Pasted image 20230815060449.png]]
 
 [[1 Programmieren & Algorithmen/index|Zurück zum Intro]]
 [[ginf-b01l02-turtleintro|Los geht's mit Python!]]

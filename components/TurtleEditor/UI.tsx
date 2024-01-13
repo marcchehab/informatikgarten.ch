@@ -20,7 +20,7 @@ export default function UserInterface(props: any) {
     c.setRedo = setRedo;
     const codeControlRef = useRef(null);
     const graphicspanelRef = useRef(null);
-    const resizerRef = useRef(null);
+    const resizerHRef = useRef(null);
     let resizer_x = 0;
     let resizer_y = 0;
     let resizecontroller;
@@ -58,7 +58,7 @@ export default function UserInterface(props: any) {
     const initResizer = () => {
         resizer_x = 0;
         resizer_y = 0;
-        resizerRef.current.addEventListener("mousedown", (e) => {
+        resizerHRef.current.addEventListener("mousedown", (e) => {
             resizecontroller = new AbortController();
             resizer_x = e.clientX;
             resizer_y = e.clientY;
@@ -276,9 +276,7 @@ export default function UserInterface(props: any) {
                         </a>
                     </div>
                 </pre>
-                <div className="resizer" ref={resizerRef}>
-                    {" "}
-                </div>
+                <div className="resizerH" ref={resizerHRef}></div>
 
                 <div className="graphicspanel panel" ref={graphicspanelRef}>
                     <div

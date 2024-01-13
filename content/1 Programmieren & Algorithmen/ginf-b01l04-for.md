@@ -65,15 +65,15 @@ Merken Sie sich für den Moment einfach: Sie können bei dieser `for`-Schleife b
 > 
 > Versuchen Sie, folgende Aufgaben zu lösen. (Versuchen Sie es zuerst unbedingt selbst!)
 
-> [!question] Ändern Sie den Code ab, um ein **Dreieck** mit einer `for`-Schleife zu zeichnen.
+> [!question]- Ändern Sie den Code ab, um ein **Dreieck** mit einer `for`-Schleife zu zeichnen.
 > ```
 > for i in range(3):
 > 	eva.forward(50)
 > 	eva.right(120)
 > ```
 
-![[attachments/Pasted image 20230822113648.png]]
-> [!question] ☝️Zeichnen Sie eine Treppe mit sechs Stufen mit einer `for`-Schleife.
+![[/assets/Pasted image 20230822113648.png]]
+> [!question]- ☝️Zeichnen Sie eine Treppe mit sechs Stufen mit einer `for`-Schleife.
 > 
 > ```
 > for i in range(6):
@@ -90,7 +90,7 @@ Tipp für die nächste Aufgabe: Die mathematischen Grundoperationen kann man bei
 - **Multiplikation**: `*`
 - **Division**: `/`
 
-> [!question] Machen Sie ein Fünfeck, ein Sechseck und ein Siebeneck – diesmal indem Sie die Rechnung für den Winkel direkt in den Code schreiben.
+> [!question]- Machen Sie ein Fünfeck, ein Sechseck und ein Siebeneck – diesmal indem Sie die Rechnung für den Winkel direkt in den Code schreiben.
 > 
 > Beispielsweise für ein Siebeneck:
 > ```
@@ -103,7 +103,7 @@ Tipp für die nächste Aufgabe: Die mathematischen Grundoperationen kann man bei
 > 
 > Lösen Sie folgende Aufgaben zu zweit oder zu dritt.
 
-> [!question] Versuchen Sie eine **Variable `ecken`** für die Anzahl der Ecken der Figur zu gebrauchen. (Tipp: Speichern Sie diesen Code.)
+> [!question]- Versuchen Sie eine **Variable `ecken`** für die Anzahl der Ecken der Figur zu gebrauchen. (Tipp: Speichern Sie diesen Code.)
 > ```
 > ecken = 7
 > 
@@ -112,7 +112,7 @@ Tipp für die nächste Aufgabe: Die mathematischen Grundoperationen kann man bei
 > 	eva.right(360/ecken)
 > ```
 
-> [!question] Zeichnen Sie einen Kreis.
+> [!question]- Zeichnen Sie einen Kreis.
 > ```
 > ecken = 360
 > 
@@ -124,7 +124,7 @@ Tipp für die nächste Aufgabe: Die mathematischen Grundoperationen kann man bei
 
 ![[Pasted image 20230821172657.png]]
 
-> [!question] Ändern Sie Ihren Code ab, damit ein Stern aus der Anzahl `ecken` Strahlen entsteht, z.B. hier mit `ecken = 6`. 
+> [!question]- Ändern Sie Ihren Code ab, damit ein Stern aus der Anzahl `ecken` Strahlen entsteht, z.B. hier mit `ecken = 6`. 
 > 
 > ```
 > ecken = 6
@@ -136,7 +136,7 @@ Tipp für die nächste Aufgabe: Die mathematischen Grundoperationen kann man bei
 > ```
 
 ![[Pasted image 20230821174051.png]]
-> [!question] Schreiben Sie ein Programm, das eine Variable `stufen` definiert und dann eine entsprechend lange Treppe zeichnet.
+> [!question]- Schreiben Sie ein Programm, das eine Variable `stufen` definiert und dann eine entsprechend lange Treppe zeichnet.
 > 
 > ```
 > stufen = 6

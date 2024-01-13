@@ -69,7 +69,7 @@ Schreiben Sie ein Turtle-Programm, dass die User mit `input(...)` aus [[ginf-b01
 # Ihr Code
 ```
 
-> [!question] Mögliche Lösung
+> [!question]- Mögliche Lösung
 > 
 > ```python
 > import turtle
@@ -158,7 +158,7 @@ print ("Ist der Rest 0?", 8 % 4 == 0) # True, weil das stimmt ja
 
 Nun Ihr Auftrag, falls Sie ihn annehmen: Addieren Sie alle Zahlen bis 100, die restlos durch 3 teilbar sind und geben Sie das Ergebnis aus!
 
-> [!question] Lösung
+> [!question]- Lösung
 > 
 > ```python
 > sum = 0
@@ -209,7 +209,7 @@ Entsprechend heissen heissen die Datentypen von `True` und `False` auch "boolean
 
 Ändern Sie Ihre Lösung von Aufgabe 4 so ab, dass Sie alle Zahlen bis 100 aufaddieren, die zwar restlos durch 5 teilbar sind, aber **nicht** restlos durch 3 teilbar sind!
 
-> [!question] Lösung
+> [!question]- Lösung
 > 
 > ```python
 > sum = 0

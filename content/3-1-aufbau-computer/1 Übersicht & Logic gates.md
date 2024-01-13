@@ -1,0 +1,33 @@
+[[computer aufbau.pptx]]
+
+- Begrüssung
+- Einstieg: **Kopfrechenaufgabe** stellen und zeigen, wie extrem schnell ein Computer ist mit quick-calc.py.
+- **Divide & conquer mit Modulen**! Denk wir ein Informatiker. Tafel.
+	- Vergleich **Eisberg**: Normale Computer-User sehen nur die Oberfläche. Sie nutzen Computer, haben aber keine Ahnung, wie sie funktionieren.
+	- Ähnlich denkt ein Informatiker: In **Modulen** mit **Abstraktionen** **&** **Funktionsweisen.**
+		- Für das nächste Modul ist die Funktionsweise dieses Modul egal. Solange es funktioniert & die Abstraktion (Schnittstelle) stimmt.
+	- Unsere Module
+		- Anwender
+		- Höhere Programmiersprachen
+		- Maschinencode
+			- [Beispiel mit C](https://de.wikipedia.org/wiki/Maschinensprache#Programmiersprache_C)
+		- Computer(architektur)
+		- CPU, Ram, Chipset
+		- Logic gates
+		- ![](https://remnote-user-data.s3.amazonaws.com/KyRIM0hI_uFsStuxigIYuGStVXHBE10owIxIjL6VhdpzLgGxEcXwnZD9RDR9u9N8FRfO5K9xCsDS-JJB40M4uOEKEbKwUWw99WzEQ2gmFBIaBKmpJMdb401ImXmNgB9N.png)
+	- Genau so sind **die nächsten Wochen** aufgebaut
+	- Falls eine Woche verpasst: Kein Problem, genau wegen Modulen & Abstraktion.
+- Mit Logic-Gates rechnen Volladdierer / Halbaddierer
+	- Rechnen mit 0 und 1 > Binäres Zahlensystem
+	- Transistor
+		- ![](https://remnote-user-data.s3.amazonaws.com/O9p79JK4n-J8RKJTDDIraxoTg2UyH6GRAt-Kl5MXGDtP6dRg4PZLIrqrF-6CGdUUlhg-qzc4UTHD0-HXcs8s1UD33xkHBrMCU7Yvm3KG4qVw-GDNeX89xRpFvSIN0jPa.png)
+	- Spiel: [NandGame - Build a computer from scratch.](https://nandgame.com/)
+		
+		- ![](https://remnote-user-data.s3.amazonaws.com/8yJ-Qw707iw7Wuwc2hB35R__atS4Rs7RbXXXY7kCVG3t_R142G4IlQtQ8j2rFtccOyPKMMWL-KqU-erMq6tjZcJzeMilDz7Tz9A54hwPH8bA0k3erlKHYXWZk28YyArN.png)
+	- Wassercomputer!
+		- Halbaddierer: [youtu.be/IxXaizglscw?t=164](https://youtu.be/IxXaizglscw?t=164)
+		- Mutli-Addierer: [youtu.be/IxXaizglscw?t=811](https://youtu.be/IxXaizglscw?t=811)
+	- Minecraft-Computer
+	- Zusatzmaterial
+		- K-Table und Boolean Logik gebraucht hier: [www.youtube.com/watch?v=5XbRIVWFRIw](https://www.youtube.com/watch?v=5XbRIVWFRIw)
+- Zu einer ALU

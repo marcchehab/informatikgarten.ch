@@ -1,3 +1,25 @@
 pre:not(.outputpre) {
-  background: var(--callout-bg-color) !important;
+    background: var(--callout-bg-color) !important;
+}
+/* The scrollbar track */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background: var(--bg);
+    &:hover {
+        width: 10px;
+    }
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+/* The scrollbar thumb */
+::-webkit-scrollbar-thumb {
+    background: #55555511;
+    border-radius: 5px; /* Add this line */
+    &:hover {
+        background-color: #55555544;
+    }
 }

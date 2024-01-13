@@ -1,0 +1,8 @@
+:root {
+    --color-accent: hsl(180, 100%, 42%);
+    --bg: rgb(255 255 255);
+    &.dark {
+        --color-accent: hsl(180, 100%, 50%);
+        --bg: rgb(23 23 23);
+    }
+}

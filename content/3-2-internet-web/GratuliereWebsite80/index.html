@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Herzlichen Glückwunsch!</title>
+  <style>
+    body {
+      background-color: #252222;
+      text-align: center;
+      padding: 100px;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      font-size: 72px;
+      font-family: 'Noto Sans', Calibri, 'Trebuchet MS', sans-serif;
+      color: #2fff00;
+      margin-bottom: 40px;
+    }
+    p {
+      font-size: 18px;
+      color: #e2e2e2;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    canvas {
+      position: absolute;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gratuliere!</h1>
+  <p>Sie haben unseren Webserver auf Port 80 im lokalen Netzwerk gefunden. Herzlichen Glückwunsch!</p>
+  <p>Wo es weitergeht, habe ich im Quellcode dieser Seite versteckt.</p>
+
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.10.1/tsparticles.confetti.bundle.min.js"></script>
+  <script>
+    const duration = 10 * 1000,
+  animationEnd = Date.now() + duration,
+  defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+function randomInRange(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+const interval = setInterval(function() {
+  const timeLeft = animationEnd - Date.now();
+
+  if (timeLeft <= 0) {
+    return clearInterval(interval);
+  }
+
+  const particleCount = 50 * (timeLeft / duration);
+
+  // Weiter geht es auf einem zweiten Webserver mit der gleichen IP, aber auf Port 8000. Viel Spass!
+
+  confetti(
+    Object.assign({}, defaults, {
+      particleCount,
+      origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+    })
+  );
+  confetti(
+    Object.assign({}, defaults, {
+      particleCount,
+      origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+    })
+  );
+}, 250);
+    
+  </script>
+</body>
+</html>

@@ -25,7 +25,7 @@ for i in range(2):
 
 ![[Pasted image 20230821191611.png]]
 
-> [!question] Ü1: ☝️ Machen Sie diese Figur nach.
+> [!question]- Ü1: ☝️ Machen Sie diese Figur nach.
 > ```python
 > for i in range(4):
 > 	for j in range(4):
@@ -35,7 +35,7 @@ for i in range(2):
 > ```
  
 ![[Pasted image 20230828121835.png]]
-> [!question] Ü2:☝️ Machen Sie diese Figur nach.
+> [!question]- Ü2:☝️ Machen Sie diese Figur nach.
 > ```python
 > for i in range(3):
 > 	for j in range(4):
@@ -52,7 +52,7 @@ for i in range(2):
 
 ![[Pasted image 20230828122043.png]]
 
-> [!question] Ü3:☝️ Machen Sie diese Figur nach mit einer **Variabel `quadrate`** für die Anzahl Quadrate.
+> [!question]- Ü3:☝️ Machen Sie diese Figur nach mit einer **Variabel `quadrate`** für die Anzahl Quadrate.
 > ```python
 > quadrate = 3
 > 
@@ -65,7 +65,7 @@ for i in range(2):
 
 ![[Pasted image 20230828123551.png]]
 
-> [!question] Ü4:☝️ Machen Sie diese Figur nach mit einer **Variabel `quadrate`** für die Anzahl Quadrate.
+> [!question]- Ü4:☝️ Machen Sie diese Figur nach mit einer **Variabel `quadrate`** für die Anzahl Quadrate.
 > ```python
 > quadrate = 3
 > 
@@ -102,7 +102,7 @@ print("Jetzt hat die Variabel den Wert: ", zahl)
 Versuchen Sie mit diesem Wissen Folgendes: 
 
 ![[Pasted image 20230821192319.png]]
-> [!question] ☝️ Schreiben Sie ein Programm, das hintereinander zuerst ein Dreieck, dann ein Viereck, dann ein Fünfeck und zuletzt ein Sechseck zeichnet.
+> [!question]- ☝️ Schreiben Sie ein Programm, das hintereinander zuerst ein Dreieck, dann ein Viereck, dann ein Fünfeck und zuletzt ein Sechseck zeichnet.
 > ```python
 > ecken = 3
 > 

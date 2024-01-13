@@ -1,8 +1,7 @@
 ---
-title: Über Informatikgarten
 showSidebar: false
 showToc: false
-sidebar: false
-toc: false
 ---
-testing this
+# 🪴informatikgarten.ch für alle!
+
+Hier finden Sie Inhalte für den Informatikunterricht. Falls Sie selbst Informatiklehrer sind und einen Account möchten, könnten Sie mich gern anschreiben unter marcswegwerfemail@pm.me.

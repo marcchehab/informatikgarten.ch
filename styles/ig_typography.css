@@ -1,13 +1,3 @@
-:root {
-  --color-accent: hsl(180, 100%, 42%);
-  --bg: rgb(255 255 255);
-  &.dark {
-    --color-accent: hsl(180, 100%, 50%);
-    --bg: rgb(23 23 23);
-    
-  }
-}
-
 h1,
 h2,
 h3,
@@ -106,5 +96,14 @@ p:has(img:only-child) {
   margin: 0px;
   + blockquote {
     margin-top: -5px;
+  }
+}
+
+code {
+  background-color: var(--callout-bg-color);
+  padding: 0.2rem 0.2rem;
+  border-radius: 0.25rem;
+  &::after, &::before {
+    content: '' !important;
   }
 }

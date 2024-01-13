@@ -61,7 +61,7 @@ blume()
 ### Übung 1
 
 ![[Pasted image 20230904192011.png]]
-> [!question] Schreiben Sie eine Funktion `rechteck()`, die ein Rechteck wie oben zeichnet 👆.
+> [!question]- Schreiben Sie eine Funktion `rechteck()`, die ein Rechteck wie oben zeichnet 👆.
 > 
 > ```python
 > eva.left(90) # Das muss man in TigerJython NICHT machen, da die Turtle bereits nach oben schaut.
@@ -81,7 +81,7 @@ blume()
 Eine Funktion kann alle anderen Funktionen gebrauchen.
 
 ![[Pasted image 20230904192315.png]]
-> [!question] Nutzen Sie Ihre Funktion `rechteck()` in einer zweiten Funktion `treppe(stufen)`, die uns eine Treppe mit Anzahl `stufen` zeichnet – oben beispielsweise mit `treppen(8)` aufgerufen.
+> [!question]- Nutzen Sie Ihre Funktion `rechteck()` in einer zweiten Funktion `treppe(stufen)`, die uns eine Treppe mit Anzahl `stufen` zeichnet – oben beispielsweise mit `treppen(8)` aufgerufen.
 > 
 > ```python
 > 
@@ -113,7 +113,7 @@ for i in range(6):
 ```
 
 ![[Pasted image 20230904183640.png]]
-> [!question] Erstellen Sie eine Funktion `sechseck()` und führen Sie sie zweimal so aus, dass die Form einer Acht wie oben 👆 entsteht.
+> [!question]- Erstellen Sie eine Funktion `sechseck()` und führen Sie sie zweimal so aus, dass die Form einer Acht wie oben 👆 entsteht.
 > 
 > ```python
 > def sechseck():
@@ -127,7 +127,7 @@ for i in range(6):
 > ```
 ### Übung 4
 ![[Pasted image 20230904183937.png]]
-> [!question] Nutzen Sie `sechseck()` und machen Sie eine Blume 🌺 aus 10 gleichmässig rotierten Sechsecken.
+> [!question]- Nutzen Sie `sechseck()` und machen Sie eine Blume 🌺 aus 10 gleichmässig rotierten Sechsecken.
 > 
 > ```python
 > def sechseck():
@@ -141,7 +141,7 @@ for i in range(6):
 > ```
 ### Übung 5
 ![[Pasted image 20230904184720.png]]
-> [!question] Verändern Sie die Funktion zu einer Funktion `xeck(ecken)`, bei der man die Anzahl Ecken der Figur als Argument übergeben kann. Machen Sie dann ein Dreieck, ein Viereck und ein Siebeneck.
+> [!question]- Verändern Sie die Funktion zu einer Funktion `xeck(ecken)`, bei der man die Anzahl Ecken der Figur als Argument übergeben kann. Machen Sie dann ein Dreieck, ein Viereck und ein Siebeneck.
 > 
 > ```python
 > def xeck(ecken):
@@ -159,7 +159,7 @@ for i in range(6):
 Für folgende Aufgabe müssen Sie wissen, wie man [[ginf-b01l06-verschachteltfor#Variabeln während den Wiederholungen verändern|Variabeln während einer Wiederholungsschleife verändert]].
 
 ![[Pasted image 20230904190230.png]]
-> [!question] Nutzen Sie Ihre Funktion `xeck(ecken)` und schreiben Sie eine **Wiederholungsschleife**, die alle Figuren von einem Dreieck bis zu einem Zwölfeck zeichnet.
+> [!question]- Nutzen Sie Ihre Funktion `xeck(ecken)` und schreiben Sie eine **Wiederholungsschleife**, die alle Figuren von einem Dreieck bis zu einem Zwölfeck zeichnet.
 > 
 > ```python
 > def xeck(ecken):

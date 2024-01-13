@@ -65,9 +65,9 @@ Nach der Klassendiskussion machen wir einen Eintrag ins Theorieheft.
 > - Die **oberste Linie des Blocks** hat einen **Doppelpunkt** (hier auf Linie 3). Bei der `repeat`-Schleife wird hier definiert, wie oft oder wie lange der **Block als Ganzes wiederholt** wird. Diese Bedingung wird einmal vor jeder Wiederholung des Blocks überprüft.
 > - Zum Block gehören dann alle Linien, die **mindestens einmal mehr eingezogen** sind, also die einen Abstand mehr haben als die Linie mit dem Doppelpunkt. 
 > 
-> ![[Pasted image 20230821153731.png]]
+> ![[/assets/Pasted image 20230821153731.png]]
 > - Den Abstand können Sie mit der **Tabulatorentaste** links neben "Q" machen.
-> 	![[Pasted image 20230821211004.png]]
+> 	![[/assets/Pasted image 20230821211004.png]]
 
 > [!example] Jetzt sind Sie dran!
 > 
