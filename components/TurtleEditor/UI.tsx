@@ -115,7 +115,6 @@ export default function UserInterface(props: any) {
     };
 
     const zoomCanvasFnc = (e) => {
-        console.log(e.deltaY);
         e.preventDefault();
         canvasScale += canvasScale * e.deltaY * 0.001;
         // canvasScale = Math.min(Math.max(0.125, canvasScale), 4);
