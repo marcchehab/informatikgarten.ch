@@ -177,6 +177,7 @@ function TurtleEditor({ children, ...props }) {
         historyRef: historyRef,
         historyIndexRef: historyIndexRef,
         graphicswrapperRef: graphicswrapperRef,
+        graphicspanelRef: useRef(null),
         runPythonCode: runPythonCode,
         autosaveCounterRef: useRef(0),
         lastTimestampPromiseRef: lastTimestampPromiseRef,

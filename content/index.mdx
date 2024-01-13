@@ -17,9 +17,16 @@ Herzlich willkommen auf dem neuen Informatikgarten! Ich habe über die Weihnacht
 
 ```turtle
 import turtle
-eva = turtle.Turtle()
+farbliste = ['red', 'purple', 'blue', 'green', 'orange', 'yellow']
 
-eva.forward(10)
+eva = turtle.Turtle()
+eva.speed(500)
+
+for x in range(360):
+    eva.pencolor(farbliste[x%6])
+    eva.width(x//100 + 1)
+    eva.forward(x)
+    eva.left(59)
 ```
 
 ### Mit Schul-Account anmelden

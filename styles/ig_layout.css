@@ -27,7 +27,6 @@ pre:not(.outputpre) {
 /* Post navigation back and forward buttons */
 
 #mdxpage section > p:last-child {
-    margin-top: 5rem;
     a {
         text-decoration: none;
         padding: 0.5rem 1rem;
@@ -39,17 +38,21 @@ pre:not(.outputpre) {
             background-color: #55555544;
         }
         &:first-child {
-            float:left;
+            margin-top: 5rem;
+            float: left;
             &::before {
-            content: "👈";
-            margin-right: 0.5rem;
-        }}
+                content: "👈";
+                margin-right: 0.5rem;
+            }
+        }
         &:last-child {
-            float:right;
-            &::after{
-            content: "👉";
-            margin-left: 0.5rem;
-        }}
+            margin-top: 5rem;
+            float: right;
+            &::after {
+                content: "👉";
+                margin-left: 0.5rem;
+            }
+        }
     }
     &::after {
         content: "";

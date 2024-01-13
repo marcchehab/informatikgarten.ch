@@ -19,7 +19,6 @@ export default function UserInterface(props: any) {
     const [redoBool, setRedo] = useState(false);
     c.setRedo = setRedo;
     const codeControlRef = useRef(null);
-    const graphicspanelRef = useRef(null);
     const resizerHRef = useRef(null);
     let resizer_x = 0;
     let resizer_y = 0;
@@ -70,7 +69,7 @@ export default function UserInterface(props: any) {
         const dx = e.clientX - resizer_x;
         const dy = e.clientY - resizer_y;
         const leftPanel = editorpanel.current;
-        const rightPanel = graphicspanelRef.current;
+        const rightPanel = c.graphicspanelRef.current;
         const parentoffset = c.wrapperRef.current.offsetWidth;
         const newLeftWidth =
             ((leftPanel.offsetWidth + dx) * 100) / parentoffset;
@@ -116,8 +115,10 @@ export default function UserInterface(props: any) {
     };
 
     const zoomCanvasFnc = (e) => {
+        console.log(e.deltaY);
         e.preventDefault();
-        canvasScale += e.deltaY * -0.001;
+        canvasScale += canvasScale * e.deltaY * 0.001;
+        // canvasScale = Math.min(Math.max(0.125, canvasScale), 4);
         c.graphicswrapperRef.current.style.transform = `translate(-50%, -50%) scale(${canvasScale}, ${canvasScale})`;
     };
 
@@ -138,8 +139,8 @@ export default function UserInterface(props: any) {
         updateDimensions();
         initResizer();
 
-        if (c.graphicswrapperRef && c.graphicswrapperRef.current) {
-            c.graphicswrapperRef.current.addEventListener(
+        if (c.graphicspanelRef && c.graphicspanelRef.current) {
+            c.graphicspanelRef.current.addEventListener(
                 "wheel",
                 zoomCanvasFnc
             );
@@ -147,8 +148,8 @@ export default function UserInterface(props: any) {
         document.addEventListener("mousedown", handleDocClick);
 
         return () => {
-            if (c.graphicswrapperRef && c.graphicswrapperRef.current) {
-                c.graphicswrapperRef.current.removeEventListener(
+            if (c.graphicspanelRef && c.graphicspanelRef.current) {
+                c.graphicspanelRef.current.removeEventListener(
                     "wheel",
                     zoomCanvasFnc
                 );
@@ -252,12 +253,9 @@ export default function UserInterface(props: any) {
                         }}
                     />
                     <div
-                        className="absolute right-2 bottom-2 z-10 flex space-x-1 items-center text-2xl"
+                        className="absolute right-5 bottom-2 z-10 flex space-x-1 items-center text-2xl"
                         ref={codeControlRef}
                     >
-                        <a title="Reset all" onClick={() => resetall(c)}>
-                            <FeatherIcon size="16" icon="x-square" />
-                        </a>
                         <a
                             title="Undo"
                             className={
@@ -291,7 +289,7 @@ export default function UserInterface(props: any) {
                 </pre>
                 <div className="resizerH" ref={resizerHRef}></div>
 
-                <div className="graphicspanel panel" ref={graphicspanelRef}>
+                <div className="graphicspanel panel" ref={c.graphicspanelRef}>
                     <div
                         className="graphicswrapper"
                         ref={c.graphicswrapperRef}
@@ -305,7 +303,7 @@ export default function UserInterface(props: any) {
                 </div>
 
                 <a
-                    className="absolute left-2 bottom-2 z-10 cursor-pointer text-2xl"
+                    className="absolute left-4 bottom-2 z-10 cursor-pointer text-2xl"
                     onClick={() => {
                         setOutput([]);
                         setCurrentRunLevel(
