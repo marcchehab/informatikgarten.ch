@@ -161,11 +161,14 @@ function fromMarkdown(opts: FromMarkdownOptions = {}) {
         };
         wikiLink.data.hChildren = [{ type: "element", tagName: "source", properties: { src: hrefTemplate(link) }, children: [] }];
       } else {
+        const [name, invert, width] = displayName.split("-");
+        const classes = invert ? classNames + " invert" : classNames;
         wikiLink.data.hName = "img";
         wikiLink.data.hProperties = {
-          className: classNames,
+          className: classes,
           src: hrefTemplate(link),
-          alt: displayName,
+          alt: name,
+          width: width ?? ""
         };
       }
     } else {

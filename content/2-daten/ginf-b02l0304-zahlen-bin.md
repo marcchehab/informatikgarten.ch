@@ -15,7 +15,7 @@ title: "B02L03+L04: Bits, Bytes, Zahlen mit nur 0 und 1"
 * Eine einzelne Stelle im Speicher kann ein einzelnes 0 oder 1 repräsentieren. Das nennen wir ein **Bit**. 
 * Acht von diesen Bits zusammen ergeben ein **Byte**.
 
-![[attachments/Pasted image 20231105171033.png||invert]]
+![[attachments/Pasted image 20231105171033.png|-invert]]
 
 ## Binär: Zahlen aus nur 0 und 1?
 

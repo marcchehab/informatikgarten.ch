@@ -47,7 +47,7 @@ Das Internet ist ein etwas komplizierteres Transportsystem als dieses Beispiel, 
 
 Sie sehen: Jede Schicht hat eine bestimmte Aufgabe bei der Übertragung von Daten über das Netzwerk und braucht Adress-Informationen. Wenn Sie Daten in den Browser eingeben, werden diese von oben nach unten durch diese Schichten durchgereicht. Jede Schicht hängt ihre Adressinformationen in **Header** und **Footer** an. Dieser Vorgang wird als "Verkapselung" ("Encapsulation") bezeichnet.
 
-![[attachments/Pasted image 20230612145307.png||invert]]
+![[attachments/Pasted image 20230612145307.png|-invert]]
 
 ## IP-Adresse und Port
 
@@ -113,7 +113,7 @@ Das liegt daran, dass unser Schulnetzwerk teilweise von der Welt abgeschottet is
 
 "Gegen aussen" vertritt Sie ein sogenannter "Router". Das sind Geräte, die an **zwei oder mehr Netzwerken angeschlossen sind**. Der Router der Schule ist **unser Tor aus unserem Netzwerk raus (ein "Gateway")** und vertritt uns mit seiner öffentlichen IP-Adresse im Internet. Das ist der erste Schritt auf der Route ins Internet.
 
-![[attachments/Pasted image 20230613113211.png|100%|inverted]]
+![[attachments/Pasted image 20230613113211.png|-invert-100%ed]]
 
 Jetzt gehen wir in [[attachments/excel_router.xlsx|der Exceldatei]] auf die zweite Lasche und versuchen herauszufinden, wie der Router entscheidet, ob ein Paket für das Internet gedacht ist, oder für das lokale Netzwerk. Dazu muss der Router die **Adresse des Netzwerks** als Ganzes ermitteln können - und alle IPs mit derselben Netzwerk-Adresse, sind Teil des gleichen Netzwerks.
 

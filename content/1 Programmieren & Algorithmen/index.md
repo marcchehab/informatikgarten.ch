@@ -46,7 +46,7 @@ Zack! Und schon sind sie da: Alle Primzahlen bis 1000 ausgerechnet in nur **weni
 
 Bei diesen Geschwindigkeiten kommt man plötzlich auf völlig neue Fragen: Nimmt die Dichte der Primzahlen eigentlich ab, je höher die Zahlen sind? Ok, finden und plotten wir doch einfach mal alle Primzahlen bis zu einer Million. (Die Primzahlen zu finden ging bei mir lokal übrigens 40 Sekunden.)
 
-![[Pasted image 20230604011447.png||invert]]
+![[Pasted image 20230604011447.png|-invert]]
 
 Vielleicht denken Sie sich: "So interessant sind Primzahlen nun auch wieder nicht..." Aber: **Um Primzahlen geht es mir nicht!** Vielmehr möchte ich Ihnen zeigen, wie enorm schnell moderne Computer sind. Und diese Rechenleistung können Sie anzapfen für was auch immer Ihnen Spass macht! 
 

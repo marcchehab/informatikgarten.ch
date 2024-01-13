@@ -20,7 +20,7 @@ Wenn Wasserstoffatome von einem Energiezustand in einen anderen übergehen wird 
 Voyager in 3D [bei der Nasa](https://voyager.jpl.nasa.gov/mission/spacecraft/interactive.php)
 
 ![[attachments/Pasted image 20231217224707.png]]
-![[Pasted image 20231218064007.png||invert]]
+![[Pasted image 20231218064007.png|-invert]]
 ![[attachments/Pasted image 20231217224720.png]]
 
 > [!question]- Berechnung

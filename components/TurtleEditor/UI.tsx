@@ -50,9 +50,9 @@ export default function UserInterface(props: any) {
 
     const fullScreenHandler = () => {
         setFullscreen(!fullscreen);
-        c.graphicswrapperRef.current.style.removeProperty("top");
-        c.graphicswrapperRef.current.style.removeProperty("left");
-        updateDimensions();
+        // c.graphicswrapperRef.current.style.removeProperty("top");
+        // c.graphicswrapperRef.current.style.removeProperty("left");
+        // updateDimensions();
     };
 
     const initResizer = () => {
