@@ -5,15 +5,45 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/2-daten/ginf-b02l0506-notizen</loc>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/2%20Netzwerke%20und%20das%20Internet/Lehrernotizen/Einf%C3%BChrung%20Javascript</loc
+    >
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/2-daten/ginf-b02l0910-welchesformat</loc>
+    <loc
+      >https://informatikgarten.ch/2%20Daten%20&%20Information/ginf-b02l0910-welchesformat</loc
+    >
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/p1-listen-und-bilder/auftrag</loc>
+    <loc
+      >https://informatikgarten.ch/Projekte/2%20Snake%20vs%20Snake/binp-b1l0304-2turtleparameter</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/2%20Daten%20&%20Information/ginf-b02l0304-zahlen-bin</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/2%20Daten%20&%20Information/Lehrernotizen/ginf-b02l1112-text</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/Projekte/2%20Snake%20vs%20Snake/binp-b1l0708-events2</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/2%20Netzwerke%20und%20das%20Internet/Lehrernotizen/Javascript-MarcsHomePC</loc
+    >
   </url>
 
   <url>
@@ -23,26 +53,26 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b1l0708-notizen</loc>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/1%20Aufbau%20von%20Computern/Lehrernotizen/aufbau-intro-MarcsHomePC</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/Projekte/1%20Bilder%20aus%20Listen/auftrag</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/2%20Daten%20&%20Information/Lehrernotizen/ginf-b02l0708-notizen</loc
+    >
   </url>
 
   <url>
     <loc
       >https://informatikgarten.ch/1%20Programmieren%20&%20Algorithmen/ginf-b01l05-verschachteltwiederholen</loc
-    >
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b1l0102-repetition</loc>
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/3-2-internet-web/CSS-MarcsHomePC</loc>
-  </url>
-
-  <url>
-    <loc
-      >https://informatikgarten.ch/3-2-internet-web/Javascript-MarcsHomePC</loc
     >
   </url>
 
@@ -57,19 +87,39 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b1l0910-2turtle-return</loc>
+    <loc
+      >https://informatikgarten.ch/Projekte/2%20Snake%20vs%20Snake/binp-b1l0102-notizen</loc
+    >
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/3-2-internet-web/Javascript</loc>
+    <loc
+      >https://informatikgarten.ch/2%20Daten%20&%20Information/ginf-b02l0102-datainfo</loc
+    >
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/3-2-internet-web/net-intro</loc>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/Microbit%20Intro/binp-b2l0102-intro</loc
+    >
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b1l1112-notizen</loc>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/Microbit%20Intro/binp-b2l99-probe</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/Projekte/2%20Snake%20vs%20Snake/binp-b1l0506-events</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/1%20Aufbau%20von%20Computern/Lehrernotizen/Fehlerkorrektur/01%20Intro%20mit%20Pr%C3%BCfbits</loc
+    >
   </url>
 
   <url>
@@ -79,35 +129,27 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b1l0304-notizen</loc>
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/2-daten/ginf-b02l0708-bilder</loc>
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b1l0708-events2</loc>
-  </url>
-
-  <url>
     <loc
-      >https://informatikgarten.ch/3-2-internet-web/Teaching%20Notes%20Internet%20und%20Web</loc
+      >https://informatikgarten.ch/Projekte/2%20Snake%20vs%20Snake/binp-b1l0910-2turtle-return</loc
     >
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b1l0102-notizen</loc>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/Microbit%20Intro/binp-b2l99-nachprobe</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/1%20Aufbau%20von%20Computern/Lehrernotizen/2%20von%20Logic%20gates%20zu%20Half-%20und%20Full-Adder</loc
+    >
   </url>
 
   <url>
     <loc
       >https://informatikgarten.ch/1%20Programmieren%20&%20Algorithmen/archiv/jupyterlite</loc
     >
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/2-daten/ginf-b02l0102-notizen</loc>
   </url>
 
   <url>
@@ -127,16 +169,6 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/Portfolio/Erkl%C3%A4rfilme</loc>
-  </url>
-
-  <url>
-    <loc
-      >https://informatikgarten.ch/3-1-aufbau-computer/Fehlerkorrektur/01%20Intro%20mit%20Pr%C3%BCfbits</loc
-    >
-  </url>
-
-  <url>
     <loc
       >https://informatikgarten.ch/1%20Programmieren%20&%20Algorithmen/ginf-b01l15-ifelse</loc
     >
@@ -144,17 +176,37 @@
 
   <url>
     <loc
-      >https://informatikgarten.ch/3-1-aufbau-computer/aufbau-intro-MarcsHomePC</loc
+      >https://informatikgarten.ch/Projekte/2%20Snake%20vs%20Snake/binp-b1l1112-notizen</loc
     >
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b2l0304-notizen</loc>
+    <loc
+      >https://informatikgarten.ch/Projekte/2%20Snake%20vs%20Snake/binp-b1l1112-crash</loc
+    >
   </url>
 
   <url>
     <loc
-      >https://informatikgarten.ch/3-1-aufbau-computer/Fehlerkorrektur/02%20EAN%20Codes</loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/2%20Netzwerke%20und%20das%20Internet/Lehrernotizen/net-1-tcpip</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/2%20Netzwerke%20und%20das%20Internet/Lehrernotizen/HTML-MarcsHomePC</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/Projekte/2%20Snake%20vs%20Snake/binp-b1l1314-listen</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/1%20Aufbau%20von%20Computern/Lehrernotizen/Harddrives</loc
     >
   </url>
 
@@ -165,7 +217,9 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/2-daten/ginf-b02-voyager</loc>
+    <loc
+      >https://informatikgarten.ch/Projekte/2%20Snake%20vs%20Snake/binp-b1l0708-notizen</loc
+    >
   </url>
 
   <url>
@@ -175,21 +229,21 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b2-projekt</loc>
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/2-daten/ginf-b02l1112-text</loc>
-  </url>
-
-  <url>
     <loc
-      >https://informatikgarten.ch/3-2-internet-web/Internet%20-%20Dijkstra%20Algorithmus</loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/2%20Netzwerke%20und%20das%20Internet/Lehrernotizen/CSS-MarcsHomePC</loc
     >
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/Portfolio/Blender-MarcsHomePC</loc>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/2%20Netzwerke%20und%20das%20Internet/Lehrernotizen/CSS</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/2%20Netzwerke%20und%20das%20Internet/Lehrernotizen/Teaching%20Notes%20Internet%20und%20Web</loc
+    >
   </url>
 
   <url>
@@ -199,7 +253,39 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b1l1314-listen</loc>
+    <loc
+      >https://informatikgarten.ch/2%20Daten%20&%20Information/ginf-b02l0506-zahlen-hex-farben</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/2%20Daten%20&%20Information/Lehrernotizen/ginf-b02l0102-notizen</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/2%20Daten%20&%20Information/ginf-b02l0708-bilder</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/2%20Daten%20&%20Information/Lehrernotizen/ginf-b02l0506-notizen</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/Projekte/2%20Snake%20vs%20Snake/binp-b1l0x-objects</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/1%20Aufbau%20von%20Computern/Lehrernotizen/Fehlerkorrektur/02%20EAN%20Codes</loc
+    >
   </url>
 
   <url>
@@ -209,7 +295,15 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b2l0506-leds</loc>
+    <loc
+      >https://informatikgarten.ch/Projekte/2%20Snake%20vs%20Snake/binp-b1l0102-repetition</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/Microbit%20Intro/binp-b2l0708-radio</loc
+    >
   </url>
 
   <url>
@@ -220,40 +314,62 @@
 
   <url>
     <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/1%20Aufbau%20von%20Computern/Lehrernotizen/3%20Architektur</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/2%20Daten%20&%20Information/Lehrernotizen/ginf-b02l0910-notizen</loc
+    >
+  </url>
+
+  <url>
+    <loc
       >https://informatikgarten.ch/1%20Programmieren%20&%20Algorithmen/archiv/python%20binder</loc
     >
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b2l0102-intro</loc>
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b1l0x-objects</loc>
-  </url>
-
-  <url>
     <loc
-      >https://informatikgarten.ch/2-daten/ginf-b02l1112-vorbereitung-nohex</loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/Microbit%20Intro/binp-b2l99-projekt</loc
     >
   </url>
 
   <url>
     <loc
-      >https://informatikgarten.ch/2-daten/ginf-b02l0506-zahlen-hex-farben</loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/2%20Netzwerke%20und%20das%20Internet/Lehrernotizen/net-1-tcpip-MarcsHomePC</loc
     >
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/3-1-aufbau-computer/aufbau-intro</loc>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/Microbit%20Intro/binp-b2l0506-leds</loc
+    >
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b2l0708-radio</loc>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/2%20Netzwerke%20und%20das%20Internet/Lehrernotizen/net-intro</loc
+    >
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/2-daten/ginf-b02l1112-vorbereitung</loc>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/1%20Aufbau%20von%20Computern/Lehrernotizen/Geschichte%20fr%C3%BCher%20Computer</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/2%20Netzwerke%20und%20das%20Internet/Lehrernotizen/Javascript</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/2%20Netzwerke%20und%20das%20Internet/loading</loc
+    >
   </url>
 
   <url>
@@ -264,30 +380,32 @@
 
   <url>
     <loc
-      >https://informatikgarten.ch/3-2-internet-web/net-1-tcpip-MarcsHomePC</loc
-    >
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b1l05</loc>
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/2-daten/ginf-b02l0708-notizen</loc>
-  </url>
-
-  <url>
-    <loc
       >https://informatikgarten.ch/1%20Programmieren%20&%20Algorithmen/ginf-b01l01-algo</loc
     >
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/3-1-aufbau-computer/3%20Architektur</loc>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/1%20Aufbau%20von%20Computern/Lehrernotizen/1%20%C3%9Cbersicht%20&%20Logic%20gates</loc
+    >
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/3-2-internet-web/HTML</loc>
+    <loc
+      >https://informatikgarten.ch/2%20Daten%20&%20Information/ginf-b02l1112-vorbereitung-nohex</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/1%20Programmieren%20&%20Algorithmen/testfile</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/1%20Aufbau%20von%20Computern/loading</loc
+    >
   </url>
 
   <url>
@@ -297,7 +415,9 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/3-2-internet-web/net-1-tcpip</loc>
+    <loc
+      >https://informatikgarten.ch/2%20Daten%20&%20Information/Lehrernotizen/ginf-b02l0304-notizen</loc
+    >
   </url>
 
   <url>
@@ -305,7 +425,9 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b1l0910-notizen</loc>
+    <loc
+      >https://informatikgarten.ch/Projekte/1%20Bilder%20aus%20Listen/listen-intro</loc
+    >
   </url>
 
   <url>
@@ -315,12 +437,8 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/2-daten/ginf-b02l0910-notizen</loc>
-  </url>
-
-  <url>
     <loc
-      >https://informatikgarten.ch/3-1-aufbau-computer/1%20%C3%9Cbersicht%20&%20Logic%20gates</loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/Microbit%20Intro/Lehrernotizen/binp-b2l0304-notizen</loc
     >
   </url>
 
@@ -329,19 +447,9 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/3-2-internet-web/CSS</loc>
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b1l0304-2turtleparameter</loc>
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b1l1112-crash</loc>
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b1l0506-notizen</loc>
+    <loc
+      >https://informatikgarten.ch/2%20Daten%20&%20Information/ginf-b02l99-voyager</loc
+    >
   </url>
 
   <url>
@@ -351,17 +459,15 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b2l0910-probe</loc>
-  </url>
-
-  <url>
     <loc
-      >https://informatikgarten.ch/3-1-aufbau-computer/2%20von%20Logic%20gates%20zu%20Half-%20und%20Full-Adder</loc
+      >https://informatikgarten.ch/2%20Daten%20&%20Information/ginf-b02l1112-vorbereitung</loc
     >
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/2-daten/ginf-b02l0304-zahlen-bin</loc>
+    <loc
+      >https://informatikgarten.ch/Projekte/2%20Snake%20vs%20Snake/binp-b1l05</loc
+    >
   </url>
 
   <url>
@@ -371,29 +477,27 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b1l0506-events</loc>
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/Portfolio/Blender</loc>
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/binp2/binp-b2l0910-nachprobe</loc>
-  </url>
-
-  <url>
     <loc
-      >https://informatikgarten.ch/3-1-aufbau-computer/Geschichte%20fr%C3%BCher%20Computer</loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/1%20Aufbau%20von%20Computern/Lehrernotizen/aufbau-intro</loc
     >
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/p1-listen-und-bilder/listen-intro</loc>
+    <loc
+      >https://informatikgarten.ch/Projekte/2%20Snake%20vs%20Snake/binp-b1l0506-notizen</loc
+    >
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/3-1-aufbau-computer/Harddrives</loc>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/2%20Netzwerke%20und%20das%20Internet/Lehrernotizen/Internet%20-%20Dijkstra%20Algorithmus</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://informatikgarten.ch/3%20Computer%20&%20Netzwerke/2%20Netzwerke%20und%20das%20Internet/Lehrernotizen/HTML</loc
+    >
   </url>
 
   <url>
@@ -403,11 +507,9 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/3-2-internet-web/HTML-MarcsHomePC</loc>
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/2-daten/ginf-b02l0304-notizen</loc>
+    <loc
+      >https://informatikgarten.ch/Projekte/2%20Snake%20vs%20Snake/binp-b1l0910-notizen</loc
+    >
   </url>
 
   <url>
@@ -417,12 +519,8 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/2-daten/ginf-b02l0102-datainfo</loc>
-  </url>
-
-  <url>
     <loc
-      >https://informatikgarten.ch/3-2-internet-web/Einf%C3%BChrung%20Javascript</loc
+      >https://informatikgarten.ch/Projekte/2%20Snake%20vs%20Snake/binp-b1l0304-notizen</loc
     >
   </url>
 </urlset>

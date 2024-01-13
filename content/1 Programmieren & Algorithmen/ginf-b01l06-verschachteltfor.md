@@ -1,5 +1,5 @@
 ---
-title: "B01L06: for-Schleifen verschachteln"
+title: "L06: for-Schleifen verschachteln"
 slug: b01l06-for-verschachteln
 ---
 

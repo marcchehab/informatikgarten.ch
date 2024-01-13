@@ -23,3 +23,37 @@ pre:not(.outputpre) {
         background-color: #55555544;
     }
 }
+
+/* Post navigation back and forward buttons */
+
+#mdxpage section > p:last-child {
+    margin-top: 5rem;
+    a {
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        height: 3rem;
+        border: 1px var(--tw-prose-body) solid;
+        border-radius: 2rem;
+        background-color: #55555511;
+        &:hover {
+            background-color: #55555544;
+        }
+        &:first-child {
+            float:left;
+            &::before {
+            content: "👈";
+            margin-right: 0.5rem;
+        }}
+        &:last-child {
+            float:right;
+            &::after{
+            content: "👉";
+            margin-left: 0.5rem;
+        }}
+    }
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}

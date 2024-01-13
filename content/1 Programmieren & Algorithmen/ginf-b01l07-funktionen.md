@@ -1,5 +1,5 @@
 ---
-title: "B01L07: Unterprogramme / Funktionen"
+title: "L07: Unterprogramme / Funktionen"
 slug: b01l07-funktionen
 ---
 Funktionen sind kleine **Teilprogramme**, die wie ein Werkzeug eine bestimmte Aufgabe ausführen. Funktionen **tun etwas** (wie bereits in [[ginf-b01l02-turtleintro|Lektion 2]] angekündigt.)

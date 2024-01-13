@@ -1,23 +1,7 @@
 ---
-title: "B01L04: Wiederholungen in Python mit for-Schleifen"
+title: "L04: Wiederholungen in Python mit for-Schleifen"
 slug: b01l04-block-repeat
 ---
-
-> [!warning] Achtung
-> 
-> Wir beginnen jetzt in **TigerJython** zu programmieren. Dort gibt es eine spezielle `turtle`-Bibliothek, wie wir verwenden werden und `gturtle` heisst. Anstatt:
-> 
-> ```python
-> import turtle
-> eva = turtle.Turtle()
-> ```
->  
-> schreiben wir dort:
-> 
-> ```python
-> import gturtle
-> eva = gturtle.Turtle()
-> ```
 
 Wir haben das letzte Mal gesehen, wie man eine Turtle namens `eva` erstellt und fernsteuert. Es gibt die Befehle:
 - `eva.forward(10)`
@@ -65,14 +49,26 @@ Merken Sie sich für den Moment einfach: Sie können bei dieser `for`-Schleife b
 > 
 > Versuchen Sie, folgende Aufgaben zu lösen. (Versuchen Sie es zuerst unbedingt selbst!)
 
-> [!question]- Ändern Sie den Code ab, um ein **Dreieck** mit einer `for`-Schleife zu zeichnen.
+![[Pasted image 20240113121015.png]]
+
+> [!question]- ☝️ Ändern Sie den Code ab, um ein **Rechteck** mit einer `for`-Schleife zu zeichnen.
+> ```
+> for i in range(2):
+> 	eva.forward(100)
+> 	eva.right(90)
+> 	eva.forward(50)
+> 	eva.right(90)
+> ```
+
+![[Pasted image 20240113121128.png]]
+> [!question]- ☝️ Ändern Sie den Code ab, um ein **Dreieck** mit einer `for`-Schleife zu zeichnen.
 > ```
 > for i in range(3):
 > 	eva.forward(50)
 > 	eva.right(120)
 > ```
 
-![[/assets/Pasted image 20230822113648.png]]
+![[Pasted image 20240113121302.png]]
 > [!question]- ☝️Zeichnen Sie eine Treppe mit sechs Stufen mit einer `for`-Schleife.
 > 
 > ```

@@ -1,5 +1,5 @@
 ---
-title: "B01L15: If ... else ... in Python"
+title: "L15: If ... else ... in Python"
 ---
 Wenn wir in Python programmieren, nutzen wir oft `if`-Anweisungen, um Entscheidungen zu treffen. Das ist so, als würden wir im echten Leben sagen: "Wenn es regnet, dann nehme ich einen Regenschirm mit."
 
@@ -255,4 +255,4 @@ Entsprechend heissen heissen die Datentypen von `True` und `False` auch "boolean
 
 
 [[ginf-b01l0910-for2|Zurück]]
-[[../2-daten/ginf-b02l0102-datainfo|Weiter zu Block 2]]
+[[ginf-b02l0102-datainfo|Weiter zu Block 2]]

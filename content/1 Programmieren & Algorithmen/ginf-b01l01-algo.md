@@ -1,5 +1,5 @@
 ---
-title: "B01L01: Einführung ins algorithmische Denken mit Pseudocode"
+title: "L01: Einführung ins algorithmische Denken mit Pseudocode"
 slug: b01l01-pseudocode
 ---
 
@@ -81,7 +81,7 @@ Algorithmen können aber auch einer **Programmiersprache implementiert oder umge
 > 
 > Falls Sie zu viel Zeit haben, können Sie anschliessend je eine eigene Pixelgrafik zeichnen und dann erklären. Das könnte dann so aussehen.
 > 
-> ![[/assets/Pasted image 20230815060449.png]]
+> ![[Pasted image 20230815060449.png]]
 
 [[1 Programmieren & Algorithmen/index|Zurück zum Intro]]
-[[ginf-b01l02-turtleintro|Los geht's mit Python!]]
+[[ginf-b01l02-turtleintro|Los geht’s mit Python!]]

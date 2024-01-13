@@ -1,5 +1,5 @@
 ---
-title: "B01L02: EVA-Prinzip & erste Schritte mit Python"
+title: "L02: EVA-Prinzip & erste Schritte mit Python"
 slug: b01l02-eva
 ---
 
@@ -115,7 +115,7 @@ eva.right(60)
 eva.forward(60)
 ```
 
-Alles zusammen sieht dann so aus. Sie können das Programm ausführen, indem Sie auf "Start ▶️" drücken.
+Alles zusammen sieht dann so aus. Sie können das Programm ausführen, indem Sie auf "▶️ Run" drücken.
 
 ```turtle
 import turtle
@@ -133,11 +133,14 @@ Mit diesen wenigen Zeilen Code können Sie Ihrer Schildkröte "eva" also bereits
 > 
 > Versuchen Sie mal folgende Figuren nachzumachen. (Grösse und Farbe müssen nicht stimmen.)
 
-![[/assets/Pasted image 20230627134624.png|-invert]]
-![[/assets/Pasted image 20230627134824.png|-invert]]
-![[/assets/Pasted image 20230627134709.png|-invert]]
-![[/assets/Pasted image 20230627135005.png|-invert]]
-![[/assets/Pasted image 20230807132453.png|-invert]]
+![[Pasted image 20230627134624.png|-invert]]
+![[Pasted image 20230627134824.png|-invert]]
+![[Pasted image 20230627134709.png|-invert]]
+![[Pasted image 20230627135005.png|-invert]]
+![[Pasted image 20230807132453.png|-invert]]
+
+
+![[Pasted image 20230807132453.png|-invert]]
 
 
 > [!NOTE] Eintrag ins Theorieheft
@@ -149,7 +152,7 @@ Mit diesen wenigen Zeilen Code können Sie Ihrer Schildkröte "eva" also bereits
 > - `eva = turtle.Turtle()` erzeugt eine Turtle mit dem Namen `eva`.
 > - Die Turtle befolgt die Anweisungen **Schritt für Schritt**.
 > - Die Turtle dreht sich um den **Aussenwinkel**.
-> ![[/assets/Pasted image 20230818101343.png]]
+> ![[Pasted image 20230818101343.png]]
 
 
 [[ginf-b01l01-algo|Zurück zu L01]]

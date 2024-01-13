@@ -1,5 +1,5 @@
 ---
-title: "B01L05: Wiederholungen verschachteln"
+title: "L05: Wiederholungen verschachteln"
 slug: b01l05-wiederholung-verschachteln
 ---
 

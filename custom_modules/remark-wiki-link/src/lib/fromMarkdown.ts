@@ -162,11 +162,13 @@ function fromMarkdown(opts: FromMarkdownOptions = {}) {
         wikiLink.data.hChildren = [{ type: "element", tagName: "source", properties: { src: hrefTemplate(link) }, children: [] }];
       } else {
         const [name, invert, width] = displayName.split("-");
-        const classes = invert ? classNames + " invert" : classNames;
+        console.log(name, invert);
+        const classes = invert == "invert" ? classNames + " invert" : classNames;
+        const src = link.startsWith("/assets/") ? link : `/assets/${link}`; // TODO this is ugly
         wikiLink.data.hName = "img";
         wikiLink.data.hProperties = {
           className: classes,
-          src: hrefTemplate(link),
+          src: src,
           alt: name,
           width: width ?? ""
         };

@@ -13,30 +13,38 @@ import layouts from "../layouts";
 // here.
 
 function extractTextFromChildren(children: React.ReactNode): string {
-    if (typeof children === 'string') {
-      return children;
+    if (typeof children === "string") {
+        return children;
     }
-  
+
     if (Array.isArray(children)) {
-      return children.map(extractTextFromChildren).join('');
+        return children.map(extractTextFromChildren).join("");
     }
-  
-    if (React.isValidElement(children) && (children as React.ReactElement).props.children) {
-      return extractTextFromChildren((children as React.ReactElement).props.children);
+
+    if (
+        React.isValidElement(children) &&
+        (children as React.ReactElement).props.children
+    ) {
+        return extractTextFromChildren(
+            (children as React.ReactElement).props.children
+        );
     }
-  
-    return '';
-  }
+
+    return "";
+}
 
 const TurtleEditorWrapper = ({ className, children }) => {
-
     // If it's not Turtle, use Pre
     if (!className || !className.includes("language-turtle")) {
         return <Pre className={className}>{children}</Pre>;
     }
     // If we're here, it's Turtle
-    return <TurtleEditor className={className}>{extractTextFromChildren(children)}</TurtleEditor>;
-}
+    return (
+        <TurtleEditor className={className}>
+            {extractTextFromChildren(children)}
+        </TurtleEditor>
+    );
+};
 
 const components = {
     mermaid: Mermaid,
@@ -49,7 +57,9 @@ export default function MdxPage({ source, frontMatter }) {
     const Layout = ({ children }) => {
         if (frontMatter.layout) {
             const LayoutComponent = layouts[frontMatter.layout];
-            return <LayoutComponent {...frontMatter}>{children}</LayoutComponent>;
+            return (
+                <LayoutComponent {...frontMatter}>{children}</LayoutComponent>
+            );
         }
         return <>{children}</>;
     };

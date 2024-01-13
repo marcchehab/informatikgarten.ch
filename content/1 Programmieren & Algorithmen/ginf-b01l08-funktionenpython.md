@@ -1,5 +1,5 @@
 ---
-title: "B01L08: Funktionen in Python"
+title: "L08: Funktionen in Python"
 slug: b01l08-funktionen
 ---
 Funktionen in Python sind sehr nützlich, um bestimmte Blöcke von Code in Teilprogramme zu packen, die eine spezifische Aufgabe erfüllen. Sie können sowohl mit als auch ohne Parameter definiert werden.
@@ -181,14 +181,14 @@ Für folgende Aufgabe müssen Sie wissen, wie man [[ginf-b01l06-verschachteltfor
 > 
 > **Funktionen** sind Teilprogramme, die eine bestimmte Aufgabe erfüllen. Man muss eine Funktion:
 > 
-> - Mit **`def` zuerst definieren** – der Funktion also einen <span style="background-color: #12C2FF; color: black;padding:2px;border-radius:3px;">Namen</span> geben und bestimmen, was sie tut (Linie 1 - 4).
-> - Die Funktion **ausführen** – der Computer findet die Funktion im Speicher anhand ihres <span style="background-color: #12C2FF; color: black;padding:2px;border-radius:3px;">Namens</span> (Linie 5). 
+> - Mit **`def` zuerst definieren** – der Funktion also einen <span style={{backgroundColor: "#12C2FF", color: "black", padding:"2px", borderRadius:"3px"}}>Namen</span> geben und bestimmen, was sie tut (Linie 1 - 4).
+> - Die Funktion **ausführen** – der Computer findet die Funktion im Speicher anhand ihres <span style={{backgroundColor: "#12C2FF", color: "black", padding:"2px", borderRadius:"3px"}}>Namens</span> (Linie 5). 
 > 
 > ![[Pasted image 20230904194355.png]]
 > 
-> Manchmal möchten wir einer Funktion **Informationen übergeben**. Hier wird beispielsweise der Wert <span style="background-color: #15FF74; color: black;padding:2px;border-radius:3px;">6</span> als **Argument** der Funktion übergeben und in das **Parameter** <span style="background-color: #15FF74; color: black;padding:2px;border-radius:3px;">ecken</span> der Funktion abgefüllt.
+> Manchmal möchten wir einer Funktion **Informationen übergeben**. Hier wird beispielsweise der Wert <span style={{backgroundColor: "#15FF74", color: "black", padding:"2px", borderRadius:"3px"}}>6</span> als **Argument** der Funktion übergeben und in das **Parameter** <span style={{backgroundColor: "#15FF74", color: "black", padding:"2px", borderRadius:"3px"}}>ecken</span> der Funktion abgefüllt.
 > ![[Pasted image 20230904194406.png]]
-> Wichtig: Parameter (<span style="background-color: #15FF74; color: black;padding:2px;border-radius:3px;">ecken</span>) werden bei jeder Ausführung **temporär** kreiert und wieder zerstört!
+> Wichtig: Parameter (<span style={{backgroundColor: "#15FF74", color: "black", padding:"2px", borderRadius:"3px"}}>ecken</span>) werden bei jeder Ausführung **temporär** kreiert und wieder zerstört!
 
 
 [[ginf-b01l07-funktionen|Zurück zu L07]]

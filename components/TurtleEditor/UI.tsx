@@ -177,8 +177,21 @@ export default function UserInterface(props: any) {
     };
 
     const RunLevelIcons = {
-        [RunLevel.stopped]: <FeatherIcon size="16" icon="play" />,
-        [RunLevel.running]: <FeatherIcon size="16" icon="pause" fill="red" />,
+        [RunLevel.stopped]: (
+            <div className="bg-gray-200 bg-opacity-10 hover:bg-opacity-25 rounded-full border border-gray-300 flex items-center justify-center p-1">
+                <FeatherIcon size="16" icon="play" />
+                <span className="text-xs mx-1">Run</span>
+            </div>
+        ),
+        [RunLevel.running]: (
+            <div className="bg-gray-200 bg-opacity-10 hover:bg-opacity-25 rounded-full border border-gray-300 flex items-center justify-center p-1">
+                <FeatherIcon
+                    size="16"
+                    icon="pause"
+                />
+                <span className="text-xs mx-1">Pause</span>
+            </div>
+        ),
     };
 
     const browseHistory = (c, delta: number) => {

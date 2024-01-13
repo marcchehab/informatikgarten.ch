@@ -102,52 +102,37 @@ export const callouts: Plugin = function (providedConfig?: Partial<Config>) {
         blockquote.children[0].type !== "paragraph"
       )
         return;
-      const paragraph = blockquote.children[0];
+      const title_paragraph = blockquote.children[0];
 
       if (
-        paragraph.children.length <= 0 ||
-        paragraph.children[0].type !== "text"
+        title_paragraph.children.length <= 0 ||
+        title_paragraph.children[0].type !== "text"
       )
         return;
 
-      const [t, ...rest] = paragraph.children;
+      const [firstchild, ...rest] = title_paragraph.children;
 
       const regex = new RegExp(
-        `^\\[!(?<keyword>(.*?))\\](?<foldChar>[+-]?)[\t\f ]?(?<title>.*?)$`,
+        `^\\[!(?<keyword>(.*?))\\](?<foldChar>[+-]?)`,
         "gi"
       );
-      const m = regex.exec(t.value);
+      const m = regex.exec(firstchild.value);
 
       // if no callout syntax, forget about it.
       if (!m) return;
 
-      const [key, foldChar, title] = [m.groups?.keyword, m.groups?.foldChar, m.groups?.title];
+      const [key, foldChar] = [m.groups?.keyword, m.groups?.foldChar];
 
       // if there's nothing inside the brackets, is it really a callout ?
       if (!key) return;
+
+      // now we're going for it, so let's remove the callout syntax from the content
+      firstchild.value = firstchild.value.replace(regex, '');
 
       const keyword = key.toLowerCase();
       const isOneOfKeywords: boolean = new RegExp(defaultKeywords).test(
         keyword
       );
-
-      if (title) {
-        const mdast = fromMarkdown(title.trim()).children[0];
-        if (mdast.type === "heading") {
-          mdast.data = {
-            ...mdast.data,
-            hProperties: {
-              className: "blockquote-heading",
-            },
-          };
-        }
-        blockquote.children.unshift(mdast as BlockContent);
-      } else {
-        t.value =
-          typeof keyword.charAt(0) === "string"
-            ? keyword.charAt(0).toUpperCase() + keyword.slice(1)
-            : keyword;
-      }
 
       const entry: { [index: string]: string } = {};
 
@@ -186,7 +171,7 @@ export const callouts: Plugin = function (providedConfig?: Partial<Config>) {
           },
           {
             type: "element",
-            children: title ? [blockquote.children[0]] : [t],
+            children: [title_paragraph],
             data: {
               hName: "strong",
             },
@@ -202,18 +187,7 @@ export const callouts: Plugin = function (providedConfig?: Partial<Config>) {
           },
         },
       };
-
-      // remove the callout paragraph from the content body
-      if (title) {
-        blockquote.children.shift();
-      }
-
-      if (rest.length > 0) {
-        rest.shift();
-        paragraph.children = rest;
-      } else {
-        blockquote.children.shift();
-      }
+      blockquote.children.shift();
 
       // wrap blockquote content in div
       const contentNode: object = {
