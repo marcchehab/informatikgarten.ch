@@ -1,1 +1,2 @@
-export { SiteToc, NavItem, NavGroup } from "./SiteToc";
+export { SiteToc } from "./SiteToc";
+export type { NavItem, NavGroup } from "./SiteToc";
