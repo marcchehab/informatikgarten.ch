@@ -1,3 +1,4 @@
+import { useSession } from 'next-auth/react'
 import log from "../logger";
 
 const HISTORY_THRESHOLD = 10;
@@ -147,5 +148,6 @@ export const loadFromRemote = async (c) => {
 };
 
 export const getLastTimestampPromise = async (id) => {
-    if (c.session) return fetch(`/api/lasttimestamp?editorId=${encodeURIComponent(id)}`);
+    const session = useSession();
+    if (session[0]) return fetch(`/api/lasttimestamp?editorId=${encodeURIComponent(id)}`);
 };
