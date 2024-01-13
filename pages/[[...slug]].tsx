@@ -76,7 +76,7 @@ export const getStaticProps: GetStaticProps = async ({
 
     if (frontMatterWithComputedFields?.showSidebar) {
         const allPages = await mddb.getFiles({ extensions: ["md", "mdx"] });
-        const pages = allPages.filter((p) => !p.metadata?.isDraft);
+        const pages = allPages.filter((p) => !p.metadata?.isDraft && !p.metadata?.hidden);
         pages.forEach((page) => {
             addPageToSitemap(page, siteMap);
         });

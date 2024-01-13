@@ -47,6 +47,7 @@
 }
 
 .monacoeditor {
+    /* resize: horizontal; // It's possible but not as nice the the custom vertical line */
     overflow: hidden;
     /* background-color: var(--light); */
     & .editor-container {

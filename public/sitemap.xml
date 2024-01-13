@@ -73,10 +73,6 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/notes/ignore%20notes</loc>
-  </url>
-
-  <url>
     <loc
       >https://informatikgarten.ch/1%20Programmieren%20&%20Algorithmen/Lektionsnotizen/sort-intro</loc
     >
@@ -115,10 +111,6 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/notes/callouts</loc>
-  </url>
-
-  <url>
     <loc
       >https://informatikgarten.ch/1%20Programmieren%20&%20Algorithmen/ginf-b01l08-funktionenpython</loc
     >
@@ -148,10 +140,6 @@
     <loc
       >https://informatikgarten.ch/1%20Programmieren%20&%20Algorithmen/ginf-b01l15-ifelse</loc
     >
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/notes/showcase</loc>
   </url>
 
   <url>
@@ -195,10 +183,6 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/notes/docker</loc>
-  </url>
-
-  <url>
     <loc
       >https://informatikgarten.ch/3-2-internet-web/Internet%20-%20Dijkstra%20Algorithmus</loc
     >
@@ -219,17 +203,9 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/notes/setup</loc>
-  </url>
-
-  <url>
     <loc
       >https://informatikgarten.ch/1%20Programmieren%20&%20Algorithmen/ginf-b01l04-for</loc
     >
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/notes/preview%20changes</loc>
   </url>
 
   <url>
@@ -240,10 +216,6 @@
     <loc
       >https://informatikgarten.ch/1%20Programmieren%20&%20Algorithmen/ginf-b01l06-verschachteltfor</loc
     >
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/notes/obsidian</loc>
   </url>
 
   <url>
@@ -258,10 +230,6 @@
 
   <url>
     <loc>https://informatikgarten.ch/binp2/binp-b1l0x-objects</loc>
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/notes/troubleshooting</loc>
   </url>
 
   <url>
@@ -285,12 +253,6 @@
   </url>
 
   <url>
-    <loc
-      >https://informatikgarten.ch/notes/CJK%20+%20Latex%20Support%20(%E6%B5%8B%E8%AF%95)</loc
-    >
-  </url>
-
-  <url>
     <loc>https://informatikgarten.ch/2-daten/ginf-b02l1112-vorbereitung</loc>
   </url>
 
@@ -304,10 +266,6 @@
     <loc
       >https://informatikgarten.ch/3-2-internet-web/net-1-tcpip-MarcsHomePC</loc
     >
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/notes/updating</loc>
   </url>
 
   <url>
@@ -339,10 +297,6 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/notes/philosophy</loc>
-  </url>
-
-  <url>
     <loc>https://informatikgarten.ch/3-2-internet-web/net-1-tcpip</loc>
   </url>
 
@@ -365,17 +319,9 @@
   </url>
 
   <url>
-    <loc>https://informatikgarten.ch/notes/config</loc>
-  </url>
-
-  <url>
     <loc
       >https://informatikgarten.ch/3-1-aufbau-computer/1%20%C3%9Cbersicht%20&%20Logic%20gates</loc
     >
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/notes/hosting</loc>
   </url>
 
   <url>
@@ -396,14 +342,6 @@
 
   <url>
     <loc>https://informatikgarten.ch/binp2/binp-b1l0506-notizen</loc>
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/notes/custom%20Domain</loc>
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/notes/search</loc>
   </url>
 
   <url>
@@ -438,10 +376,6 @@
 
   <url>
     <loc>https://informatikgarten.ch/Portfolio/Blender</loc>
-  </url>
-
-  <url>
-    <loc>https://informatikgarten.ch/notes/editing</loc>
   </url>
 
   <url>

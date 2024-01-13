@@ -30,6 +30,7 @@ export const autosaveHandler = (c) => {
     if (c.autosaveCounterRef.current % HISTORY_THRESHOLD === 0) {
         history.unshift({ timestamp: Date.now(), code: currentCode });
         history.length > HISTORY_SIZE ?? history.pop();
+        c.setUndo(history.length > 1);
         log('INFO', "Stored in history", history.length);
 
         // If user is logged in, save to remote

@@ -53,6 +53,7 @@ const computeFields = async ({
     (siteConfig.editLinkRoot && `${siteConfig.editLinkRoot}/${filePath}`) ||
     null;
   const authors = await getAuthorsDetails(frontMatter.authors);
+  const hidden = frontMatter.hidden ?? false;
 
   return {
     ...frontMatter,
@@ -70,6 +71,7 @@ const computeFields = async ({
     showLinkPreviews,
     showToc,
     showSidebar,
+    hidden,
   };
 };
 

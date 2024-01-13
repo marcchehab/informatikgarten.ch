@@ -1,6 +1,7 @@
 ---
 showSidebar: false
 showToc: false
+hidden: true
 ---
 # 🪴informatikgarten.ch für alle!
 
