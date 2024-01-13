@@ -13,7 +13,7 @@ Was Ihnen wohl gar nicht auffällt: Das Bild liegt gar nicht auf dem gleichen Se
 
 Mit der Webseite [geotraceroute.com](https://geotraceroute.com/) habe ich den Weg zu nasa.gov mal von einem Computer in Strasbourg aus visualisiert. Diese Webseite versucht, zu ermitteln, wo die Geräte sind, die auf der Route genutzt werden. Das ist nur zu circa 90% verlässlich, aber es gibt allemal ein gutes Bild!
 
-<iframe src="https://geotraceroute.com/?node=0&host=nasa.gov" width="100%" height=500></iframe>
+<iframe src="https://geotraceroute.com/?node=0&host=nasa.gov" width="100%" height="500"></iframe>
 
 > [!note] Versuchen Sie es selbst
 > 
