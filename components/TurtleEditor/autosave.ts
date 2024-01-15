@@ -66,6 +66,7 @@ export const restoreHandler = (c) => {
     }
     c.historyRef.current = localHistory;
 
+    if (c.session) loadFromRemote(c);
     // Check if remote history is newer than local history
     // if (!c.session) return;
     // c.lastTimestampPromiseRef.current

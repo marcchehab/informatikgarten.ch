@@ -6,6 +6,7 @@
   }
   --z-base: 21;
   --z-button: 25;
+  --z-resizer: 30;
   --z-fullscreen: 51;
 }
 
@@ -128,6 +129,7 @@
   cursor: col-resize;
   background-color: rgba(255, 255, 255);
   opacity: 0.3;
+  z-index: var(--z-resizer);
   &:hover {
     opacity: 0.8;
   }
@@ -139,12 +141,11 @@
     height: 100%;
   }
   &::before {
-    width: 10px;
-    margin-left: -10px;
+    width: 4px;
+    margin-left: -4px;
   }
   &::after {
     width: 13px;
-    z-index: var(--z-button);
   }
 }
 
