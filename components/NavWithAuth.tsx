@@ -4,11 +4,13 @@ import { Nav } from "@portaljs/core";
 import { createPortal } from "react-dom";
 import { useEffect, useState } from "react";
 import FeatherIcon from "feather-icons-react";
+import log from "./logger";
 
 function LoginBtn() {
     const router = useRouter();
     const { data: session } = useSession();
     if (session) {
+        log("DEBUG", session);
         return (
             <>
                 <button
