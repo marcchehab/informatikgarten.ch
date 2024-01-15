@@ -57,8 +57,7 @@ function TurtleEditor({ children, ...props }) {
 
     const [currentRunLevel, setCurrentRunLevel] = useState(RunLevel.stopped);
     const { data: session } = useSession();
-    const lastTimestampPromiseRef = useRef(null);
-    if (session) lastTimestampPromiseRef.current = getLastTimestampPromise(idRef.current);
+    // const lastTimestampPromiseRef = useRef(null);
 
     const initCode = typeof children === "string" ? children : "invalid code";
     const historyRef = useRef(null);
@@ -69,7 +68,8 @@ function TurtleEditor({ children, ...props }) {
     const startstopRef = useRef(null);
     const wrapperRef = useRef(null);
 
-    const [output, setOutput] = useState([] as outputElement[]);
+    const [output, setOutput] = useState<outputElement[]>([]);
+    // if (session) lastTimestampPromiseRef.current = getLastTimestampPromise(idRef.current);
 
     useEffect(() => {
         // Restore
@@ -180,7 +180,7 @@ function TurtleEditor({ children, ...props }) {
         graphicspanelRef: useRef(null),
         runPythonCode: runPythonCode,
         autosaveCounterRef: useRef(0),
-        lastTimestampPromiseRef: lastTimestampPromiseRef,
+        // lastTimestampPromiseRef: lastTimestampPromiseRef,
         remoteTimestampsRef: useRef(new Set()),
     };
 

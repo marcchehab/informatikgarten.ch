@@ -67,18 +67,24 @@ export const restoreHandler = (c) => {
     c.historyRef.current = localHistory;
 
     // Check if remote history is newer than local history
-    if (!c.session) return;
-    c.lastTimestampPromiseRef.current
-        .then(res => res.text())
-        .then(remoteTimestamp => {
-            if (!isNaN(remoteTimestamp)) {
-                if (localHistory.length && localHistory[0].timestamp >= Number(remoteTimestamp)) {
-                    log("INFO", "localTimestamp newer than remoteTimestamp");
-                    return;
-                }
-                loadFromRemote(c);
-            }
-        });
+    // if (!c.session) return;
+    // c.lastTimestampPromiseRef.current
+        // .then(res => {
+        //     if (res) {
+        //         return res.text();
+        //     }
+        //     log("INFO", "No remote history found");
+        //     return null;
+        // })
+        // .then(remoteTimestamp => {
+        //     if (!isNaN(remoteTimestamp)) {
+        //         if (localHistory.length && localHistory[0].timestamp >= Number(remoteTimestamp)) {
+        //             log("INFO", "localTimestamp newer than remoteTimestamp");
+        //             return;
+        //         }
+        //         loadFromRemote(c);
+        //     }
+        // });
 };
 
 export const saveToRemote = async (c) => {
@@ -149,5 +155,10 @@ export const loadFromRemote = async (c) => {
 
 export const getLastTimestampPromise = async (id) => {
     const session = useSession();
-    if (session[0]) return fetch(`/api/lasttimestamp?editorId=${encodeURIComponent(id)}`);
+    log("INFO", "getLastTimestampPromise", id, session);
+    // if (session) {
+    //     console.error('ERROR: Error in useSession response', error);
+    //     return null;
+    // }
+    // if (session) return fetch(`/api/lasttimestamp?editorId=${encodeURIComponent(id)}`);
 };

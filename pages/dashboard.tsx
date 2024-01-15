@@ -6,15 +6,14 @@ import Link from 'next/link';
 
 const Dashboard = () => {
   const { data: sessionData, status } = useSession();
-  const data = sessionData;
 
   return status === 'authenticated' ? (
     <div style={{ textAlign: 'center' }}>
       <h1>Dashboard</h1>
-      {data && (
+      {sessionData && (
         <>
-          <div>{`Name : ${data.user?.name}`}</div>
-          <div>{`Email : ${data.user?.email}`}</div>
+          <div>{`Name : ${sessionData.user?.name}`}</div>
+          <div>{`Email : ${sessionData.user?.email}`}</div>
         </>
       )}
       <button
