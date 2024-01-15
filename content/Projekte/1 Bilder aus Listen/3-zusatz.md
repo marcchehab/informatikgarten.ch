@@ -21,5 +21,4 @@ Jetzt müssen Sie Bilder lesen können. Erfinden Sie das Rad nicht neu, sondern 
 - Installieren Sie das Paket.
 - Testen Sie, wie im Tutorial vorgeschlagen, `im.show()` mit einem einfachen Testbild. (Das Öffnen des Bildes hat seine Tücken.)
 
-So, damit haben Sie die grundlegende Infrastruktur beisammen. Überlegen Sie sich nun wieder, was Sie genau brauchen und suchen Sie danach auf Google - wie Programmierer das ständig auch tun. (Sie dürfen auch eine KI verwenden, solange Sie den Code verstehen.)
-
+So, damit haben Sie die grundlegende Infrastruktur beisammen. Überlegen Sie sich nun wieder, was Sie genau brauchen und suchen Sie danach auf Google - wie Programmierer das ständig auch tun. (Wenn Sie eine KI verwenden, vergewissern Sie sich, dass Sie den Code *tatsächlich* verstehen!)
