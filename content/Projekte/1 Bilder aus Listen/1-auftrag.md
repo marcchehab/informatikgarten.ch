@@ -7,7 +7,9 @@ Das Ziel ist, dass Sie eine Funktion `paint(bild)` mit einem Parameter `bild` er
 
 <video controls width="100%"><source src="https://v.nostr.build/B28Z.mp4" type="video/mp4" /></video>
 
-Ich habe Ihnen hier wichtige Tipps und Links zusammengetragen. Lesen Sie folgende Punkte **komplett** durch, bevor Sie sich in die Arbeit stürzen.
+Ihr Auftrag ist also zunächst ein *vorgegebenes* Bild zu zeichnen. Sie müssen noch **kein eigenes Bild erstellen**.
+
+Ich habe Ihnen hier wichtige Tipps und Links zusammengetragen. Lesen Sie folgende Punkte **komplett** durch, bevor Sie sich in die Arbeit stürzen. Arbeiten können Sie hier auf Informatikgarten mit diesem Editor:
 
 ```turtle
 import turtle
@@ -24,11 +26,11 @@ paint(bild)
 ```
 
 ## So arbeiten wir
-- Arbeiten Sie **in Onenote im Notizheft**. Speichern Sie dort Ihre Notizen und Ihren Code jeweils.
-- Machen Sie zu Listen einen Theorieeintrag mit den wichtigsten Erkenntnissen (diesmal ohne Vorlage).
+- Speichern Sie **in Onenote im Notizheft** Ihre Notizen und Ihren Code.
+- Machen Sie am Schluss einen Theorieeintrag zu Listen mit den wichtigsten Erkenntnissen (diesmal ohne Vorlage).
 - Sie haben 3 bis 5 Lektionen Zeit.
 ## Listen und unser "Dateiformat"
-Ich habe Ihnen das nötige Wissen über Listen [[listen-intro|hier zusammengefasst]]. Nachdem Sie dort den ersten Teil durchgearbeitet haben, ergeben folgende Hinweise Sinn:
+Ich habe Ihnen das nötige Wissen über Listen [[2-listen-intro|hier zusammengefasst]]. Nachdem Sie dort den ersten Teil durchgearbeitet haben, ergeben folgende Hinweise Sinn:
 
 Unser Bild soll aus Zeilen von Pixeln bestehen. Alle Zeilen sind gleichlange Listen von Farben, die z.B. so aussehen könnten, wenn das Bild vier Pixel breit wäre:
 
@@ -36,9 +38,9 @@ Unser Bild soll aus Zeilen von Pixeln bestehen. Alle Zeilen sind gleichlange Lis
 ["#fafa6e", "#e4fd77", "#ceff83", "#b8ff91"]
 ```
 
-Das ganze Bild besteht dann aus mehreren solcher Zeilen. Eine Liste von Listen. Oder eben: Eine verschachtelte Liste.
+Das ganze Bild besteht dann aus mehreren solcher Zeilen: Es ist eine Bild-Liste aus Zeilen-Listen. Oder eben: Eine "verschachtelte" Liste.
 
-Dazu ein Tipp: Python ist es an den meisten Stellen egal, ob Sie Seitenumbrüche hinzufügen. Sie können damit eine verschachtelte Liste viel übersichtlicher schreiben, als wenn Sie alles in eine Linie packen. Hier ein Beispiel für ein Bild von 4x4 Pixeln.
+Dazu ein Tipp: In Python ist es an vielen Stellen egal, ob Sie Zeilenumbrüche hinzufügen. Sie können damit eine verschachtelte Liste viel übersichtlicher schreiben, als wenn Sie alles in eine Linie packen. Hier ein Beispiel für ein Bild von 4x4 Pixeln.
 
 ```python
 bild = [
@@ -51,13 +53,23 @@ bild = [
 
 Sie finden ein Beispielbild [[#Ein Beispielbild|am Ende dieses Eintrags]], aber Sie können gern auch eigene Bilder kreieren (z.B. [hier kann man Bilder zu Hex-Codes umwandeln](https://onlinetools.com/image/convert-image-to-hex-codes))!
 ## Divide & Conquer
-Erinnern Sie sich an die Strategie *Divide & Conquer*: **Zerlegen Sie ein grosses Problem in seine Teilprobleme**. Lösen Sie zuerst die einfachsten Teilprobleme und verknüpfen Sie diese Teillösungen, um die grösseren Probleme zu lösen. Arbeiten und testen Sie Schritt für Schritt. Das wohl kleinstmögliche Problem ist: Wie ändert man nochmal die Stiftfarbe der Turtle? (Hier online mit `eva.color(...)`)
+Erinnern Sie sich an die Strategie *Divide & Conquer*: **Zerlegen Sie das grosse Problem in kleinere Teilprobleme**. Dann lösen Sie zuerst die einfachsten Teilprobleme und verknüpfen diese Teillösungen, um die grösseren Probleme zu lösen. Arbeiten und testen Sie Schritt für Schritt, machen Sie nicht alles auf einmal. 
 
-Um den Überblick zu behalten, schreiben Sie sich die Teilproblem in einer sinnvollen Reihenfolge auf, wie Sie sie lösen möchten. Diese Abschnittsziele nennt man oft auch **Meilensteine**. Legen Sie mir Ihre Meilensteine bitte vor, bevor Sie mit dem Programmieren beginnen.
+Das wohl kleinstmögliche Problem ist: Wie ändert man nochmal die Stiftfarbe der Turtle? (Auf Informatikgarten mit `eva.color(...)`)
 
-## Ein Beispielbild
+Um den Überblick zu behalten, schreiben Sie sich die Teilproblem in einer sinnvollen Reihenfolge auf, wie Sie sie lösen möchten. Diese Abschnittsziele nennt man in der Projektplanung oft auch **Meilensteine**. Legen Sie mir Ihre Meilensteine bitte vor, bevor Sie mit dem Programmieren beginnen.
 
-Fahren Sie über das Code-Fenster, dann erscheint oben rechts ein "Kopieren"-Icon, um den gesamten Code einfach in die Zwischenablage zu kopieren.
+> [!success]- Teilprobleme
+> 
+> - Das Bild besteht aus Zeilen.
+> - Zeilen bestehen aus Pixeln.
+> - Pixel sind kleine Quadrate. Tipp: Es gibt eine sehr einfache, elegante Art, das zu zeichnen.
+
+## Ein grösseres Beispielbild
+
+Wenn Sie fertig sind, können Sie ein grösseres Beispielbild zu zeichnen versuchen. Fahren Sie hier über das Code-Fenster, dann erscheint oben rechts ein "Kopieren"-Icon, um den gesamten Code einfach in die Zwischenablage zu kopieren.
+
+Wenn das geklappt hat, habe ich Ihnen hier [[3-zusatz|eine knifflige Aufgabe]].
 
 ```python
 bild = [["#feffff", "#ffffff", "#ffffff", "#fefffe", "#fefeff", "#fffefe", "#ffffff", "#fffffe", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#feffff", "#cfcfcf", "#bfbebe", "#bebfbf", "#bfbfbf", "#bfbfbf", "#cfcfcf", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#fefeff", "#ffffff", "#feffff", "#fffffe"],
