@@ -1,7 +1,8 @@
+import log from "@/components/logger";
 import Script from "next/script";
 import { DefaultSeo } from "next-seo";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { use, useEffect } from "react";
 import type { AppProps } from "next/app";
 import { SearchProvider, pageview, ThemeProvider } from "@portaljs/core";
 import type { NavGroup, NavItem } from "@portaljs/core";
@@ -30,6 +31,7 @@ export interface CustomAppProps {
 }
 
 const MyApp = ({ Component, pageProps }: AppProps<CustomAppProps>) => {
+    useEffect(() => { log ("INFO", "Schön, dass Sie die Dev-Tools kennen 🤓. Jetzt befinden Sie sich in der Javascript-Konsole. Hier printe ich mit der Webapp Infos aus, damit ich weiss, was gerade passiert.")},[]);
     const router = useRouter();
     const { meta, siteMap, session } = pageProps;
 
