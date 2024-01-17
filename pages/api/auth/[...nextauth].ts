@@ -1,47 +1,54 @@
 import NextAuth from 'next-auth';
 import AzureADProvider from 'next-auth/providers/azure-ad';
+import log from '@/components/logger';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 const env = process.env;
+const authorizationUrl = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize';
+const tokenUrl = 'https://login.microsoftonline.com/common/oauth2/v2.0/token';
 
-async function refreshAccessToken(token) {
+function nowInSeconds() {
+    return Math.trunc(Date.now()/1000);
+}
+
+async function refreshAccessToken(accessToken) {
+    log("DEBUG", "Refreshing access token.");
     try {
-        const url = `https://login.microsoftonline.com/common/oauth2/v2.0/token`;
-
         const body = new URLSearchParams({
             client_id:
                 env.AZURE_AD_CLIENT_ID || 'azure-ad-client-id',
             client_secret:
                 env.AZURE_AD_CLIENT_SECRET ||
                 'azure-ad-client-secret',
-            scope: 'email openid profile User.Read offline_access',
             grant_type: 'refresh_token',
-            refresh_token: token.refreshToken,
-			authorization: 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize',
-			token: 'https://login.microsoftonline.com/common/oauth2/v2.0/token',
+            refresh_token: accessToken.refreshToken,
+            authorization: authorizationUrl,
+            token: tokenUrl,
         });
 
-        const response = await fetch(url, {
+        const response = await fetch(tokenUrl, {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
             method: 'POST',
-            body,
+            body: body
         });
 
         const refreshedTokens = await response.json();
         if (!response.ok) {
+            log("DEBUG", "Reponse not ok on refreshing access token.");
             throw refreshedTokens;
         }
 
         return {
-            ...token,
+            ...accessToken,
             accessToken: refreshedTokens.id_token,
-            accessTokenExpires: Date.now() + refreshedTokens.expires_in * 1000,
-            refreshToken: refreshedTokens.refresh_token ?? token.refreshToken,
+            accessTokenExpires: nowInSeconds() + refreshedTokens.expires_in,
+            refreshToken: refreshedTokens.refresh_token ?? accessToken.refreshToken,
         };
     } catch (error) {
         return {
-            ...token,
+            ...accessToken,
             error: 'RefreshAccessTokenError',
         };
     }
@@ -51,27 +58,36 @@ async function refreshAccessToken(token) {
 export const authOptions = {
     providers: [
         AzureADProvider({
-            clientId: `${env.AZURE_AD_CLIENT_ID}`,
-            clientSecret: `${env.AZURE_AD_CLIENT_SECRET}`,
+            clientId: env.AZURE_AD_CLIENT_ID,
+            clientSecret: env.AZURE_AD_CLIENT_SECRET,
             httpOptions: { timeout: 10000 },
-			authorization: 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize',
-			token: 'https://login.microsoftonline.com/common/oauth2/v2.0/token',
+            // token: tokenUrl,
+            authorization: {
+                // url: authorizationUrl,
+                params: {
+                  scope: "openid profile email offline_access",
+                },
+              },
         }),
     ],
     callbacks: {
         async jwt({ token, user, account }) {
+
+            // log("DEBUG", !!token, !!user, !!account);
             if (account && user) {
+                log("DEBUG", "Account and user found. Expires at: " + account.expires_at);
                 return {
-                    accessToken: account.id_token,
-                    accessTokenExpires: account?.expires_at
-                        ? account.expires_at * 1000
-                        : 0,
+                    accessToken: account.access_token,
                     refreshToken: account.refresh_token,
+                    accessTokenExpires: account?.expires_at
+                        ? account.expires_at
+                        : 0,
                     user,
                 };
             }
-
-            if (Date.now() < Number(token.accessTokenExpires) - 100000 || 0) {
+            const expiresinseconds = token.accessTokenExpires - nowInSeconds();
+            log("DEBUG", "accessTokenExpires in " + expiresinseconds + " seconds.");
+            if (expiresinseconds > 100) {
                 return token;
             }
             return refreshAccessToken(token);
@@ -87,7 +103,7 @@ export const authOptions = {
     },
 };
 
-const handler = NextAuth(authOptions);
+const handler = await NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
 export default handler;

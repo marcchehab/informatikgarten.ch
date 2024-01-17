@@ -10,14 +10,13 @@ function LoginBtn() {
     const router = useRouter();
     const { data: session } = useSession();
     if (session) {
-        log("DEBUG", session);
         return (
             <>
                 <button
                     title="Go to dashboard"
                     onClick={() => router.push("/dashboard")}
                 >
-                    {session.user.image ? (
+                    {session.user && session.user.image ? (
                         <img
                             src={session.user.image}
                             alt={session.user.name}

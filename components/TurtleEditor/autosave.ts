@@ -40,7 +40,7 @@ export const autosaveHandler = (c) => {
 };
 
 export const saveBeforeUnload = (c) => {
-    log("DEBUG", "saveBeforeUnload");
+    log("INFO", "saveBeforeUnload");
     const history = c.historyRef.current;
     // Check if code was changed from last time
     if (c.autosaveCounterRef.current === 0) {
