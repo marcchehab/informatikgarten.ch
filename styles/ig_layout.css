@@ -1,62 +1,66 @@
 pre:not(.outputpre) {
-    background: var(--callout-bg-color) !important;
+  background: var(--callout-bg-color) !important;
 }
 /* The scrollbar track */
 ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-    background: var(--bg);
-    &:hover {
-        width: 10px;
-    }
+  width: 6px;
+  height: 6px;
+  background: var(--bg);
+  &:hover {
+    width: 10px;
+  }
+}
+
+body.fullscreen::-webkit-scrollbar {
+  display: none;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--bg);
+  background: var(--bg);
 }
 
 /* The scrollbar thumb */
 ::-webkit-scrollbar-thumb {
-    background: #55555511;
-    border-radius: 5px; /* Add this line */
-    &:hover {
-        background-color: #55555544;
-    }
+  background: #55555511;
+  border-radius: 5px; /* Add this line */
+  &:hover {
+    background-color: #55555544;
+  }
 }
 
 /* Post navigation back and forward buttons */
 
 #mdxpage section > p:last-child {
-    a {
-        text-decoration: none;
-        padding: 0.5rem 1rem;
-        height: 3rem;
-        border: 1px var(--tw-prose-body) solid;
-        border-radius: 2rem;
-        background-color: #55555511;
-        &:hover {
-            background-color: #55555544;
-        }
-        &:first-child {
-            margin-top: 5rem;
-            float: left;
-            &::before {
-                content: "👈";
-                margin-right: 0.5rem;
-            }
-        }
-        &:last-child {
-            margin-top: 5rem;
-            float: right;
-            &::after {
-                content: "👉";
-                margin-left: 0.5rem;
-            }
-        }
+  a {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    height: 3rem;
+    border: 1px var(--tw-prose-body) solid;
+    border-radius: 2rem;
+    background-color: #55555511;
+    &:hover {
+      background-color: #55555544;
     }
-    &::after {
-        content: "";
-        display: table;
-        clear: both;
+    &:first-child {
+      margin-top: 5rem;
+      float: left;
+      &::before {
+        content: "👈";
+        margin-right: 0.5rem;
+      }
     }
+    &:last-child {
+      margin-top: 5rem;
+      float: right;
+      &::after {
+        content: "👉";
+        margin-left: 0.5rem;
+      }
+    }
+  }
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }
