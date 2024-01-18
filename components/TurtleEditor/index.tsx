@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import UserInterface from "./UI";
+import UserInterface from "./ui";
 import { saveBeforeUnload, restoreHandler, getLastTimestampPromise } from "./autosave";
 import log from "../logger";
 import { useSession } from "next-auth/react";
@@ -168,18 +168,24 @@ function TurtleEditor({ children, ...props }) {
     }
 
     configRef.current = {
+        // Main
         idRef: idRef,
         session: session,
         theme: "dark",
-        codeeditorRef: codeeditorRef,
-        initCode: initCode,
         wrapperRef: wrapperRef,
-        historyRef: historyRef,
-        historyIndexRef: historyIndexRef,
+        resizerHRef: useRef(null),
+        // Code editor
+        codeeditorRef: codeeditorRef,
+        editorPanelRef: useRef(null),
         graphicswrapperRef: graphicswrapperRef,
         graphicspanelRef: useRef(null),
+        historyRef: historyRef,
+        historyIndexRef: historyIndexRef,
+        // Code
+        initCode: initCode,
         runPythonCode: runPythonCode,
         autosaveCounterRef: useRef(0),
+        codeControlRef: useRef(null),
         // lastTimestampPromiseRef: lastTimestampPromiseRef,
         remoteTimestampsRef: useRef(new Set()),
     };
