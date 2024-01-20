@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import UserInterface from "./ui";
-import { saveBeforeUnload, restoreHandler, getLastTimestampPromise } from "./autosave";
+import { saveBeforeUnload, restoreHandler, loadFromRemote } from "./autosave";
 import log from "../logger";
 import { useSession } from "next-auth/react";
 
@@ -57,7 +57,8 @@ function TurtleEditor({ children, ...props }) {
 
     const [currentRunLevel, setCurrentRunLevel] = useState(RunLevel.stopped);
     const { data: session } = useSession();
-    // const lastTimestampPromiseRef = useRef(null);
+    const sessionRef = useRef(session);
+    // Is refreshed below
 
     const initCode = typeof children === "string" ? children : "invalid code";
     const historyRef = useRef(null);
@@ -69,7 +70,6 @@ function TurtleEditor({ children, ...props }) {
     const wrapperRef = useRef(null);
 
     const [output, setOutput] = useState<outputElement[]>([]);
-    // if (session) lastTimestampPromiseRef.current = getLastTimestampPromise(idRef.current);
 
     useEffect(() => {
         // Restore
@@ -92,13 +92,13 @@ function TurtleEditor({ children, ...props }) {
 
         // Add event listener when the component mounts
         window.addEventListener("beforeunload", handleBeforeUnload);
-        router.events.on('routeChangeStart', handleBeforeUnload);
+        router.events.on("routeChangeStart", handleBeforeUnload);
 
         // Return a function to be run when the component unmounts
         return () => {
             // Remove event listener when the component unmounts
             window.removeEventListener("beforeunload", handleBeforeUnload);
-            router.events.off('routeChangeStart', handleBeforeUnload);
+            router.events.off("routeChangeStart", handleBeforeUnload);
         };
     }, []);
 
@@ -170,7 +170,7 @@ function TurtleEditor({ children, ...props }) {
     configRef.current = {
         // Main
         idRef: idRef,
-        session: session,
+        sessionRef: sessionRef,
         theme: "dark",
         wrapperRef: wrapperRef,
         resizerHRef: useRef(null),
@@ -189,6 +189,14 @@ function TurtleEditor({ children, ...props }) {
         // lastTimestampPromiseRef: lastTimestampPromiseRef,
         remoteTimestampsRef: useRef(new Set()),
     };
+
+    useEffect(() => {
+        if (session) {
+            log("INFO", "Logged in!");
+            configRef.current.sessionRef.current = session;
+            loadFromRemote(configRef.current);
+        }
+    }, [session]);
 
     return (
         <div>

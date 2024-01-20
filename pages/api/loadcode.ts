@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { sql } from '@vercel/postgres';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
+import log from '@/components/logger';
 
 const HISTORY_SIZE = 10;
 
@@ -18,18 +19,28 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return res.status(400).json({ error: 'Invalid editor identifier' });
         }
 
+        // Check if local timestamps supplied
+        if ((!req.query.localTimestamps) || (typeof (req.query.localTimestamps) !== 'string')) {
+            return res.status(400).json({ error: 'Invalid timestamps' });
+        }
+
+        // Get local timestamps
+        const localTimestamps = req.query.localTimestamps.split(',').map(Number);
+        log("DEBUG3", "Received timestamps:", localTimestamps);
+        
         // Get user's email from session
         const userEmail = session.user.email;
-
+        
         // Get code snippets from code table
         const codeResult = await sql`
         SELECT code.timestamp, code.code 
         FROM code 
         JOIN users ON code.user_id = users.id 
-        WHERE users.email=${userEmail} AND code.codeeditor_string=${req.query.editorId} 
+        WHERE users.email=${userEmail} AND code.codeeditor_string=${req.query.editorId} AND code.timestamp != ALL(${localTimestamps}::bigint[])
         ORDER BY code.timestamp DESC
         LIMIT ${HISTORY_SIZE}
         `;
+        log("DEBUG", `Query found ${codeResult.rows.length} rows.`)
 
         // If no rows are returned, return empty array
         if (codeResult.rows.length === 0) {
