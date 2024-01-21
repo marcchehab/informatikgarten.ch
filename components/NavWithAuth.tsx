@@ -1,10 +1,9 @@
 import { useRouter } from "next/router";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { Nav } from "@portaljs/core";
+import { Nav } from "custom_modules/core/src";
 import { createPortal } from "react-dom";
 import { useEffect, useState } from "react";
 import FeatherIcon from "feather-icons-react";
-import log from "./logger";
 
 function LoginBtn() {
     const router = useRouter();
