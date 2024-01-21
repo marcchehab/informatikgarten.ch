@@ -32,11 +32,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const userEmail = session.user.email;
         
         // Get code snippets from code table
+        // TODO: Is there a way to void the hack with localTimestamps?
         const codeResult = await sql`
         SELECT code.timestamp, code.code 
         FROM code 
         JOIN users ON code.user_id = users.id 
-        WHERE users.email=${userEmail} AND code.codeeditor_string=${req.query.editorId} AND code.timestamp != ALL(${localTimestamps}::bigint[])
+        WHERE users.email=${userEmail} AND code.codeeditor_string=${req.query.editorId} AND code.timestamp != ALL(${`{${localTimestamps.toString()}}`}::bigint[])
         ORDER BY code.timestamp DESC
         LIMIT ${HISTORY_SIZE}
         `;
