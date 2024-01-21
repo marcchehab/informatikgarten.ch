@@ -72,13 +72,8 @@ function TurtleEditor({ children, ...props }) {
     const [output, setOutput] = useState<outputElement[]>([]);
 
     useEffect(() => {
-        // Restore and load from remote
+        // Restore
         restoreHandler(configRef.current);
-        if (session) {
-            configRef.current.sessionRef.current = session;
-            loadFromRemote(configRef.current);
-        }
-
         // Load skulpt and skulpt-stdlib
         loadScript("/skulpt.min.js", true)
             .then(() => {
@@ -191,9 +186,16 @@ function TurtleEditor({ children, ...props }) {
         runPythonCode: runPythonCode,
         autosaveCounterRef: useRef(0),
         codeControlRef: useRef(null),
+        // lastTimestampPromiseRef: lastTimestampPromiseRef,
+        remoteTimestampsRef: useRef(new Set()),
     };
 
     useEffect(() => {
+        if (session) {
+            log("INFO", "Logged in!");
+            configRef.current.sessionRef.current = session;
+            loadFromRemote(configRef.current);
+        }
     }, [session]);
 
     return (
