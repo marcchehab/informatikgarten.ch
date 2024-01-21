@@ -2,11 +2,11 @@
   "name": "flowershow",
   "version": "2.0.3",
   "scripts": {
-    "dev": "npm run generate && next dev",
-    "prebuild": "npm run generate",
+    "dev": "pnpm run generate && next dev",
+    "prebuild": "pnpm run generate",
     "build": "next build",
     "start": "next start",
-    "export": "npm run build && next export",
+    "export": "pnpm run build && next export",
     "mddb": "mddb ./content",
     "generate": "cross-env NODE_OPTIONS=\"--experimental-json-modules --experimental-modules\" node -r esbuild-register ./scripts/prebuild.mjs"
   },
@@ -52,7 +52,20 @@
     "ts-jest": "^29.1.1",
     "typed.js": "^2.0.12",
     "typescript": "^4.9.5",
-    "usehooks-ts": "^2.9.1"
+    "@storybook/react": "^7.6",
+    "usehooks-ts": "^2.9.1",
+    "@docsearch/react": "^3.3.3",
+    "@floating-ui/dom": "^1.5",
+    "@floating-ui/react": "^0.26",
+    "@giscus/react": "^2.2.6",
+    "@headlessui/react": "^1.7.12",
+    "clsx": "^1.2.1",
+    "core-js": "^3.30.2",
+    "disqus-react": "^1.1.5",
+    "framer-motion": "^10.0.1",
+    "kbar": "0.1.0-beta.40",
+    "mermaid": "^10.2.2",
+    "prop-types": "^15.8.1"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",

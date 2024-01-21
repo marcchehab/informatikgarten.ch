@@ -8,7 +8,7 @@ import {
   inline,
   offset,
   shift,
-} from "@floating-ui/react-dom";
+} from "@floating-ui/dom";
 
 import {
   FloatingPortal,
@@ -18,7 +18,7 @@ import {
   useFocus,
   useInteractions,
   useRole,
-} from "@floating-ui/react-dom-interactions";
+} from "@floating-ui/react";
 
 import { motion, AnimatePresence } from "framer-motion";
 
