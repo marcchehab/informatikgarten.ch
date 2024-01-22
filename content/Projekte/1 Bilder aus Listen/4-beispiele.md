@@ -7,11 +7,10 @@ Ein Schüler hat sogar herausgefunden, wie man echte, viereckige Pixel zeichnen 
 
 ## 🐧
 
-![[Pasted image 20240122105757.png]]
+![[Pasted image 20240122133308.png]]
 
 ```python
-bild = 
-[
+bild = [
     ["white", "white", "black", "black", "black", "black", "black", "white", "white"],
     ["white", "black", "white", "white", "white", "white", "white", "black", "white"],
     ["white", "black", "white", "black", "white", "black", "white", "black", "white"],
@@ -21,6 +20,7 @@ bild =
     ["white", "black", "white", "white", "white", "white", "white", "black", "white"],
     ["white", "white", "black", "orange", "black", "orange", "black", "white", "white"],
     ["white", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "white"],
+    ["blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue"]
 ]
 ```
 
