@@ -5,6 +5,25 @@ Einige Schülerinnen und Schüler haben für Ihre Turtle eigene Bilder gemalt! �
 
 Ein Schüler hat sogar herausgefunden, wie man echte, viereckige Pixel zeichnen kann!
 
+## 🐧
+
+![[Pasted image 20240122105757.png]]
+
+```python
+bild = 
+[
+    ["white", "white", "black", "black", "black", "black", "black", "white", "white"],
+    ["white", "black", "white", "white", "white", "white", "white", "black", "white"],
+    ["white", "black", "white", "black", "white", "black", "white", "black", "white"],
+    ["white", "black", "white", "white", "orange", "white", "white", "black", "white"],
+    ["black", "black", "white", "white", "white", "white", "white", "black", "black"],
+    ["white", "black", "white", "white", "white", "white", "white", "black", "white"],
+    ["white", "black", "white", "white", "white", "white", "white", "black", "white"],
+    ["white", "white", "black", "orange", "black", "orange", "black", "white", "white"],
+    ["white", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "white"],
+]
+```
+
 ## 💄
 
 ![[Pasted image 20240121233354.png]]
