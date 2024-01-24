@@ -5,6 +5,45 @@ Einige Schülerinnen und Schüler haben für Ihre Turtle eigene Bilder gemalt! �
 
 Ein Schüler hat sogar herausgefunden, wie man echte, viereckige Pixel zeichnen kann!
 
+## 💄
+
+![[Pasted image 20240124064241.png]]
+
+```python
+bild = [
+    ["white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white",],
+    ["white","white","white","white","white","white","magenta","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white",],["white","white","white","white","white","white","magenta","#fa68fa","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
+    ["white","white","white","white","white","white","magenta","magenta","#fa68fa","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
+    ["white","white","white","white","white","white","magenta","magenta","magenta","#fa68fa","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
+    ["white","white","white","white","white","white", "magenta", "magenta", "magenta", "magenta","#fa68fa","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
+    ["white","white","white","white","white","white","magenta","turquoise","magenta","magenta","magenta","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
+    ["white","white","white","white","white","white","turquoise","yellow","turquoise","magenta","magenta","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
+    ["white","white","white","white","white","white","magenta","turquoise","magenta","magenta","magenta","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
+    ["white","white","white","white","white","white","magenta","magenta","magenta","purple","magenta","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
+    ["white","white","white","white","white","white","magenta","magenta","purple","yellow","purple","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
+    ["white","white","white","white","white","white","magenta","magenta","magenta","purple","magenta","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
+    ["white","white","white","white","white","white","magenta","magenta","magenta","magenta","magenta","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
+    ["white","white","white","white","white","white","magenta","magenta","orange","magenta","magenta","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
+    ["white","white","white","white","white","white","magenta","orange","yellow","orange","magenta","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
+    ["white","white","white","white","grey","grey","grey","grey","grey","grey","grey","grey","grey","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
+    ["white","white","white","white","grey","grey","grey","grey","grey","grey","grey","grey","grey","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
+    ["white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","green","#339935","blue","black","black","black","black","white","white","white","white","white","white"],
+    ["white","white","white","white","white","black","lime","black","black","black","lime","black","white","white","white","white","white","#339935","blue","yellow","blue","black","black","black","white","white","white","white","white","white"],
+    ["white","white","white","white","white","black","lime","black","lime","black","lime","black","white","white","white","white","white","black","black","blue","green","green","#339935","black","white","white","white","white","white","white"],
+    ["white","white","white","white","white","black","lime","lime","lime","lime","lime","black","white","white","white","white","white","black","black","black","black","#339935","green","green","white","white","white","white","white","white"],
+    ["white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","white"],
+    ["white","white","white","white","white","black","black","black","black","black","lime","black","white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","white"],
+    ["white","white","white","white","white","black","black","black","black","black","lime","black","white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","white"],
+    ["white","white","white","white","white","black","lime","lime","lime","lime","lime","black","white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","white"],
+    ["white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","green","green","#339935","black","black","black","black","white","white","white","white","white","white"],
+    ["white","white","white","white","white","black","lime","black","black","black","lime","black","white","white","white","white","white","black","#339935","green","green","pink","black","black","white","white","white","white","white","white"],
+    ["white","white","white","white","white","black","lime","black","black","black","lime","black","white","white","white","white","white","black","black","black","pink","yellow","pink","#339935","white","white","white","white","white","white"],
+    ["white","white","white","white","white","black","lime","lime","lime","lime","lime","black","white","white","white","white","white","black","black","black","black","pink","#339935","green","white","white","white","white","white","white"],
+    ["white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","white"],
+    ["white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white",],
+]
+```
+
 ## 🐧
 
 ![[Pasted image 20240122133308.png]]
@@ -24,45 +63,6 @@ bild = [
 ]
 ```
 
-## 💄
-
-![[Pasted image 20240121233354.png]]
-
-```python
-farbliste = [
-    ["white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white",],["white","white","white","white","white","white","magenta","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
-    ["white","white","white","white","white","white","magenta","magenta","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
-    ["white","white","white","white","white","white","magenta","magenta","magenta","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
-    ["white","white","white","white","white","white", "magenta", "magenta", "magetna", "magetna","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
-    ["white","white","white","white","white","white","magenta","magenta","magenta","magenta","magenta","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
-    ["white","white","white","white","white","white","magenta","magenta","magenta","magenta","magenta","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
-    ["white","white","white","white","white","white","magenta","magenta","magenta","magenta","magenta","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
-    ["white","white","white","white","white","white","magenta","magenta","magenta","magenta","magenta","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
-    ["white","white","white","white","white","white","magenta","magenta","magenta","magenta","magenta","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
-    ["white","white","white","white","white","white","magenta","magenta","magenta","magenta","magenta","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
-    ["white","white","white","white","white","white","magenta","magenta","magenta","magenta","magenta","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
-    ["white","white","white","white","white","white","magenta","magenta","magenta","magenta","magenta","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
-    ["white","white","white","white","white","white","magenta","magenta","magenta","magenta","magenta","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
-    ["white","white","white","white","grey","grey","grey","grey","grey","grey","grey","grey","grey","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
-    ["white","white","white","white","grey","grey","grey","grey","grey","grey","grey","grey","grey","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white"],
-    ["white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","white"],
-    ["white","white","white","white","white","black","lime","black","black","black","lime","black","white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","white"],
-    ["white","white","white","white","white","black","lime","black","lime","black","lime","black","white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","white"],
-    ["white","white","white","white","white","black","lime","lime","lime","lime","lime","black","white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","white"],
-    ["white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","white"],
-    ["white","white","white","white","white","black","black","black","black","black","lime","black","white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","white"],
-    ["white","white","white","white","white","black","black","black","black","black","lime","black","white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","white"],
-    ["white","white","white","white","white","black","lime","lime","lime","lime","lime","black","white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","white"],
-    ["white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","white"],
-    ["white","white","white","white","white","black","lime","black","black","black","lime","black","white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","white"],
-    ["white","white","white","white","white","black","lime","black","black","black","lime","black","white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","white"],
-    ["white","white","white","white","white","black","lime","lime","lime","lime","lime","black","white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","white"],
-    ["white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","black","black","black","black","black","black","black","white","white","white","white","white","white"],
-    ["white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white","white",],
- 
- 
-]
-```
 ## 😉
 
 ![[Pasted image 20240121232908.png]]
@@ -90,6 +90,30 @@ farbliste = [
 ]
 ```
 
+## Pacman
+
+![[Pasted image 20240124064557.png]]
+
+```python
+bild = [
+["white", "white", "white", "white", "white", "white", "black", "black", "black", "black", "black", "black", "white", "white", "white", "white", "white"],
+["white", "white", "white", "white", "black", "black", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "black", "black", "white", "white", "white"],
+["white", "white", "white", "black", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "black", "white", "white"],
+["white", "white", "black", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "black", "white"],
+["white", "white", "black", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "black", "white"],
+["black", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "black", "black", "white"],
+["black", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "black", "black", "black", "white", "white", "white"],
+["black", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "black", "black", "black", "white", "white", "white", "white", "white", "white"],
+["black", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "black", "black", "black", "white", "white", "white"],
+["black", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "black", "black", "white"],
+["white", "black", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "black"],
+["white", "black", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "black"],
+["white", "white", "black", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "black", "white"],
+["white", "white", "white", "black", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "black", "white", "white"],
+["white", "white", "white", "white", "black", "black", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "black", "black", "white", "white", "white"],
+["white", "white", "white", "white", "white", "white", "black", "black", "black", "black", "black", "black", "white", "white", "white", "white", "white"]
+]
+```
 
 ## Pixel-perfect Turtle
 
