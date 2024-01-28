@@ -11,7 +11,7 @@ import {
     EditThisPage,
     TableOfContents,
 } from "@portaljs/core";
-import { SiteToc } from "@/custom_modules/SiteToc";
+import { SiteToc } from "@portaljs/core";
 import type {
     NavItem,
     NavGroup,

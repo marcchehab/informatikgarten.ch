@@ -2,10 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@portaljs/core": ["node_modules/@portaljs/core/src"],
-      "@portaljs/remark-callouts": ["custom_modules/remark-callouts/src"],
-      "@portaljs/remark-wiki-link": ["custom_modules/remark-wiki-link/src"],
-      "@portaljs/remark-embed": ["node_modules/@portaljs/remark-embed/src"],
+      "@portaljs/core": ["custom_modules/core"],
+      "@portaljs/remark-callouts": ["custom_modules/remark-callouts"],
+      "@portaljs/remark-wiki-link": ["custom_modules/remark-wiki-link"],
       "@/*": ["./*"]
     },
     "target": "es2020",
