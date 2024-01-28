@@ -3,10 +3,6 @@ enableToc: false
 ---
 ## Grüezi & Willkommen
 
-> [!info]- Notiz **für** Lehrer
-> 
-> Übungen ve
-
 Herzlich willkommen auf dem neuen Informatikgarten! Ich habe über die Weihnachtsferien die Seite komplett neu programmiert. Damit kommen viele Verbesserungen - und weitere werden folgen.
 
 👈 Neu finden Sie die Inhaltsübersicht hier links.

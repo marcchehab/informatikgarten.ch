@@ -6,12 +6,12 @@ import {
     useTableOfContents,
     collectHeadings,
     Nav,
+    SiteToc,
     Comments,
     Footer,
     EditThisPage,
     TableOfContents,
 } from "@portaljs/core";
-import { SiteToc } from "@portaljs/core";
 import type {
     NavItem,
     NavGroup,
