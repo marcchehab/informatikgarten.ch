@@ -24,9 +24,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-    "prepare": "nx build remark-callouts"
-  },
   "files": [
     "dist"
   ],

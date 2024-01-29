@@ -23,9 +23,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-    "prepare": "nx build remark-wiki-link"
-  },
   "files": [
     "dist"
   ],
