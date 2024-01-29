@@ -13,7 +13,7 @@ title: "L05+L06: Zahlen mit Buchstaben? Hex und das RGB-Farbmodell"
 
 Stellen Sie sich nun einmal einen Computerspeicher mit mehreren Bytes vor: Natürlich können wir Menschen nichts damit anfangen.
 
-![[Pasted image 20231112160511.png|-invert]]
+![[Pasted image 20231112160511.png|invert]]
 
 Gäbe es nicht ein Zahlensystem, dass näher an diesen binären Zahlen dran ist, aber trotzdem einfacher zu lesen? 
 
@@ -21,7 +21,7 @@ Führen Sie sich vor Augen, dass ein Byte zweimal 4 Bit hat. Wie viele verschied
 
 Die grösste Zahl ist 1111<sub>2</sub> = 15<sub>10</sub>, und dazu noch 0. Also 16 verschiedene Zahlen. Hätten wir doch ein Zahlensytem, dass 16 als Basis hätte...
 
-![[Pasted image 20231112161555.png|-invert]]
+![[Pasted image 20231112161555.png|invert]]
 
 Schaffen wir uns unser Glück doch selbst und kreieren ein Zahlensystem, dass 16 als Basis hat! Natürlich haben wir zu wenig Zeichen dafür, weil wir im Dezimalsystem leben. Aber nehmen wir einfach Buchstaben!
 

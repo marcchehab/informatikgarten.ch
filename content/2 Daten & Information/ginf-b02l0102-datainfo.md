@@ -41,7 +41,7 @@ Daten also erhalten erst dadurch eine Bedeutung, wenn klar ist, wie sie interpre
 
 Dazu folgendes Beispiel: Überlegen Sie sich, was Sie hier sehen. Was sind daran Daten, was Informationen?
 
-![[Pasted image 20231105144113.png|-invert]]
+![[Pasted image 20231105144113.png|invert]]
 
 Es ist nicht so, als hätten sich das irgendwer ausgedacht, um uns zu quälen. Dass man Rohdaten irgendwie interpretieren *muss*, dass daraus Informationen werden, ist ein reales Problem.
 
@@ -117,7 +117,7 @@ print("Die zweite Summe ist", zahl1 + zahl2)
 > Daten erhalten erst eine Bedeutung, wenn klar ist, wie sie interpretiert werden müssen. Diese **Interpretationsregeln** werden in der Informatik **Semantik** genannt. 
 > 
 > Dazu folgendes Bild:
-> ![[Pasted image 20231105144113.png|-invert]]
+> ![[Pasted image 20231105144113.png|invert]]
 > 
 > - **Daten** sind die sinnlosen Rohdaten: Welche Punkte sind schwarz, welche weiss?
 > - **Semantik** ist, wenn uns jemand sagt: "Interpretiere diese Daten als Buchstaben"

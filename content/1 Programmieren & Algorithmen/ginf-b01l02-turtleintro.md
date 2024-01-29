@@ -133,14 +133,14 @@ Mit diesen wenigen Zeilen Code können Sie Ihrer Schildkröte "eva" also bereits
 > 
 > Versuchen Sie mal folgende Figuren nachzumachen. (Grösse und Farbe müssen nicht stimmen.)
 
-![[Pasted image 20230627134624.png|-invert]]
-![[Pasted image 20230627134824.png|-invert]]
-![[Pasted image 20230627134709.png|-invert]]
-![[Pasted image 20230627135005.png|-invert]]
-![[Pasted image 20230807132453.png|-invert]]
+![[Pasted image 20230627134624.png|invert]]
+![[Pasted image 20230627134824.png|invert]]
+![[Pasted image 20230627134709.png|invert]]
+![[Pasted image 20230627135005.png|invert]]
+![[Pasted image 20230807132453.png|invert]]
 
 
-![[Pasted image 20230807132453.png|-invert]]
+![[Pasted image 20230807132453.png|invert]]
 
 
 > [!NOTE] Eintrag ins Theorieheft

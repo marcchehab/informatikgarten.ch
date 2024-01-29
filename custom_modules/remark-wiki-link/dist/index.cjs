@@ -443,19 +443,39 @@ function fromMarkdown() {
           children: []
         }];
       } else {
-        var _displayName$split = displayName.split("-"),
-          _displayName$split2 = _slicedToArray(_displayName$split, 3),
-          name = _displayName$split2[0],
-          invert = _displayName$split2[1],
-          width = _displayName$split2[2];
-        var classes = invert == "invert" ? classNames + " invert" : classNames;
+        var _attributes$width;
+        var attributeStrings = displayName.split("|");
+        var attributes = {
+          name: "",
+          width: null,
+          invert: false
+        };
+        var _iterator = _createForOfIteratorHelper(attributeStrings),
+          _step;
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var attributeString = _step.value;
+            if (attributeString === "invert") {
+              attributes.invert = true;
+            } else if (!isNaN(attributeString)) {
+              attributes.width = attributeString;
+            } else {
+              attributes.name = attributeString;
+            }
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+        var classes = attributes.invert ? classNames + " invert" : classNames;
         var src = link.startsWith("/assets/") ? link : "/assets/".concat(link); // TODO this is ugly
         wikiLink.data.hName = "img";
         wikiLink.data.hProperties = {
           className: classes,
           src: src,
-          alt: name,
-          width: width !== null && width !== void 0 ? width : ""
+          alt: attributes.name,
+          width: (_attributes$width = attributes.width) !== null && _attributes$width !== void 0 ? _attributes$width : ""
         };
       }
     } else {
