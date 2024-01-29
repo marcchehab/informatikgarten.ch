@@ -46,7 +46,7 @@ bild = [
 
 ## 👲🏻
 
-![[assets/Pasted image 20240129133819.png]]
+![[Pasted image 20240129133819.png]]
 
 ```python
 bild = [
