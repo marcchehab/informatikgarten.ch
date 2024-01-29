@@ -2,9 +2,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@portaljs/core": ["custom_modules/core"],
-      "@portaljs/remark-callouts": ["custom_modules/remark-callouts"],
-      "@portaljs/remark-wiki-link": ["custom_modules/remark-wiki-link"],
       "@/*": ["./*"]
     },
     "target": "es2020",

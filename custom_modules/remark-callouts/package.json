@@ -36,9 +36,9 @@
     "unist-util-visit": "^4.1.0"
   },
   "type": "module",
-  "main": "./index.cjs",
-  "module": "./index.js",
-  "types": "./src/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/src/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/src/index.d.ts",
@@ -46,12 +46,5 @@
       "require": "./dist/index.cjs"
     },
     "./styles.css": "./dist/styles.css"
-  },
-  "peerDependencies": {
-    "css-select": "4.3.0",
-    "react": "18.2.0",
-    "remark-parse": "10.0.2",
-    "remark-rehype": "10.1.0",
-    "unified": "10.1.2"
   }
 }

@@ -1,17 +1,18 @@
 {
-  "name": "@portaljs/remark-wiki-link",
-  "version": "1.1.2",
-  "description": "Parse and render wiki-style links in markdown especially Obsidian style links.",
+  "name": "@portaljs/remark-callouts",
+  "version": "1.0.5",
+  "description": "Remark plugin to add support for blockquote-based admonitions/callouts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/datopian/portaljs.git",
-    "directory": "packages/remark-wiki-link"
+    "directory": "packages/remark-callouts"
   },
   "keywords": [
     "remark",
     "remark-plugin",
     "markdown",
-    "gfm",
+    "admonitions",
+    "callouts",
     "obsidian"
   ],
   "author": "Rufus Pollock",
@@ -24,29 +25,26 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "nx build remark-wiki-link"
+    "prepare": "nx build remark-callouts"
   },
   "files": [
     "dist"
   ],
   "dependencies": {
-    "mdast-util-to-markdown": "^1.5.0",
-    "mdast-util-wiki-link": "^0.0.2",
-    "micromark-util-symbol": "^1.0.1"
+    "mdast-util-from-markdown": "^1.2.0",
+    "svg-parser": "^2.0.4",
+    "unist-util-visit": "^4.1.0"
   },
   "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/src/index.d.ts",
+  "main": "./index.cjs",
+  "module": "./index.js",
+  "types": "./src/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/src/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
-    }
-  },
-  "devDependencies": {
-    "micromark": "^3.1.0",
-    "remark-gfm": "^3.0.1"
+    },
+    "./styles.css": "./dist/styles.css"
   }
 }

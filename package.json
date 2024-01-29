@@ -13,10 +13,10 @@
   "dependencies": {
     "@heroicons/react": "^1.0.6",
     "@monaco-editor/react": "^4.6.0",
-    "@portaljs/core": "^1.0.7",
-    "@portaljs/remark-callouts": "^1.0.5",
+    "@portaljs/core": "file:./custom_modules/core",
+    "@portaljs/remark-callouts": "file:./custom_modules/remark-callouts",
     "@portaljs/remark-embed": "^1.0.4",
-    "@portaljs/remark-wiki-link": "^1.1.2",
+    "@portaljs/remark-wiki-link": "file:./custom_modules/remark-wiki-link",
     "@sanity/icons": "^2.8.0",
     "@silvenon/remark-smartypants": "^2.0.0",
     "@tailwindcss/typography": "^0.5.9",

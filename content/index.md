@@ -7,6 +7,10 @@ Herzlich willkommen auf dem neuen Informatikgarten! Ich habe über die Weihnacht
 
 👈 Neu finden Sie die Inhaltsübersicht hier links.
 
+> [!info]- testeintrag **für** lehrer
+> 
+> funktioniert dasasas
+
 ## Was ist neu?
 
 ### Der Code-Editor ist um einiges besser geworden. 
