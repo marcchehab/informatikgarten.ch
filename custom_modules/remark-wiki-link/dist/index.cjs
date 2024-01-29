@@ -286,7 +286,7 @@ function wikiLink() {
 }
 
 // TODO why only these?
-var supportedFileFormats = ["webp", "jpg", "jpeg", "gif", "bmp", "svg", "apng", "png", "avif", "ico", "pdf"];
+var supportedFileFormats = ["webp", "jpg", "jpeg", "gif", "bmp", "svg", "apng", "png", "avif", "ico", "pdf", "mp4", "webm", "ogv", "mov", "mkv"];
 var isSupportedFileFormat = function isSupportedFileFormat(filePath) {
   var fileExtensionPattern = /\.([0-9a-z]{1,4})$/i;
   var match = filePath.match(fileExtensionPattern);
@@ -427,12 +427,35 @@ function fromMarkdown() {
           width: "100%",
           src: "".concat(hrefTemplate(link), "#toolbar=0")
         };
-      } else {
-        wikiLink.data.hName = "img";
+      } else if (["mp4", "webm", "ogv", "mov", "mkv"].includes(format)) {
+        wikiLink.data.hName = "video";
         wikiLink.data.hProperties = {
           className: classNames,
-          src: hrefTemplate(link),
+          controls: true,
           alt: displayName
+        };
+        wikiLink.data.hChildren = [{
+          type: "element",
+          tagName: "source",
+          properties: {
+            src: hrefTemplate(link)
+          },
+          children: []
+        }];
+      } else {
+        var _displayName$split = displayName.split("-"),
+          _displayName$split2 = _slicedToArray(_displayName$split, 3),
+          name = _displayName$split2[0],
+          invert = _displayName$split2[1],
+          width = _displayName$split2[2];
+        var classes = invert == "invert" ? classNames + " invert" : classNames;
+        var src = link.startsWith("/assets/") ? link : "/assets/".concat(link); // TODO this is ugly
+        wikiLink.data.hName = "img";
+        wikiLink.data.hProperties = {
+          className: classes,
+          src: src,
+          alt: name,
+          width: width !== null && width !== void 0 ? width : ""
         };
       }
     } else {
