@@ -44,6 +44,31 @@ bild = [
 ]
 ```
 
+## 👲🏻
+
+![[assets/Pasted image 20240129133819.png]]
+
+```python
+bild = [
+["#ffffff", "#ffffff", "#ffffff", "#e4000f", "#e4000f", "#e4000f", "#e4000f", "#e4000f", "#e4000f", "#ffffff", "#ffffff", "#ffffff", "#ffffff"],
+["#ffffff", "#ffffff", "#e4000f", "#e4000f", "#e4000f", "#e4000f", "#e4000f", "#e4000f", "#e4000f", "#e4000f", "#e4000f", "#e4000f", "#ffffff"],
+["#ffffff", "#ffffff", "#7c3f00", "#7c3f00", "#7c3f00", "#fed1b0", "#fed1b0", "#fed1b0", "#000000", "#fed1b0", "#ffffff", "#ffffff", "#ffffff"],
+["#ffffff", "#7c3f00", "#fed1b0", "#7c3f00", "#fed1b0", "#fed1b0", "#fed1b0", "#fed1b0", "#000000", "#fed1b0", "#fed1b0", "#fed1b0", "#ffffff"],
+["#ffffff", "#7c3f00", "#fed1b0", "#7c3f00", "#7c3f00", "#fed1b0", "#fed1b0", "#fed1b0", "#fed1b0", "#000000", "#fed1b0", "#fed1b0", "#fed1b0"],
+["#ffffff", "#7c3f00", "#7c3f00", "#fed1b0", "#fed1b0", "#fed1b0", "#fed1b0", "#fed1b0", "#000000", "#000000", "#000000", "#000000", "#ffffff"],
+["#ffffff", "#ffffff", "#ffffff", "#fed1b0", "#fed1b0", "#fed1b0", "#fed1b0", "#fed1b0", "#fed1b0", "#fed1b0", "#fed1b0", "#ffffff", "#ffffff"],
+["#ffffff", "#ffffff", "#e4000f", "#e4000f", "#0065b3", "#e4000f", "#e4000f", "#e4000f", "#e4000f", "#ffffff", "#ffffff", "#ffffff", "#ffffff"],
+["#ffffff", "#e4000f", "#e4000f", "#e4000f", "#0065b3", "#e4000f", "#e4000f", "#0065b3", "#e4000f", "#e4000f", "#e4000f", "#ffffff", "#ffffff"],
+["#e4000f", "#e4000f", "#e4000f", "#e4000f", "#0065b3", "#0065b3", "#0065b3", "#0065b3", "#e4000f", "#e4000f", "#e4000f", "#e4000f", "#ffffff"],
+["#fed1b0", "#fed1b0", "#e4000f", "#0065b3", "#fbd000", "#0065b3", "#0065b3", "#fbd000", "#0065b3", "#e4000f", "#fed1b0", "#fed1b0", "#ffffff"],
+["#fed1b0", "#fed1b0", "#fed1b0", "#0065b3", "#0065b3", "#0065b3", "#0065b3", "#0065b3", "#0065b3", "#fed1b0", "#fed1b0", "#fed1b0", "#ffffff"],
+["#fed1b0", "#fed1b0", "#0065b3", "#0065b3", "#0065b3", "#0065b3", "#0065b3", "#0065b3", "#0065b3", "#0065b3", "#fed1b0", "#fed1b0", "#ffffff"],
+["#ffffff", "#ffffff", "#0065b3", "#0065b3", "#0065b3", "#ffffff", "#ffffff", "#0065b3", "#0065b3", "#0065b3", "#ffffff", "#ffffff", "#ffffff"],
+["#ffffff", "#613823", "#613823", "#613823", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#613823", "#613823", "#613823", "#ffffff", "#ffffff"],
+["#613823", "#613823", "#613823", "#613823", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#613823", "#613823", "#613823", "#613823", "#ffffff"]
+]
+```
+
 ## 🐧
 
 ![[Pasted image 20240122133308.png]]
