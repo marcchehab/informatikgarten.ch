@@ -34,7 +34,7 @@ strong:not(.callout-title *) {
   filter: hue-rotate(200deg);
 }
 
-:root.dark article img.invert {
+:root.dark article img.iginvert {
   filter: invert(1) contrast(0.76);
 }
 article img.inline {

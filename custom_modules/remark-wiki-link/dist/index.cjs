@@ -468,7 +468,7 @@ function fromMarkdown() {
         } finally {
           _iterator.f();
         }
-        var classes = attributes.invert ? classNames + " invert" : classNames;
+        var classes = attributes.invert ? classNames + " iginvert" : classNames;
         var src = link.startsWith("/assets/") ? link : "/assets/".concat(link); // TODO this is ugly
         wikiLink.data.hName = "img";
         wikiLink.data.hProperties = {
