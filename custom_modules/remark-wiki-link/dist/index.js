@@ -277,9 +277,9 @@ function wikiLink() {
 }
 
 // TODO why only these?
-var supportedFileFormats = ["webp", "jpg", "jpeg", "gif", "bmp", "svg", "apng", "png", "avif", "ico", "pdf", "mp4", "webm", "ogv", "mov", "mkv"];
+var supportedFileFormats = ["webp", "jpg", "jpeg", "gif", "bmp", "svg", "apng", "png", "avif", "ico", "pdf", "mp4", "webm", "ogv", "mov", "mkv", "excalidraw"];
 var isSupportedFileFormat = function isSupportedFileFormat(filePath) {
-  var fileExtensionPattern = /\.([0-9a-z]{1,4})$/i;
+  var fileExtensionPattern = /\.([0-9a-z]{1,10})$/i;
   var match = filePath.match(fileExtensionPattern);
   if (!match) {
     return [false, null];
@@ -433,6 +433,13 @@ function fromMarkdown() {
           },
           children: []
         }];
+      } else if (format === "excalidraw") {
+        wikiLink.data.hName = "Excalidraw";
+        wikiLink.data.hProperties = {
+          alt: link,
+          srcDark: "/assets/Excalidraw/".concat(link, ".dark.svg"),
+          srcLight: "/assets/Excalidraw/".concat(link, ".light.svg")
+        };
       } else {
         var _attributes$width;
         var attributeStrings = displayName.split("|");

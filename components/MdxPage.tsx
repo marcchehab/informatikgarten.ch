@@ -6,6 +6,7 @@ import TurtleEditor from "./TurtleEditor";
 import { Callout } from "@portaljs/remark-callouts";
 
 import layouts from "../layouts";
+import { useTheme } from 'next-themes'
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -46,11 +47,20 @@ const TurtleEditorWrapper = ({ className, children }) => {
     );
 };
 
+const Excalidraw = ({alt, srcDark, srcLight}) => {
+    const { theme } = useTheme();
+    const src = theme === 'dark' ? srcDark : srcLight;
+    return (
+        <img alt={alt} src={src} />
+    );
+};
+
 const components = {
     mermaid: Mermaid,
     pre: TurtleEditorWrapper,
     TurtleEditor: TurtleEditor,
     blockquote: Callout,
+    Excalidraw: Excalidraw,
 };
 
 export default function MdxPage({ source, frontMatter }) {
