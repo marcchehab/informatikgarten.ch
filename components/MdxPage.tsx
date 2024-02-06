@@ -7,6 +7,7 @@ import { Callout } from "@portaljs/remark-callouts";
 
 import layouts from "../layouts";
 import { useTheme } from 'next-themes'
+import { ReactSVG } from 'react-svg'
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -51,7 +52,7 @@ const Excalidraw = ({alt, srcDark, srcLight}) => {
     const { theme } = useTheme();
     const src = theme === 'dark' ? srcDark : srcLight;
     return (
-        <img alt={alt} src={src} />
+        <ReactSVG src={src} name={alt} />
     );
 };
 
