@@ -1,13 +1,11 @@
 ---
 Title: TCP/IP - wie adressieren Sie Computer und Dienste im Netzwerk?
 ---
-
 Der Schlüssel, um Netzwerkkommunikation zu verstehen, steckt in zwei Ideen:
 1. Informationen werden in einer **Serie von Paketen** transportiert.
 2. Jedes dieser Pakete wird durch **hierarchisch angeordnete Schichten mehrfach verpackt**.
 
 Um zu zeigen, dass das eigentlich ganz logisch ist, beginnen wir mit einer **Analogie**.
-
 ## Wir organisieren eine Gala
 
 Stellen Sie sich vor, Sie müssen ein grosses Gala-Dinner in einem Kongresshaus organisieren. Dazu brauchen Sie natürlich viel feines Essen, kühle Getränke und Stühle für die Gäste. Was tun Sie? Sie engagieren **Dienstleister**: einen Party-Service für das Essen, eine DJ für die Musik und eine Eventfirma, die Tische und Bühne aufstellt. Nun stellen Sie sich vor, wie diese Waren in Paketen ins Kongresshaus geliefert würden.
