@@ -18,19 +18,40 @@ Auch in dieser Adresse gibt es hierarchisch angeordnete Schichten.
 * Die Paketzentrale der Post orientiert sich an Linie 3, dem **Ort**. 
 * Die Poststelle vor Ort liefert das Paket an die Adresse in Linie 2, also ins richtige **Gebäude**.
 * Auf Linie 1 ist angegeben, **für wen im Gebäude** das Paket ist.
-## IP-Adresse und Port
+## Schritt 1: Wie weiss man, wohin wir ein Paket schicken müssen?
 
-Wie Sie sich mit diesen wenigen Infos bereits vorstellen können, hat Ihr Computer eine Hauptadresse. Das ist die **Adresse des "Internet Protokolls", oder kurz: IP**.  Eine Liste möglicher IPs.
-
-Falls Sie die Excel-Übung bereits gemacht haben, fällt Ihnen hier etwas auf?
+Wie Sie sich mit diesen wenigen Infos bereits vorstellen können, hat Ihr Computer eine Hauptadresse. Das ist die **Adresse des "Internet Protokolls", oder kurz: IP**. Einige Beispiele für IP-Adressen:
 
 ```
 192.168.1.4
 10.32.4.12
 243.123.129.45
+235.92.188.238
+224.165.66.149
+151.174.54.120
+234.178.33.194
+88.210.255.25
 ```
 
-Im Schichtenmodell "oberhalb" des Internet-Protokolls gibt es auch eine Art, auf demselben Computer das richtige Protokoll (also den richtigen Dienstleister) anzusprechen: nämlich den **Port**. Wenn Sie im Internet Surfen, verbinden Sie sich ständig mit Webservern, die typischerweise auf Port 80 (HTTP) oder 443 (HTTPS) laufen. Der Port wird oft mit einem Doppelpunkt nach der IP angegeben, z.B.
+> [!question]- Wie würden Sie diese Zahlen beschreiben? Was ist die grösste einzelne Zahl, die Sie finden?
+> 
+> - Es sind jeweils vier Zahlen durch Punkte getrennt.
+> - Die höchste Zahl ist 255 - das ist verdächtig...
+
+Bei Ihnen zuhause könnten mögliche IP-Adressen so aussehen: 
+```
+192.168.1.5
+192.168.1.41
+192.168.1.53
+```
+
+Sie sehen: Der erste Teil aller IP-Adressen ist gleich, weil alle Computer im gleichen Netzwerk sind.
+![[Drawing 2024-02-19 11.50.56.excalidraw]]
+## Und an welcher Tür klopfe ich an?
+
+Wie bei der Post muss man neben dem Ziel-Computer noch genauer angeben, "wer" oder "was" die Daten erhalten soll. Das geschieht mit dem sogennanten **"Port" - also welche "Tür"**.
+
+Internet-Protokolls gibt es auch eine Art, auf demselben Computer das richtige Protokoll (also den richtigen Dienstleister) anzusprechen: nämlich den **Port**. Wenn Sie im Internet Surfen, verbinden Sie sich ständig mit Webservern, die typischerweise auf Port 80 (HTTP) oder 443 (HTTPS) laufen. Der Port wird oft mit einem Doppelpunkt nach der IP angegeben, z.B.
 
 ```
 192.168.1.4:80 = Ich möchte den HTTP-Server auf dieser Maschine

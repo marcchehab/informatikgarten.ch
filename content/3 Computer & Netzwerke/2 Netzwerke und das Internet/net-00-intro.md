@@ -13,19 +13,20 @@ Mit der Webseite [geotraceroute.com](https://geotraceroute.com/) habe ich den We
 
 > [!note] Versuchen Sie es selbst
 > 
-> Gehen Sie selbst auf [geotraceroute.com](https://geotraceroute.com/) und klicken Sie auf "Run another traceroute". Geben Sie eigene Websites an: Finden Sie eine Strecke über 10'000 Kilometer?
+> Gehen Sie selbst auf [geotraceroute.com](https://geotraceroute.com/) und klicken Sie auf "Run another traceroute". Geben Sie eigene Websites an oder wählen Sie ein Land aus. 
+> - Finden Sie eine Strecke über 10'000 Kilometer?
+> - Wenn Sie Zeit haben: Versuchen Sie ein 
 
-Beeindruckende Beispiele, die wir bis jetzt gefunden haben:
+Zwei Beispiele, die man gut findet:
 
 | URL | Länge | Ping |
 | ---- | ---- | ---- |
-| ane.com.au | 16'614 km | 281ms |
 | example.com | 9'409km | 100ms |
 | smh.com.au | 384km | 16ms |
 
-Wie ist das so schnell möglich? Und wieso werden wir für die australische Zeitung Sydney Morning Herald (smh.com.au) auf einen Server in Paris geleitet? 
+Wieso werden wir für die australische Zeitung Sydney Morning Herald (smh.com.au) auf einen Server in Paris geleitet?
 
-Willkommen in der Serie zur Funktionsweise des Internets.
+Wie ist das so schnell möglich? Willkommen in der Serie zur Funktionsweise des Internets.
 
 [Zur Startseite](/)
 [[net-01-ip| TCP/IP - die Protokolle des Internets]]
