@@ -12041,8 +12041,8 @@ excalidraw-export-transparent: true
 		"currentItemTextAlign": "left",
 		"currentItemStartArrowhead": null,
 		"currentItemEndArrowhead": "arrow",
-		"scrollX": 420.54167079925526,
-		"scrollY": 326.5403327941894,
+		"scrollX": 419.2748240742329,
+		"scrollY": 327.3904873243854,
 		"zoom": {
 			"value": 2
 		},
