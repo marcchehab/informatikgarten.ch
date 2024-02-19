@@ -43,9 +43,10 @@ Bei Ihnen zuhause könnten mögliche IP-Adressen so aussehen:
 ```
 
 Sie sehen: Der **erste Teil aller IP-Adressen ist gleich**, weil alle Computer im **gleichen Netzwerk** sind. Das ist wie bei der Post **Ortsangabe**.
-![[network-host.excalidraw]]
 
-Wie lang der Netzwerkteil der Adresse ist wird durch die **Subnetmaske** angegeben. Hier wäre Sie <span style="color:red">255.255.255</span><span style="color:green">.0</span>. Die Subnetmaske ist im Netzwerkteil 255, im Hostteil dann 0.
+![[Pasted image 20240219130050.png]]
+
+Wie lang der Netzwerkteil der Adresse ist wird durch die **Subnetmaske** angegeben. Hier wäre Sie 255.255.255.0. Die Subnetmaske ist im Netzwerkteil 255, im Hostteil dann 0.
 
 Als Beispiel meine IP-Adresse zuhause.
 
