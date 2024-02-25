@@ -1,5 +1,5 @@
 ---
-title: "L01: IP - wie adressieren Sie Computer und Dienste im Netzwerk?"
+title: "01: IP - wie adressieren Sie Computer und Dienste im Netzwerk?"
 ---
 Der Schlüssel, um Netzwerkkommunikation zu verstehen, steckt in zwei Ideen:
 1. Informationen werden in einer **Serie von Paketen** transportiert.
@@ -60,7 +60,7 @@ Die Logik mit der **Subnetmaske müssen Sie binär verstehen**. Wir schauen das 
 
 Wenn Ihr Computer zuhause ein Paket verschickt, überprüft er zuerst, ob sich der Empfänger im gleichen Netzwerk bei Ihnen zuhause befindet.
 - Falls ja, schickt er das Paket direkt an den Empfänger.
-- Falls nein, schickt er das Paket an die Adresse des "Gateway". Das ist ein Gerät, das als Eingangs- oder Ausgangstor des Netzwerks dienst. Bei Ihnen zuhause wäre das der Internetrouter, der die Daten an Swisscom oder Sunrise weiterleitet... Und wie es dann weitergeht schauen wir später an.
+- Falls nein, schickt er das Paket an den "**Gateway**". Das ist ein Gerät, das als Eingangs- oder Ausgangstor des Netzwerks dienst. Bei Ihnen zuhause wäre das der **Internetrouter**, der die Daten an Swisscom oder Sunrise weiterleitet... Und wie es dann weitergeht schauen wir später an.
 ## Und an welcher Tür klopfe ich an?
 
 Wie bei der Post muss man neben dem Ziel-Computer noch genauer angeben, "wer" oder "was" die Daten erhalten soll. Das geschieht mit dem sogennanten **"Port" - also welche "Tür"**.

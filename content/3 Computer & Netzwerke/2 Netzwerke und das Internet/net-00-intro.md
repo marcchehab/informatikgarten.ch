@@ -1,5 +1,5 @@
 ---
-title: Internet - das Netzwerk der Netzwerke
+title: "00: Internet - das Netzwerk der Netzwerke"
 ---
 Eine der hellsten Galaxien am Nachthimmel, Centaurus A, ist für ihre ausgeprägte "S"-Form bekannt. Es wird angenommen, dass diese Form das Ergebnis eines Zusammenstosses zweier Galaxien ist. 2021 haben Nasa-Wissenschaftler zum ersten Mal die unsichtbaren Magnetfelder von Centaurus A mit Hilfe von Infrarotlicht kartiert. Die beobachteten Magnetfelder sind als Stromlinien über einem Bild der Galaxie dargestellt - hier ist das Bild.
 
