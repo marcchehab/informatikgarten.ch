@@ -1,39 +1,73 @@
 ---
 title: "02: Netzwerke und Router"
 ---
-Das letzte Mal haben wir IP-Adressen und Subnetmasken kennengelernt. Daraus leitet sich direkt die Netzwerk-Adresse ab.
-## Netzwerk-Adresse
-Ähnlich wie die Ortsangabe "5430 Wettingen" addressiert die Netzwerkadresse kein bestimmtes Gerät, sondern meint einfach das Netzwerk als Ganzes. Man muss sich auch hier die Adressen wieder **binär überlegen**:
 
-- Der Netzwerkteil der IPs wird übernommen.
-- Der Hostteil ist 0.
+> [!success] Lernziele
+> 
+> - Sie können anhand einer IP und einer Subnetmaske den Adressbereich eines Netzwerks bilden.
+> - Sie wissen, was ein Gateway / Router ist und wie er sich entscheidet, zu welchem Netzwerk ein Datenpaket gehört.
 
-Etwas technischer erklärt: Man kann eine beliebige IP eines Netzwerks mit der Subnetmaske binär Bit für Bit vergleich. 
-Nur wenn bei der IP *und* bei der Subnetmaske eine 1 steht, schreibt man eine 1, sonst aber eine 0.
+Das letzte Mal haben wir IP-Adressen, Subnetmasken und Netzwerkadressen kennengelernt. Nun schauen wir an, wie sich daraus die Grösse des Netzwerks ableitet, und was für ein Gerät den Datenverkehr zwischen verschiedenen Netzwerken hin- und herleitet.
+## Netzwerkgrösse
 
-Hier wird also ein logischer AND-Operator Bit für Bit angewandt. Deswegen heisst diese Operation **"Bitwise AND"** mit dem Zeichen **"&"**. Im Beispiel sieht man:
-$$\text{Meine IP } \& \text{ Subnet-Maske} = \text{Netzwerkadresse}$$
+[[net-01-ip|In der letzten Lektion]] haben wir gelernt, dass die Netzwerkadresse die tiefstmögliche Adresse eines Netzwerks ist, weil dort der Hostanteil per Definition 0 ist.
 
-![[Pasted image 20240225234031.png]]
+Entsprechend gibt es auch eine **höchste Andresse**, die ebenfalls zu keinem Gerät gehört: die sogenannte Broadcast-Adresse. Pakete an diese Adresse werden **an alle Geräte im Netzwerk gesendet**. 
 
-Die Logik für einen einzelnen Computer beim Versenden ist also relativ einfach:
-- Errechnet sich mit der IP-Adresse des Empfängers die gleiche Netzwerkadresse, schickt der Computer das Paket direkt ins eigene Subnetz.
-- Ansonsten schickt er das Paket an sein "Ausgangstor" - den Gateway.
-## Router
-Aber was ist das - ein Gateway? Typischerweise sind das spezielle Netzwerkgeräte, die gleichzeitig an mehreren Netzwerken angeschlossen sind und den Datenverkehr zwischen diesen Netzwerken hin- und herleiten. Weil sie also die "Routen" kennen, nennt man sie Router.
+Der Adressbereich zwischen der Netzwerkadresse und der Broadcastadresse kann für Geräte (Hosts) verwendet werden. Wie viele Hosts können also im Netzwerk `192.168.1.0` mit Subnetmaske `255.255.255.0` adressiert werden?
 
-Ihr Internetrouter zuhause ist an mindestens zwei Netzwerke angeschlossen:
+![[Pasted image 20240303145552.png]]
+
+
+> [!question]- Lösung
+> 
+> Der Hostteil ist das gesamte letzte Byte. Mathematisch gibt es also:
+> 
+> $$2^{8\text{ Bit}} = 256\text{ Adressen}$$
+> 
+> Netzwerk- und Broadcastadresse kann man allerdings nicht verwenden. Also: 
+> 
+> $$2^{8\text{ Bit}}-2\text{ reservierte Adressen} = 254\text{ nutzbare Hostadressen}$$
+> 
+> Diese zwei Adressen müssen Sie **immer** abziehen.
+
+### Binäres Verständnis
+Stellen Sie sich vor wir würden den Hostteil wieder um ein Bit erweitern wie in der letzten Lektion. Das Netzwerk wäre dann `192.168.0.0/23`. Wie viele Hosts könnten Sie damit adressieren?
+
+> [!question]- Lösung
+> 
+> Sie haben nun 9 Bit für die Hostadressierung, minus Netzwerk- und Broadcastadresse. 
+> 
+> $$2^{9\text{ Bit}}-2\text{ reservierte Adressen} = 510\text{ nutzbare Hostadressen}$$
+
+## Gateway / Router
+
+Nun schauen wir uns an, was passiert, wenn Ihr Computer urteilt, dass sich die Empfänger-IP in einem anderen Netzwerk befindet. In diesem Fall muss der Computer die Daten aus dem eigenen Netzwerk herausschicken - aber wie? Dazu ist meistens einen sogenannten **Gateway-IP-Adresse** definiert: Also eine Adresse, die als "Tor zur Welt" dient.
+
+Die meisten Gateways sind sogenannte **Router**. Das sind spezielle Netzwerkgeräte, die gleichzeitig an mehreren Netzwerken angeschlossen sind und den Datenverkehr zwischen diesen Netzwerken hin- und herleiten. Man nennt sie Router, weil sie die "Routen" kennen.
+
+Ihr Internetrouter zuhause beispielsweise ist an mindestens zwei Netzwerke angeschlossen:
 - Ihr Heimnetzwerk mit allen Geräten.
 - Ein kleines Netzwerk zwischen Ihrem Router und Ihrem Internet-Service-Provider (Swisscom, Sunrise...).
 
-Router sind also selbst immer Teil der Netzwerke, an die sie angeschlossen sind. Schliesslich müssen die Geräte in diesem Netzwerke den Router ja erreichen können.
+Router sind also selbst immer Teil der Netzwerke, an die sie angeschlossen sind. Schliesslich müssen die Geräte in diesem Netzwerke den Router ja erreichen können. Wie auch Ihr Computer haben Router **pro Netzwerkschnittstelle mindestens eine IP-Adresse und eine dazugehörige Subnetmaske**.
 
-In unserer Schule oder bei Unternehmen gibt es meist mehrere Netzwerke. Wie wir das letzte Mal gesehen haben, gibt es an der Schule mehrere Wifis mit unterschiedlichen Netzwerkadressen.
+In unserer Schule oder bei Unternehmen gibt es meist mehrere Netzwerke. Wie wir das letzte Mal gesehen haben, gibt es an der Schule mehrere Wifis mit unterschiedlichen Netzwerken. Das könnte so aussehen.
 ![[netzwerk.svg]]
+
+Wie entscheidet der Router nun, auf welche Schnittstelle er die Pakete weiterleitet? 
+
+Grundsätzlich genau gleich, wie Ihr Computer entscheidet, ob eine Empfänger-IP in seinem eigenen Netzwerk liegt oder nicht: 
+- Er eruiert und merkt sich vorweg die Netzwerkadressen aller angeschlossenen Netzwerke.
+- Dann schaut er mit der jeweiligen Subnetmaske der Netzwerke, ob die IP in einem der angeschlossenen Netzwerke liegt.
+- Falls die Empfänger-IP in keinem der angeschlossenen Netzwerken liegt, hat der Router (ähnlich des "Gateways") eine Standardroute, wie er Pakete an unbekannte Empfänger-IPs weiterleitet.
+
+Das wollen wir nun selbst in Excel testen.
+
 > [!example] Glückwunsch: Sie sind ein Router!
 > 
 > Der Auftrag an Sie ist nun, dass Sie versuchen die Logik des Routers in Excel zu automatisieren. Stellen Sie sich vor, Sie sind ein Router und erhalten ein IP-Paket. Wie entscheiden Sie, an welches Netzwerk Sie das Paket weiterleiten sollen?
 > 
 > Laden Sie sich dazu die Datei [[/assets/excel_router_task.xlsx|excel_router_task.xlsx]] herunter.
 
-.
+[[net-01-ip|Zurück]]
