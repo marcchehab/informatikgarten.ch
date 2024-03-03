@@ -1,7 +1,7 @@
 ---
 title: "L07+L08: Radiomodul & Sensoren mit fill()"
 ---
-> [!solution] Lernziele
+> [!success] Lernziele
 > 
 > - Sie können einen Event-Loop schreiben, der je nach Input die passende Funktion aufruft (siehe Theorieeintrag)
 > - Sie wissen, wie man mit dem Radiomodul eine einfache Nachricht verschickt und empfängt.

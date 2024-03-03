@@ -1,7 +1,7 @@
 ---
 title: "L09+L10: Probeprüfung"
 ---
-> [!solution] Lernziele
+> [!success] Lernziele
 > 
 > - Die Prüfung wird eine 45-minütige Openbook-Prüfung sein, bei der Sie den Microbit programmieren.
 > - Die Aufgaben der Prüfung werden vorzu schwieriger.
