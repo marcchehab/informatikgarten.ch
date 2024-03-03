@@ -42,7 +42,7 @@ Stellen Sie sich vor wir würden den Hostteil wieder um ein Bit erweitern wie in
 
 ## Gateway / Router
 
-Nun schauen wir uns an, was passiert, wenn Ihr Computer urteilt, dass sich die Empfänger-IP in einem anderen Netzwerk befindet. In diesem Fall muss der Computer die Daten aus dem eigenen Netzwerk herausschicken - aber wie? Dazu ist meistens einen sogenannten **Gateway-IP-Adresse** definiert: Also eine Adresse, die als "Tor zur Welt" dient.
+Nun schauen wir uns an, was passiert, wenn Ihr Computer urteilt, dass sich die Ziel-IP in einem anderen Netzwerk befindet. In diesem Fall muss der Computer die Daten aus dem eigenen Netzwerk herausschicken - aber wie? Dazu ist meistens einen sogenannten **Gateway-IP-Adresse** definiert: Also eine Adresse, die als "Tor zur Welt" dient.
 
 Die meisten Gateways sind sogenannte **Router**. Das sind spezielle Netzwerkgeräte, die gleichzeitig an mehreren Netzwerken angeschlossen sind und den Datenverkehr zwischen diesen Netzwerken hin- und herleiten. Man nennt sie Router, weil sie die "Routen" kennen.
 
@@ -57,10 +57,10 @@ In unserer Schule oder bei Unternehmen gibt es meist mehrere Netzwerke. Wie wir 
 
 Wie entscheidet der Router nun, auf welche Schnittstelle er die Pakete weiterleitet? 
 
-Grundsätzlich genau gleich, wie Ihr Computer entscheidet, ob eine Empfänger-IP in seinem eigenen Netzwerk liegt oder nicht: 
+Grundsätzlich genau gleich, wie Ihr Computer entscheidet, ob eine Ziel-IP in seinem eigenen Netzwerk liegt oder nicht: 
 - Er eruiert und merkt sich vorweg die Netzwerkadressen aller angeschlossenen Netzwerke.
 - Dann schaut er mit der jeweiligen Subnetmaske der Netzwerke, ob die IP in einem der angeschlossenen Netzwerke liegt.
-- Falls die Empfänger-IP in keinem der angeschlossenen Netzwerken liegt, hat der Router (ähnlich des "Gateways") eine Standardroute, wie er Pakete an unbekannte Empfänger-IPs weiterleitet.
+- Falls die Ziel-IP in keinem der angeschlossenen Netzwerken liegt, hat der Router (ähnlich des "Gateways") eine Standardroute, wie er Pakete an unbekannte Ziel-IPs weiterleitet.
 
 Das wollen wir nun selbst in Excel testen.
 
@@ -71,3 +71,4 @@ Das wollen wir nun selbst in Excel testen.
 > Laden Sie sich dazu die Datei [[/assets/excel_router_task.xlsx|excel_router_task.xlsx]] herunter.
 
 [[net-01-ip|Zurück]]
+[[net-03-ethernet|Weiter]]

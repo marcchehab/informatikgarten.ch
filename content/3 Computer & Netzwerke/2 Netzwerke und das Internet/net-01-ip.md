@@ -6,12 +6,12 @@ title: "01: IP - wie adressieren Sie Computer im Netzwerk?"
 > 
 > - Sie kennen den Aufbau einer IP-Adresse (Version 4).
 > - Sie wissen, wie man dezimal aus IP-Adresse und Standard-Subnetmaske die Netzwerkadresse herleitet.
-> - Sie können erklären, wie ein Computer anhand der Netzwerkadresse entscheidet, ob eine Empfänger-IP-Adresse im selben Netzwerk liegt, oder nicht.
+> - Sie können erklären, wie ein Computer anhand der Netzwerkadresse entscheidet, ob eine Ziel-IP-Adresse im selben Netzwerk liegt, oder nicht.
 > - *Sie wissen, wie man binär aus IP-Adresse und Subnet-Maske die Netzwerkadresse herleitet.*
 
 Computer kommunizieren in Netzwerken in einer **Serie von Paketen**. In den nächsten Lektionen behandeln wir, **wie diese Paketen Ihren Weg durchs Netzwerk** finden.
 
-Als Analogie stellen Sie sich den Paketversand der Post vor. Dort finden die Pakete den richtigem Empfänger anhand der Adresse:
+Als Analogie stellen Sie sich den Paketversand der Post vor. Dort finden die Pakete den richtigen Empfänger anhand der Adresse:
 
 ```
 Marc Chéhab
@@ -82,7 +82,7 @@ Diese Subnetmasken, die nur aus vollen (255) und leeren (0) Bytes bestehen, nenn
 
 ### Mein Netzwerk - oder nicht? Und was dann?
 
-Wie entscheidet der Computer nun, ob eine IP-Adresse im gleichen Netzwerk ist wie er? Indem er **gemäss seiner eigenen Subnetmaske** den Netzwerkteil der eigene IP und der Empfänger-IP vergleicht. Dazu bildet er für beide Adressen die sogenannte **Netzwerkadresse**. Die setzt sich so zusammen:
+Wie entscheidet der Computer nun, ob eine IP-Adresse im gleichen Netzwerk ist wie er? Indem er **gemäss seiner eigenen Subnetmaske** den Netzwerkteil der eigene IP und der Ziel-IP vergleicht. Dazu bildet er für beide Adressen die sogenannte **Netzwerkadresse**. Die setzt sich so zusammen:
 - Der **Netzwerkteil** wird von der IP-Adresse übernommen.
 - Der **Hostteil** ist 0 (Null).
 
@@ -91,8 +91,8 @@ Die Netzwerkadresse ist eine spezielle Adresse, die zu keinem Gerät im Netzwerk
 ![[Pasted image 20240303141552.png]]
 
 Mit der Eigenschaft kann Ihr Computer also sehr einfach urteilen:
-- Wenn sich aus beiden IP-Adressen zweimal die gleiche Netzwerkadresse bildet, urteilt er, dass sich der Empfänger im gleichen Netzwerk befindet und er das Paket selbst direkt verschicken kann.
-- Wenn sich die Netzwerkteile unterscheiden und somit verschiedene Netzwerkadressen bilden (rote Kreise), urteilt er, dass sich der Empfänger in einem anderen Netzwerk befindet. Dann braucht er quasi die Hilfe der Post, um das Paket zu verschicken (mehr dazu in der nächsten Lektion).
+- Wenn sich aus beiden IP-Adressen zweimal die gleiche Netzwerkadresse bildet, urteilt er, dass sich das Ziel im gleichen Netzwerk befindet und er das Paket selbst direkt verschicken kann.
+- Wenn sich die Netzwerkteile unterscheiden und somit verschiedene Netzwerkadressen bilden (rote Kreise), urteilt er, dass sich das Ziel in einem anderen Netzwerk befindet. Dann braucht er quasi die Hilfe der Post, um das Paket zu verschicken (mehr dazu in der nächsten Lektion).
 ### Ein binäres Verständnis Subnetmasken
 
 Letztlich muss man Subnetmasken aber **binär verstehen**. Hier dieselben Beispiele nochmals mit den Binärzahlen. 
