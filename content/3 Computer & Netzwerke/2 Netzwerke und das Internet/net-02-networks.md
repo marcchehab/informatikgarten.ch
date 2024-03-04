@@ -78,6 +78,7 @@ Das wollen wir nun selbst in Excel testen.
 
 Die Lektion an der Tafel:
 - [[net-02-networks-G1b|G1b]]
+- [[net-02-networks-G1j|G1j]]
 
 [[net-01-ip|Zurück]]
 [[net-03-ethernet|Weiter]]
