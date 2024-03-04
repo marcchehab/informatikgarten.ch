@@ -49,7 +49,7 @@ body.fullscreen::-webkit-scrollbar {
         margin-right: 0.5rem;
       }
     }
-    &:last-child {
+    &:last-child:not(:first-child) {
       margin-top: 5rem;
       float: right;
       &::after {

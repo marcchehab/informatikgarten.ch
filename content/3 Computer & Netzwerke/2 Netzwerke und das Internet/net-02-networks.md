@@ -23,13 +23,15 @@ Der Adressbereich zwischen der Netzwerkadresse und der Broadcastadresse kann fü
 > 
 > Der Hostteil ist das gesamte letzte Byte. Mathematisch gibt es also:
 > 
-> $$2^{8\text{ Bit}} = 256\text{ Adressen}$$
+> $$2^{8\text{ Host-Bit}} = 256\text{ Adressen}$$
 > 
 > Netzwerk- und Broadcastadresse kann man allerdings nicht verwenden. Also: 
 > 
-> $$2^{8\text{ Bit}}-2\text{ reservierte Adressen} = 254\text{ nutzbare Hostadressen}$$
+> $$2^{8\text{ Host-Bit}}-2\text{ reservierte Adressen} = 254\text{ nutzbare Hostadressen}$$
 > 
-> Diese zwei Adressen müssen Sie **immer** abziehen.
+> Diese zwei Adressen müssen Sie **immer** abziehen. Merken Sie sich generell:
+> 
+> $$2^{\text{Anzahl Host-Bit}}-2\text{ reservierte Adressen} = \text{Nutzbare Host-Adressen}$$
 
 ### Binäres Verständnis
 Stellen Sie sich vor wir würden den Hostteil wieder um ein Bit erweitern wie in der letzten Lektion. Das Netzwerk wäre dann `192.168.0.0/23`. Wie viele Hosts könnten Sie damit adressieren?
@@ -38,7 +40,11 @@ Stellen Sie sich vor wir würden den Hostteil wieder um ein Bit erweitern wie in
 > 
 > Sie haben nun 9 Bit für die Hostadressierung, minus Netzwerk- und Broadcastadresse. 
 > 
-> $$2^{9\text{ Bit}}-2\text{ reservierte Adressen} = 510\text{ nutzbare Hostadressen}$$
+> $$2^{9\text{ Host-Bit}}-2\text{ reservierte Adressen} = 510\text{ nutzbare Hostadressen}$$
+> 
+> Merken Sie sich generell:
+> 
+> $$2^{\text{Anzahl Host-Bit}}-2\text{ reservierte Adressen} = \text{Nutzbare Host-Adressen}$$
 
 ## Gateway / Router
 
