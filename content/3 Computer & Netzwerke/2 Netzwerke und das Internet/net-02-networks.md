@@ -76,5 +76,8 @@ Das wollen wir nun selbst in Excel testen.
 > 
 > Laden Sie sich dazu die Datei [[/assets/excel_router_task.xlsx|excel_router_task.xlsx]] herunter.
 
+Die Lektion an der Tafel:
+- [[net-02-networks-G1b|G1b]]
+
 [[net-01-ip|Zurück]]
 [[net-03-ethernet|Weiter]]
