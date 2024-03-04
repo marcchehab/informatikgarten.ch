@@ -446,6 +446,7 @@ function fromMarkdown() {
         wikiLink.data.hName = "Excalidraw";
         wikiLink.data.hProperties = {
           alt: link,
+          style: "width: 100%; height: 100%;",
           srcDark: "/assets/Excalidraw/".concat(link, ".dark.svg"),
           srcLight: "/assets/Excalidraw/".concat(link, ".light.svg")
         };
