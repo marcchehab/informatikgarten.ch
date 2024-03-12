@@ -35,7 +35,7 @@ Der Adressbereich zwischen der Netzwerkadresse und der Broadcastadresse kann fü
 > 
 > $$2^{\text{Anzahl Host-Bit}}-2\text{ reservierte Adressen} = \text{Nutzbare Host-Adressen}$$
 
-Sie können diese Logik interaktiv [[excel_router_task.xlsx|in dieser Exceldatei]] nachvollziehen.
+Sie können diese Logik interaktiv [[/assets/excel_router_task.xlsx|in dieser Exceldatei]] nachvollziehen.
 ### Binäres Verständnis
 Stellen Sie sich vor wir würden den Hostteil wieder um ein Bit erweitern wie in der letzten Lektion. Die Subnetmaske wäre also `255.255.254.0` und die Netzwerkadresse wäre neu `192.168.0.0`. 
 
@@ -79,7 +79,7 @@ Das wollen wir nun selbst in Excel testen.
 > 
 > Der Auftrag an Sie ist nun, dass Sie versuchen die Logik des Routers in Excel zu automatisieren. Stellen Sie sich vor, Sie sind ein Router und erhalten ein IP-Paket. Wie entscheiden Sie, an welches Netzwerk Sie das Paket weiterleiten sollen?
 > 
-> Laden Sie sich dazu die Datei [[excel_router_task.xlsx|excel_router_task.xlsx]] herunter.
+> Laden Sie sich dazu die Datei [[/assets/excel_router_task.xlsx|excel_router_task.xlsx]] herunter.
 
 Die Lektion an der Tafel:
 - [[net-02-networks-G1b|G1b]]
@@ -90,7 +90,7 @@ Die Lektion an der Tafel:
 
 > [!question]- Lösung
 > 
-> [[excel_router_solution.xlsx]]
+> [[/assets/excel_router_solution.xlsx]]
 
 
 [[net-01-ip|Zurück]]
