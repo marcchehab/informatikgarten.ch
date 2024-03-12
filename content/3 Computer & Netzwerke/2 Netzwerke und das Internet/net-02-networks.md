@@ -88,7 +88,7 @@ Die Lektion an der Tafel:
 - [[net-02-networks-F1b|F1b]]
 
 
-> [!question] Lösung
+> [!question]- Lösung
 > 
 > [[excel_router_solution.xlsx]]
 
