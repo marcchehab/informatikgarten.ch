@@ -20,5 +20,4 @@ Installieren Sie das Programm wie folgt:
 > ![[Pasted image 20240312095454.png]]
 > 1. Laden Sie sich Filius 2.4.1 [hier herunter](https://nx2.conbroit.de/s/PoqQPPBBXKcTnZF) und installieren Sie das Programm.
 > 2. Versuchen Sie das Programm zu öffnen, obwohl das noch nicht funktionieren wird.
-> Gehen Sie in die Systemeinstellungen > **Datenschutz und Sicherheit**.
-> 3. Dort finden Sie (je nach Systemversion unter "Allgemein") eine Einstellung dazu, welche Programme Sie installieren dürfen. Darunter sollten Sie einen Hinweis finden, dass Filius blockiert wurde. Wählen Sie "**Trotzdem öffnen**".
+> 3. Rechtsklicken Sie auf das Programm, wählen Sie öffnen. Nun erscheint ein Knopf "Öffnen".
