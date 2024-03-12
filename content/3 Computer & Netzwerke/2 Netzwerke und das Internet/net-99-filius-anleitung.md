@@ -12,13 +12,13 @@ Installieren Sie das Programm wie folgt:
 
 > [!NOTE]- OSX
 > 
-> Klicken Sie links oben auf das Apfelsymbol und "Über diesen Mac". Nun schauen Sie, ob bei "Prozessor" irgendwo "Intel" steht.
+> Klicken Sie links oben auf das Apfelsymbol und "**Über diesen Mac**". Nun schauen Sie, ob bei "Prozessor" irgendwo "Intel" steht.
 > 
 > Laden Sie sich zuerst Java [hier herunter](https://www.java.com/en/download/manual.jsp). 
 > - Falls Sie einen **Intel**-Prozessor haben, laden Sie "macOS **x64**" herunter, 
 > - ansonsten "macOS **ARM64**".
 > ![[Pasted image 20240312095454.png]]
-> Laden Sie sich Filius 2.4.1 [hier herunter](https://nx2.conbroit.de/s/PoqQPPBBXKcTnZF) und installieren Sie das Programm.
-> Versuchen Sie das Programm zu öffnen, obwohl das noch nicht funktionieren wird.
+> 1. Laden Sie sich Filius 2.4.1 [hier herunter](https://nx2.conbroit.de/s/PoqQPPBBXKcTnZF) und installieren Sie das Programm.
+> 2. Versuchen Sie das Programm zu öffnen, obwohl das noch nicht funktionieren wird.
 > Gehen Sie in die Systemeinstellungen > **Datenschutz und Sicherheit**.
-> Dort finden Sie (je nach Systemversion unter "Allgemein") eine Einstellung dazu, welche Programme Sie installieren dürfen. Darunter sollten Sie einen Hinweis finden, dass Filius blockiert wurde. Wählen Sie "**Trotzdem öffnen**".
+> 3. Dort finden Sie (je nach Systemversion unter "Allgemein") eine Einstellung dazu, welche Programme Sie installieren dürfen. Darunter sollten Sie einen Hinweis finden, dass Filius blockiert wurde. Wählen Sie "**Trotzdem öffnen**".
