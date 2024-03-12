@@ -19,13 +19,15 @@ Der Adressbereich zwischen der Netzwerkadresse und der Broadcastadresse kann fü
 ![[Pasted image 20240303145552.png]]
 
 
-> [!question]- Lösung
+> [!question]- Lösung (unbedingt anschauen)
 > 
-> Der Hostteil ist das gesamte letzte Byte. Mathematisch gibt es also:
+> Der Hostteil ist das gesamte letzte Byte. Es gibt also 256 theoretisch mögliche Adressen, nämlich von `192.168.1.0` bis `192.168.1.255`. 
+> 
+> 256 ist genau die 2er-Potenz von 8 Bit ( = 1 Byte):
 > 
 > $$2^{8\text{ Host-Bit}} = 256\text{ Adressen}$$
 > 
-> Netzwerk- und Broadcastadresse kann man allerdings nicht verwenden. Also: 
+> Jetzt müssen Sie aber beachten, dass man Netzwerk- und Broadcastadresse nicht für Geräte verwenden darf. Also: 
 > 
 > $$2^{8\text{ Host-Bit}}-2\text{ reservierte Adressen} = 254\text{ nutzbare Hostadressen}$$
 > 
@@ -33,8 +35,11 @@ Der Adressbereich zwischen der Netzwerkadresse und der Broadcastadresse kann fü
 > 
 > $$2^{\text{Anzahl Host-Bit}}-2\text{ reservierte Adressen} = \text{Nutzbare Host-Adressen}$$
 
+Sie können diese Logik interaktiv [[excel_router_task.xlsx|in dieser Exceldatei]] nachvollziehen.
 ### Binäres Verständnis
-Stellen Sie sich vor wir würden den Hostteil wieder um ein Bit erweitern wie in der letzten Lektion. Das Netzwerk wäre dann `192.168.0.0/23`. Wie viele Hosts könnten Sie damit adressieren?
+Stellen Sie sich vor wir würden den Hostteil wieder um ein Bit erweitern wie in der letzten Lektion. Die Subnetmaske wäre also `255.255.254.0` und die Netzwerkadresse wäre neu `192.168.0.0`. 
+
+Wie viele Hosts könnten Sie in diesem Netzwerk adressieren?
 
 > [!question]- Lösung
 > 
@@ -74,11 +79,19 @@ Das wollen wir nun selbst in Excel testen.
 > 
 > Der Auftrag an Sie ist nun, dass Sie versuchen die Logik des Routers in Excel zu automatisieren. Stellen Sie sich vor, Sie sind ein Router und erhalten ein IP-Paket. Wie entscheiden Sie, an welches Netzwerk Sie das Paket weiterleiten sollen?
 > 
-> Laden Sie sich dazu die Datei [[/assets/excel_router_task.xlsx|excel_router_task.xlsx]] herunter.
+> Laden Sie sich dazu die Datei [[excel_router_task.xlsx|excel_router_task.xlsx]] herunter.
 
 Die Lektion an der Tafel:
 - [[net-02-networks-G1b|G1b]]
 - [[net-02-networks-G1j|G1j]]
+- [[net-02-networks-G1i|G1i]]
+- [[net-02-networks-F1b|F1b]]
+
+
+> [!question] Lösung
+> 
+> [[excel_router_solution.xlsx]]
+
 
 [[net-01-ip|Zurück]]
 [[net-03-ethernet|Weiter]]

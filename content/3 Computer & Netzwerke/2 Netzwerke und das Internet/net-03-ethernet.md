@@ -8,11 +8,11 @@ title: "03: Ethernet - unsere Postcontainer"
 > - Sie können erklären, welche IP- und MAC-Adresse in einem Paket steht, wenn es:
 >   - im lokalen Netzwerk verschickt wird,
 >   - an den Gateway geschickt wird.
+> - Sie kennen den Hauptvorteil, die "logische" IP-Vermittlungsschicht von der physischen Ethernet-Schicht zu abstrahieren.
 
-Wir haben gesehen, dass ein IP-Paket jeweils eine Absender- und eine Ziel-Adresse hat. Nun haben Sie sich vielleicht schon gefragt: Wie schickt mein Computer etwas an den Gateway, ohne die Ziel-Adresse zu überschreiben?
+Wir haben gesehen, dass ein IP-Paket jeweils eine Absender- und eine Ziel-Adresse hat. Nun haben Sie sich vielleicht schon gefragt: **Wie schickt mein Computer etwas an den Gateway, ohne die Ziel-Adresse zu überschreiben?**
 
-Die Antwort ist: Er überschreibt sie nicht. Ihre Pakete an den Webserver von kswe.ch mit der Ziel-IP `80.74.148.30` enthalten **immer** über alle Stationen hinweg die gleiche Ziel-IP. Die IP-Pakete bleiben erhalten. Aber: Die IP-Pakete werden von Station zu Station einzeln in rudimentäre Postcontainer geladen: sogenannte Ethernet-Frames. 
-
+Die Antwort ist: Er überschreibt sie nicht. Ihre Pakete enthalten über alle Stationen hinweg (meistens) die gleiche Ziel-IP. Die IP-Pakete bleiben erhalten. Aber: **Die IP-Pakete werden für den Verstand von Station zu Station einzeln in rudimentäre Postcontainer geladen: sogenannte Ethernet-Frames**. 
 ## Ethernet-Frames und die MAC-Adresse
 
 Die Aufgabe dieser Postcontainer ist viel rudimentärer als die der IP-Pakete, die letztlich um die ganze Welt reisen können. Ethernet kümmert sich bloss darum, 
