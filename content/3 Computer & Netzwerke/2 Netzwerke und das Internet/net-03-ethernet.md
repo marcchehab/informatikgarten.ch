@@ -8,7 +8,7 @@ title: "03: WiFi und Ethernet - unsere Postcontainer"
 > - Sie können erklären, welche IP- und MAC-Adresse in einem Paket steht, wenn es:
 >   - im lokalen Netzwerk verschickt wird,
 >   - an den Gateway geschickt wird.
-> - Sie kennen den Hauptvorteil, die *logische* Vermittlungsschicht (IP) von der *physischen* Netzzugriffschicht (MAC) zu abstrahieren.
+> - Sie kennen den Hauptvorteil, die *logische* Internetschicht (IP) von der *physischen* Netzzugangschicht (MAC) zu abstrahieren.
 > - Sie müssen die Namen der Schichten *nicht* auswendig lernen.
 
 Wir haben gesehen, dass ein IP-Paket jeweils eine Absender- und eine Ziel-Adresse hat. Nun haben Sie sich vielleicht schon gefragt: **Wie schickt mein Computer etwas an den Gateway, ohne die Ziel-IP-Adresse zu überschreiben?**
@@ -18,15 +18,15 @@ Die Antwort ist: Er überschreibt sie nicht. Die IP-Pakete bleiben in unseren ei
 ## Schichtmodell der Kommunikation
 
 Bevor Ihr Computer Daten abschickt, **verschachtelt** er sie also **mehrmals** hintereinander. Diese **Schichten** existieren nicht einfach, weil Informatiker sie toll finden, sondern weil jede Schicht ein reales Problemfeld der Kommunikation lösen muss.
-* Die Schicht des Internet-Protokolls, das Sie bereits kennen, wird **Vermittlungsschicht** genannt, und das *Inter*-net Protokoll löst das Problem, mit welcher **Adresslogik** man Daten über mehrere Netzwerke hinweg vermitteln kann. Deswegen wird in diesem Zusammenhang die IP-Adresse teils auch "logische" Adresse genannt. Wir mussten uns auf dieser Schicht nie darum kümmern, wie die Daten nun genau über das physische Kabel oder die Luft übermittelt werden, weil dieses Problem von der darunterliegenden Schicht gelöst wird.
-* Neu lernen Sie hier diese unterste Schicht kennen: die **Netzzugriffschicht**. Die Protokolle dieser Schicht (z.B. **Wi-Fi und Ethernet**) lösen das viel rudimentärere Problem, wie Pakete **physisch** mit Antennen (Wi-Fi) oder über Ethernet-Kabel zur nächsten Stelle übermittelt werden können, ohne dass Kollisionen die Daten korrumpieren.
+* Die Schicht des Internet-Protokolls, das Sie bereits kennen, wird **Internetschicht** genannt, und das *Inter*-net Protokoll löst das Problem, mit welcher **Adresslogik** man Daten über mehrere Netzwerke hinweg vermitteln kann. Deswegen wird in diesem Zusammenhang die IP-Adresse teils auch "logische" Adresse genannt. Wir mussten uns auf dieser Schicht nie darum kümmern, wie die Daten nun genau über das physische Kabel oder die Luft übermittelt werden, weil dieses Problem von der darunterliegenden Schicht gelöst wird.
+* Neu lernen Sie hier diese unterste Schicht kennen: die **Netzzugangschicht**. Die Protokolle dieser Schicht (z.B. **Wi-Fi und Ethernet**) lösen das viel rudimentärere Problem, wie Pakete **physisch** mit Antennen (Wi-Fi) oder über Ethernet-Kabel zur nächsten Stelle übermittelt werden können, ohne dass Kollisionen die Daten korrumpieren.
 
 ![[Pasted image 20240314080153.png]]
 
 Wichtig sind hier diese zwei Schichten und die Grundidee: Daten werden mehrfach verpackt und jede Verpackungsschicht löst ein Problem. So entsteht eine Hierarchie aus Abstraktionsschichten, die Ordnung schafft und klare Verantwortungen zuweist. Höhere Schichten verlassen sich darauf, dass die Schichten darunter korrekt implementiert wurden. Salopp gesagt: Das IP-Paket kümmert es herzlich wenig, ob Sie Wi-Fi oder ein Netzwerkkabel benutzen.
 ## Frames und die MAC-Adresse
 
-Schauen wir uns jetzt diese unterste Schicht, die Netzzugriffsschicht, genauer an. Es ist die Verantwortung der Protokolle dieser Schicht (z.B. Wi-Fi und Ethernet), 
+Schauen wir uns jetzt diese unterste Schicht, die Netzzugangsschicht, genauer an. Es ist die Verantwortung der Protokolle dieser Schicht (z.B. Wi-Fi und Ethernet), 
 - dass die Daten über das physische Medium (Kupferkabel, Wi-Fi, optische Kabel...) bis zur nächsten Stelle gelangen,
 - dass dabei keine Kollisionen passieren.
 
@@ -73,7 +73,7 @@ Ich habe hier die konkreten IP- und MAC-Adressen weggelassen, damit das Prinzip 
 
 ![[Pasted image 20240314094050.png]]
 
-Sie sehen hier, wie das IP-Paket auf einer Serie von unterschiedlichen Frames surft. Die Logik der Vermittlungsschicht (IP) besteht über mehrere Übertragungsschritte der Netzzugriffsschicht (MAC) hinweg fort.
+Sie sehen hier, wie das IP-Paket auf einer Serie von unterschiedlichen Frames surft. Die Logik der Internetschicht (IP) besteht über mehrere Übertragungsschritte der Netzzugangsschicht (MAC) hinweg fort.
 
 [[net-02-networks|Zurück]]
 [[net-04-tcp|Weiter]]

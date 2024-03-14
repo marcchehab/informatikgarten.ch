@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 28.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1280 720" style="enable-background:new 0 0 1280 720;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#D050A5;fill-opacity:0.3216;}
+	.st1{fill:#FF9E01;fill-opacity:0.3216;}
+	.st2{fill:#FFFFFF;}
+	.st3{font-family:'Arial-BoldMT';}
+	.st4{font-size:53px;}
+	.st5{fill:#3F7FD8;}
+	.st6{font-family:'ArialMT';}
+	.st7{font-size:16px;}
+	.st8{fill:#FF9E01;}
+	.st9{fill:#D050A5;}
+	.st10{font-size:13px;}
+	.st11{font-size:11px;}
+	.st12{fill:none;stroke:#F2F2F2;stroke-width:2.6667;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:21.3333,8;}
+	.st13{font-size:27px;}
+	.st14{fill:#F2F2F2;}
+	.st15{fill:none;stroke:#F2F2F2;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:0.2314;stroke-dasharray:8,3;}
+	.st16{font-size:37px;}
+</style>
+<rect y="462" class="st0" width="1280" height="76"/>
+<rect y="379" class="st1" width="1280" height="76"/>
+<text transform="matrix(1 0 0 1 476.759 58)" class="st2 st3 st4">Beispiel</text>
+<text transform="matrix(1 0 0 1 681.593 58)" class="st2 st3 st4">Router</text>
+<rect x="190" y="298" class="st5" width="129" height="63"/>
+<text transform="matrix(1 0 0 1 231.921 335)" class="st2 st6 st7">Daten</text>
+<rect x="190" y="386" class="st5" width="129" height="63"/>
+<text transform="matrix(1 0 0 1 231.921 423)" class="st2 st6 st7">Daten</text>
+<rect x="113" y="386" class="st8" width="77" height="63"/>
+<text transform="matrix(1 0 0 1 126.742 413)" class="st2 st6 st7">Von:</text>
+<text transform="matrix(1 0 0 1 164.742 413)" class="st2 st3 st7">A</text>
+<text transform="matrix(1 0 0 1 131.409 432)" class="st2 st6 st7">An:</text>
+<text transform="matrix(1 0 0 1 160.242 432)" class="st2 st3 st7">B</text>
+<rect x="190" y="468" class="st5" width="128" height="64"/>
+<text transform="matrix(1 0 0 1 231.254 505)" class="st2 st6 st7">Daten</text>
+<rect x="35" y="468" class="st9" width="77" height="64"/>
+<text transform="matrix(1 0 0 1 49.4011 486)" class="st2 st6 st7">Von:</text>
+<text transform="matrix(1 0 0 1 87.4011 486)" class="st2 st3 st7">A</text>
+<text transform="matrix(1 0 0 1 61.5677 505)" class="st2 st6 st7">An:</text>
+<text transform="matrix(1 0 0 1 46.5677 524)" class="st2 st3 st7">Router</text>
+<rect x="318" y="468" class="st9" width="23" height="64"/>
+<text transform="matrix(-1.836970e-16 -1 1 -1.836970e-16 17.1003 423)" class="st2 st3 st10">IP</text>
+<text transform="matrix(-1.836970e-16 -1 1 -1.836970e-16 16.559 536)" class="st2 st3 st11">Ethernet/WLAN</text>
+<rect x="112" y="468" class="st8" width="77" height="64"/>
+<text transform="matrix(1 0 0 1 126.32 496)" class="st2 st6 st7">Von:</text>
+<text transform="matrix(1 0 0 1 164.32 496)" class="st2 st3 st7">A</text>
+<text transform="matrix(1 0 0 1 130.986 515)" class="st2 st6 st7">An:</text>
+<text transform="matrix(1 0 0 1 159.82 515)" class="st2 st3 st7">B</text>
+<rect x="26.5" y="280.5" class="st12" width="323" height="266"/>
+<text transform="matrix(1 0 0 1 120.534 257)" class="st2 st3 st13">Computer “A”</text>
+<rect x="542" y="386" class="st5" width="81" height="63"/>
+<text transform="matrix(1 0 0 1 559.842 423)" class="st2 st6 st7">Daten</text>
+<rect x="464" y="386" class="st8" width="77" height="63"/>
+<text transform="matrix(1 0 0 1 478.12 413)" class="st2 st6 st7">Von:</text>
+<text transform="matrix(1 0 0 1 516.12 413)" class="st2 st3 st7">A</text>
+<text transform="matrix(1 0 0 1 482.787 432)" class="st2 st6 st7">An:</text>
+<text transform="matrix(1 0 0 1 511.62 432)" class="st2 st3 st7">B</text>
+<rect x="541" y="468" class="st5" width="82" height="63"/>
+<text transform="matrix(1 0 0 1 559.175 505)" class="st2 st6 st7">Daten</text>
+<rect x="387" y="468" class="st9" width="77" height="63"/>
+<text transform="matrix(1 0 0 1 400.779 486)" class="st2 st6 st7">Von:</text>
+<text transform="matrix(1 0 0 1 438.779 486)" class="st2 st3 st7">A</text>
+<text transform="matrix(1 0 0 1 412.946 505)" class="st2 st6 st7">An:</text>
+<text transform="matrix(1 0 0 1 397.946 524)" class="st2 st3 st7">Router</text>
+<rect x="623" y="468" class="st9" width="23" height="63"/>
+<rect x="464" y="468" class="st8" width="77" height="63"/>
+<text transform="matrix(1 0 0 1 477.698 495)" class="st2 st6 st7">Von:</text>
+<text transform="matrix(1 0 0 1 515.698 495)" class="st2 st3 st7">A</text>
+<text transform="matrix(1 0 0 1 482.364 514)" class="st2 st6 st7">An:</text>
+<text transform="matrix(1 0 0 1 511.198 514)" class="st2 st3 st7">B</text>
+<rect x="368.5" y="360.5" class="st12" width="574" height="185"/>
+<rect x="1115" y="298" class="st5" width="128" height="63"/>
+<text transform="matrix(1 0 0 1 1156.16 335)" class="st2 st6 st7">Daten</text>
+<rect x="1115" y="383" class="st5" width="128" height="63"/>
+<text transform="matrix(1 0 0 1 1156.16 420)" class="st2 st6 st7">Daten</text>
+<rect x="1037" y="383" class="st8" width="77" height="63"/>
+<text transform="matrix(1 0 0 1 1050.98 410)" class="st2 st6 st7">Von:</text>
+<text transform="matrix(1 0 0 1 1088.98 410)" class="st2 st3 st7">A</text>
+<text transform="matrix(1 0 0 1 1055.65 429)" class="st2 st6 st7">An:</text>
+<text transform="matrix(1 0 0 1 1084.48 429)" class="st2 st3 st7">B</text>
+<rect x="1114" y="468" class="st5" width="128" height="64"/>
+<text transform="matrix(1 0 0 1 1155.49 505)" class="st2 st6 st7">Daten</text>
+<rect x="960" y="468" class="st9" width="77" height="64"/>
+<text transform="matrix(1 0 0 1 981.218 486)" class="st2 st6 st7">Von:</text>
+<text transform="matrix(1 0 0 1 970.8049 505)" class="st2 st3 st7">Router</text>
+<text transform="matrix(1 0 0 1 978.3049 524)" class="st2 st6 st7">An:</text>
+<text transform="matrix(1 0 0 1 1007.14 524)" class="st2 st3 st7">B</text>
+<rect x="1242" y="468" class="st9" width="23" height="64"/>
+<rect x="1037" y="468" class="st8" width="77" height="64"/>
+<text transform="matrix(1 0 0 1 1050.5601 496)" class="st2 st6 st7">Von:</text>
+<text transform="matrix(1 0 0 1 1088.5601 496)" class="st2 st3 st7">A</text>
+<text transform="matrix(1 0 0 1 1055.22 515)" class="st2 st6 st7">An:</text>
+<text transform="matrix(1 0 0 1 1084.0601 515)" class="st2 st3 st7">B</text>
+<rect x="953.5" y="280.5" class="st12" width="320" height="266"/>
+<text transform="matrix(1 0 0 1 1034.12 258)" class="st2 st3 st13">Computer “B”</text>
+<text transform="matrix(1 0 0 1 619.259 340)" class="st2 st3 st13">Router</text>
+<rect x="830" y="384" class="st5" width="82" height="63"/>
+<text transform="matrix(1 0 0 1 848.313 421)" class="st2 st6 st7">Daten</text>
+<rect x="753" y="384" class="st8" width="77" height="63"/>
+<text transform="matrix(1 0 0 1 766.592 411)" class="st2 st6 st7">Von:</text>
+<text transform="matrix(1 0 0 1 804.592 411)" class="st2 st3 st7">A</text>
+<text transform="matrix(1 0 0 1 771.2581 430)" class="st2 st6 st7">An:</text>
+<text transform="matrix(1 0 0 1 800.092 430)" class="st2 st3 st7">B</text>
+<rect x="830" y="468" class="st5" width="81" height="64"/>
+<text transform="matrix(1 0 0 1 847.646 505)" class="st2 st6 st7">Daten</text>
+<rect x="675" y="468" class="st9" width="77" height="64"/>
+<text transform="matrix(1 0 0 1 696.831 486)" class="st2 st6 st7">Von:</text>
+<text transform="matrix(1 0 0 1 686.417 505)" class="st2 st3 st7">Router</text>
+<text transform="matrix(1 0 0 1 693.917 524)" class="st2 st6 st7">An:</text>
+<text transform="matrix(1 0 0 1 722.751 524)" class="st2 st3 st7">B</text>
+<rect x="912" y="468" class="st9" width="23" height="64"/>
+<rect x="752" y="468" class="st8" width="77" height="64"/>
+<text transform="matrix(1 0 0 1 766.1689 496)" class="st2 st6 st7">Von:</text>
+<text transform="matrix(1 0 0 1 804.1689 496)" class="st2 st3 st7">A</text>
+<text transform="matrix(1 0 0 1 770.8359 515)" class="st2 st6 st7">An:</text>
+<text transform="matrix(1 0 0 1 799.6689 515)" class="st2 st3 st7">B</text>
+<path class="st14" d="M184,545v95.1c0,2.2,1.8,4,4,4h317.2c1.1,0,2.1-0.4,2.8-1.2c0.8-0.8,1.2-1.8,1.2-2.8l-0.1-73.7l-8,0l0.1,73.7
+	l4-4H188l4,4V545H184z M517.2,570.1l-12.5-23.7l-11.5,24.3L517.2,570.1z"/>
+<path class="st14" d="M800,546v95.1c0,2.2,1.8,4,4,4h317.2c1.1,0,2.1-0.4,2.8-1.2c0.8-0.8,1.2-1.8,1.2-2.8l-0.1-73.7l-8,0l0.1,73.7
+	l4-4H804l4,4V546H800z M1133.2,571.1l-12.5-23.7l-11.5,24.3L1133.2,571.1z"/>
+<path class="st15" d="M664.5,77.5v628.2"/>
+<text transform="matrix(1 0 0 1 449.967 138)" class="st2 st3 st16">Netzwerk</text>
+<text transform="matrix(1 0 0 1 618.8 138)" class="st2 st3 st16">1</text>
+<text transform="matrix(1 0 0 1 696.108 138)" class="st2 st3 st16">Netzwerk</text>
+<text transform="matrix(1 0 0 1 864.9409 138)" class="st2 st3 st16">2</text>
+<path class="st2" d="M257.2,365.5v11.2h-1.3v-11.2H257.2z M260.5,375.4l-4,8l-4-8H260.5z"/>
+<path class="st2" d="M152.2,450.5v11.2h-1.3v-11.2H152.2z M155.5,460.4l-4,8l-4-8H155.5z"/>
+<path class="st2" d="M257.2,449.5v11.2h-1.3v-11.2H257.2z M260.5,459.4l-4,8l-4-8H260.5z"/>
+<path class="st2" d="M792.2,448.5v11.2h-1.3v-11.2H792.2z M795.5,458.4l-4,8l-4-8H795.5z"/>
+<path class="st2" d="M871.2,447.5v11.2h-1.3v-11.2H871.2z M874.5,457.4l-4,8l-4-8H874.5z"/>
+<path class="st2" d="M582.2,465.3l0-8.1h-1.3l0,8.1H582.2z M585.5,458.5l-4-8l-4,8L585.5,458.5z"/>
+<path class="st2" d="M507.2,465l0-7.9h-1.3l0,7.9H507.2z M510.5,458.5l-4-8l-4,8L510.5,458.5z"/>
+<path class="st2" d="M1180.2,467.9l0-13.7h-1.3v13.7H1180.2z M1183.5,455.5l-4-8l-4,8H1183.5z"/>
+<path class="st2" d="M1082.2,467.9l0-13.7h-1.3v13.7H1082.2z M1085.5,455.5l-4-8l-4,8H1085.5z"/>
+<path class="st2" d="M1179.2,381.2l0-10h-1.3v10H1179.2z M1182.5,372.5l-4-8l-4,8L1182.5,372.5z"/>
+<path class="st2" d="M648.5,411.8l33.8,0.4l0,1.3l-33.8-0.4L648.5,411.8z M681,408.9l7.9,4.1l-8.1,3.9L681,408.9z"/>
+</svg>
