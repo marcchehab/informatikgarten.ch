@@ -8,6 +8,7 @@ title: "03: WiFi und Ethernet - unsere Postcontainer"
 > - Sie können erklären, welche IP- und MAC-Adresse in einem Paket steht, wenn es:
 >   - im lokalen Netzwerk verschickt wird,
 >   - an den Gateway geschickt wird.
+> - Sie wissen, wie ein Gerät per Broadcast die MAC-Adresse einer IP herausfindet.
 > - Sie kennen den Hauptvorteil, die *logische* Internetschicht (IP) von der *physischen* Netzzugangschicht (MAC) zu abstrahieren.
 > - Sie müssen die Namen der Schichten *nicht* auswendig lernen.
 
@@ -23,7 +24,9 @@ Bevor Ihr Computer Daten abschickt, **verschachtelt** er sie also **mehrmals** h
 
 ![[Pasted image 20240314080153.png]]
 
-Wichtig sind hier diese zwei Schichten und die Grundidee: Daten werden mehrfach verpackt und jede Verpackungsschicht löst ein Problem. So entsteht eine Hierarchie aus Abstraktionsschichten, die Ordnung schafft und klare Verantwortungen zuweist. Höhere Schichten verlassen sich darauf, dass die Schichten darunter korrekt implementiert wurden. Salopp gesagt: Das IP-Paket kümmert es herzlich wenig, ob Sie Wi-Fi oder ein Netzwerkkabel benutzen.
+Wichtig sind hier diese zwei Schichten und die Grundidee: Daten werden mehrfach verpackt und jede Verpackungsschicht löst ein Problem. So entsteht eine Hierarchie aus Abstraktionsschichten, die Ordnung schafft und klare Verantwortungen zuweist. Höhere Schichten verlassen sich darauf, dass die Schichten darunter korrekt implementiert wurden. 
+
+Merken Sie sich den Hauptvorteil, diese zwei Schichten so voneinander zu abstrahieren: **Das IP-Paket wird von Stelle zu Stelle immer wieder in neue Frames verladen und muss sich nicht darum kümmern, ob es über Wi-Fi oder ein Netzwerkkabel versendet wird.** Es surft quasi auf einer Welle von Frames.
 ## Frames und die MAC-Adresse
 
 Schauen wir uns jetzt diese unterste Schicht, die Netzzugangsschicht, genauer an. Es ist die Verantwortung der Protokolle dieser Schicht (z.B. Wi-Fi und Ethernet), 
@@ -52,7 +55,11 @@ Interface: 192.168.1.180 --- 0xe
   192.168.1.171         a8-6b-ad-81-b0-58     dynamic
 ```
 
-Was, wenn ihr Computer die MAC-Adresse einer IP-Adresse im lokalen Netzwerk noch nicht kennt? Dann sendet er eine Frage per Broadcast-MAC-Adresse ans ganze Netzwerk: "Das Gerät mit dieser IP soll mir bitte seine MAC-Adresse mitteilen." Wenn das Gerät antwortet, trägt Ihr Computer das IP-MAC-Adresspaar der Geräts in seiner ARP-Tabelle ein.
+Was, wenn ihr Computer die **MAC-Adresse** einer IP-Adresse im lokalen Netzwerk noch **nicht kennt?** Dann sendet er eine Frage per **Broadcast-MAC-Adresse** ans ganze Netzwerk: "Das Gerät mit dieser IP soll mir bitte seine MAC-Adresse mitteilen." 
+
+![[net-04-tcp arp.excalidraw]]
+
+Wenn das Gerät antwortet, trägt Ihr Computer das IP-MAC-Adresspaar der Geräts in seiner ARP-Tabelle ein. Nun können sie direkt kommunizieren.
 
 ![[Pasted image 20240314101056.png]]
 
@@ -76,4 +83,4 @@ Ich habe hier die konkreten IP- und MAC-Adressen weggelassen, damit das Prinzip 
 Sie sehen hier, wie das IP-Paket auf einer Serie von unterschiedlichen Frames surft. Die Logik der Internetschicht (IP) besteht über mehrere Übertragungsschritte der Netzzugangsschicht (MAC) hinweg fort.
 
 [[net-02-networks|Zurück]]
-[[net-04-tcp|Weiter]]
+[[net-04-transport-application|Weiter]]
