@@ -27,4 +27,4 @@ Hier die aus den Lektionen zusammengetragenen Lernziele:
 > - Sie müssen *keine* Port-Nummern auswendig lernen.
 > - Sie müssen *nicht* wissen, wie die Anwendungsprotokolle HTTPS oder DHCP funktionieren, das sind bloss Beispiele.
 
-*Zur Vorbereitung haben Sie einen Arbeitsauftrag auf Onenote erhalten.*
+*Zur Vorbereitung haben Sie einen Arbeitsauftrag auf Onenote erhalten. Dazu schicke ich Ihnen noch ein Erklärvideo.*
