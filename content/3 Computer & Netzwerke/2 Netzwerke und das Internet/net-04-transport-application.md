@@ -6,7 +6,7 @@ title: "04: Transport- und Anwendungsschicht"
 > - Sie kennen die Aufgaben der vier Schichten des TCP/IP-Referenzmodells.
 > - Sie können beschreiben, was Ports sind.
 > - Sie kennen den Unterschied zwischen Server und Client.
-> - Sie können einige wichtige Protokolle den Schichten des TCP/IP-Referenzmodells zuordnen, namentlich: Ethernet, Wi-Fi, IP, TCP, UDP, HTTPS, DHCP.
+> - Sie können einige wichtige Protokolle den Schichten des TCP/IP-Referenzmodells zuordnen, namentlich: Ethernet, Wi-Fi, IP, TCP, HTTP/HTTPS.
 > - Sie müssen das OSI-Modell _nicht_ auswendig lernen.
 > - Sie müssen *keine* Port-Nummern auswendig lernen.
 > - Sie müssen *nicht* wissen, wie genau HTTPS oder DHCP funktionieren, das sind bloss Beispiele.
@@ -56,7 +56,7 @@ Die Portnummern können Sie frei bestimmen, aber folgende Regeln gelten im Inter
 - 1024-49151 sind für Server-Applikationen vorgesehen (z.B. ein Game-Server),
 - 49152-65535 sind für Client-Applikationen vorgesehen (z.B. ein Browser oder Game-Client).
 
-### UDP - verbindungslose Übertragung
+### UDP - verbindungslose Übertragung (optional)
 
 Im Vergleich zu TCP ist das Protokoll UDP einfacher: Es merkt sich keine Verbindung und verifiziert auch nicht, ob Pakete angekommen sind. UDP ermöglicht so eine schnelle, verbindungslose Kommunikation, da es keine Handshakes für Verbindungsbestätigungen durchführt. Es ist ideal für Anwendungen, bei denen Geschwindigkeit wichtiger ist als Zuverlässigkeit, wie z.B. Live-Streaming oder Online-Spiele. UDP bietet keine Garantie für die Reihenfolge der Pakete, sie können in beliebiger Reihenfolge ankommen.
 
@@ -73,26 +73,30 @@ Die meisten Netzwerkverbindungen werden zwischen einem Server-Programm und einem
 > ![[Pasted image 20240315103938.png]]
 
 ## Die Anwendungsschicht
-Mit diesem Beispiel sind wir bereits in der Anwendungsschicht. Die ersten drei Schichten des TCP/IP-Modells lösen die gesamte Netzwerklogik für die Programme, die eine Verbindung für eine gewisse Anwendung aufbauen wollen. Die Programme müssen sich nicht mehr um die grundlegende Logik der Netzwerkverbindung kümmern.
-### Beispiel 1: HTTPS/HTTP
+Mit diesem Beispiel sind wir bereits in der Anwendungsschicht. Die ersten drei Schichten des TCP/IP-Modells lösen die gesamte Verbindungslogik für die Programme, die eine Verbindung für eine gewisse Anwendung aufbauen wollen. Die Programme müssen sich also nicht mehr um die grundlegende Logik der Netzwerkverbindung kümmern.
 
+Nun gibt es **viele verschiedene Anwendungen**: Schauen Sie eine Webseite an? Ein Videocall? Ein Multiplayer-Spiel? All das sind Anwendungen, die selbst definieren, was für Informationen sie wie austauschen. Mehr müssen Sie sich dazu nicht merken.
+
+Wir schauen uns zwei Beispiele an, aber **wir konzentrieren uns auf die unteren drei Schichten**!
+### Beispiel 1: HTTP/HTTPS
 ![[net-04-tcp tcpip-http.excalidraw]]
 
-Aber eine Anwendung kann ja in sich selbst durchaus komplex sein: Denken Sie nur an diese Webseite. Sie erhalten eine interaktive, grafische Anwendung serviert und alles funktioniert (hoffentlich) einwandfrei. Dafür müssen mein Webserver und Ihr Browser (Client) sich über ganz viele Dinge einig sind:
-- Wie soll der Client nach Dateien fragen?
-- Wie soll der Server die Dateien schicken?
-- Wie soll der Client Informationen an der Server schicken?
-- Wie wird das ganze verschlüsselt, damit nicht alle mithören können (bei HTTPS)?
+HTTP oder HTTPS regelt, wie Dateien und Informationen einer Webseite zwischen Ihrem Webbrowser (Client) und einem Webserver (Server) ausgetauscht werden. 
 
-Das ist einfach ein Beispiel des Hypertext Transfer Protocol (HTTPS/HTTP). Es ist ein Anwendungsprotokoll, weil es spezifisch für eine Anwendung gemacht wurde: Hypertext (z.B. HTML) im Internet austauschen. Ein Paket, das Ihr Computer an den Server sendet, könnte dann ungefähr so aussehen:
+HTTP steht dabei für "**Hypertext Transfer Protokoll**". HTTPS ist dasselbe, einfach verschlüsselt (S für "Secure"). Beide nutzen TCP/IP um Webseiten (sogenannten Hypertext, z.B. HTML) im Internet austauschen.
+
+Ein Paket, das Ihr Webbrowser an den Server sendet, könnte dann so aussehen:
 
 ![[net-04-tcp http.excalidraw]]
 
-### Beispiel 2: DHCP
+Achten Sie auf die Transport-Ebene und die Port-Nummern:
+- Für einen Webserver mit HTTP ist standardmässig Port 80 reserviert, für HTTPS wäre es Port 443. 
+- Der Webbrowser (Client) hat sich einfach einen zufälligen Client-Port ausgesucht und hat 53'152 erwischt.
 
+### Beispiel 2: DHCP (optional)
 ![[net-04-tcp tcpip-dhcp.excalidraw]]
 
-Eine weitere Anwendung, die für Sie tagtäglich gute Dienste verrichtet, ist DHCP. Das ist das Protokoll, das Sie gebrauchen, um automatische IP-Adressen zu erhalten.
+Eine weitere Anwendung, die für Sie tagtäglich gute Dienste verrichtet, ist DHCP. Das ist das Protokoll, das Sie gebrauchen, **um automatische IP-Adressen zu erhalten**.
 
 Aber Moment! Wie können Sie etwas verschicken und erhalten *bevor* Sie eine IP-Adresse haben? 
 
@@ -111,5 +115,6 @@ Diesen Austausch habe ich bei mir zuhause mit einem Netzwerk-Paket-Sniffer aufge
 ![[net-04-tcp 2024-03-15 12.49.32.excalidraw]]
 
 ## Abschliessender Überblick
+*Hier folgt noch ein Video.*
 
 ![[net-04-transport-application 2024-03-17 17.22.11.excalidraw]]
