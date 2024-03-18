@@ -75,7 +75,7 @@ Die meisten Netzwerkverbindungen werden zwischen einem Server-Programm und einem
 ## Die Anwendungsschicht
 Mit diesem Beispiel sind wir bereits in der Anwendungsschicht. Die ersten drei Schichten des TCP/IP-Modells lösen die gesamte Verbindungslogik für die Programme, die eine Verbindung für eine gewisse Anwendung aufbauen wollen. Die Programme müssen sich also nicht mehr um die grundlegende Logik der Netzwerkverbindung kümmern.
 
-Nun gibt es **viele verschiedene Anwendungen**: Schauen Sie eine Webseite an? Ein Videocall? Ein Multiplayer-Spiel? All das sind Anwendungen, die selbst definieren, was für Informationen sie wie austauschen. Mehr müssen Sie sich dazu nicht merken.
+Nun gibt es **viele verschiedene Anwendungen**: Schauen Sie eine Webseite an? Ein Videocall? Ein Multiplayer-Spiel? All das sind **Anwendungen, die definieren müssen, was für Informationen sie wie austauschen**. Mehr müssen Sie sich dazu nicht merken.
 
 Wir schauen uns zwei Beispiele an, aber **wir konzentrieren uns auf die unteren drei Schichten**!
 ### Beispiel 1: HTTP/HTTPS
