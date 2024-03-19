@@ -4,38 +4,36 @@ title: "03: WiFi und Ethernet - unsere Postcontainer"
 
 > [!success] Lernziele
 > 
+> - Sie kennen den Hauptvorteil, die *logische* Internetschicht (IP) von der *physischen* Netzzugangschicht (MAC) zu abstrahieren.
 > - Sie erkennen eine MAC-Adresse und können sie von IP-Adressen unterscheiden
 > - Sie können erklären, welche IP- und MAC-Adresse in einem Paket steht, wenn es:
->   - im lokalen Netzwerk verschickt wird,
->   - an den Gateway geschickt wird.
-> - Sie wissen, wie ein Gerät per Broadcast die MAC-Adresse einer IP herausfindet.
-> - Sie kennen den Hauptvorteil, die *logische* Internetschicht (IP) von der *physischen* Netzzugangschicht (MAC) zu abstrahieren.
+>   - im lokalen Netzwerk verschickt wird (IP und MAC des Ziel-Computers),
+>   - in ein anderes Netzwerk gesendet wird (IP des Ziel-Computers, MAC des Gateways).
 > - Sie müssen die Namen der Schichten *nicht* auswendig lernen.
 
 Wir haben gesehen, dass ein IP-Paket jeweils eine Absender- und eine Ziel-Adresse hat. Nun haben Sie sich vielleicht schon gefragt: **Wie schickt mein Computer etwas an den Gateway, ohne die Ziel-IP-Adresse zu überschreiben?**
 
-Die Antwort ist: Er überschreibt sie nicht. Die IP-Pakete bleiben in unseren einfachen Netzwerken auf dem ganzen Weg unverändert erhalten. Aber: **Die IP-Pakete werden von Station zu Station einzeln in rudimentäre Postcontainer geladen: sogenannte "Frames"**. Und auf diesen Frames steht dann die Adresse des Gateways.
-
+Die Antwort ist: Er überschreibt sie nicht. Die IP-Pakete bleiben in unseren einfachen Netzwerken auf dem ganzen Weg unverändert erhalten. Aber: **Die IP-Pakete werden von Station zu Station einzeln in rudimentäre Postcontainer geladen: sogenannte "Frames"**. Auf diesen Frames steht jeweils die Adresse der nächsten Stelle drauf - z.B. die Adresse des Gateways.
 ## Schichtmodell der Kommunikation
 
 Bevor Ihr Computer Daten abschickt, **verschachtelt** er sie also **mehrmals** hintereinander. Diese **Schichten** existieren nicht einfach, weil Informatiker sie toll finden, sondern weil jede Schicht ein reales Problemfeld der Kommunikation lösen muss.
-* Die Schicht des Internet-Protokolls, das Sie bereits kennen, wird **Internetschicht** genannt, und das *Inter*-net Protokoll löst das Problem, mit welcher **Adresslogik** man Daten über mehrere Netzwerke hinweg vermitteln kann. Deswegen wird in diesem Zusammenhang die IP-Adresse teils auch "logische" Adresse genannt. Wir mussten uns auf dieser Schicht nie darum kümmern, wie die Daten nun genau über das physische Kabel oder die Luft übermittelt werden, weil dieses Problem von der darunterliegenden Schicht gelöst wird.
-* Neu lernen Sie hier diese unterste Schicht kennen: die **Netzzugangschicht**. Die Protokolle dieser Schicht (z.B. **Wi-Fi und Ethernet**) lösen das viel rudimentärere Problem, wie Pakete **physisch** mit Antennen (Wi-Fi) oder über Ethernet-Kabel zur nächsten Stelle übermittelt werden können, ohne dass Kollisionen die Daten korrumpieren.
+* Die Schicht des Internet-Protokolls, das Sie bereits kennen, wird **Internetschicht** genannt, und das *Inter*-net Protokoll löst das Problem, mit welcher **Adresslogik** man Daten über mehrere Netzwerke hinweg vermitteln kann. Deswegen wird die IP-Adresse teils auch "logische" Adresse genannt. 
+* Neu lernen Sie hier diese unterste Schicht kennen: die **Netzzugangschicht**. Die Protokolle dieser Schicht (z.B. **Wi-Fi und Ethernet**) lösen das physische Problem, wie Pakete mit Antennen (Wi-Fi) oder über Ethernet-Kabel **zur nächsten Stelle** übermittelt werden können, ohne dass z.B. Pakete kollidieren.
 
 ![[Pasted image 20240314080153.png]]
 
-Wichtig sind hier diese zwei Schichten und die Grundidee: Daten werden mehrfach verpackt und jede Verpackungsschicht löst ein Problem. So entsteht eine Hierarchie aus Abstraktionsschichten, die Ordnung schafft und klare Verantwortungen zuweist. Höhere Schichten verlassen sich darauf, dass die Schichten darunter korrekt implementiert wurden. 
+Merken Sie sich den **Hauptvorteil**, diese zwei Schichten so voneinander zu abstrahieren: **Das IP-Paket wird von Stelle zu Stelle immer wieder in neue Frames verladen und muss sich nicht darum kümmern, wie es nun genau physisch weiter zur nächsten Stelle versendet wird - über Wi-Fi, ein Kupferkabel, oder Glasfaser.** Es surft quasi auf einer Welle von Frames von Stelle zu Stelle.
 
-Merken Sie sich den Hauptvorteil, diese zwei Schichten so voneinander zu abstrahieren: **Das IP-Paket wird von Stelle zu Stelle immer wieder in neue Frames verladen und muss sich nicht darum kümmern, ob es über Wi-Fi oder ein Netzwerkkabel versendet wird.** Es surft quasi auf einer Welle von Frames.
+![[net-03-ethernet frame-wave.excalidraw]]
 ## Frames und die MAC-Adresse
 
 Schauen wir uns jetzt diese unterste Schicht, die Netzzugangsschicht, genauer an. Es ist die Verantwortung der Protokolle dieser Schicht (z.B. Wi-Fi und Ethernet), 
 - dass die Daten über das physische Medium (Kupferkabel, Wi-Fi, optische Kabel...) bis zur nächsten Stelle gelangen,
 - dass dabei keine Kollisionen passieren.
 
-Die Container ("Frames") verwenden nicht IP-Adressen, sondern die sogenannte **MAC-Adresse** der nächsten Stelle. Diese wird auch "physische" oder "Hardware"-Adresse genannt, weil sie vom Hersteller der Netzwerkkarte voreingestellt ist. Normalerweise verändert man diese nicht.
+Die Container ("Frames") verwenden nicht IP-Adressen, sondern die Hardware-ID der nächsten Stelle, die sogenannte **MAC-Adresse**. Diese wird auch "physische" Adresse genannt, weil sie vom Hersteller der Netzwerkkarte voreingestellt ist. Normalerweise verändert man diese nicht.
 
-Sie sollten MAC-Adresse von IP-Adressen unterscheiden können. Typischerweise werden MAC-Adressen hexadezimal mit **Doppelpunkten (:) oder Bindestrichen (-)** notiert und sind (allermeistens) **6 Byte lang**. Wie bei IP-Netzwerken ist bei MAC-Adressen die höchstmögliche Adresse die **Broadcast-Adresse**, die an alle Geräte im Netzwerk weitergeleitet wird. 
+Sie sollten MAC-Adresse einfach von IP-Adressen unterscheiden können. Typischerweise werden MAC-Adressen hexadezimal mit **Doppelpunkten (:) oder Bindestrichen (-)** notiert und sind **6 Byte lang**. Wie bei IP-Netzwerken ist bei MAC-Adressen die höchstmögliche Adresse die **Broadcast-Adresse**, die an alle Geräte im Netzwerk weitergeleitet wird. 
 
 ```
 8b:3b:06:af:9c:df
@@ -63,7 +61,7 @@ Wenn das Gerät antwortet, trägt Ihr Computer das IP-MAC-Adresspaar der Geräts
 
 ![[Pasted image 20240314101056.png]]
 
-Das funktioniert genau gleich, auch wenn mehrere Geräte mit einem Switch oder über einen Wireless-Access-Point zusammengehängt sind. Diese Geräte agieren nämlich "transparent" auf der untersten Schicht, d.h. **sie ändern nichts an den weitergeleiteten Frames und beherrschen IP-Adressen nicht**. D.h. Sie können sich Switches einfach als eine etwas kompliziertere Mehrfachsteckdosen vorstellen.
+Das funktioniert genau gleich, auch wenn mehrere Geräte mit einem Switch oder über einen Wireless-Access-Point zusammengehängt sind. Diese Geräte ändern nichts an den weitergeleiteten Frames und beherrschen IP-Adressen nicht. D.h. Sie können sich Switches einfach als eine etwas kompliziertere **Mehrfachsteckdosen** vorstellen.
 
 ![[Pasted image 20240314103453.png]]
 > [!question]- Infos zu Switches und Access-Points (optional, falls Sie das interessiert)
@@ -74,7 +72,7 @@ Das funktioniert genau gleich, auch wenn mehrere Geräte mit einem Switch oder �
 > 
 > Wireless Access-Points benutzen ebenfalls MAC-Adressen. Sie können sich das so vorstellen: Jeder Computer baut eine verschlüsselte Verbindung mit dem Access-Point auf (mit WPA), die ähnlich eines Kabels eine exklusive 1:1 Verbindung ist. D.h. der Verkehr läuft immer über den Access-Point, der im Wesentlichen wie ein Switch agiert.
 
-Etwas komplizierter wird es, wenn mehrere Netzwerke und Router im Spiel sind. Wenn Computer "A" ein IP-Paket an Computer "B" verschickt, der in einem anderen Netzwerk liegt, dann **verpackt er das IP-Paket mit der Ziel-IP-Adresse von Computer "B" in ein Ethernet-Frame mit der MAC-Adresse des Routers**. 
+Die Idee des Mehrfachverschachtelung kommt richtig zum tragen, wenn mehrere Netzwerke und Router im Spiel sind. Wenn Computer "A" ein IP-Paket an Computer "B" verschickt, der in einem anderen Netzwerk liegt, dann **verpackt er das IP-Paket mit der Ziel-IP-Adresse von Computer "B" in ein Ethernet-Frame mit der MAC-Adresse des Routers**. 
 
 Ich habe hier die konkreten IP- und MAC-Adressen weggelassen, damit das Prinzip einfacher erkennbar ist. 
 

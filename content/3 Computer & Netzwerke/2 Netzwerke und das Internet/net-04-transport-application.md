@@ -4,9 +4,11 @@ title: "04: Transport- und Anwendungsschicht"
 > [!success] Lernziele
 > 
 > - Sie kennen die Aufgaben der vier Schichten des TCP/IP-Referenzmodells.
-> - Sie können beschreiben, was Ports sind.
+> - Sie können beschreiben, welches Problem die Transport-Schicht löst und was Ports sind.
 > - Sie kennen den Unterschied zwischen Server und Client.
 > - Sie können einige wichtige Protokolle den Schichten des TCP/IP-Referenzmodells zuordnen, namentlich: Ethernet, Wi-Fi, IP, TCP, HTTP/HTTPS.
+> 
+> ## Was nicht
 > - Sie müssen das OSI-Modell _nicht_ auswendig lernen.
 > - Sie müssen *keine* Port-Nummern auswendig lernen.
 > - Sie müssen *nicht* wissen, wie genau HTTPS oder DHCP funktionieren, das sind bloss Beispiele.
