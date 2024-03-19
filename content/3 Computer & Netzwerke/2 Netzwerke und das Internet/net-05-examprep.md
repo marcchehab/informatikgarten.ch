@@ -9,9 +9,8 @@ Hier die aus den Lektionen zusammengetragenen Lernziele:
 > 
 > ## IP-Netzwerke
 > - Sie kennen den Aufbau einer IP-Adresse (Version 4).
-> - Sie wissen, wie man dezimal aus IP-Adresse und Standard-Subnetmaske die Netzwerkadresse herleitet.
+> - Sie wissen, wie man aus IP-Adresse und Subnetmaske die Netzwerkadresse herleitet.
 > - Sie können erklären, wie ein Computer anhand der Netzwerkadresse entscheidet, ob eine Ziel-IP-Adresse im selben Netzwerk liegt, oder nicht.
-> - *Sie wissen, wie man binär aus IP-Adresse und Subnet-Maske die Netzwerkadresse herleitet.*
 > - Sie können anhand einer IP und einer Subnetmaske den Adressbereich eines Netzwerks bilden.
 > - Sie wissen, was ein Gateway / Router ist und wie er sich entscheidet, zu welchem Netzwerk ein Datenpaket gehört.
 > 
