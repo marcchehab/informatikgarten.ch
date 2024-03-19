@@ -17,7 +17,7 @@ Hier die aus den Lektionen zusammengetragenen Lernziele:
 > 
 > ## Physische Netzzugangsschicht
 > - Sie kennen den Hauptvorteil, die *logische* Internetschicht (IP) von der *physischen* Netzzugangschicht (MAC) zu abstrahieren.
-> - Sie erkennen eine MAC-Adresse und können sie von IP-Adressen unterscheiden
+> - Sie erkennen eine MAC-Adresse (z.B. 81:03:ce:85:fa:d1) und können sie von IP-Adressen (z.B. 192.168.3.2) unterscheiden
 > - Sie können erklären, welche IP- und MAC-Adresse in einem Paket steht, wenn es:
 >   - im lokalen Netzwerk verschickt wird (IP und MAC des Ziel-Computers),
 >   - in ein anderes Netzwerk gesendet wird (IP des Ziel-Computers, MAC des Gateways).
