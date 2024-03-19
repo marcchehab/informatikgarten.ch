@@ -22,7 +22,7 @@ Hier die aus den Lektionen zusammengetragenen Lernziele:
 >   - in ein anderes Netzwerk gesendet wird (IP des Ziel-Computers, MAC des Gateways).
 > 
 > ## Transport-Schicht
-> - Sie kennen die Aufgaben der drei unteren Schichten des TCP/IP-Referenzmodells.
+> - Sie kennen die Aufgaben der drei unteren Schichten des TCP/IP-Referenzmodells, also Netzzugang (mit MAC), Internet (mit IP) und Transport (mit Ports).
 > - Sie können beschreiben, welches Problem die Transport-Schicht löst und was Ports sind.
 > - Sie kennen den Unterschied zwischen Server und Client.
 > - Sie können einige wichtige Protokolle den Schichten des TCP/IP-Referenzmodells zuordnen, namentlich: Ethernet, Wi-Fi, IP, TCP, HTTP/HTTPS.
