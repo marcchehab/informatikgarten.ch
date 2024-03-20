@@ -1,9 +1,9 @@
 ---
-title: "05: Prüfungsvorbereitung"
+title: "05: Prüfungsvorbereitung (binär)"
 ---
-Hier die aus den Lektionen zusammengetragenen Lernziele:
+Zum Abschlussauftrag finden Sie [hier ein Lösungsvideo]([net-99-abschlussauftrag-g1.mp4](https://kswe-my.sharepoint.com/:v:/g/personal/cha_kswe_ch/EaFeI88OK2RHttumnUjXsBoBzfKa9yD2MmD72w7lZmqqpw?e=I2NeMH&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)). 
 
-*Zur Vorbereitung haben Sie einen Arbeitsauftrag auf Onenote erhalten. Dazu schicke ich Ihnen am Mittwoch ein Erklärvideo.*
+Hier die aus den Lektionen zusammengetragenen Lernziele:
 
 > [!success] Lernziele
 > 
