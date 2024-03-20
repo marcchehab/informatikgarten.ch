@@ -18,8 +18,8 @@ Hier die aus den Lektionen zusammengetragenen Lernziele:
 > ## Transport-Schicht
 > - Sie können beschreiben, welches Problem die Transport-Schicht löst und was Ports sind.
 > - Sie kennen den Unterschied zwischen Server und Client.
-> - Sie können einige wichtige Protokolle den Schichten des TCP/IP-Referenzmodells zuordnen, namentlich: IP, TCP, HTTP/HTTPS.
->
+> - Sie können einige wichtige Protokolle den Schichten des TCP/IP-Referenzmodells zuordnen, namentlich: IP, TCP, HTTP.
+>	![[net-04-tcp tcpip-http-simple.excalidraw]]
 > ## Einige Hinweise, was *nicht* Lernziele sind:
 > - Sie müssen die Namen der Schichten *nicht* auswendig lernen.
 > - Sie müssen das OSI-Modell _nicht_ auswendig lernen.
