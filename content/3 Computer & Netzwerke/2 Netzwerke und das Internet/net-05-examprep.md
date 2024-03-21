@@ -1,7 +1,7 @@
 ---
 title: "05: Prüfungsvorbereitung (binär)"
 ---
-Zum Abschlussauftrag finden Sie [hier ein Lösungsvideo]([net-99-abschlussauftrag-g1.mp4](https://kswe-my.sharepoint.com/:v:/g/personal/cha_kswe_ch/EaFeI88OK2RHttumnUjXsBoBzfKa9yD2MmD72w7lZmqqpw?e=I2NeMH&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)). 
+Hinweis: Zum Abschlussauftrag habe ich Ihnen auf Teams ein Lösungsvideo geschickt.
 
 Hier die aus den Lektionen zusammengetragenen Lernziele:
 
@@ -26,6 +26,7 @@ Hier die aus den Lektionen zusammengetragenen Lernziele:
 > - Sie können beschreiben, welches Problem die Transport-Schicht löst und was Ports sind.
 > - Sie kennen den Unterschied zwischen Server und Client.
 > - Sie können einige wichtige Protokolle den Schichten des TCP/IP-Referenzmodells zuordnen, namentlich: Ethernet, Wi-Fi, IP, TCP, HTTP/HTTPS.
+> 	![[net-04-tcp tcpip-http-simple.excalidraw]]
 >
 > ## Einige Hinweise, was *nicht* Lernziele sind:
 > - Sie müssen die Namen der Schichten *nicht* auswendig lernen.
