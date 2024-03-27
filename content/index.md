@@ -33,4 +33,4 @@ for x in range(360):
 Wenn Sie sich mit Ihrem Microsoft-Account der Schule anmelden (rechts oben), wird der Code mit einer SQL-Datenbank synchronisiert. Sie können sich dann an anderen Computern anmelden und haben Ihren trotzdem Ihren Code. Zukünftig wird uns das ermöglichen, Aufgaben und Code einfach zu teilen.
 
 ### Besserer Technologie-Stack
-Das merken Sie (noch) nicht, aber die Webseite basiert jetzt auf der heutigen Standardtechnologie für moderne Webapps (namens React). Der grosse Vorteil: In diesem Ökosystem gibt es für ganz viele Probleme fixfertige Lösungen, die man schnell in die Webseite einbinden kann. Wir können den Informatikgarten also viel leichter erweitern. Wenn Sie Ideen und Wünsche haben, kommen Sie unbedingt auf mich zu! 👍
+Das merken Sie (noch) nicht, aber die Webseite basiert jetzt auf einer weitverbreiteten Frontend-Bibliothek namens React und dem Next.js-Framework. Der grosse Vorteil: In diesem Ökosystem gibt es für ganz viele Probleme fixfertige Lösungen, die man schnell in die Webseite einbinden kann. Wir können den Informatikgarten also viel leichter erweitern. Wenn Sie Ideen und Wünsche haben, kommen Sie unbedingt auf mich zu! 👍
