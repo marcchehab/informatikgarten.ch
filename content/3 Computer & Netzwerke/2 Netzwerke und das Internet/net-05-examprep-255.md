@@ -1,6 +1,8 @@
 ---
 title: "05: Prüfungsvorbereitung (255)"
 ---
+Hinweis: Zum Abschlussauftrag habe ich Ihnen auf Teams ein Lösungsvideo geschickt.
+
 Hier die aus den Lektionen zusammengetragenen Lernziele:
 
 > [!success] Lernziele
