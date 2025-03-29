@@ -37,9 +37,7 @@ export function StickMe({ children, pinActivedAtStart = true }: StickMeProps) {
     const updateDimensions = () => {
         if (!containerRef.current) return
         const { width, height } = containerRef.current.getBoundingClientRect()
-        const nextraContentColumn = document.querySelector(
-            '.nextra-nav-container + div'
-        )
+        const nextraContentColumn = document.querySelector('.nextra-mobile-nav + div')
         dimensionsRef.current = {
             elemHeight: height,
             elemAspect: width / height,
@@ -83,7 +81,7 @@ export function StickMe({ children, pinActivedAtStart = true }: StickMeProps) {
     const handleScroll = () => {
         if (
             pinActivated &&
-            window.scrollY > dimensionsRef.current.staticOffset
+            window.scrollY + navbarOffset > dimensionsRef.current.staticOffset
         ) {
             setIsSticking(true)
             document.documentElement.classList.add('has-sticky-content')
@@ -98,7 +96,6 @@ export function StickMe({ children, pinActivedAtStart = true }: StickMeProps) {
             ref={containerRef}
             className="relative my-4"
             style={{
-                transition: 'height 1s ease-in-out',
                 height:
                     isSticking && !dimensionsRef.current.isLandscape
                         ? `${dimensionsRef.current.elemHeight}px`
@@ -106,7 +103,7 @@ export function StickMe({ children, pinActivedAtStart = true }: StickMeProps) {
             }}
         >
             {isSticking && (
-                // render simple placeholder box
+                // placeholder box
                 <div className="flex justify-end items-center h-8 w-full">
                     <FeatherIcon icon="arrow-right" size="32" />
                 </div>
@@ -114,23 +111,19 @@ export function StickMe({ children, pinActivedAtStart = true }: StickMeProps) {
             <div
                 ref={contentRef}
                 className={cn(
-                    'transition-all duration-200 ease-in-out',
-                    isSticking ? 'fixed' : 'relative'
+                    'transition-transform duration-300 w-fit',
+                    isSticking ? 'fixed' : 'relative translate-x-px'
                 )}
                 style={{
                     width:
                         isSticking && dimensionsRef.current.isLandscape
                             ? `${dimensionsRef.current.contentWidth}px`
                             : 'auto',
-                    top: isSticking ? navbarOffset : 'auto',
-                    left:
+                    top: isSticking ? navbarOffset : '',
+                    translate:
                         isSticking && dimensionsRef.current.isLandscape
-                            ? 'auto'
-                            : 0,
-                    marginLeft:
-                        isSticking && dimensionsRef.current.isLandscape
-                            ? `${dimensionsRef.current.contentWidth}px`
-                            : 'auto',
+                            ? "100%"
+                            : '0px',
                     zIndex: isSticking ? 'var(--z-fullscreen)' : 'auto'
                 }}
             >
@@ -144,19 +137,25 @@ export function StickMe({ children, pinActivedAtStart = true }: StickMeProps) {
                     {pinActivated ? <Unpin /> : <Pin />}
                 </button>
 
-                <style jsx global>{`
-                    html.has-sticky-content .nextra-toc {
-                        ${dimensionsRef.current.isLandscape &&
-                        'display: block;'}
-                        width: ${dimensionsRef.current.contentWidth}px;
+                {dimensionsRef.current.isLandscape && <style jsx global>{`
+                    .nextra-sidebar,
+                    .nextra-sidebar-footer,
+                    .nextra-toc {
+                        transition: width 0.3s ease-in-out; 
+                        overflow: hidden;
                     }
-                    html.has-sticky-content .nextra-sidebar {
-                        width: 0px;
+                    :root.has-sticky-content .nextra-sidebar,
+                    :root.has-sticky-content .nextra-sidebar-footer,
+                    :root.has-sticky-content .nextra-toc {
+                        width: 0px !important;
                     }
-                    html.has-sticky-content .nextra-toc div {
-                        transform: translateX(100%);
+                    main {
+                        transition: padding-right 0.3s ease-in-out;
                     }
-                `}</style>
+                    :root.has-sticky-content main {
+                        padding-right: ${dimensionsRef.current.contentWidth}px
+                    }
+                `}</style>}
             </div>
         </div>
     )

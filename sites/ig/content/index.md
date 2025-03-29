@@ -23,8 +23,6 @@ In einem früheren Leben war ich selbstständig und habe Dokumentarfilme und Vid
 
 ## Aktueller Stand und Todos
 
-- [ ] Bugs
-	- [ ] StickMe CSS broken
 - [ ] Turtle editor
 	- [ ] Python Language Server for syntax highlighting und autocomplete
 	- [ ] Handin function for persistent code versions
@@ -52,6 +50,8 @@ In einem früheren Leben war ich selbstständig und habe Dokumentarfilme und Vid
 		- [x] Remove JWT logics
 		- [x] Testing
 
+- [X] Bugs
+	- [X] StickMe CSS broken
 - [X] Nextra
 	- [X] Update to nextra4
 	- [X] Possible to move all nextra modifications to site and use nextra as normal package? Yes! 🥳
