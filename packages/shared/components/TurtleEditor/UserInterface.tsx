@@ -1,9 +1,13 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-import Editor from '@monaco-editor/react'
 import cn from 'clsx'
 import FeatherIcon from 'feather-icons-react'
-import type { editor as EditorType } from 'monaco-editor'
-import { useEffect, useState, JSX } from 'react'
+import { useEffect, useState, JSX, useRef } from 'react' // Added useRef
+import { EditorState } from '@codemirror/state';
+import { EditorView, keymap } from '@codemirror/view';
+import { defaultKeymap, history, historyKeymap, undo, redo as cmRedo } from '@codemirror/commands'; // aliased redo to cmRedo
+import { python } from '@codemirror/lang-python';
+import { oneDark } from '@codemirror/theme-one-dark';
+import { basicSetup } from 'codemirror';
 import s from './style/turtle-editor.module.css'
 import { RunLevel } from './types/TurtleTypes'
 import { autosaveHandler, resetCode } from './utils/autosave'
@@ -29,6 +33,7 @@ export default function UserInterface(props: any) {
     c.setUndo = setUndo
     const [redoBool, setRedo] = useState(false)
     c.setRedo = setRedo
+    const editorContainerRef = useRef<HTMLDivElement | null>(null); // Ref for CodeMirror container
 
     const hasTurtle = c.initCode.includes('turtle')
 
@@ -38,33 +43,89 @@ export default function UserInterface(props: any) {
         if (c.graphicspanelRef?.current) {
             initScaler(c)
         }
-        document.addEventListener('mousedown', e =>
-            handleDocClick(e, c, setRedo)
-        )
+        // Removed handleDocClick for now as it was tied to Monaco's setRedo
+        // document.addEventListener('mousedown', e =>
+        //     handleDocClick(e, c, setRedo)
+        // )
+
+        // Initialize CodeMirror Editor
+        if (editorContainerRef.current && !c.codeeditorRef.current) {
+            const extensions = [
+                basicSetup,
+                keymap.of([...defaultKeymap, ...historyKeymap]),
+                history(),
+                python(),
+                EditorView.updateListener.of(update => {
+                    if (update.docChanged) {
+                        autosaveHandler(c); // Call your existing autosave handler
+                        // Update undo/redo buttons based on CodeMirror's history
+                        const editorView = c.codeeditorRef.current;
+                        if (editorView) {
+                            const historyState = editorView.state.field(historyKeymap[0].value); // Access history state
+                            setUndo(historyState.undoDepth > 0);
+                            setRedo(historyState.redoDepth > 0);
+                        }
+                    }
+                })
+            ];
+
+            if (c.theme === 'dark') {
+                extensions.push(oneDark);
+            }
+
+            const startState = EditorState.create({
+                doc: c.initCode, // c.initCode is the initial code
+                extensions: extensions
+            });
+
+            const view = new EditorView({
+                state: startState,
+                parent: editorContainerRef.current
+            });
+            c.codeeditorRef.current = view;
+
+            // Restore code from history (if any) - this might need adjustment
+            // For now, CodeMirror starts with initCode. Autosave will handle further changes.
+            // The old historyRef might not be directly compatible.
+            // if (c.historyRef.current[0] !== undefined) {
+            //     view.dispatch({
+            //         changes: { from: 0, to: view.state.doc.length, insert: c.historyRef.current[0].code }
+            //     });
+            // }
+             // Update initial undo/redo state
+            const historyState = view.state.field(historyKeymap[0].value);
+            setUndo(historyState.undoDepth > 0);
+            setRedo(historyState.redoDepth > 0);
+        }
 
         return () => {
-            document.removeEventListener('mousedown', e =>
-                handleDocClick(e, c, setRedo)
-            )
+            // Removed handleDocClick listener
+            // document.removeEventListener('mousedown', e =>
+            //     handleDocClick(e, c, setRedo)
+            // )
+            if (c.codeeditorRef.current) {
+                c.codeeditorRef.current.destroy();
+                c.codeeditorRef.current = null;
+            }
         }
-    }, [c])
+    }, [c]) // Ensure c is stable or list specific dependencies from c if needed
 
-    const handleEditorDidMount = (editor: EditorType.IStandaloneCodeEditor) => {
-        c.codeeditorRef.current = editor
+    // const handleEditorDidMount = (editor: EditorType.IStandaloneCodeEditor) => {
+    //     c.codeeditorRef.current = editor
 
-        // Restore code from history
-        const history = c.historyRef.current
+    //     // Restore code from history
+    //     const localHistory = c.historyRef.current // Renamed to avoid conflict
 
-        if (history[0] !== undefined) {
-            editor.setValue(history[0].code)
-        }
-        if (history.length > 1) {
-            setUndo(true)
-        }
+    //     if (localHistory[0] !== undefined) {
+    //         editor.setValue(localHistory[0].code)
+    //     }
+    //     if (localHistory.length > 1) {
+    //         setUndo(true)
+    //     }
 
-        // Autosave to local storage
-        editor.onDidChangeModelContent(() => autosaveHandler(c))
-    }
+    //     // Autosave to local storage
+    //     editor.onDidChangeModelContent(() => autosaveHandler(c))
+    // }
 
     const RunLevelIcons: { [key: string]: JSX.Element } = {
         [RunLevel.stopped]: (
@@ -107,26 +168,11 @@ export default function UserInterface(props: any) {
             </span>
             <div className={s.turtlerow}>
                 <div
-                    className={cn(s.panel, s.monacoeditor)}
+                    className={cn(s.panel, s.monacoeditor)} // s.monacoeditor might need to be renamed or restyled
                     ref={c.editorPanelRef}
                 >
-                    <Editor
-                        defaultLanguage="python"
-                        onMount={handleEditorDidMount}
-                        theme={c.theme == 'dark' ? 'vs-dark' : 'vs'}
-                        defaultValue={c.initCode}
-                        options={{
-                            minimap: { enabled: false },
-                            scrollbar: { horizontal: 'hidden' },
-                            overviewRulerLanes: 0,
-                            // scrollBeyondLastLine: false,
-                            wordWrap: 'on',
-                            // quickSuggestions: false,
-                            wrappingStrategy: 'advanced',
-                            automaticLayout: true
-                            // Todo: editor.contrib.ShowKeyboardWidget
-                        }}
-                    />
+                    {/* CodeMirror editor container */}
+                    <div ref={editorContainerRef} className={s.codemirrorContainer} /> 
                     <div
                         className={cn(s.turtleeditorcontrols, s.right)}
                         ref={c.codeControlRef}
@@ -138,7 +184,9 @@ export default function UserInterface(props: any) {
                                 !undoBool && s.inactive
                             )}
                             onClick={() => {
-                                if (undoBool) browseHistory(c, 1)
+                                if (undoBool && c.codeeditorRef.current) {
+                                    undo(c.codeeditorRef.current);
+                                }
                             }}
                         >
                             <FeatherIcon size="16" icon="chevron-left" />
@@ -150,7 +198,9 @@ export default function UserInterface(props: any) {
                                 !redoBool && s.inactive
                             )}
                             onClick={() => {
-                                if (redoBool) browseHistory(c, -1)
+                                if (redoBool && c.codeeditorRef.current) {
+                                    cmRedo(c.codeeditorRef.current);
+                                }
                             }}
                         >
                             <FeatherIcon size="16" icon="chevron-right" />
