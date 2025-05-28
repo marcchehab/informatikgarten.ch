@@ -1,6 +1,7 @@
 ---
 title: HTML - Hypertext Markup Language
 ---
+# Hypertext Markup Language
 > [!success] Lernziele
 > 
 > - Sie wissen, was HTML-Tags sind und können verschachtelte Tags erstellen.
