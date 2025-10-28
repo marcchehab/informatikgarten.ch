@@ -1,10 +1,35 @@
-/* Diff syntax highlighting */
-.diff.remove {
-  background-color: rgba(255, 0, 0, 0.1);
-  border-left: 3px solid rgba(255, 0, 0, 0.6);
-}
+.nextra-code {
+  /* Diff syntax highlighting */
+  .diff.remove {
+    background-color: rgba(255, 0, 0, 0.1);
+    border-left: 3px solid rgba(255, 0, 0, 0.6);
+  }
 
-.diff.add {
-  background-color: rgba(0, 255, 0, 0.1);
-  border-left: 3px solid rgba(0, 255, 0, 0.6);
+  .diff.add {
+    background-color: rgba(0, 255, 0, 0.1);
+    border-left: 3px solid rgba(0, 255, 0, 0.6);
+  }
+
+  /* Notation highlight */
+  .highlighted {
+    background-color: rgba(255, 255, 0, 0.25);
+    border-left: 3px solid rgba(255, 255, 0, 0.6);
+  }
+
+  /* Notation focus */
+  .has-focused .line:not(.focused) {
+    filter: blur(0.095rem);
+    opacity: 0.4;
+    transition: filter 0.35s, opacity 0.35s;
+  }
+
+  .has-focused:hover .line:not(.focused) {
+    filter: blur(0px);
+    opacity: 1;
+  }
+
+  .line.focused {
+    opacity: 1;
+    filter: blur(0px);
+  }
 }

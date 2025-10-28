@@ -8,7 +8,7 @@ import {
     remarkWikiLinks,
     remarkCallouts,
 } from "shared/server/remark";
-import { transformerNotationDiff } from "@shikijs/transformers"
+import { transformerNotationDiff, transformerNotationHighlight, transformerNotationFocus } from "@shikijs/transformers"
 
 function isExportNode(node, varName: string) {
     if (node.type !== "mdxjsEsm") return false;
@@ -85,7 +85,7 @@ const withNextra = nextra({
             rehypeMuxvideo,
         ],
         rehypePrettyCodeOptions: {
-            transformers: [transformerNotationDiff()]
+            transformers: [transformerNotationDiff(), transformerNotationHighlight(), transformerNotationFocus()]
         }
     },
     whiteListTagsStyling: ["figure", "figcaption"],

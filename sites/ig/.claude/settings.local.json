@@ -16,7 +16,8 @@
       "WebFetch(domain:nextra.site)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:rehype-pretty-code.netlify.app)",
-      "WebFetch(domain:rehype-pretty.pages.dev)"
+      "WebFetch(domain:rehype-pretty.pages.dev)",
+      "WebFetch(domain:shiki.style)"
     ],
     "deny": [],
     "ask": []

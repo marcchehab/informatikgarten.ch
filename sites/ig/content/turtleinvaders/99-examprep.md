@@ -102,13 +102,13 @@ def stop_moving():
 
 window.onkeypress(move_left, "Left") 
 window.onkeypress(move_right, "Right") 
-S%V7qrubhhZeXx7fthyqxZC*@swsy7rHnB3Faf6 # 1
-2G6%Lv4ym6%ezeH698TYnedloKRAhG%bB9*nz   # 2
+S%V7qrubhhZeXx7fthyqxZC*@swsy7rHnB3Faf6 # [!code highlight]
+2G6%Lv4ym6%ezeH698TYnedloKRAhG%bB9*nz   # [!code highlight]
 window.listen()
 
 running = True
 while running:
-  new_x = F^h!Wu9lyK2u&ulgpN%Jj$4*v$*65nLiPddQMim # 3
+  new_x = F^h!Wu9lyK2u&ulgpN%Jj$4*v$*65nLiPddQMim # [!code highlight]
   if LEFT > new_x > RIGHT: 
     ship.setx(new_x) 
 ```
