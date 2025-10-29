@@ -7,7 +7,7 @@ title: Prüfungsvorbereitung
 > - Die Prüfung wird auf Exam.net stattfinden und 60 Minuten dauern. Sie umfasst Theorie, aber besteht hauptsächlich aus praktischen Programmieraufgaben.
 > - Sie werden Zugang [zum Microbit-Editor](https://python.microbit.org/v/3) und seiner Dokumentation haben, mit dem Sie dank dem Simulator auf der rechten Seite auch zuhause üben können.
 > - Es gelten die Lernziele der Lektionen, die wir behandelt haben, sofern sie hier nicht ausgeschlossen werden:
-> 	- Bei der Lektion [[microbit-05-buttons|zu den Knöpfen]] haben wir die Knacknuss-Aufgabe nicht behandelt.
+> 	- Bei der Lektion [[microbit-05-buttons|zu den Knöpfen]] haben wir die Knacknuss-Aufgabe ("Kitt") und den Teil zu Laufmodi nicht behandelt.
 
 Folgende Übungsaufgaben sollten Ihnen zur Prüfungsvorbereitung hilfreich sein. 
 ## Herz pocht nicht
@@ -144,4 +144,16 @@ Erweitern Sie das fill()-Programm so, dass die Spalten nicht automatisch auffül
 
 ## Beschleunigungssensor gebrauchen
 
-Schreiben Sie ein Programm, das den Microbit anstellt, wenn Sie 
+Schreiben Sie ein Programm, das auf dem Screen ein Smiley anzeigt, wenn Sie die Vorderseite des Microbit nach oben drehen, und den Screen wieder abstellt, wenn Sie den Microbit nach unten drehen.
+
+> [!solution]- Lösung
+> 
+> ```python
+> from microbit import *
+> 
+> while True:
+>     if accelerometer.was_gesture('face up'):
+>         display.show(Image.HAPPY)
+>     if accelerometer.was_gesture('face down'):
+>         display.clear()
+> ```
