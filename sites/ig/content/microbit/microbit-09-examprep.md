@@ -4,7 +4,7 @@ title: Prüfungsvorbereitung
 
 > [!success] Umfang
 > 
-> - Die Prüfung wird auf Exam.net stattfinden und 60 Minuten dauern. Sie umfasst sowohl Theorie als auch praktische Programmieraufgaben.
+> - Die Prüfung wird auf Exam.net stattfinden und 60 Minuten dauern. Sie umfasst Theorie, aber besteht hauptsächlich aus praktischen Programmieraufgaben.
 > - Sie werden Zugang [zum Microbit-Editor](https://python.microbit.org/v/3) und seiner Dokumentation haben, mit dem Sie dank dem Simulator auf der rechten Seite auch zuhause üben können.
 > - Es gelten die Lernziele der Lektionen, die wir behandelt haben, sofern sie hier nicht ausgeschlossen werden:
 > 	- Bei der Lektion [[microbit-05-buttons|zu den Knöpfen]] haben wir die Knacknuss-Aufgabe nicht behandelt.
@@ -90,7 +90,7 @@ Schreiben Sie ein Programm, das im Sekundentakt ein LED nach dem andern der mitt
 
 ## Display füllen
 
-Schreiben Sie ein Programm mit einer Funktion `fill(anzahl)`, die in den mittleren drei Spalten die gewünschte Anzahl LEDs anstellt. Ein Beispiel-Auftruf für 13 LEDs wäre `fill(13)` und würde so aussehen:
+Schreiben Sie ein Programm mit einer Funktion `fill(anzahl)`, die in den mittleren drei Spalten die gewünschte Anzahl LEDs sofort anstellt. Ein Beispiel-Auftruf für 13 LEDs wäre `fill(13)` und würde so aussehen:
 
 ![[microbit-90-fillmiddle.png]]
 
@@ -141,3 +141,7 @@ Erweitern Sie das fill()-Programm so, dass die Spalten nicht automatisch auffül
 >         leds += 1
 >         fill(leds)
 > ```
+
+## Beschleunigungssensor gebrauchen
+
+Schreiben Sie ein Programm, das den Microbit anstellt, wenn Sie 
