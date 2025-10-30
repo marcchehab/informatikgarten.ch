@@ -1,4 +1,5 @@
 .nextra-code {
+
   /* Diff syntax highlighting */
   .diff.remove {
     background-color: rgba(255, 0, 0, 0.1);
@@ -17,19 +18,15 @@
   }
 
   /* Notation focus */
-  .has-focused .line:not(.focused) {
-    filter: blur(0.095rem);
-    opacity: 0.4;
-    transition: filter 0.35s, opacity 0.35s;
-  }
+  &:has(.focused) {
 
-  .has-focused:hover .line:not(.focused) {
-    filter: blur(0px);
-    opacity: 1;
-  }
+    > span:not(.focused) {
+      filter: blur(2px);
+      transition: filter 0.35s, opacity 0.35s;
+    }
 
-  .line.focused {
-    opacity: 1;
-    filter: blur(0px);
+    &:hover > span:not(.focused) {
+      filter: blur(0px);
+    }
   }
 }

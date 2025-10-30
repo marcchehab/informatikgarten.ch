@@ -7,6 +7,7 @@ title: Prüfungsvorbereitung
 > - Die Prüfung wird auf Exam.net stattfinden und 60 Minuten dauern. Sie umfasst Theorie, aber besteht hauptsächlich aus praktischen Programmieraufgaben.
 > - Sie werden Zugang [zum Microbit-Editor](https://python.microbit.org/v/3) und seiner Dokumentation haben, mit dem Sie dank dem Simulator auf der rechten Seite auch zuhause üben können.
 > - Es gelten die Lernziele der Lektionen, die wir behandelt haben, sofern sie hier nicht ausgeschlossen werden:
+> 	- 
 > 	- Bei der Lektion [[microbit-05-buttons|zu den Knöpfen]] haben wir die Knacknuss-Aufgabe ("Kitt") und den Teil zu Laufmodi nicht behandelt.
 
 Folgende Übungsaufgaben sollten Ihnen zur Prüfungsvorbereitung hilfreich sein. 
