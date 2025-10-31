@@ -12,7 +12,7 @@ title: Fenster und Raumschiff
 > 	- Sie verstehen, wie wir bei der **Steuerung** die neue X-Koordinate berechnen und wieso wir window.onkeyrelease() nutzen.
 > 2) Sie verstehen theoretische Konzepte:
 > 	- Das **globale Speicherframe** und dass Funktionen temporäre "lokale" Speicherframes nutzen, die wieder zerstört werden.
-> 	- Sie kennen alle **primitiven Datentypen** (Bools, Integers, Floats, Strings) und wissen, dass diese in Python immutable (nicht an Ort und Stelle veränderbar) sind.
+> 	- *Sie kennen alle **primitiven Datentypen** (Bools, Integers, Floats, Strings) und wissen, dass diese in Python immutable (nicht an Ort und Stelle veränderbar) sind.* (⚠️ NICHT Teil der Prüfungen im November 2025)
 
 ## Abhängigkeiten überlegen
 

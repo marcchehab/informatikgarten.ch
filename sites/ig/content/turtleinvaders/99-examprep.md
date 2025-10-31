@@ -6,6 +6,7 @@ title: Prüfungsvorbereitung
 > 
 > Diese Prüfungsvorbereitung ist dazu da, dass Sie die Art der Fragestellungen abschätzen können.
 > - **Stoffumfang**: bis und mit "Turtle Invaders" im Kapitel "Turtle Invaders" auf Informatikgarten. Dort finden Sie auch die Lernziele.
+>   - **Ausnahme**: Die "Veränderbarkeit" von Datentypen wird nicht abgefragt, d.h. der Teil ["Exkursion zu Datentypen"](01-raumschiff#exkursion-zu-datentypen), wird nicht Teil der Prüfung sein.
 > - Ihre generellen **Pythonkenntnisse** werden ebenfalls vorausgesetzt.
 > - Sie werden [diese **Befehlsliste**](/pubfiles/befehlsliste_turtleinvader.pdf) erhalten. (Python-Strukturen werden darauf nicht erklärt!)
 > - Sie finden [hier](https://exam.net/student?code=5Zrb45) eine **technische Vorschau** auf Exam.net, um den Programmiereditor zu versuchen.
