@@ -26,7 +26,7 @@ Beginnen wir mit einem kurzen Python-Programm aus zwei Linien. Führen Sie das g
 
 ```turtle
 name = "Melanie"
-print("Schön, dass Sie da sind,", name, "! Willkommen!")
+print("Schön, dass Sie da sind, " + name + "! Willkommen!")
 ```
 
 Hier wird ein Name gespeichert und dann als Teil eines Satzes wieder ausgegeben.
@@ -45,7 +45,7 @@ Hier wird ein Name gespeichert und dann als Teil eines Satzes wieder ausgegeben.
 
 Jetzt ändern wir das Programm ab, dass die Variable `name` nicht einen vordefinierten Wert speichert, sondern dass **unsere User nach ihrem Namen gefragt werden** und ihre Eingabe in der Variable `name` gespeichert wird. Das tönt kompliziert, aber tatsächlich übernimmt die Funktion `input()` die ganze Arbeit. 
 
-```python {hl_lines="1"}
+```python
 name = input("Bitte geben Sie Ihren Namen ein:")
 print("Schön, dass Sie da sind, " + name + "! Willkommen!")
 ```
