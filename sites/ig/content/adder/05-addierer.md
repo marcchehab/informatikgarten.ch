@@ -44,14 +44,16 @@ Man könnte denken, dass man die 1er, 2er, 4er und 8er nacheinander mit dem Halb
 | Bei den 1ern geht das:         | 1+0      | = 1      |
 | Bei den 2ern auch:             | 0+1      | = 1      |
 | Aber die 4ern machen Probleme! | 1+1      | = 10     |
+
 Sie würden das als Mensch mit einem "Behalte" auf die nächste Stelle lösen. Auf Englisch wird das "Carry" genannt, deswegen schreiben wir im Folgenden "C". Überlegen wir uns also die Rechnung:
 
-- Bei den 4ern würden Sie also 0 ins Ergebnis schreiben, aber ein Behalte 1 in die nächste Stelle - die 8er (blauer Pfeil). 
-- Bei den 8er hätten Sie dann entsprechend drei Einsen, die Sie addieren.
+- Bei den 4ern würden Sie also 0 ins Ergebnis schreiben, aber ein Behalte 1 in die nächste Stelle - die 8er (blaue Pfeile). 
+- Bei den 8er hätten Sie dann entsprechend **drei Bits, die Sie addieren müssen** (in diesem Fall drei Einsen).
 
 ![[adder-schriftlich-carry.excalidraw]]
 
-Sie sehen: Um zwei Binärzahlen mit mehreren Stellen addieren zu können, müssen wir **pro Stelle nicht zwei sondern drei Bits addieren können**: wegen dem "Behalte". Und das macht der Addierer (oder Volladdierer).
+Sie sehen: Um zwei Binärzahlen mit mehreren Stellen addieren zu können, müssen wir **pro Stelle nicht zwei sondern drei Bits addieren können**: wegen dem "Behalte" (oder auf Englisch: "Carry"). Und genau das macht der "Voll"-Addierer (oder auch einfach Addierer genannt).
+
 ### Mit Abstraktion zum Addierer
 
 Um die Schaltung für den (Voll-)Addierer zu verstehen, schlage ich vor, dass Sie auf dem Halbaddierer aufbauen und seine Funktionsweise total ausblenden. Überlegen Sie sich **den Halbaddierer als eine Box, die zwei Inputs zusammenzählt**:
