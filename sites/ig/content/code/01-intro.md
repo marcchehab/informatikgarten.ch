@@ -18,11 +18,13 @@ Um zu verstehen, was eine Programmiersprache für uns tut, können Sie sich dara
 - Die **Befehle** waren Zahlen, die man sich merken musste 🤯
 
 Eine Programmiersprache löst all diese Probleme, indem sie **vom Machinencode abstrahiert**. Wir müssen uns nie mehr eine Speicheradresse merken, können Dinge wiederverwenden und Befehle als Wörter schreiben. 🥳🙌
-## Ein minimalistisches Python-Programm
 
 > [!hint] Ein Tipp vorweg
 > 
 > Sie lernen jetzt eine neue Sprache. Ich empfehle Ihnen: Behandeln Sie das Lernen einer Programmiersprache anfangs sehr ähnlich wie eine natürliche Sprache und schreiben Sie sich **Voci-Kärtchen**.
+## Ein erstes Python-Programm
+
+### Einen Namen mit einer Variabel speichern
 
 Beginnen wir mit einem kurzen Python-Programm aus zwei Linien. Führen Sie das gern einfach mal aus indem Sie auf "▶️ Run" drücken, dann besprechen wir den Inhalt.
 
@@ -44,6 +46,8 @@ Hier wird ein Name gespeichert und dann als Teil eines Satzes wieder ausgegeben.
 > [!exercise] Jetzt sind Sie dran!
 > 
 > Ändern Sie den Namen, der ausgegeben wird und führen Sie das Programm aus.
+
+### Die Funktion `input()` verwenden
 
 Jetzt ändern wir das Programm ab, dass die Variable `name` nicht einen vordefinierten Wert speichert, sondern dass **unsere User nach ihrem Namen gefragt werden** und ihre Eingabe in der Variable `name` gespeichert wird. Das tönt kompliziert, aber tatsächlich übernimmt die Funktion `input()` die ganze Arbeit. 
 
@@ -67,11 +71,13 @@ Daraus lernen wir:
 ![[01-turtleintro-funktion.excalidraw]]
 
 
+### Zwei Namen speichern
+
 > [!exercise] Jetzt sind Sie dran!
 > 
 > Erweitern Sie das Programm, dass es unsere User **nach zwei Namen fragt** und diese **in einem Satz ausgibt**.
 
-> [!solutoin]- Lösung
+> [!solution]- Lösung
 > 
 > Sie merken nun, dass Sie zwei Variabeln für die Namen brauchen. Das ist wie beim Entsafter: 
 > - Sie müssen **einen Entsafter zweimal gebrauchen** für zwei Fruchtdrinks. Analog müssen Sie die Funktion `input()` zweimal gebrauchen für zwei Namen.
@@ -82,6 +88,7 @@ Daraus lernen wir:
 > print("Schön, dass Sie da sind " + name1 + " und " + name2 + "!")
 > ```
 
+### Zusammenfassung
 
 > [!info] Zusammenfassung
 > 
@@ -92,9 +99,10 @@ Daraus lernen wir:
 > Wir haben daraus gelernt:
 > - Ein Programm wird **Schritt für Schritt** ausgeführt.
 > - `name` ist eine **Variable** und speichert den Wert `"Melanie"`.
-> - Wenn wir `name` erneut einen Wert geben, wird die Variable **überschrieben**.
+> - Wenn wir `name` erneut einen Wert geben, wird die Variable **überschrieben**. Wenn wir zwei Dinge speichern wollen, brauchen wir auch zwei Variabeln.
 > - Ein einzelnes Gleichheitszeichen `=` ist beim Programmieren **kein *Ver*gleich**, sondern eine **Wert*zuweisung*** - z.B. oft für eine Variable.
 > - **Funktionen** sind Teilprogramme, die etwas **tun**. Man erkennt sie an den **runden Klammern**, z.B. `print(...)`.
+> - Innerhalb der Klammern kann man Funktionen etwas als Eingabe übergeben und Funktionen können einen Wert an unser Programm zurückgeben.
 > - **Variablen *speichern* etwas**, **Funktionen *tun* etwas**.
 > 
 
