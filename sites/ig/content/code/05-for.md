@@ -19,7 +19,7 @@ Heute schauen wir uns **Wiederholungen** an. In Python und anderen Programmiersp
 - `while`-Schleifen wiederholen Codeblöcke, **solange eine Bedingung wahr ist**. Die Anzahl Wiederholungen muss also zu Beginn nicht bekannt sein.
 ## Einfacher Einsatz der `for`-Schleife
 
-Schauen wir uns an, wie man eine `for`-Schleife in Python schreibt. Zur Erinnerung, unser Code für den Würfel aus [[01-turtleintro|der letzten Lektion]].
+Schauen wir uns an, wie man eine `for`-Schleife in Python schreibt. Zur Erinnerung, unser Code für den Würfel aus [[01-intro|der letzten Lektion]].
 
 ```python
 import turtle

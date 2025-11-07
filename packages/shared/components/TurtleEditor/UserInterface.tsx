@@ -102,9 +102,6 @@ export default function UserInterface(props: any) {
             ref={c.wrapperRef}
             id={c.idRef.current}
         >
-            <span className="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs italic text-gray-500 opacity-60 pointer-events-none select-none z-40">
-                {c.idRef.current}
-            </span>
             <div className={s.turtlerow}>
                 <div
                     className={cn(s.panel, s.monacoeditor)}
@@ -131,6 +128,9 @@ export default function UserInterface(props: any) {
                         className={cn(s.turtleeditorcontrols, s.right)}
                         ref={c.codeControlRef}
                     >
+                        <span className="text-xs italic text-gray-500 opacity-60 pointer-events-none select-none z-40">
+                            {c.idRef.current}
+                        </span>
                         <a
                             title="Undo"
                             className={cn(
