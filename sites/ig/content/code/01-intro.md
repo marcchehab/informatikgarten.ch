@@ -7,7 +7,6 @@ title: Wert, Variabel, Funktion
 >   - **Variablen** (z.B. `name = "Melanie"{:python}`)
 >   - **Funktionen** (z.B. `print("Hello world!"){:python}`)
 >   - **Werte** (z.B. ein Wort wie `"Melanie"{:python}` oder eine Zahl wie `42{:python}`)
->   - **Pakete** (z.B. `import turtle{:python}`)
 
 Beim Programmieren liegen Spass und Frust nahe beieinander - und den Unterschied macht Ihr Einsatz. Ich verspreche Ihnen vorweg so viel: Es ist keine Zauberei. **Alle können programmieren lernen**.
 
