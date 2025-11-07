@@ -92,6 +92,10 @@ main img {
 
 /* ----------- custom utilities ----------------- */
 
+div[data-rmiz-modal-content] {
+    backdrop-filter: blur(10px);
+}
+
 .rainbow-text {
     --rainbow-opacity: 0.6;
     --rainbow-y-offset: 90%;
