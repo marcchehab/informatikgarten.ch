@@ -29,6 +29,7 @@ export default function UserInterface(props: any) {
     c.setUndo = setUndo
     const [redoBool, setRedo] = useState(false)
     c.setRedo = setRedo
+    const [fontSize, setFontSize] = useState(14)
 
     const hasTurtle = c.initCode.includes('turtle')
 
@@ -120,10 +121,41 @@ export default function UserInterface(props: any) {
                             wordWrap: 'on',
                             // quickSuggestions: false,
                             wrappingStrategy: 'advanced',
-                            automaticLayout: true
+                            automaticLayout: true,
+                            fontSize: fontSize
                             // Todo: editor.contrib.ShowKeyboardWidget
                         }}
                     />
+                    <div className={cn(s.fontsizecontrols)}>
+                        <a
+                            title="Decrease Font Size"
+                            className={cn(
+                                s.turtlebutton,
+                                fontSize <= 8 && s.inactive
+                            )}
+                            onClick={() => {
+                                if (fontSize > 8) {
+                                    setFontSize(fontSize - 2)
+                                }
+                            }}
+                        >
+                            <FeatherIcon size="16" icon="minus" />
+                        </a>
+                        <a
+                            title="Increase Font Size"
+                            className={cn(
+                                s.turtlebutton,
+                                fontSize >= 32 && s.inactive
+                            )}
+                            onClick={() => {
+                                if (fontSize < 32) {
+                                    setFontSize(fontSize + 2)
+                                }
+                            }}
+                        >
+                            <FeatherIcon size="16" icon="plus" />
+                        </a>
+                    </div>
                     <div
                         className={cn(s.turtleeditorcontrols, s.right)}
                         ref={c.codeControlRef}
