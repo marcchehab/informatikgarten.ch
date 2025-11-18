@@ -7,7 +7,6 @@ title: IP - wie adressieren Sie Computer im Netzwerk?
 > - Sie kennen den Aufbau einer IP-Adresse (Version 4).
 > - Sie wissen, wie man dezimal aus IP-Adresse und Standard-Subnetmaske die Netzwerkadresse herleitet.
 > - Sie können erklären, wie ein Computer anhand der Netzwerkadresse entscheidet, ob eine Ziel-IP-Adresse im selben Netzwerk liegt, oder nicht.
-> - *Sie wissen, wie man binär aus IP-Adresse und Subnet-Maske die Netzwerkadresse herleitet.*
 
 Computer kommunizieren in Netzwerken in einer **Serie von Paketen**. In den nächsten Lektionen behandeln wir, **wie diese Paketen Ihren Weg durchs Netzwerk** finden.
 
@@ -104,7 +103,8 @@ Weitere solche Beispiele:
 Mit der Eigenschaft kann Ihr Computer also sehr einfach urteilen:
 - Wenn sich aus beiden IP-Adressen zweimal die gleiche Netzwerkadresse bildet, urteilt er, dass sich das Ziel im **gleichen Netzwerk** befindet und er das **Paket selbst direkt verschicken** kann.
 - Wenn sich die Netzwerkteile unterscheiden und somit verschiedene Netzwerkadressen bilden (rote Kreise), urteilt er, dass sich das Ziel in einem **anderen Netzwerk** befindet. Dann braucht er quasi die **Hilfe der Post**, um das Paket zu verschicken (mehr dazu in der nächsten Lektion).
-### Ein binäres Verständnis Subnetmasken
+
+### Ein binäres Verständnis Subnetmasken (nicht Prüfungsstoff)
 
 Letztlich muss man Subnetmasken aber **binär verstehen**. Hier dieselben Beispiele nochmals mit den Binärzahlen. 
 
@@ -136,20 +136,3 @@ Wenn wir unser Netzwerk grösser machen möchten, dass diese Adresse auch noch i
 > [!example] Jetzt sind Sie dran
 > 
 > Versuchen Sie die IP-Adresse Ihres Geräts herauszufinden. Dazu finden Sie auf Google leicht eine Anleitung, z.B. `IP-Adresse finden Windows 10` oder `IP-Adresse finden Android`
-
-### An welcher Tür klopfe ich an?
-
-Wie bei der Post muss man neben dem Ziel-Computer noch genauer angeben, "wer" oder "was" die Daten erhalten soll. Das geschieht mit dem sogenannten **"Port" - also welche "Tür"**. 
-
-Wenn Sie im Internet surfen, verbinden Sie sich ständig mit Webservern, die standardmässig auf **Port 443 (HTTPS)** laufen (unverschlüsselt auch **Port 80 (HTTP)**). Das macht Ihr Browser automatisch, ohne dass Sie das merken. 
-
-Wenn Sie aber den Port selbst manuell definieren wollen, können Sie ihn mit einem Doppelpunkt nach der IP angegeben. Drei Beispiele:
-- Wenn Sie `https://192.168.1.4{:text}` im Browser eingeben, wird der Browser versuchen, über den Standardport `443` eine HTTPS-Verbindung mit dem Webserver aufzubauen.
-- Wenn Sie `http://192.168.1.4{:text}` im Browser eingeben, versucht der Browser eine unverschlüsselte HTTP-Verbindung über Port `80` aufzubauen.
-- Wenn Sie `http://192.168.1.4:3000{:text}` eingeben, wird der Browser eine HTTP-Verbindung über Port `3000` aufbauen.
-
-Weitere übliche Ports finden Sie [hier auf Wikipedia](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers#Well-known_ports).
-
-> [!note] Ein Versuch
-> 
-> Ich lasse auf meinem Laptop einen HTTP-Webserver laufen. Meine IP-Adresse sage ich Ihnen in der Lektion. Versuchen Sie mal, die Webseite aufzurufen!

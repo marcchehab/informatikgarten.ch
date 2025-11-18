@@ -74,19 +74,3 @@ Grundsätzlich genau gleich, wie Ihr Computer entscheidet, ob eine Ziel-IP in se
 - Dann schaut er mit der jeweiligen Subnetmaske der Netzwerke, ob die IP in einem der angeschlossenen Netzwerke liegt.
 - Falls die Ziel-IP in keinem der angeschlossenen Netzwerken liegt, hat der Router (ähnlich des "Gateways") eine Standardroute, wie er Pakete an unbekannte Ziel-IPs weiterleitet.
 
-Das wollen wir nun selbst in Excel testen.
-
-> [!example] Glückwunsch: Sie sind ein Router!
-> 
-> Der Auftrag an Sie ist nun, dass Sie versuchen die Logik des Routers in Excel zu automatisieren. Stellen Sie sich vor, Sie sind ein Router und erhalten ein IP-Paket. Wie entscheiden Sie, an welches Netzwerk Sie das Paket weiterleiten sollen?
-> 
-> Laden Sie sich dazu die Datei [excel_router_task.xlsx](/assets/excel_router_task.xlsx) herunter.
-
-## Beispiel-Rechnungen dieser Lektion an der Tafel
-
-![[net-02-networks-2024-06-14-10.39.12.excalidraw]]
-
-
-> [!solution]- Lösung
-> 
-> [](/assets/net/excel_router_solution.xlsx)

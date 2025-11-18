@@ -1,5 +1,6 @@
 ---
 title: Prüfungsvorbereitung (binär)
+display: hidden
 ---
 Hinweis: Zum Abschlussauftrag habe ich Ihnen auf Teams ein Lösungsvideo geschickt.
 

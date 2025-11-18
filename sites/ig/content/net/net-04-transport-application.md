@@ -20,6 +20,23 @@ Es gibt ein generelles, abstraktes 7-Schichtenmodell für die Netzwerkkommunikat
 
 ## Transportschicht
 
+### An welcher Tür klopfe ich an?
+
+Wie bei der Post muss man neben dem Ziel-Computer noch genauer angeben, "wer" oder "was" die Daten erhalten soll. Das geschieht mit dem sogenannten **"Port" - also welche "Tür"**. 
+
+Wenn Sie im Internet surfen, verbinden Sie sich ständig mit Webservern, die standardmässig auf **Port 443 (HTTPS)** laufen (unverschlüsselt auch **Port 80 (HTTP)**). Das macht Ihr Browser automatisch, ohne dass Sie das merken. 
+
+Wenn Sie aber den Port selbst manuell definieren wollen, können Sie ihn mit einem Doppelpunkt nach der IP angegeben. Drei Beispiele:
+- Wenn Sie `https://192.168.1.4{:text}` im Browser eingeben, wird der Browser versuchen, über den Standardport `443` eine HTTPS-Verbindung mit dem Webserver aufzubauen.
+- Wenn Sie `http://192.168.1.4{:text}` im Browser eingeben, versucht der Browser eine unverschlüsselte HTTP-Verbindung über Port `80` aufzubauen.
+- Wenn Sie `http://192.168.1.4:3000{:text}` eingeben, wird der Browser eine HTTP-Verbindung über Port `3000` aufbauen.
+
+Weitere übliche Ports finden Sie [hier auf Wikipedia](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers#Well-known_ports).
+
+> [!note] Ein Versuch
+> 
+> Ich lasse auf meinem Laptop einen HTTP-Webserver laufen. Meine IP-Adresse sage ich Ihnen in der Lektion. Versuchen Sie mal, die Webseite aufzurufen!
+
 ### Das Transmission Control Protocol (TCP)
 
 Mit dem Internetprotokoll können wir grundsätzlich bereits Pakete zwischen zwei Computern auf dem ganzen Planeten hin- und herschicken. Das ist toll, aber: 

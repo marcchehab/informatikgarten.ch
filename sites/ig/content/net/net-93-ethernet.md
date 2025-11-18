@@ -1,5 +1,5 @@
 ---
-title: WiFi und Ethernet - unsere Postcontainer
+title: WiFi und Ethernet
 ---
 
 > [!success] Lernziele
