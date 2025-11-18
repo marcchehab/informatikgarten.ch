@@ -135,3 +135,59 @@ Diesen Austausch habe ich bei mir zuhause mit einem Netzwerk-Paket-Sniffer aufge
 ## Abschliessender Überblick
 
 ![[net-04-transport-application-2024-03-17-17.22.11.excalidraw]]
+
+
+## Wie eine Webseite im Browser aufgebaut wird
+
+### 1. DNS-Auflösung der URL
+- **Nutzer gibt URL ein**: z.B. `informatikgarten.ch`
+- **DNS-Anfrage**: Browser fragt seinen DNS-Server nach der IP-Adresse der Domain
+- **IP-Adresse**: Browser erhält die IP-Adresse des Webservers (z.B. 76.171.20.51)
+
+### 2. TCP-Verbindungsaufbau
+- **TCP-Handshake**: Browser startet 3er-Handshake mit dem Server
+- **TLS-Handshake**: Bei HTTPS zusätzlicher Austausch von Zertifikaten und Schlüsseln
+
+### 3. Anfrage des HTML-Dokuments
+- **HTTP-Request**: Browser sendet HTTP-GET-Anfrage für `/net/net-00-intro.html`
+- **HTTP-Response**: Server antwortet mit:
+  - Statuscode (z.B. 200 OK)
+  - Headers (Content-Type, Content-Length, etc.)
+  - HTML-Inhalt der Seite
+
+### 4. HTML-Parsing
+- **DOM-Erstellung**: Browser beginnt das HTML zu parsen und baut den DOM-Baum auf
+- **Ressourcenerkennung**: Browser identifiziert externe Ressourcen im HTML-Dokument:
+  - CSS-Dateien (z.B. Stylesheets)
+  - JavaScript-Dateien
+  - Bilder (z.B. das Hobbiton-Bild von wairualodge.co.nz)
+  - iFrame (geotraceroute.com)
+
+### 5. Laden externer Ressourcen
+- **Parallele Verbindungen**: Browser öffnet mehrere TCP-Verbindungen zu verschiedenen Servern
+- **Für jede Ressource**:
+  1. DNS-Auflösung des jeweiligen Servers (z.B. wairualodge.co.nz)
+  2. TCP/TLS-Verbindungsaufbau
+  3. HTTP-Anfrage senden
+  4. Antwort empfangen und verarbeiten
+- **Ressourcen-Priorität**: CSS und JavaScript werden meist vor Bildern geladen
+
+#### Beispiel für das Hobbiton-Bild von wairualodge.co.nz:
+- **DNS-Auflösung**: IP-Adresse von wairualodge.co.nz ermitteln
+- **TCP-Verbindung**: Zu Server in Neuseeland aufbauen
+- **HTTP-Anfrage**: GET-Request für das Bild
+- **Datenübertragung**: Bild wird über internationale Unterseekabel und Netzwerkknoten übertragen
+- **Empfang**: Browser erhält die Bilddaten und speichert sie temporär
+
+### 6. Rendering und Darstellung
+- **Layout-Berechnung**: Position und Grösse aller Elemente wird bestimmt
+- **Painting**: Elemente werden gezeichnet
+- **Komposition**: Verschiedene Ebenen werden zusammengesetzt
+
+### 7. Abschluss
+- **JavaScript-Ausführung**: Event-Handler werden eingerichtet
+- **Fertigstellung**: Seite wird als vollständig geladen markiert
+- **Nachladen**: Einige Ressourcen werden möglicherweise verzögert geladen
+- **Benutzerinteraktion**: Seite ist bereit für Benutzereingaben
+
+Dieser gesamte Prozess dauert typischerweise nur Bruchteile einer Sekunde bis wenige Sekunden, je nach Verbindungsgeschwindigkeit und Komplexität der Webseite.

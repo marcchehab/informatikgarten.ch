@@ -18,7 +18,25 @@ Mit der Webseite [geotraceroute.com](https://geotraceroute.com/) habe ich den We
 
 <iframe src="https://geotraceroute.com/?node=1761&host=wairualodge.co.nz" width="100%" height="500"></iframe>
 
-Jetzt überlegen wir uns mal, die involvierten Geschwindigkeiten. Sie können das selbst auf Ihrem Computer ausprobieren, indem Sie die Konsole öffnen und `ping wairualodge.co.nz` eingeben. 
+## Terminal/Konsole öffnen
+
+Jetzt überlegen wir uns mal, die involvierten Geschwindigkeiten. Sie können das selbst auf Ihrem Computer ausprobieren, indem Sie die Konsole öffnen und `ping wairualodge.co.nz` eingeben.
+
+Zuerst müssen Sie ein Terminal (auch Konsole genannt) öffnen:
+
+**Windows:**
+- Drücken Sie `Windows-Taste + R`
+- Geben Sie `cmd` ein und drücken Sie Enter
+- Alternativ: Suchen Sie im Startmenü nach "Eingabeaufforderung" oder "PowerShell"
+
+**macOS:**
+- Drücken Sie `Cmd + Leertaste` um Spotlight zu öffnen
+- Geben Sie "Terminal" ein und drücken Sie Enter
+- Alternativ: Öffnen Sie Programme > Dienstprogramme > Terminal
+
+**Linux:**
+- Drücken Sie `Ctrl + Alt + T` (bei den meisten Distributionen)
+- Oder suchen Sie im Anwendungsmenü nach "Terminal"
 
 Was macht der Befehl `ping`? Er schickt ein kleines Datenpaket an den Server und wartet auf eine Antwort. Dabei misst er die Zeit, die das Paket braucht, um zum Server zu gelangen und wieder zurück. Diese Zeit wird als "Ping" bezeichnet und gibt an, wie schnell Ihr Computer mit dem Server kommunizieren kann.
 
@@ -66,59 +84,37 @@ Zwei Beispiele, die man gut findet:
 | example.com | 9'409km | 100ms |
 | smh.com.au | 384km | 16ms |
 
-Wieso werden wir für die australische Zeitung Sydney Morning Herald (smh.com.au) auf einen Server in Paris geleitet?
 
-## Wie eine Webseite im Browser aufgebaut wird
+> [!discuss] Diskutieren Sie
+> 
+> Wieso werden wir für die australische Zeitung Sydney Morning Herald (smh.com.au) auf einen Server in Paris geleitet?
 
-### 1. DNS-Auflösung der URL
-- **Nutzer gibt URL ein**: z.B. `informatikgarten.ch`
-- **DNS-Anfrage**: Browser fragt seinen DNS-Server nach der IP-Adresse der Domain
-- **IP-Adresse**: Browser erhält die IP-Adresse des Webservers (z.B. 76.171.20.51)
+## Die eigene IP-Adresse herausfinden
 
-### 2. TCP-Verbindungsaufbau
-- **TCP-Handshake**: Browser startet 3er-Handshake mit dem Server
-- **TLS-Handshake**: Bei HTTPS zusätzlicher Austausch von Zertifikaten und Schlüsseln
+Schauen wir uns nun an, wie Sie die IP-Adresse Ihres eigenen Computers herausfinden können.
 
-### 3. Anfrage des HTML-Dokuments
-- **HTTP-Request**: Browser sendet HTTP-GET-Anfrage für `/net/net-00-intro.html`
-- **HTTP-Response**: Server antwortet mit:
-  - Statuscode (z.B. 200 OK)
-  - Headers (Content-Type, Content-Length, etc.)
-  - HTML-Inhalt der Seite
+Öffnen Sie ein Terminal (siehe oben) und geben Sie folgenden Befehl ein:
 
-### 4. HTML-Parsing
-- **DOM-Erstellung**: Browser beginnt das HTML zu parsen und baut den DOM-Baum auf
-- **Ressourcenerkennung**: Browser identifiziert externe Ressourcen im HTML-Dokument:
-  - CSS-Dateien (z.B. Stylesheets)
-  - JavaScript-Dateien
-  - Bilder (z.B. das Hobbiton-Bild von wairualodge.co.nz)
-  - iFrame (geotraceroute.com)
+**Windows:**
+```bash
+ipconfig
+```
 
-### 5. Laden externer Ressourcen
-- **Parallele Verbindungen**: Browser öffnet mehrere TCP-Verbindungen zu verschiedenen Servern
-- **Für jede Ressource**:
-  1. DNS-Auflösung des jeweiligen Servers (z.B. wairualodge.co.nz)
-  2. TCP/TLS-Verbindungsaufbau
-  3. HTTP-Anfrage senden
-  4. Antwort empfangen und verarbeiten
-- **Ressourcen-Priorität**: CSS und JavaScript werden meist vor Bildern geladen
+Suchen Sie nach dem Eintrag "IPv4-Adresse" - das ist Ihre lokale IP-Adresse im Netzwerk.
 
-#### Beispiel für das Hobbiton-Bild von wairualodge.co.nz:
-- **DNS-Auflösung**: IP-Adresse von wairualodge.co.nz ermitteln
-- **TCP-Verbindung**: Zu Server in Neuseeland aufbauen
-- **HTTP-Anfrage**: GET-Request für das Bild
-- **Datenübertragung**: Bild wird über internationale Unterseekabel und Netzwerkknoten übertragen
-- **Empfang**: Browser erhält die Bilddaten und speichert sie temporär
+**macOS und Linux:**
+```bash
+ifconfig
+```
+oder
+```bash
+ip addr show
+```
 
-### 6. Rendering und Darstellung
-- **Layout-Berechnung**: Position und Grösse aller Elemente wird bestimmt
-- **Painting**: Elemente werden gezeichnet
-- **Komposition**: Verschiedene Ebenen werden zusammengesetzt
+Suchen Sie nach dem Eintrag "inet" gefolgt von einer Zahl wie 192.168.1.x oder 10.0.0.x - das ist Ihre lokale IP-Adresse im Netzwerk.
 
-### 7. Abschluss
-- **JavaScript-Ausführung**: Event-Handler werden eingerichtet
-- **Fertigstellung**: Seite wird als vollständig geladen markiert
-- **Nachladen**: Einige Ressourcen werden möglicherweise verzögert geladen
-- **Benutzerinteraktion**: Seite ist bereit für Benutzereingaben
-
-Dieser gesamte Prozess dauert typischerweise nur Bruchteile einer Sekunde bis wenige Sekunden, je nach Verbindungsgeschwindigkeit und Komplexität der Webseite.
+> [!note] Lokale vs. öffentliche IP-Adresse
+>
+> Die IP-Adresse, die Sie hier sehen, ist Ihre **lokale IP-Adresse** in Ihrem Heimnetzwerk (z.B. 192.168.1.5). Diese wird von Ihrem Router vergeben.
+>
+> Ihre **öffentliche IP-Adresse**, mit der Sie im Internet sichtbar sind, können Sie auf Webseiten wie [whatismyip.com](https://www.whatismyip.com/) herausfinden. Diese wird von Ihrem Internetanbieter vergeben.
