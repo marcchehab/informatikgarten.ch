@@ -8,6 +8,7 @@ tags: [excalidraw]
 
 
 # Excalidraw Data
+
 ## Text Elements
 MAC-Adresse des
 Routers finden ^xzwUJKPN
@@ -55,7 +56,7 @@ TCP-Verbindung mit
 Webserver beenden ^uBpEiKum
 
 ## Embedded Files
-3f51d6ea851fe7e09d94d148a2da10b932cc15d2: [](Pasted-Image-20240317172227_000.png)
+cb62c9d0e67faab1234c918d2144cb4e3841beb5: [[Pasted-Image-20240317172227_000.png]]
 
 %%
 ## Drawing
@@ -63,42 +64,8 @@ Webserver beenden ^uBpEiKum
 {
 	"type": "excalidraw",
 	"version": 2,
-	"source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.2.1",
+	"source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.9.2",
 	"elements": [
-		{
-			"type": "image",
-			"version": 5,
-			"versionNonce": 2053737614,
-			"index": "a0",
-			"isDeleted": false,
-			"id": "W6z5yiJIPrPfHFfLzHJki",
-			"fillStyle": "solid",
-			"strokeWidth": 2,
-			"strokeStyle": "solid",
-			"roughness": 1,
-			"opacity": 100,
-			"angle": 0,
-			"x": -633.3684210526316,
-			"y": -524.1198120117188,
-			"strokeColor": "transparent",
-			"backgroundColor": "transparent",
-			"width": 1030.7368421052631,
-			"height": 680,
-			"seed": 1052679373,
-			"groupIds": [],
-			"frameId": null,
-			"roundness": null,
-			"boundElements": [],
-			"updated": 1718355608494,
-			"link": null,
-			"locked": false,
-			"status": "pending",
-			"fileId": "3f51d6ea851fe7e09d94d148a2da10b932cc15d2",
-			"scale": [
-				1,
-				1
-			]
-		},
 		{
 			"type": "text",
 			"version": 187,
@@ -1166,6 +1133,73 @@ Webserver beenden ^uBpEiKum
 					32.84833004093872
 				]
 			]
+		},
+		{
+			"id": "terYWZMy",
+			"type": "image",
+			"x": -631.4205165893421,
+			"y": -525.3559697930145,
+			"width": 1036.6542189516726,
+			"height": 683.9038250028394,
+			"angle": 0,
+			"strokeColor": "transparent",
+			"backgroundColor": "transparent",
+			"fillStyle": "hachure",
+			"strokeWidth": 1,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"roundness": null,
+			"seed": 52812,
+			"version": 203,
+			"versionNonce": 1551574480,
+			"updated": 1763460776639,
+			"isDeleted": false,
+			"groupIds": [],
+			"boundElements": [],
+			"link": null,
+			"locked": false,
+			"fileId": "cb62c9d0e67faab1234c918d2144cb4e3841beb5",
+			"scale": [
+				1,
+				1
+			],
+			"index": "aS"
+		},
+		{
+			"type": "image",
+			"version": 6,
+			"versionNonce": 1318058288,
+			"index": "a0",
+			"isDeleted": true,
+			"id": "W6z5yiJIPrPfHFfLzHJki",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": -633.3684210526316,
+			"y": -524.1198120117188,
+			"strokeColor": "transparent",
+			"backgroundColor": "transparent",
+			"width": 1030.7368421052631,
+			"height": 680,
+			"seed": 1052679373,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1763460752362,
+			"link": null,
+			"locked": false,
+			"status": "pending",
+			"fileId": "3f51d6ea851fe7e09d94d148a2da10b932cc15d2",
+			"scale": [
+				1,
+				1
+			],
+			"crop": null
 		}
 	],
 	"appState": {
@@ -1183,26 +1217,34 @@ Webserver beenden ^uBpEiKum
 		"currentItemTextAlign": "right",
 		"currentItemStartArrowhead": null,
 		"currentItemEndArrowhead": "arrow",
-		"scrollX": 934.9528073316951,
-		"scrollY": 728.2617040550006,
+		"currentItemArrowType": "round",
+		"scrollX": 1008.4556309295278,
+		"scrollY": 797.950251968314,
 		"zoom": {
-			"value": 1.25
+			"value": 1.101562
 		},
 		"currentItemRoundness": "round",
-		"gridSize": null,
+		"gridSize": 20,
+		"gridStep": 5,
+		"gridModeEnabled": false,
 		"gridColor": {
-			"Bold": "#C9C9C9FF",
-			"Regular": "#EDEDEDFF"
+			"Bold": "rgba(217, 217, 217, 0.5)",
+			"Regular": "rgba(230, 230, 230, 0.5)"
 		},
 		"currentStrokeOptions": null,
-		"previousGridSize": null,
 		"frameRendering": {
 			"enabled": true,
 			"clip": true,
 			"name": true,
 			"outline": true
 		},
-		"objectsSnapModeEnabled": false
+		"objectsSnapModeEnabled": false,
+		"activeTool": {
+			"type": "selection",
+			"customType": null,
+			"locked": false,
+			"lastActiveTool": null
+		}
 	},
 	"files": {}
 }
