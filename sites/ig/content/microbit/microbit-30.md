@@ -15,7 +15,7 @@ Bisher haben Sie verschiedene Einzelfunktionen für den Maqueen programmiert: Fe
 
 Unser Roboter soll drei verschiedene Betriebsmodi haben:
 1. **Modus 1 "Fernsteuern"**: Beide Motoren werden per Funk ferngesteuert - freie Bewegung in alle Richtungen
-2. **Modus 2 "Tracker"**: Der Roboter folgt automatisch einem schwarzen Fleck am Boden. Taste A auf der Fernsteuerung wechselt die Fahrtrichtung (vorwärts/rückwärts)
+2. **Modus 2 "Tracker"**: Der Roboter folgt automatisch einem schwarzen Fleck am Boden. Taste A auf der Fernsteuerung wechselt die Fahrtrichtung um den Fleck herum (links herum/rechts herum)
 3. **Modus 0 "Off"**: Alle Motoren werden abgestellt und das Programm wird sauber beendet
 
 Das Besondere: Sie benötigen **zwei Microbits** - einen im Roboter und einen als Fernsteuerung!
@@ -228,7 +228,7 @@ maqueen.motor_stop_all()
 > MODE_TRACKER = 2
 >
 > # Geschwindigkeiten
-> FULL = 200
+> FULL = 100
 > SLOW = 50
 >
 > # Radio konfigurieren
@@ -284,19 +284,25 @@ maqueen.motor_stop_all()
 
 > [!example] Challenge 4: Tracker-Modus implementieren
 >
-> Jetzt implementieren Sie den automatischen Tracker-Modus. Der Roboter soll einem schwarzen Fleck am Boden folgen.
+> Jetzt implementieren Sie den automatischen Tracker-Modus. Der Roboter soll einem **schwarzen Fleck** am Boden folgen - er fährt am Rand des Flecks entlang.
 >
 > **Aufgaben:**
 > 1. Lesen Sie die Helligkeitssensoren aus: `maqueen.read_patrol(0)` und `maqueen.read_patrol(1)`
-> 2. Implementieren Sie die Linetracker-Logik (siehe [Linetracker-Lektion](microbit-14-linetracker.md))
-> 3. Nutzen Sie die Variable `tracker_direction` um vorwärts (+1) oder rückwärts (-1) zu fahren
-> 4. Wenn auf der Fernsteuerung Taste A gedrückt wird (im Tracker-Modus!), senden Sie "TRACKER:REVERSE"
+> 2. Implementieren Sie die Tracker-Logik für einen schwarzen Fleck:
+>    - `left == 0 and right == 1` (linker Sensor auf schwarz): Perfekt! Geradeaus fahren
+>    - `left == 1 and right == 1` (beide auf hell): Zu weit rechts! Nach links drehen
+>    - `left == 0 and right == 0` (beide auf schwarz): Zu weit links! Nach rechts drehen
+>    - Den Fall `left == 1 and right == 0` ignorieren wir - der Roboter fährt einfach weiter
+> 3. Nutzen Sie die Variable `tracker_direction` um die Drehrichtung zu wechseln (links herum oder rechts herum)
+> 4. Wenn auf der Fernsteuerung Taste A gedrückt wird, senden Sie "TRACKER:REVERSE"
 > 5. Beim Empfang von "TRACKER:REVERSE" multiplizieren Sie `tracker_direction` mit -1
 >
 > **Tipps:**
-> - Die Tracker-Logik ist: beide hell → geradeaus, links dunkel → links drehen, rechts dunkel → rechts drehen
-> - Mit `tracker_direction` können Sie einfach die Geschwindigkeit umkehren: `FULL * tracker_direction`
-> - Testen Sie zuerst nur vorwärts, dann fügen Sie die Richtungsumkehr hinzu
+> - Der Roboter folgt dem Fleck "links herum" - der linke Sensor ist auf dem Fleck
+> - Bei `tracker_direction = -1` müssen SLOW und FULL vertauscht werden (nicht die Motoren rückwärts fahren!)
+> - SLOW können Sie auf 0 setzen für schärfere Kurven (Drehen auf der Stelle)
+> - Den Fall `left == 1 and right == 0` ignorieren wir - der Roboter fährt einfach weiter (kein `else: maqueen.motor_stop_all()`)
+> - Testen Sie zuerst mit `tracker_direction = 1`, dann fügen Sie die Umkehrung hinzu
 
 > [!solution]- Mögliche Lösung Challenge 4
 >
@@ -314,22 +320,30 @@ maqueen.motor_stop_all()
 >     left = maqueen.read_patrol(0)
 >     right = maqueen.read_patrol(1)
 >
->     # Tracker-Logik (0 = dunkel/schwarz, 1 = hell/weiss)
->     if left == 1 and right == 1:
->         # Beide auf hell → geradeaus
->         maqueen.set_motor(0, FULL * tracker_direction)
->         maqueen.set_motor(1, FULL * tracker_direction)
->     elif left == 0 and right == 1:
->         # Links auf schwarz → nach links drehen
->         maqueen.set_motor(0, SLOW * tracker_direction)
->         maqueen.set_motor(1, FULL * tracker_direction)
->     elif left == 1 and right == 0:
->         # Rechts auf schwarz → nach rechts drehen
->         maqueen.set_motor(0, FULL * tracker_direction)
->         maqueen.set_motor(1, SLOW * tracker_direction)
+>     # Geschwindigkeiten je nach Richtung bestimmen
+>     if tracker_direction == 1:
+>         # Links herum: bei Kurven links langsam, rechts schnell
+>         rad_links = SLOW
+>         rad_rechts = FULL
 >     else:
->         # Beide auf schwarz → stoppen
->         maqueen.motor_stop_all()
+>         # Rechts herum: bei Kurven links schnell, rechts langsam (vertauscht!)
+>         rad_links = FULL
+>         rad_rechts = SLOW
+>
+>     # Tracker-Logik (0 = dunkel/schwarz, 1 = hell/weiss)
+>     if left == 0 and right == 1:
+>         # Linker Sensor auf schwarz → perfekt! Geradeaus
+>         maqueen.set_motor(0, FULL)
+>         maqueen.set_motor(1, FULL)
+>     elif left == 1 and right == 1:
+>         # Beide auf hell → zu weit rechts! Nach links drehen
+>         maqueen.set_motor(0, rad_links)
+>         maqueen.set_motor(1, rad_rechts)
+>     elif left == 0 and right == 0:
+>         # Beide auf schwarz → zu weit links! Nach rechts drehen
+>         maqueen.set_motor(0, rad_rechts)
+>         maqueen.set_motor(1, rad_links)
+>     # left == 1 and right == 0 → ignorieren, einfach weiterfahren
 > ```
 >
 > **Fernsteuerungs-Code erweitern:**
@@ -351,8 +365,8 @@ maqueen.motor_stop_all()
 > 4. ✅ Taste B alleine: Roboter dreht nach rechts (RT)
 > 5. ✅ Keine Taste: Roboter stoppt (00)
 > 6. ✅ Fernsteuerung schütteln: Beide wechseln synchron zum Tracker-Modus (T angezeigt)
-> 7. ✅ Im Tracker-Modus folgt der Roboter automatisch dem schwarzen Fleck
-> 8. ✅ Taste A im Tracker-Modus: Fahrtrichtung kehrt um
+> 7. ✅ Im Tracker-Modus folgt der Roboter automatisch dem schwarzen Fleck (links herum)
+> 8. ✅ Taste A im Tracker-Modus: Fahrtrichtung wechselt (jetzt rechts herum)
 > 9. ✅ Nochmal schütteln: Beide wechseln zurück zum Fernsteuerungsmodus
 > 10. ✅ Fernsteuerung umdrehen (face down): Beide beenden ihre Loops, Display zeigt "0", alle Motoren stoppen
 >
@@ -361,8 +375,9 @@ maqueen.motor_stop_all()
 > - Modi werden nicht synchronisiert? → Prüfen Sie, ob `radio.send("MODE:" + str(mode))` korrekt ist
 > - Roboter dreht in falsche Richtung? → Prüfen Sie die Motor-Nummern (0 = links, 1 = rechts) und Vorzeichen
 > - Schütteln wechselt mehrfach? → Das `sleep(500)` nach dem Moduswechsel verhindert Doppel-Wechsel
-> - Roboter reagiert nicht auf Tracker? → Testen Sie die Helligkeitssensoren einzeln
-> - Richtungsumkehr funktioniert nicht? → Zeigen Sie `tracker_direction` auf dem Display an
+> - Roboter reagiert nicht auf Tracker? → Testen Sie die Helligkeitssensoren einzeln (display.show(left) und display.show(right))
+> - Roboter fährt vom Fleck weg? → Prüfen Sie die Logik: left == 0 bedeutet "linker Sensor auf schwarz"
+> - Richtungsumkehr funktioniert nicht? → Prüfen Sie, ob SLOW und FULL korrekt getauscht werden
 > - Umdrehen schaltet nicht aus? → Prüfen Sie die Schreibweise: `'face down'` (mit Leerzeichen!)
 
 > [!example] Bonus-Challenge: Verbesserungen
@@ -391,7 +406,7 @@ maqueen.motor_stop_all()
 > MODE_TRACKER = 2
 >
 > # Geschwindigkeiten
-> FULL = 200
+> FULL = 100
 > SLOW = 50
 >
 > # Radio konfigurieren
@@ -443,18 +458,25 @@ maqueen.motor_stop_all()
 >         left = maqueen.read_patrol(0)
 >         right = maqueen.read_patrol(1)
 >
->         # Tracker-Logik
->         if left == 1 and right == 1:
->             maqueen.set_motor(0, FULL * tracker_direction)
->             maqueen.set_motor(1, FULL * tracker_direction)
->         elif left == 0 and right == 1:
->             maqueen.set_motor(0, SLOW * tracker_direction)
->             maqueen.set_motor(1, FULL * tracker_direction)
->         elif left == 1 and right == 0:
->             maqueen.set_motor(0, FULL * tracker_direction)
->             maqueen.set_motor(1, SLOW * tracker_direction)
+>         # Geschwindigkeiten je nach Richtung bestimmen
+>         if tracker_direction == 1:
+>             rad_links = SLOW
+>             rad_rechts = FULL
 >         else:
->             maqueen.motor_stop_all()
+>             rad_links = FULL
+>             rad_rechts = SLOW
+>
+>         # Tracker-Logik
+>         if left == 0 and right == 1:
+>             maqueen.set_motor(0, FULL)
+>             maqueen.set_motor(1, FULL)
+>         elif left == 1 and right == 1:
+>             maqueen.set_motor(0, rad_links)
+>             maqueen.set_motor(1, rad_rechts)
+>         elif left == 0 and right == 0:
+>             maqueen.set_motor(0, rad_rechts)
+>             maqueen.set_motor(1, rad_links)
+>         # left == 1 and right == 0 → ignorieren, einfach weiterfahren
 >
 > # Programm wird beendet
 > maqueen.motor_stop_all()
@@ -549,34 +571,42 @@ Die Lösung: **Funktionen und separate Dateien**. Schauen wir uns an, wie wir de
 Der Linetracker-Code nimmt viel Platz ein und könnte eine eigene Funktion sein:
 
 ```python
-def folge_linie(tracker_direction, FULL=200, SLOW=50):
-    """Folgt einer schwarzen Linie am Boden."""
+def folge_linie(tracker_direction, FULL=100, SLOW=0):
+    """Folgt einem schwarzen Fleck am Boden (links herum oder rechts herum)."""
     # Helligkeitssensoren auslesen
     left = maqueen.read_patrol(0)
     right = maqueen.read_patrol(1)
 
-    # Tracker-Logik (0 = dunkel/schwarz, 1 = hell/weiss)
-    if left == 1 and right == 1:
-        # Beide auf hell → geradeaus
-        maqueen.set_motor(0, FULL * tracker_direction)
-        maqueen.set_motor(1, FULL * tracker_direction)
-    elif left == 0 and right == 1:
-        # Links auf schwarz → nach links drehen
-        maqueen.set_motor(0, SLOW * tracker_direction)
-        maqueen.set_motor(1, FULL * tracker_direction)
-    elif left == 1 and right == 0:
-        # Rechts auf schwarz → nach rechts drehen
-        maqueen.set_motor(0, FULL * tracker_direction)
-        maqueen.set_motor(1, SLOW * tracker_direction)
+    # Geschwindigkeiten je nach Richtung bestimmen
+    if tracker_direction == 1:
+        # Links herum: bei Kurven links langsam, rechts schnell
+        rad_links = SLOW
+        rad_rechts = FULL
     else:
-        # Beide auf schwarz → stoppen
-        maqueen.motor_stop_all()
+        # Rechts herum: bei Kurven links schnell, rechts langsam (vertauscht!)
+        rad_links = FULL
+        rad_rechts = SLOW
+
+    # Tracker-Logik (0 = dunkel/schwarz, 1 = hell/weiss)
+    if left == 0 and right == 1:
+        # Linker Sensor auf schwarz → perfekt! Geradeaus
+        maqueen.set_motor(0, FULL)
+        maqueen.set_motor(1, FULL)
+    elif left == 1 and right == 1:
+        # Beide auf hell → zu weit rechts! Nach links drehen
+        maqueen.set_motor(0, rad_links)
+        maqueen.set_motor(1, rad_rechts)
+    elif left == 0 and right == 0:
+        # Beide auf schwarz → zu weit links! Nach rechts drehen
+        maqueen.set_motor(0, rad_rechts)
+        maqueen.set_motor(1, rad_links)
+    # left == 1 and right == 0 → ignorieren, einfach weiterfahren
 ```
 
 Auch die Bewegungsbefehle könnten wir vereinfachen:
 
 ```python
-def fahre(nachricht, FULL=200):
+def fahre(nachricht, FULL=100):
     """Verarbeitet Bewegungsbefehle."""
     if nachricht == "MOVE:FF":
         maqueen.set_motor(0, FULL)
@@ -599,29 +629,37 @@ Jetzt wird es richtig elegant! Wir können die Funktionen in eigene Dateien pack
 ```python
 import maqueen
 
-def folge_linie(tracker_direction, FULL=200, SLOW=50):
-    """Folgt einer schwarzen Linie am Boden."""
+def folge_linie(tracker_direction, FULL=100, SLOW=0):
+    """Folgt einem schwarzen Fleck am Boden (links herum oder rechts herum)."""
     left = maqueen.read_patrol(0)
     right = maqueen.read_patrol(1)
 
-    if left == 1 and right == 1:
-        maqueen.set_motor(0, FULL * tracker_direction)
-        maqueen.set_motor(1, FULL * tracker_direction)
-    elif left == 0 and right == 1:
-        maqueen.set_motor(0, SLOW * tracker_direction)
-        maqueen.set_motor(1, FULL * tracker_direction)
-    elif left == 1 and right == 0:
-        maqueen.set_motor(0, FULL * tracker_direction)
-        maqueen.set_motor(1, SLOW * tracker_direction)
+    # Geschwindigkeiten je nach Richtung bestimmen
+    if tracker_direction == 1:
+        rad_links = SLOW
+        rad_rechts = FULL
     else:
-        maqueen.motor_stop_all()
+        rad_links = FULL
+        rad_rechts = SLOW
+
+    # Tracker-Logik
+    if left == 0 and right == 1:
+        maqueen.set_motor(0, FULL)
+        maqueen.set_motor(1, FULL)
+    elif left == 1 and right == 1:
+        maqueen.set_motor(0, rad_links)
+        maqueen.set_motor(1, rad_rechts)
+    elif left == 0 and right == 0:
+        maqueen.set_motor(0, rad_rechts)
+        maqueen.set_motor(1, rad_links)
+    # left == 1 and right == 0 → ignorieren, einfach weiterfahren
 ```
 
 **Datei: `bewegung.py`**
 ```python
 import maqueen
 
-def fahre(nachricht, FULL=200):
+def fahre(nachricht, FULL=100):
     """Verarbeitet Bewegungsbefehle."""
     if nachricht == "MOVE:FF":
         maqueen.set_motor(0, FULL)
@@ -653,8 +691,8 @@ MODE_FERNSTEUERUNG = 1
 MODE_TRACKER = 2
 
 # Geschwindigkeiten
-FULL = 200
-SLOW = 50
+FULL = 100
+SLOW = 0  # 0 für scharfe Kurven, oder 50 für sanftere Kurven
 
 # Radio konfigurieren
 radio.config(group=42)
