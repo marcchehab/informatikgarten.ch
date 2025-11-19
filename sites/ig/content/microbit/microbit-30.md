@@ -535,8 +535,184 @@ Sie haben jetzt ein komplexes System gebaut, das verschiedene Konzepte elegant k
 
 Das ist genau so, wie echte Roboter und autonome Systeme funktionieren! Sie haben die Grundlagen der **Robotik** und der **eingebetteten Systeme** kennengelernt.
 
+## Code refaktorieren und auslagern
+
+Wenn Sie sich Ihren Roboter-Code anschauen, werden Sie feststellen: **Er ist ziemlich lang geworden!** Über 70 Zeilen Code in einer einzigen Datei. Das macht es schwierig:
+- Den Überblick zu behalten
+- Fehler zu finden
+- Code wiederzuverwenden
+
+Die Lösung: **Funktionen und separate Dateien**. Schauen wir uns an, wie wir den Code übersichtlicher machen können.
+
+### Schritt 1: Logik in Funktionen auslagern
+
+Der Linetracker-Code nimmt viel Platz ein und könnte eine eigene Funktion sein:
+
+```python
+def folge_linie(tracker_direction, FULL=200, SLOW=50):
+    """Folgt einer schwarzen Linie am Boden."""
+    # Helligkeitssensoren auslesen
+    left = maqueen.read_patrol(0)
+    right = maqueen.read_patrol(1)
+
+    # Tracker-Logik (0 = dunkel/schwarz, 1 = hell/weiss)
+    if left == 1 and right == 1:
+        # Beide auf hell → geradeaus
+        maqueen.set_motor(0, FULL * tracker_direction)
+        maqueen.set_motor(1, FULL * tracker_direction)
+    elif left == 0 and right == 1:
+        # Links auf schwarz → nach links drehen
+        maqueen.set_motor(0, SLOW * tracker_direction)
+        maqueen.set_motor(1, FULL * tracker_direction)
+    elif left == 1 and right == 0:
+        # Rechts auf schwarz → nach rechts drehen
+        maqueen.set_motor(0, FULL * tracker_direction)
+        maqueen.set_motor(1, SLOW * tracker_direction)
+    else:
+        # Beide auf schwarz → stoppen
+        maqueen.motor_stop_all()
+```
+
+Auch die Bewegungsbefehle könnten wir vereinfachen:
+
+```python
+def fahre(nachricht, FULL=200):
+    """Verarbeitet Bewegungsbefehle."""
+    if nachricht == "MOVE:FF":
+        maqueen.set_motor(0, FULL)
+        maqueen.set_motor(1, FULL)
+    elif nachricht == "MOVE:LT":
+        maqueen.set_motor(0, -FULL)
+        maqueen.set_motor(1, FULL)
+    elif nachricht == "MOVE:RT":
+        maqueen.set_motor(0, FULL)
+        maqueen.set_motor(1, -FULL)
+    elif nachricht == "MOVE:00":
+        maqueen.motor_stop_all()
+```
+
+### Schritt 2: Funktionen in eigene Dateien auslagern
+
+Jetzt wird es richtig elegant! Wir können die Funktionen in eigene Dateien packen:
+
+**Datei: `linetracker.py`**
+```python
+import maqueen
+
+def folge_linie(tracker_direction, FULL=200, SLOW=50):
+    """Folgt einer schwarzen Linie am Boden."""
+    left = maqueen.read_patrol(0)
+    right = maqueen.read_patrol(1)
+
+    if left == 1 and right == 1:
+        maqueen.set_motor(0, FULL * tracker_direction)
+        maqueen.set_motor(1, FULL * tracker_direction)
+    elif left == 0 and right == 1:
+        maqueen.set_motor(0, SLOW * tracker_direction)
+        maqueen.set_motor(1, FULL * tracker_direction)
+    elif left == 1 and right == 0:
+        maqueen.set_motor(0, FULL * tracker_direction)
+        maqueen.set_motor(1, SLOW * tracker_direction)
+    else:
+        maqueen.motor_stop_all()
+```
+
+**Datei: `bewegung.py`**
+```python
+import maqueen
+
+def fahre(nachricht, FULL=200):
+    """Verarbeitet Bewegungsbefehle."""
+    if nachricht == "MOVE:FF":
+        maqueen.set_motor(0, FULL)
+        maqueen.set_motor(1, FULL)
+    elif nachricht == "MOVE:LT":
+        maqueen.set_motor(0, -FULL)
+        maqueen.set_motor(1, FULL)
+    elif nachricht == "MOVE:RT":
+        maqueen.set_motor(0, FULL)
+        maqueen.set_motor(1, -FULL)
+    elif nachricht == "MOVE:00":
+        maqueen.motor_stop_all()
+```
+
+### Schritt 3: Refaktoriertes Hauptprogramm
+
+Jetzt sieht unser Hauptprogramm **viel übersichtlicher** aus:
+
+```python
+from microbit import *
+import maqueen
+import radio
+from linetracker import folge_linie
+from bewegung import fahre
+
+# Modi definieren
+MODE_OFF = 0
+MODE_FERNSTEUERUNG = 1
+MODE_TRACKER = 2
+
+# Geschwindigkeiten
+FULL = 200
+SLOW = 50
+
+# Radio konfigurieren
+radio.config(group=42)
+radio.on()
+
+# Startzustand
+mode = MODE_FERNSTEUERUNG
+tracker_direction = 1
+
+while mode != MODE_OFF:
+
+    # Funknachrichten empfangen
+    nachricht = radio.receive()
+
+    # Moduswechsel
+    if nachricht == "MODE:0":
+        mode = MODE_OFF
+    elif nachricht == "MODE:1":
+        mode = MODE_FERNSTEUERUNG
+    elif nachricht == "MODE:2":
+        mode = MODE_TRACKER
+
+    # Je nach Modus handeln
+    if mode == MODE_FERNSTEUERUNG:
+        display.show("F")
+        fahre(nachricht, FULL)
+
+    elif mode == MODE_TRACKER:
+        display.show("T")
+
+        # Richtungsumkehr empfangen
+        if nachricht == "TRACKER:REVERSE":
+            tracker_direction = tracker_direction * -1
+
+        # Linie folgen
+        folge_linie(tracker_direction, FULL, SLOW)
+
+# Programm wird beendet
+maqueen.motor_stop_all()
+display.show("0")
+```
+
+### Die Vorteile
+
+Sehen Sie den Unterschied? Das Hauptprogramm ist von **über 70 Zeilen auf ca. 40 Zeilen** geschrumpft und **viel lesbarer**:
+
+✅ **Übersichtlicher**: Die Hauptlogik ist klar erkennbar
+✅ **Wiederverwendbar**: Die Funktionen können Sie in anderen Projekten nutzen
+✅ **Einfacher zu testen**: Sie können jede Funktion einzeln testen
+✅ **Leichter zu erweitern**: Neue Modi hinzufügen wird einfacher
+✅ **Teamarbeit möglich**: Verschiedene Personen können an verschiedenen Dateien arbeiten
+
+> [!tip] Mehr dazu
+>
+> In der [Linienfinder-Lektion](microbit-15-linefinder.md) finden Sie weitere Details zum Code-Refactoring und wie man Code in mehrere Dateien aufteilt.
+
 **Nächste Schritte:**
 - Experimentieren Sie mit weiteren Modi (z.B. "Hindernis-Ausweichen")
 - Kombinieren Sie mehrere Sensoren (Distanz + Helligkeit)
-- Bauen Sie eine richtige Fernsteuerung mit mehreren Tasten
-- Lagern Sie den Code in mehrere Dateien aus (siehe [Linienfinder-Lektion](microbit-15-linefinder.md))
+- Lagern Sie noch mehr Code in eigene Funktionen und Dateien aus
+- Bauen Sie eine Bibliothek von wiederverwendbaren Funktionen für Ihre Projekte
