@@ -58,19 +58,19 @@ rtt min/avg/max/mdev = 248.442/303.558/350.340/36.340 ms
 
 Das bedeutet, dass unser Computer die Strecke nach Neuseeland über das Internet und zurück in durchschnittlich 303.558 Millisekunden (ms) zurücklegt. Das sind 0.3 Sekunden, also ziemlich schnell!
 
-Die Verbindung von der Schweiz nach Neuseeland ist gemäss geotraceroute.com _mindestens_ 19'963 Kilometer. Wenn wir die Zeit von 0.303558 Sekunden nehmen, können wir die Geschwindigkeit berechnen, mit der die Datenpakete reisen:
+Die Verbindung von der Schweiz nach Neuseeland ist gemäss geotraceroute.com _mindestens_ 19'963 Kilometer. Da der Ping die Roundtrip-Zeit misst (hin und zurück), legt das Datenpaket die doppelte Strecke zurück: 2 × 19'963 km = 39'926 km. Wenn wir die Zeit von 0.303558 Sekunden nehmen, können wir die Geschwindigkeit berechnen, mit der die Datenpakete reisen:
 
 $$
-\text{Geschwindigkeit} = \frac{\text{Strecke}}{\text{Zeit}} = \frac{19'963 \text{ km}}{0.303558 \text{ s}} \approx 65'763 \text{ km/s}
+\text{Geschwindigkeit} = \frac{\text{Strecke}}{\text{Zeit}} = \frac{2 \times 19'963 \text{ km}}{0.303558 \text{ s}} = \frac{39'926 \text{ km}}{0.303558 \text{ s}} \approx 131'526 \text{ km/s}
 $$
 
 Vergleichen Sie das mit der Lichtgeschwindigkeit $c$ von 299'792 km/s:
 
 $$
-\text{Prozent der Lichtgeschwindigkeit} = \frac{65'763 \text{ km/s}}{299'792 \text{ km/s}} \approx 21.9\%
+\text{Prozent der Lichtgeschwindigkeit} = \frac{131'526 \text{ km/s}}{299'792 \text{ km/s}} \approx 43.9\%
 $$
 
-Das bedeutet, dass die Reise hin und zurück von der Schweiz nach Neuseeland über das Internet mit einer Geschwindigkeit von etwa 21.9% der Lichtgeschwindigkeit erfolgt ist.
+Das bedeutet, dass die Reise hin und zurück von der Schweiz nach Neuseeland über das Internet mit einer Geschwindigkeit von etwa 43.9% der Lichtgeschwindigkeit erfolgt ist.
 
 > [!note] Versuchen Sie es selbst
 > 
