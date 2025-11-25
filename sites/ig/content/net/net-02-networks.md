@@ -101,6 +101,7 @@ Ein Netzwerk hat die Subnetmaske `255.255.255.0`. Wie viele Geräte (Hosts) kön
 Ein Unternehmen benötigt ein Netzwerk für 500 Geräte. Die IT-Abteilung wählt die Subnetmaske `255.255.0.0`.
 
 a) Wie viele Hosts können mit dieser Subnetmaske adressiert werden?
+
 b) Ist diese Subnetmaske für 500 Geräte geeignet?
 
 > [!solution]- Lösung
@@ -118,7 +119,9 @@ b) Ist diese Subnetmaske für 500 Geräte geeignet?
 Bestimmen Sie die Netzwerkadresse für folgende Kombinationen:
 
 a) IP: `192.168.5.42`, Subnetmaske: `255.255.255.0`
+
 b) IP: `10.20.30.40`, Subnetmaske: `255.255.0.0`
+
 c) IP: `172.16.100.200`, Subnetmaske: `255.0.0.0`
 
 > [!solution]- Lösung
@@ -136,7 +139,9 @@ c) IP: `172.16.100.200`, Subnetmaske: `255.0.0.0`
 Bestimmen Sie die Broadcast-Adresse für folgende Kombinationen:
 
 a) IP: `192.168.5.42`, Subnetmaske: `255.255.255.0`
+
 b) IP: `10.20.30.40`, Subnetmaske: `255.255.0.0`
+
 c) IP: `172.16.100.200`, Subnetmaske: `255.0.0.0`
 
 > [!solution]- Lösung
@@ -154,7 +159,9 @@ c) IP: `172.16.100.200`, Subnetmaske: `255.0.0.0`
 Ein Gerät hat die IP `10.50.0.100` mit der Subnetmaske `255.255.0.0`.
 
 a) Was ist die Netzwerkadresse?
+
 b) Was ist die Broadcast-Adresse?
+
 c) Welche IP-Adressen können für Geräte verwendet werden?
 
 > [!solution]- Lösung
@@ -172,7 +179,9 @@ c) Welche IP-Adressen können für Geräte verwendet werden?
 Prüfen Sie, ob die folgenden Geräte im gleichen Netzwerk sind:
 
 a) Gerät A: `192.168.1.10`, Gerät B: `192.168.1.200` – beide mit Subnetmaske `255.255.255.0`
+
 b) Gerät A: `10.0.1.5`, Gerät B: `10.0.2.5` – beide mit Subnetmaske `255.255.255.0`
+
 c) Gerät A: `172.16.5.100`, Gerät B: `172.16.200.50` – beide mit Subnetmaske `255.255.0.0`
 
 > [!solution]- Lösung
@@ -199,8 +208,11 @@ Ein Router ist an drei Netzwerke angeschlossen:
 An welche Schnittstelle leitet der Router Pakete mit folgenden Ziel-IPs weiter?
 
 a) `192.168.1.50`
+
 b) `192.168.2.200`
+
 c) `10.100.50.25`
+
 d) `172.16.5.10`
 
 > [!solution]- Lösung
@@ -225,6 +237,7 @@ Sie planen ein kleines Firmennetzwerk mit drei Abteilungen:
 Alle Abteilungen sollen eigene Netzwerke mit der Subnetmaske `255.255.255.0` erhalten.
 
 a) Reicht die Subnetmaske für alle Abteilungen aus?
+
 b) Definieren Sie je eine Netzwerkadresse für jede Abteilung.
 
 > [!solution]- Lösung
