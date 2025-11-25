@@ -102,7 +102,7 @@ Weitere solche Beispiele:
 
 Mit der Eigenschaft kann Ihr Computer also sehr einfach urteilen:
 - Wenn sich aus beiden IP-Adressen zweimal die gleiche Netzwerkadresse bildet, urteilt er, dass sich das Ziel im **gleichen Netzwerk** befindet und er das **Paket selbst direkt verschicken** kann.
-- Wenn sich die Netzwerkteile unterscheiden und somit verschiedene Netzwerkadressen bilden (rote Kreise), urteilt er, dass sich das Ziel in einem **anderen Netzwerk** befindet. Dann braucht er quasi die **Hilfe der Post**, um das Paket zu verschicken (mehr dazu in der nächsten Lektion).
+- Wenn sich die Netzwerkteile unterscheiden und somit verschiedene Netzwerkadressen bilden (rote Kreise), urteilt er, dass sich das Ziel in einem **anderen Netzwerk** befindet. Dann braucht er quasi die **Hilfe der Post**, um das Paket zu verschicken: Er schickt das Paket an seinen **Default Gateway** (auch Standardgateway genannt) – das ist typischerweise Ihr Router. Dieser kennt den Weg ins Internet und leitet das Paket weiter (mehr dazu in der nächsten Lektion).
 
 ### Ein binäres Verständnis Subnetmasken (nicht Prüfungsstoff)
 
