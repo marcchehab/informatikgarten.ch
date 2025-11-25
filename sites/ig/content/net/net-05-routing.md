@@ -18,15 +18,7 @@ Das Internet besteht aus tausenden von Routern, die miteinander verbunden sind. 
 - **Kantengewichte** sind die "Kosten" einer Verbindung (z.B. Latenz in Millisekunden)
 
 <StickMe>
-```mermaid
-graph LR
-    A((A)) ---|4| B((B))
-    A ---|2| C((C))
-    B ---|3| D((D))
-    C ---|1| D((D))
-    C ---|5| E((E))
-    D ---|2| E((E))
-```
+![[net-05-routing-network.excalidraw]]
 </StickMe>
 
 In diesem Beispiel sind A bis E Router. Die Zahlen auf den Kanten geben die "Kosten" an – je tiefer, desto besser. Das könnte die Latenz in Millisekunden sein oder eine andere Metrik.
