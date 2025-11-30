@@ -20,6 +20,7 @@ export default function UserInterface(props: any) {
     const c = props.configRef.current
     const [output, setOutput] = props.outputState
     const [currentRunLevel, setCurrentRunLevel] = props.runlevel
+    const height = props.height
     const [position, setPosition] = useState({
         top: undefined as number | undefined,
         left: undefined as number | undefined
@@ -102,6 +103,7 @@ export default function UserInterface(props: any) {
             // }
             ref={c.wrapperRef}
             id={c.idRef.current}
+            style={height ? { height, marginTop: 0 } : undefined}
         >
             <div className={s.turtlerow}>
                 <div

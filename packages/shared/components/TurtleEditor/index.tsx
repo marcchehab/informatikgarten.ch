@@ -29,10 +29,14 @@ declare let Sk: any
 
 export const TurtleEditor = ({
     id,
-    children
+    children,
+    height,
+    theme: themeProp
 }: {
     id: string
     children: string
+    height?: string
+    theme?: 'dark' | 'light'
 }) => {
     // State
     const [currentRunLevel, setCurrentRunLevel] = useState(RunLevel.stopped)
@@ -153,11 +157,12 @@ export const TurtleEditor = ({
     }
 
     const { resolvedTheme } = useTheme()
+    const theme = themeProp ?? resolvedTheme ?? 'dark'
     configRef.current = {
         // Main
         idRef,
         sessionRef,
-        theme: resolvedTheme ?? 'dark',
+        theme,
         wrapperRef,
         resizerHRef: useRef(null),
         // Code editor
@@ -191,6 +196,7 @@ export const TurtleEditor = ({
                 configRef={configRef}
                 outputState={[output, setOutput]}
                 runlevel={[currentRunLevel, setCurrentRunLevel]}
+                height={height}
             />
             {/* TODO: Add feedback component again
             {isTeacherCS() && <Feedback c={configRef.current} />} */}
