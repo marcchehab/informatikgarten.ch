@@ -21,6 +21,7 @@ export default function UserInterface(props: any) {
     const [output, setOutput] = props.outputState
     const [currentRunLevel, setCurrentRunLevel] = props.runlevel
     const height = props.height
+    const hideCanvasButtons = props.hideCanvasButtons
     const [position, setPosition] = useState({
         top: undefined as number | undefined,
         left: undefined as number | undefined
@@ -235,33 +236,35 @@ export default function UserInterface(props: any) {
                             left: position.left
                         }}
                     />
-                    <div className={s.canvasButtons}>
-                        <button
-                            type="button"
-                            onClick={() =>
-                                downloadScreenshot(c.graphicswrapperRef.current)
-                            }
-                        >
-                            <FeatherIcon size="16" icon="aperture" />
-                        </button>
+                    {!hideCanvasButtons && (
+                        <div className={s.canvasButtons}>
+                            <button
+                                type="button"
+                                onClick={() =>
+                                    downloadScreenshot(c.graphicswrapperRef.current)
+                                }
+                            >
+                                <FeatherIcon size="16" icon="aperture" />
+                            </button>
 
-                        <button
-                            type="button"
-                            onClick={() => {
-                                // document.body.classList.toggle(
-                                //     'fullscreen',
-                                //     !fullscreen
-                                // )
-                                setFullscreen(!fullscreen)
-                            }}
-                        >
-                            {fullscreen ? (
-                                <FeatherIcon size="16" icon="minimize-2" />
-                            ) : (
-                                <FeatherIcon size="16" icon="maximize-2" />
-                            )}
-                        </button>
-                    </div>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    // document.body.classList.toggle(
+                                    //     'fullscreen',
+                                    //     !fullscreen
+                                    // )
+                                    setFullscreen(!fullscreen)
+                                }}
+                            >
+                                {fullscreen ? (
+                                    <FeatherIcon size="16" icon="minimize-2" />
+                                ) : (
+                                    <FeatherIcon size="16" icon="maximize-2" />
+                                )}
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
             <div className={cn(s.turtlerow, s.output)}>

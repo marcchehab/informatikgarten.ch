@@ -16,7 +16,7 @@ for i in range(4):
 export default function TurtleEditorPage() {
     return (
         <Providers>
-            <TurtleEditor id="standalone-turtle-editor" height="100vh" theme="dark">
+            <TurtleEditor id="standalone-turtle-editor" height="100vh" theme="dark" hideCanvasButtons>
                 {defaultCode}
             </TurtleEditor>
         </Providers>
