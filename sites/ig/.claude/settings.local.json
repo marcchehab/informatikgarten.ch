@@ -18,7 +18,9 @@
       "WebFetch(domain:rehype-pretty-code.netlify.app)",
       "WebFetch(domain:rehype-pretty.pages.dev)",
       "WebFetch(domain:shiki.style)",
-      "Bash(pnpm build:*)"
+      "Bash(pnpm build:*)",
+      "Bash(npx tsc:*)",
+      "Bash(git restore:*)"
     ],
     "deny": [],
     "ask": []

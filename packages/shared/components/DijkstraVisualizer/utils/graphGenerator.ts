@@ -130,5 +130,21 @@ export function generateRandomGraph(
     }
   }
 
+  // In directed mode, make 40-80% of edges bidirectional by adding reverse edges
+  if (isDirected) {
+    const edgesToProcess = [...edges]
+    for (const edge of edgesToProcess) {
+      // 40-80% chance to add reverse edge (making it bidirectional)
+      if (Math.random() < 0.6 && !edgeExists(edges, edge.target, edge.source, false)) {
+        edges.push({
+          id: `edge-${edges.length}`,
+          source: edge.target,
+          target: edge.source,
+          weight: Math.floor(Math.random() * 9) + 1 // Different weight for reverse
+        })
+      }
+    }
+  }
+
   return { nodes, edges, isDirected }
 }
