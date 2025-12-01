@@ -7,7 +7,7 @@ display: hidden
 > Diese Prüfungsvorbereitung ist dazu da, dass Sie die Art der Fragestellungen abschätzen können.
 > - Stoffumfang: bis und mit "5 for-Schleifen verschachtelln" im Kapitel "B Programmieren" auf Informatikgarten. Dort finden Sie auch die Lernziele.
 > - Sie werden [diese Befehlsliste](/pubfiles/befehlsliste_turtle1.pdf) an der Prüfung erhalten.
-> - Sie finden [hier](https://exam.net/student?code=yhzGpg) eine technische Vorschau auf Exam.net, um den Programmiereditor zu versuchen.
+> - Sie finden [hier](https://exam.net/student?code=mYLZA7) eine technische Vorschau auf Exam.net, um den Programmiereditor zu versuchen. (Und [hier](https://exam.net/student?code=nigjY9) ohne strenge Sicherheitsvorschriften)
 
 ## Theorie
 
