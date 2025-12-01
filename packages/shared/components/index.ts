@@ -16,5 +16,6 @@ export { StickMe } from './StickMe'
 export { Question, Option, SQLQuestion } from './Quiz'
 export { AuthBtn } from './AuthBtn'
 export { Dashboard } from './Dashboard'
+export { DijkstraVisualizer } from './DijkstraVisualizer'
 
 export type { OfmCalloutProps } from './OfmCallout'

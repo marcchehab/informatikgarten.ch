@@ -6,6 +6,7 @@ import {
   Codepen,
   ColorSliders,
   ColorTitle,
+  DijkstraVisualizer,
   Excalidraw,
   Flex,
   IsAuthenticated,
@@ -77,6 +78,8 @@ export const useMDXComponents: typeof getDocsMDXComponents = components => ({
   Question,
   Option,
   SQLQuestion,
+  DijkstraVisualizer,
+  dijkstra: DijkstraVisualizer,
   tr: Tr,
   th: Th,
   thead({ children, ...props }) {

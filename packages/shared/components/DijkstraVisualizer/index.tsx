@@ -1,0 +1,283 @@
+'use client'
+
+import { useState, useRef, useCallback, useEffect, useMemo } from 'react'
+import { DijkstraCanvas } from './DijkstraCanvas'
+import { ControlPanel } from './ControlPanel'
+import { DistanceTable } from './DistanceTable'
+import { GraphSettings } from './GraphSettings'
+import { generateRandomGraph } from './utils/graphGenerator'
+import { computeDijkstraSteps } from './utils/dijkstraAlgorithm'
+import type { DijkstraVisualizerProps, DijkstraConfig, AlgorithmStep } from './types/DijkstraTypes'
+import { AnimationState } from './types/DijkstraTypes'
+import styles from './style/dijkstra.module.css'
+
+export function DijkstraVisualizer({
+  initialNodeCount = 10,
+  initialDirected = false,
+  width = 800,
+  height = 500
+}: DijkstraVisualizerProps) {
+  const [config, setConfig] = useState<DijkstraConfig>(() => ({
+    graph: generateRandomGraph(initialNodeCount, initialDirected, width, height),
+    sourceNode: null,
+    steps: [],
+    currentStepIndex: -1,
+    animationState: AnimationState.IDLE,
+    animationSpeed: 500,
+    nodeCount: initialNodeCount,
+    isDirected: initialDirected
+  }))
+
+  const [isFullscreen, setIsFullscreen] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const animationTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  // Derive current step from config
+  const currentStep: AlgorithmStep | null = useMemo(() => {
+    if (config.currentStepIndex >= 0 && config.currentStepIndex < config.steps.length) {
+      return config.steps[config.currentStepIndex] ?? null
+    }
+    return null
+  }, [config.steps, config.currentStepIndex])
+
+  // Cleanup timer on unmount
+  useEffect(() => {
+    return () => {
+      if (animationTimerRef.current) {
+        clearTimeout(animationTimerRef.current)
+      }
+    }
+  }, [])
+
+  // Listen for fullscreen changes
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement)
+    }
+    document.addEventListener('fullscreenchange', handleFullscreenChange)
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange)
+    }
+  }, [])
+
+  const toggleFullscreen = useCallback(() => {
+    if (!containerRef.current) return
+
+    if (!document.fullscreenElement) {
+      containerRef.current.requestFullscreen().catch(err => {
+        console.error('Failed to enter fullscreen:', err)
+      })
+    } else {
+      document.exitFullscreen().catch(err => {
+        console.error('Failed to exit fullscreen:', err)
+      })
+    }
+  }, [])
+
+  // Animation tick effect
+  useEffect(() => {
+    if (config.animationState !== AnimationState.PLAYING) return
+
+    if (config.currentStepIndex >= config.steps.length - 1) {
+      setConfig(prev => ({ ...prev, animationState: AnimationState.FINISHED }))
+      return
+    }
+
+    animationTimerRef.current = setTimeout(() => {
+      setConfig(prev => ({
+        ...prev,
+        currentStepIndex: prev.currentStepIndex + 1
+      }))
+    }, config.animationSpeed)
+
+    return () => {
+      if (animationTimerRef.current) {
+        clearTimeout(animationTimerRef.current)
+      }
+    }
+  }, [config.animationState, config.currentStepIndex, config.steps.length, config.animationSpeed])
+
+  const handleNodeClick = useCallback((nodeId: string) => {
+    setConfig(prev => {
+      // If clicking same source, do nothing
+      if (prev.sourceNode === nodeId) return prev
+
+      // Compute steps for new source
+      const steps = computeDijkstraSteps(prev.graph, nodeId)
+
+      return {
+        ...prev,
+        sourceNode: nodeId,
+        steps,
+        currentStepIndex: 0,
+        animationState: AnimationState.PAUSED
+      }
+    })
+  }, [])
+
+  const handleNodeMove = useCallback((nodeId: string, x: number, y: number) => {
+    setConfig(prev => {
+      const newNodes = prev.graph.nodes.map(node =>
+        node.id === nodeId ? { ...node, x, y } : node
+      )
+      return {
+        ...prev,
+        graph: { ...prev.graph, nodes: newNodes }
+      }
+    })
+  }, [])
+
+  const play = useCallback(() => {
+    setConfig(prev => {
+      if (prev.steps.length === 0) return prev
+
+      // If finished, restart from beginning
+      if (prev.animationState === AnimationState.FINISHED) {
+        return {
+          ...prev,
+          currentStepIndex: 0,
+          animationState: AnimationState.PLAYING
+        }
+      }
+
+      return { ...prev, animationState: AnimationState.PLAYING }
+    })
+  }, [])
+
+  const pause = useCallback(() => {
+    if (animationTimerRef.current) {
+      clearTimeout(animationTimerRef.current)
+      animationTimerRef.current = null
+    }
+    setConfig(prev => ({ ...prev, animationState: AnimationState.PAUSED }))
+  }, [])
+
+  const stepForward = useCallback(() => {
+    pause()
+    setConfig(prev => {
+      const nextIndex = Math.min(prev.currentStepIndex + 1, prev.steps.length - 1)
+      return {
+        ...prev,
+        currentStepIndex: nextIndex,
+        animationState:
+          nextIndex >= prev.steps.length - 1
+            ? AnimationState.FINISHED
+            : AnimationState.PAUSED
+      }
+    })
+  }, [pause])
+
+  const stepBackward = useCallback(() => {
+    pause()
+    setConfig(prev => ({
+      ...prev,
+      currentStepIndex: Math.max(prev.currentStepIndex - 1, 0),
+      animationState: AnimationState.PAUSED
+    }))
+  }, [pause])
+
+  const reset = useCallback(() => {
+    pause()
+    setConfig(prev => ({
+      ...prev,
+      currentStepIndex: 0,
+      animationState: AnimationState.PAUSED
+    }))
+  }, [pause])
+
+  const setSpeed = useCallback((speed: number) => {
+    setConfig(prev => ({ ...prev, animationSpeed: speed }))
+  }, [])
+
+  const setNodeCount = useCallback(
+    (count: number) => {
+      setConfig(prev => ({
+        ...prev,
+        nodeCount: count,
+        graph: generateRandomGraph(count, prev.isDirected, width, height),
+        sourceNode: null,
+        steps: [],
+        currentStepIndex: -1,
+        animationState: AnimationState.IDLE
+      }))
+    },
+    [width, height]
+  )
+
+  const toggleDirected = useCallback(() => {
+    setConfig(prev => {
+      const newDirected = !prev.isDirected
+      return {
+        ...prev,
+        isDirected: newDirected,
+        graph: generateRandomGraph(prev.nodeCount, newDirected, width, height),
+        sourceNode: null,
+        steps: [],
+        currentStepIndex: -1,
+        animationState: AnimationState.IDLE
+      }
+    })
+  }, [width, height])
+
+  const regenerateGraph = useCallback(() => {
+    setConfig(prev => ({
+      ...prev,
+      graph: generateRandomGraph(prev.nodeCount, prev.isDirected, width, height),
+      sourceNode: null,
+      steps: [],
+      currentStepIndex: -1,
+      animationState: AnimationState.IDLE
+    }))
+  }, [width, height])
+
+  return (
+    <div
+      ref={containerRef}
+      className={`${styles.container} ${isFullscreen ? styles.fullscreen : ''}`}
+    >
+      <GraphSettings
+        nodeCount={config.nodeCount}
+        isDirected={config.isDirected}
+        onNodeCountChange={setNodeCount}
+        onDirectedToggle={toggleDirected}
+        onRegenerate={regenerateGraph}
+        isFullscreen={isFullscreen}
+        onToggleFullscreen={toggleFullscreen}
+      />
+
+      <div className={styles.mainArea}>
+        <DijkstraCanvas
+          graph={config.graph}
+          currentStep={currentStep}
+          sourceNode={config.sourceNode}
+          onNodeClick={handleNodeClick}
+          onNodeMove={handleNodeMove}
+          width={width}
+          height={height}
+        />
+        <DistanceTable
+          nodes={config.graph.nodes}
+          currentStep={currentStep}
+          sourceNode={config.sourceNode}
+        />
+      </div>
+
+      <ControlPanel
+        animationState={config.animationState}
+        currentStepIndex={config.currentStepIndex}
+        totalSteps={config.steps.length}
+        speed={config.animationSpeed}
+        onPlay={play}
+        onPause={pause}
+        onStepForward={stepForward}
+        onStepBackward={stepBackward}
+        onSpeedChange={setSpeed}
+        onReset={reset}
+        stepDescription={currentStep?.description}
+        disabled={config.steps.length === 0}
+      />
+    </div>
+  )
+}
+
+export type { DijkstraVisualizerProps } from './types/DijkstraTypes'

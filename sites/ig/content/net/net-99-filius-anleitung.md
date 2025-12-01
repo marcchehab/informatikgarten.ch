@@ -1,5 +1,6 @@
 ---
 title: ✨ Netzwerksimulator
+display: hidden
 ---
 Um Netzwerke praktisch zu verstehen nutzen wir den Netzwerksimulator "Filius".
 ![[net-99-filius-anleitung-20240614113135.png]]
