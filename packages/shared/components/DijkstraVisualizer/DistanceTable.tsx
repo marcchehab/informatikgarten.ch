@@ -13,7 +13,7 @@ export function DistanceTable({
   currentStep,
   sourceNode
 }: DistanceTableProps) {
-  const [sortByPriority, setSortByPriority] = useState(false)
+  const [sortByPriority, setSortByPriority] = useState(true)
 
   if (!sourceNode || !currentStep) {
     return (

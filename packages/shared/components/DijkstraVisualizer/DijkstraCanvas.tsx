@@ -8,7 +8,8 @@ interface DijkstraCanvasProps {
   graph: Graph
   currentStep: AlgorithmStep | null
   sourceNode: string | null
-  onNodeClick: (nodeId: string) => void
+  targetNode: string | null
+  onNodeClick: (nodeId: string, ctrlKey: boolean) => void
   onNodeMove: (nodeId: string, x: number, y: number) => void
   width: number
   height: number
@@ -46,13 +47,11 @@ function EdgeComponent({
   edge,
   sourceNode,
   targetNode,
-  isDirected,
   currentStep
 }: {
   edge: GraphEdge
   sourceNode: GraphNode
   targetNode: GraphNode
-  isDirected: boolean
   currentStep: AlgorithmStep | null
 }) {
   const { stroke, strokeWidth } = getEdgeStyle(edge.id, currentStep)
@@ -89,7 +88,7 @@ function EdgeComponent({
         y2={y2}
         stroke={stroke}
         strokeWidth={strokeWidth}
-        markerEnd={isDirected ? 'url(#arrowhead)' : undefined}
+        markerEnd={edge.directed ? 'url(#arrowhead)' : undefined}
         className={styles.edge}
       />
       <text
@@ -109,6 +108,7 @@ function NodeComponent({
   node,
   state,
   isSource,
+  isTarget,
   distance,
   isDragging,
   onMouseDown
@@ -116,13 +116,14 @@ function NodeComponent({
   node: GraphNode
   state: NodeState
   isSource: boolean
+  isTarget: boolean
   distance: number | null
   isDragging: boolean
   onMouseDown: (e: React.MouseEvent, nodeId: string) => void
 }) {
   const fill = NODE_COLORS[state]
-  const stroke = isSource ? SOURCE_BORDER_COLOR : NODE_STROKE_COLORS[state]
-  const strokeWidth = isSource ? 4 : 2
+  const stroke = isSource ? SOURCE_BORDER_COLOR : isTarget ? '#dc2626' : NODE_STROKE_COLORS[state]
+  const strokeWidth = isSource || isTarget ? 4 : 2
 
   return (
     <g
@@ -166,6 +167,7 @@ export function DijkstraCanvas({
   graph,
   currentStep,
   sourceNode,
+  targetNode,
   onNodeClick,
   onNodeMove,
   width,
@@ -175,6 +177,7 @@ export function DijkstraCanvas({
   const [draggingNode, setDraggingNode] = useState<string | null>(null)
   const dragStartPos = useRef<{ x: number; y: number } | null>(null)
   const hasDragged = useRef(false)
+  const ctrlKeyRef = useRef(false)
 
   // Create a map for quick node lookup
   const nodeMap = new Map(graph.nodes.map(n => [n.id, n]))
@@ -202,6 +205,7 @@ export function DijkstraCanvas({
     const point = getSVGPoint(e.clientX, e.clientY)
     dragStartPos.current = point
     hasDragged.current = false
+    ctrlKeyRef.current = e.ctrlKey || e.metaKey // metaKey for Mac
     setDraggingNode(nodeId)
   }, [getSVGPoint])
 
@@ -228,11 +232,12 @@ export function DijkstraCanvas({
 
   const handleMouseUp = useCallback((e: React.MouseEvent) => {
     if (draggingNode && !hasDragged.current) {
-      // It was a click, not a drag - trigger node click
-      onNodeClick(draggingNode)
+      // It was a click, not a drag - trigger node click with ctrl state
+      onNodeClick(draggingNode, ctrlKeyRef.current)
     }
     setDraggingNode(null)
     dragStartPos.current = null
+    ctrlKeyRef.current = false
   }, [draggingNode, onNodeClick])
 
   const handleMouseLeave = useCallback(() => {
@@ -276,7 +281,6 @@ export function DijkstraCanvas({
               edge={edge}
               sourceNode={source}
               targetNode={target}
-              isDirected={graph.isDirected}
               currentStep={currentStep}
             />
           )
@@ -294,6 +298,7 @@ export function DijkstraCanvas({
               node={node}
               state={state}
               isSource={node.id === sourceNode}
+              isTarget={node.id === targetNode}
               distance={distance}
               isDragging={draggingNode === node.id}
               onMouseDown={handleMouseDown}

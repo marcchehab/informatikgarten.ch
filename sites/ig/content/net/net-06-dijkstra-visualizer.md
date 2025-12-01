@@ -2,8 +2,8 @@
 title: Dijkstra Visualizer
 ---
 
-<DijkstraVisualizer 
-    initialNodeCount={15}
+<DijkstraVisualizer
+    initialNodeCount={7}
     initialDirected={true}
     width={700}
     height={450}

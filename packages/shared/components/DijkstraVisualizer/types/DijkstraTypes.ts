@@ -12,6 +12,7 @@ export interface GraphEdge {
   source: string
   target: string
   weight: number
+  directed?: boolean // If true, render with arrow; if false/undefined, no arrow
 }
 
 // Complete graph structure
@@ -62,6 +63,7 @@ export interface DijkstraVisualizerProps {
 export interface DijkstraConfig {
   graph: Graph
   sourceNode: string | null
+  targetNode: string | null
   steps: AlgorithmStep[]
   currentStepIndex: number
   animationState: AnimationState

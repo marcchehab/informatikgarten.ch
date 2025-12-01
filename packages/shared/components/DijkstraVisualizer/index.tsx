@@ -12,7 +12,7 @@ import { AnimationState } from './types/DijkstraTypes'
 import styles from './style/dijkstra.module.css'
 
 export function DijkstraVisualizer({
-  initialNodeCount = 10,
+  initialNodeCount = 7,
   initialDirected = false,
   width = 800,
   height = 500
@@ -20,6 +20,7 @@ export function DijkstraVisualizer({
   const [config, setConfig] = useState<DijkstraConfig>(() => ({
     graph: generateRandomGraph(initialNodeCount, initialDirected, width, height),
     sourceNode: null,
+    targetNode: null,
     steps: [],
     currentStepIndex: -1,
     animationState: AnimationState.IDLE,
@@ -135,17 +136,45 @@ export function DijkstraVisualizer({
     }
   }, [config.animationState, config.currentStepIndex, config.steps.length, config.animationSpeed])
 
-  const handleNodeClick = useCallback((nodeId: string) => {
+  const handleNodeClick = useCallback((nodeId: string, ctrlKey: boolean) => {
     setConfig(prev => {
+      // Ctrl+click sets/clears target node
+      if (ctrlKey) {
+        // If clicking current target, clear it
+        const newTarget = prev.targetNode === nodeId ? null : nodeId
+
+        // Don't allow setting source as target
+        if (newTarget === prev.sourceNode) return prev
+
+        // Recompute steps if we have a source
+        if (prev.sourceNode) {
+          const steps = computeDijkstraSteps(prev.graph, prev.sourceNode, newTarget)
+          return {
+            ...prev,
+            targetNode: newTarget,
+            steps,
+            currentStepIndex: 0,
+            animationState: AnimationState.PAUSED
+          }
+        }
+
+        return { ...prev, targetNode: newTarget }
+      }
+
+      // Regular click sets source node
       // If clicking same source, do nothing
       if (prev.sourceNode === nodeId) return prev
 
+      // If clicking target node, clear target
+      const newTarget = prev.targetNode === nodeId ? null : prev.targetNode
+
       // Compute steps for new source
-      const steps = computeDijkstraSteps(prev.graph, nodeId)
+      const steps = computeDijkstraSteps(prev.graph, nodeId, newTarget)
 
       return {
         ...prev,
         sourceNode: nodeId,
+        targetNode: newTarget,
         steps,
         currentStepIndex: 0,
         animationState: AnimationState.PAUSED
@@ -234,6 +263,7 @@ export function DijkstraVisualizer({
         nodeCount: count,
         graph: generateRandomGraph(count, prev.isDirected, width, height),
         sourceNode: null,
+        targetNode: null,
         steps: [],
         currentStepIndex: -1,
         animationState: AnimationState.IDLE
@@ -250,6 +280,7 @@ export function DijkstraVisualizer({
         isDirected: newDirected,
         graph: generateRandomGraph(prev.nodeCount, newDirected, width, height),
         sourceNode: null,
+        targetNode: null,
         steps: [],
         currentStepIndex: -1,
         animationState: AnimationState.IDLE
@@ -262,6 +293,7 @@ export function DijkstraVisualizer({
       ...prev,
       graph: generateRandomGraph(prev.nodeCount, prev.isDirected, width, height),
       sourceNode: null,
+      targetNode: null,
       steps: [],
       currentStepIndex: -1,
       animationState: AnimationState.IDLE
@@ -288,6 +320,7 @@ export function DijkstraVisualizer({
           graph={config.graph}
           currentStep={currentStep}
           sourceNode={config.sourceNode}
+          targetNode={config.targetNode}
           onNodeClick={handleNodeClick}
           onNodeMove={handleNodeMove}
           width={width}

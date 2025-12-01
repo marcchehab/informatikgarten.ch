@@ -119,7 +119,7 @@ export function generateRandomGraph(
       sourceNode &&
       targetNode &&
       sourceIdx !== targetIdx &&
-      !edgeExists(edges, sourceNode.id, targetNode.id, isDirected)
+      !edgeExists(edges, sourceNode.id, targetNode.id, false) // Always check both directions
     ) {
       edges.push({
         id: `edge-${edges.length}`,
@@ -130,19 +130,12 @@ export function generateRandomGraph(
     }
   }
 
-  // In directed mode, make 40-80% of edges bidirectional by adding reverse edges
+  // In directed mode, mark 20-60% of edges as directed (one-way with arrow)
+  // The rest are bidirectional (no arrow, but still stored as single edge)
   if (isDirected) {
-    const edgesToProcess = [...edges]
-    for (const edge of edgesToProcess) {
-      // 40-80% chance to add reverse edge (making it bidirectional)
-      if (Math.random() < 0.6 && !edgeExists(edges, edge.target, edge.source, false)) {
-        edges.push({
-          id: `edge-${edges.length}`,
-          source: edge.target,
-          target: edge.source,
-          weight: Math.floor(Math.random() * 9) + 1 // Different weight for reverse
-        })
-      }
+    const directedRatio = 0.2 + Math.random() * 0.4 // 20-60%
+    for (const edge of edges) {
+      edge.directed = Math.random() < directedRatio
     }
   }
 

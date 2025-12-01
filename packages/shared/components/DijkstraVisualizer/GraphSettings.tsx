@@ -1,3 +1,4 @@
+import { useState, useRef } from 'react'
 import styles from './style/dijkstra.module.css'
 
 interface GraphSettingsProps {
@@ -19,17 +20,45 @@ export function GraphSettings({
   isFullscreen,
   onToggleFullscreen
 }: GraphSettingsProps) {
+  const [isDragging, setIsDragging] = useState(false)
+  const [dragValue, setDragValue] = useState(nodeCount)
+  const sliderRef = useRef<HTMLInputElement>(null)
+
+  // Use dragValue while dragging, otherwise use nodeCount prop
+  const displayValue = isDragging ? dragValue : nodeCount
+
+  const handleSliderStart = () => {
+    setIsDragging(true)
+    setDragValue(nodeCount)
+  }
+
+  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDragValue(Number(e.target.value))
+  }
+
+  const handleSliderEnd = () => {
+    if (isDragging && dragValue !== nodeCount) {
+      onNodeCountChange(dragValue)
+    }
+    setIsDragging(false)
+  }
+
   return (
     <div className={styles.graphSettings}>
       <div className={styles.settingGroup}>
-        <label htmlFor="node-count">Knoten: {nodeCount}</label>
+        <label htmlFor="node-count">Knoten: {displayValue}</label>
         <input
+          ref={sliderRef}
           id="node-count"
           type="range"
           min="5"
-          max="100"
-          value={nodeCount}
-          onChange={e => onNodeCountChange(Number(e.target.value))}
+          max="30"
+          value={displayValue}
+          onMouseDown={handleSliderStart}
+          onTouchStart={handleSliderStart}
+          onChange={handleSliderChange}
+          onMouseUp={handleSliderEnd}
+          onTouchEnd={handleSliderEnd}
           className={styles.nodeCountSlider}
         />
       </div>
