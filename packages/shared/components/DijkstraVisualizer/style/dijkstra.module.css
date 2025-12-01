@@ -190,11 +190,15 @@
 }
 
 .currentRow {
-  background-color: rgba(245, 158, 11, 0.25) !important;
+  background-color: rgba(245, 158, 11, 0.25) !important; /* orange */
 }
 
 .visitedRow {
-  background-color: rgba(16, 185, 129, 0.15);
+  background-color: rgba(16, 185, 129, 0.15); /* green */
+}
+
+.inQueueRow {
+  background-color: rgba(59, 130, 246, 0.15); /* blue */
 }
 
 .sourceRow {

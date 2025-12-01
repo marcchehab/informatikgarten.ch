@@ -21,7 +21,7 @@ Das Internet besteht aus tausenden von Routern, die miteinander verbunden sind. 
 ![[net-05-routing-network.excalidraw]]
 </StickMe>
 
-In diesem Beispiel sind A bis E Router. Die Zahlen auf den Kanten geben die "Kosten" an – je tiefer, desto besser. Das könnte die Latenz in Millisekunden sein oder eine andere Metrik.
+In diesem Beispiel sind A bis E alles Router. Die Zahlen auf den Kanten geben die "Kosten" an - je tiefer, desto besser. Das könnte die Latenz in Millisekunden sein oder eine andere Metrik.
 
 **Frage:** Was ist der kürzeste Weg von A nach E?
 
@@ -40,11 +40,13 @@ Edsger Dijkstra entwickelte 1956 einen Algorithmus, der systematisch den kürzes
 
 ### So funktioniert Dijkstra
 
-1. **Initialisierung:** Setze die Distanz zum Startknoten auf 0, alle anderen auf ∞ (unendlich).
-2. **Wähle** den unbesuchten Knoten mit der kleinsten Distanz.
-3. **Aktualisiere** die Distanzen aller Nachbarn: Wenn der Weg über den aktuellen Knoten kürzer ist, übernimm die neue Distanz.
+Der Algorithmus verwendet eine **Prioritätswarteschlange** (Priority Queue), in der Knoten nach ihrer bisherigen Gesamtdistanz vom Startknoten sortiert sind. Der Knoten mit der kleinsten Distanz wird immer zuerst bearbeitet.
+
+1. **Initialisierung:** Setze die Distanz zum Startknoten auf 0, alle anderen auf ∞ (unendlich). Füge den Startknoten in die Prioritätswarteschlange ein.
+2. **Entnimm** den Knoten mit der kleinsten Distanz aus der Warteschlange.
+3. **Prüfe alle Nachbarn:** Für jeden Nachbarn berechne die neue Gesamtdistanz (aktuelle Distanz + Kantengewicht). Ist diese kleiner als die bisherige Distanz, aktualisiere sie und füge den Nachbarn in die Warteschlange ein.
 4. **Markiere** den aktuellen Knoten als besucht.
-5. **Wiederhole** ab Schritt 2, bis alle Knoten besucht sind.
+5. **Wiederhole** ab Schritt 2, bis das Ziel besucht wurde. (Man kann auch alle kürzesten Verbindungen suchen, dann macht man einfach weiter, bis die Schlange leer ist.)
 
 ### Beispiel: Kürzester Weg von A nach E
 
@@ -60,74 +62,112 @@ graph LR
     D ---|2| E((E))
 ```
 
-**Schritt 0 – Initialisierung:**
+Die Farben zeigen den Zustand: <span style={{background: 'rgba(16, 185, 129, 0.3)', padding: '2px 6px', borderRadius: '3px'}}>grün = besucht</span>, <span style={{background: 'rgba(59, 130, 246, 0.3)', padding: '2px 6px', borderRadius: '3px'}}>blau = in Queue</span>, <span style={{background: 'rgba(245, 158, 11, 0.4)', padding: '2px 6px', borderRadius: '3px'}}>orange = aktuell</span>
 
-| Knoten | Distanz | Vorgänger | Besucht |
-|--------|---------|-----------|---------|
-| A | 0 | – | ❌ |
-| B | ∞ | – | ❌ |
-| C | ∞ | – | ❌ |
-| D | ∞ | – | ❌ |
-| E | ∞ | – | ❌ |
+<style>{`
+.dijkstra-table td, .dijkstra-table th {
+  padding: 0.4rem 1rem;
+  text-align: center;
+}
+.dijkstra-table th {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+}
+`}</style>
 
-**Schritt 1 – Besuche A (kleinste Distanz: 0):**
+**Schritt 0 - Initialisierung:**
+
+<table className="dijkstra-table">
+<thead><tr><th>Knoten</th><th>Distanz</th><th>Vorgänger</th></tr></thead>
+<tbody>
+<tr style={{background: 'rgba(59, 130, 246, 0.15)'}}><td>A</td><td>0</td><td>-</td></tr>
+<tr><td>B</td><td>∞</td><td>-</td></tr>
+<tr><td>C</td><td>∞</td><td>-</td></tr>
+<tr><td>D</td><td>∞</td><td>-</td></tr>
+<tr><td>E</td><td>∞</td><td>-</td></tr>
+</tbody>
+</table>
+
+**Schritt 1 - Besuche A (kleinste Distanz in Queue: 0):**
 
 Nachbarn von A: B (Kosten 4), C (Kosten 2)
 - Distanz zu B: min(∞, 0+4) = 4
 - Distanz zu C: min(∞, 0+2) = 2
 
-| Knoten | Distanz | Vorgänger | Besucht |
-|--------|---------|-----------|---------|
-| A | 0 | – | ✅ |
-| B | 4 | A | ❌ |
-| C | 2 | A | ❌ |
-| D | ∞ | – | ❌ |
-| E | ∞ | – | ❌ |
+<table className="dijkstra-table">
+<thead><tr><th>Knoten</th><th>Distanz</th><th>Vorgänger</th></tr></thead>
+<tbody>
+<tr style={{background: 'rgba(245, 158, 11, 0.25)'}}><td>A</td><td>0</td><td>-</td></tr>
+<tr style={{background: 'rgba(59, 130, 246, 0.15)'}}><td>C</td><td>2</td><td>A</td></tr>
+<tr style={{background: 'rgba(59, 130, 246, 0.15)'}}><td>B</td><td>4</td><td>A</td></tr>
+<tr><td>D</td><td>∞</td><td>-</td></tr>
+<tr><td>E</td><td>∞</td><td>-</td></tr>
+</tbody>
+</table>
 
-**Schritt 2 – Besuche C (kleinste unbesuchte Distanz: 2):**
+**Schritt 2 - Besuche C (kleinste Distanz in Queue: 2):**
 
 Nachbarn von C: D (Kosten 1), E (Kosten 5)
 - Distanz zu D: min(∞, 2+1) = 3
 - Distanz zu E: min(∞, 2+5) = 7
 
-| Knoten | Distanz | Vorgänger | Besucht |
-|--------|---------|-----------|---------|
-| A | 0 | – | ✅ |
-| B | 4 | A | ❌ |
-| C | 2 | A | ✅ |
-| D | 3 | C | ❌ |
-| E | 7 | C | ❌ |
+<table className="dijkstra-table">
+<thead><tr><th>Knoten</th><th>Distanz</th><th>Vorgänger</th></tr></thead>
+<tbody>
+<tr style={{background: 'rgba(16, 185, 129, 0.15)'}}><td>A</td><td>0</td><td>-</td></tr>
+<tr style={{background: 'rgba(245, 158, 11, 0.25)'}}><td>C</td><td>2</td><td>A</td></tr>
+<tr style={{background: 'rgba(59, 130, 246, 0.15)'}}><td>D</td><td>3</td><td>C</td></tr>
+<tr style={{background: 'rgba(59, 130, 246, 0.15)'}}><td>B</td><td>4</td><td>A</td></tr>
+<tr style={{background: 'rgba(59, 130, 246, 0.15)'}}><td>E</td><td>7</td><td>C</td></tr>
+</tbody>
+</table>
 
-**Schritt 3 – Besuche D (kleinste unbesuchte Distanz: 3):**
+**Schritt 3 - Besuche D (kleinste Distanz in Queue: 3):**
 
 Nachbarn von D: B (Kosten 3), E (Kosten 2)
 - Distanz zu B: min(4, 3+3) = 4 (keine Verbesserung)
 - Distanz zu E: min(7, 3+2) = 5 (Verbesserung!)
 
-| Knoten | Distanz | Vorgänger | Besucht |
-|--------|---------|-----------|---------|
-| A | 0 | – | ✅ |
-| B | 4 | A | ❌ |
-| C | 2 | A | ✅ |
-| D | 3 | C | ✅ |
-| E | 5 | D | ❌ |
+<table className="dijkstra-table">
+<thead><tr><th>Knoten</th><th>Distanz</th><th>Vorgänger</th></tr></thead>
+<tbody>
+<tr style={{background: 'rgba(16, 185, 129, 0.15)'}}><td>A</td><td>0</td><td>-</td></tr>
+<tr style={{background: 'rgba(16, 185, 129, 0.15)'}}><td>C</td><td>2</td><td>A</td></tr>
+<tr style={{background: 'rgba(245, 158, 11, 0.25)'}}><td>D</td><td>3</td><td>C</td></tr>
+<tr style={{background: 'rgba(59, 130, 246, 0.15)'}}><td>B</td><td>4</td><td>A</td></tr>
+<tr style={{background: 'rgba(59, 130, 246, 0.15)'}}><td>E</td><td>5</td><td>D</td></tr>
+</tbody>
+</table>
 
-**Schritt 4 – Besuche B (kleinste unbesuchte Distanz: 4):**
+**Schritt 4 - Besuche B (kleinste Distanz in Queue: 4):**
 
 Nachbar von B: D (bereits besucht)
 - Keine Aktualisierungen nötig.
 
-| Knoten | Distanz | Vorgänger | Besucht |
-|--------|---------|-----------|---------|
-| A | 0 | – | ✅ |
-| B | 4 | A | ✅ |
-| C | 2 | A | ✅ |
-| D | 3 | C | ✅ |
-| E | 5 | D | ❌ |
+<table className="dijkstra-table">
+<thead><tr><th>Knoten</th><th>Distanz</th><th>Vorgänger</th></tr></thead>
+<tbody>
+<tr style={{background: 'rgba(16, 185, 129, 0.15)'}}><td>A</td><td>0</td><td>-</td></tr>
+<tr style={{background: 'rgba(16, 185, 129, 0.15)'}}><td>C</td><td>2</td><td>A</td></tr>
+<tr style={{background: 'rgba(16, 185, 129, 0.15)'}}><td>D</td><td>3</td><td>C</td></tr>
+<tr style={{background: 'rgba(245, 158, 11, 0.25)'}}><td>B</td><td>4</td><td>A</td></tr>
+<tr style={{background: 'rgba(59, 130, 246, 0.15)'}}><td>E</td><td>5</td><td>D</td></tr>
+</tbody>
+</table>
 
-**Schritt 5 – Besuche E (kleinste unbesuchte Distanz: 5):**
+**Schritt 5 - Besuche E (kleinste Distanz in Queue: 5):**
 
-Alle Knoten besucht – fertig!
+<table className="dijkstra-table">
+<thead><tr><th>Knoten</th><th>Distanz</th><th>Vorgänger</th></tr></thead>
+<tbody>
+<tr style={{background: 'rgba(16, 185, 129, 0.15)'}}><td>A</td><td>0</td><td>-</td></tr>
+<tr style={{background: 'rgba(16, 185, 129, 0.15)'}}><td>C</td><td>2</td><td>A</td></tr>
+<tr style={{background: 'rgba(16, 185, 129, 0.15)'}}><td>D</td><td>3</td><td>C</td></tr>
+<tr style={{background: 'rgba(16, 185, 129, 0.15)'}}><td>B</td><td>4</td><td>A</td></tr>
+<tr style={{background: 'rgba(245, 158, 11, 0.25)'}}><td>E</td><td>5</td><td>D</td></tr>
+</tbody>
+</table>
+
+Ziel erreicht - fertig!
 
 **Ergebnis:** Der kürzeste Weg von A nach E hat Kosten **5**. Den Weg rekonstruieren wir über die Vorgänger: E ← D ← C ← A, also **A → C → D → E**.
 
@@ -145,66 +185,32 @@ Die "Kosten" einer Verbindung können verschiedene Faktoren berücksichtigen:
 
 ### Aufgabe 1: Dijkstra von Hand
 
-Führen Sie den Dijkstra-Algorithmus für folgendes Netzwerk durch. Startknoten ist **S**, Ziel ist **Z**.
-
-```mermaid
-graph LR
-    S((S)) ---|3| A((A))
-    S ---|5| B((B))
-    A ---|2| B((B))
-    A ---|4| C((C))
-    B ---|1| C((C))
-    B ---|6| Z((Z))
-    C ---|3| Z((Z))
-```
-
-a) Füllen Sie die Tabelle aus.
-b) Was ist der kürzeste Weg von S nach Z und welche Kosten hat er?
-
-> [!solution]- Lösung
->
-> **Schritt-für-Schritt:**
->
-> | Schritt | Besuche | S | A | B | C | Z |
-> |---------|---------|---|---|---|---|---|
-> | 0 | – | 0 | ∞ | ∞ | ∞ | ∞ |
-> | 1 | S | 0 | 3 (S) | 5 (S) | ∞ | ∞ |
-> | 2 | A | 0 | 3 | 5 (S) | 7 (A) | ∞ |
-> | 3 | B | 0 | 3 | 5 | 6 (B) | 11 (B) |
-> | 4 | C | 0 | 3 | 5 | 6 | 9 (C) |
-> | 5 | Z | 0 | 3 | 5 | 6 | 9 |
->
-> b) Der kürzeste Weg ist **S → A → B → C → Z** mit Kosten **9**.
->
-> Hinweis: S → B → C → Z wäre auch 5 + 1 + 3 = 9, also gleich gut!
+Kreieren Sie sich im [interaktiven Dijkstra-Visualizer](net-06-dijkstra-visualizer) ein Internet mit 6 bis 9 Routern. Lösen Sie auf 
 
 ### Aufgabe 2: Alternative Wege
 
 Im folgenden Netzwerk fällt die Verbindung zwischen C und E aus.
-
-```mermaid
-graph LR
-    A((A)) ---|2| B((B))
-    A ---|4| C((C))
-    B ---|1| D((D))
-    B ---|3| E((E))
-    C -.-|X| E((E))
-    D ---|2| F((F))
-    E ---|1| F((F))
-```
+![[net-05-routing-outage.excalidraw]]
 
 a) Was war der kürzeste Weg von A nach F, bevor die Verbindung ausfiel?
+
 b) Was ist der kürzeste Weg jetzt?
 
 > [!solution]- Lösung
 >
-> a) **Vor dem Ausfall:** A → C → E → F wäre 4 + ? + 1... aber wir kennen die Kosten von C-E nicht aus der Aufgabe. Schauen wir die anderen Wege:
-> - A → B → D → F: 2 + 1 + 2 = **5**
-> - A → B → E → F: 2 + 3 + 1 = **6**
+> a) **Vor dem Ausfall:** A → C → E → F war $1 + 2 + 1 = 4$. 
+> 
+> b) Jetzt müssen die Router andere Wege suchen:
+> - A → B → D → F: $2 + 5 + 4 = 11$
+> - A → B → D → E → F: $2 + 5 + 2 + 1 = 10$
 >
-> Der kürzeste Weg war **A → B → D → F** mit Kosten 5.
->
-> b) **Nach dem Ausfall:** Die Verbindung C-E ist irrelevant für den kürzesten Weg, da er sowieso über B ging. Der kürzeste Weg bleibt **A → B → D → F** mit Kosten **5**.
+> Der kürzeste Weg ist **A → B → D → E → F** mit Kosten 10.
+
+> [!warning] CIDR-Schreibweise
+> Die Schreibweise `/24` ist eine Kurzform für die Subnetmaske `255.255.255.0`. Die Zahl gibt an, wie viele Bytes zum Netzwerkteil gehören (mal 8):
+> - `/24` = 3 Bytes = `255.255.255.0`
+> - `/16` = 2 Bytes = `255.255.0.0`
+> - `/8` = 1 Byte = `255.0.0.0`
 
 ### Aufgabe 3: Routing-Tabelle
 
@@ -217,7 +223,7 @@ Ein Router R ist direkt mit drei Netzwerken verbunden und hat folgende Routing-T
 | `10.0.3.0/24` | direkt | 0 |
 | `192.168.1.0/24` | `10.0.1.5` | 3 |
 | `192.168.2.0/24` | `10.0.2.10` | 5 |
-| `0.0.0.0/0` (Standard) | `10.0.3.1` | – |
+| `0.0.0.0/0` (Standard) | `10.0.3.1` | - |
 
 Wohin leitet Router R Pakete mit folgenden Ziel-IPs weiter?
 

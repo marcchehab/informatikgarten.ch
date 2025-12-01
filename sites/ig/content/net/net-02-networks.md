@@ -78,7 +78,7 @@ Grundsätzlich genau gleich, wie Ihr Computer entscheidet, ob eine Ziel-IP in se
 
 Die **Standardroute** ist der "Notausgang" eines Routers: Wenn ein Paket an eine Ziel-IP geht, die in keinem bekannten Netzwerk liegt, wird es an einen vordefinierten nächsten Router weitergeleitet. Dieser kennt vielleicht weitere Netzwerke oder hat selbst wieder eine Standardroute.
 
-So entsteht eine Kette von Routern, die Pakete Schritt für Schritt weitergeben – bis sie schliesslich am Ziel ankommen. Das Internet funktioniert genau nach diesem Prinzip.
+So entsteht eine Kette von Routern, die Pakete Schritt für Schritt weitergeben - bis sie schliesslich am Ziel ankommen. Das Internet funktioniert genau nach diesem Prinzip.
 
 ## Übungsaufgaben
 
@@ -112,7 +112,7 @@ b) Ist diese Subnetmaske für 500 Geräte geeignet?
 >
 > **Tipp:** Man kann das auch dezimal rechnen: Ein Byte hat 256 mögliche Werte. Bei zwei Bytes sind es $256 \times 256 = 256^2 = 65'536$ Adressen.
 >
-> b) Ja, die Subnetmaske ist geeignet – sogar deutlich überdimensioniert. Für 500 Geräte würde auch eine kleinere Maske reichen, aber `255.255.0.0` funktioniert.
+> b) Ja, die Subnetmaske ist geeignet - sogar deutlich überdimensioniert. Für 500 Geräte würde auch eine kleinere Maske reichen, aber `255.255.0.0` funktioniert.
 
 ### Aufgabe 3: Netzwerkadresse bestimmen
 
@@ -178,11 +178,11 @@ c) Welche IP-Adressen können für Geräte verwendet werden?
 
 Prüfen Sie, ob die folgenden Geräte im gleichen Netzwerk sind:
 
-a) Gerät A: `192.168.1.10`, Gerät B: `192.168.1.200` – beide mit Subnetmaske `255.255.255.0`
+a) Gerät A: `192.168.1.10`, Gerät B: `192.168.1.200` - beide mit Subnetmaske `255.255.255.0`
 
-b) Gerät A: `10.0.1.5`, Gerät B: `10.0.2.5` – beide mit Subnetmaske `255.255.255.0`
+b) Gerät A: `10.0.1.5`, Gerät B: `10.0.2.5` - beide mit Subnetmaske `255.255.255.0`
 
-c) Gerät A: `172.16.5.100`, Gerät B: `172.16.200.50` – beide mit Subnetmaske `255.255.0.0`
+c) Gerät A: `172.16.5.100`, Gerät B: `172.16.200.50` - beide mit Subnetmaske `255.255.0.0`
 
 > [!solution]- Lösung
 >
@@ -203,7 +203,7 @@ Ein Router ist an drei Netzwerke angeschlossen:
 | eth0 | `192.168.1.0` | `255.255.255.0` |
 | eth1 | `192.168.2.0` | `255.255.255.0` |
 | eth2 | `10.0.0.0` | `255.0.0.0` |
-| eth3 (Standardroute) | – | – |
+| eth3 (Standardroute) | - | - |
 
 An welche Schnittstelle leitet der Router Pakete mit folgenden Ziel-IPs weiter?
 

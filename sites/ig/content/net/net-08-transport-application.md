@@ -9,7 +9,7 @@ title: Transport- und Anwendungsschicht
 > - Sie können einige wichtige Protokolle den Schichten des TCP/IP-Referenzmodells zuordnen, namentlich: Ethernet, Wi-Fi, IP, TCP, HTTP/HTTPS.
 > 
 > ## Was nicht
-> - Sie müssen das OSI-Modell _nicht_ auswendig lernen.
+> - Sie müssen das OSI-Modell _nicht_ auswendig lernen.
 > - Sie müssen *keine* Port-Nummern auswendig lernen.
 > - Sie müssen *nicht* wissen, wie genau HTTPS oder DHCP funktionieren, das sind bloss Beispiele.
 

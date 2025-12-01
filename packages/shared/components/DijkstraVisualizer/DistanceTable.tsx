@@ -92,14 +92,15 @@ export function DistanceTable({
 
             const isCurrent = currentStep.currentNode === node.id
             const isVisited = currentStep.visitedNodes.has(node.id)
+            const isInQueue = currentStep.queueNodes.has(node.id)
             const isSource = node.id === sourceNode
 
             const rowClass = isCurrent
               ? styles.currentRow
               : isVisited
                 ? styles.visitedRow
-                : isSource
-                  ? styles.sourceRow
+                : isInQueue
+                  ? styles.inQueueRow
                   : undefined
 
             return (
