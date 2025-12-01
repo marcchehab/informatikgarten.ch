@@ -12,8 +12,37 @@
 /* Main area with canvas and table */
 .mainArea {
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+  gap: 0;
+  flex-wrap: nowrap;
+}
+
+/* Resizable divider */
+.divider {
+  width: 8px;
+  background-color: transparent;
+  cursor: col-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color 0.2s;
+}
+
+.divider::after {
+  content: '';
+  width: 4px;
+  height: 40px;
+  background-color: rgba(128, 128, 128, 0.3);
+  border-radius: 2px;
+  transition: background-color 0.2s;
+}
+
+.divider:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+.divider:hover::after {
+  background-color: rgba(128, 128, 128, 0.6);
 }
 
 /* SVG Canvas */
@@ -79,8 +108,8 @@
 
 /* Distance Table */
 .distanceTable {
-  flex: 0 0 220px;
-  max-height: 400px;
+  width: 100%;
+  height: 100%;
   overflow-y: auto;
   background-color: rgba(0, 0, 0, 0.15);
   border-radius: 8px;
@@ -94,6 +123,44 @@
   background-color: rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
+}
+
+.tableHeaderWithToggle {
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.priorityToggle {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background-color: rgba(128, 128, 128, 0.2);
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  border-radius: 4px;
+  color: var(--text-muted, #888);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.priorityToggle:hover {
+  background-color: rgba(128, 128, 128, 0.35);
+}
+
+.priorityToggle.active {
+  background-color: rgba(59, 130, 246, 0.3);
+  border-color: rgba(59, 130, 246, 0.5);
+  color: #60a5fa;
 }
 
 .tablePlaceholder {
@@ -322,7 +389,7 @@
   flex: 1;
   min-height: 0;
   display: flex;
-  gap: 1rem;
+  gap: 0;
   overflow: hidden;
 }
 

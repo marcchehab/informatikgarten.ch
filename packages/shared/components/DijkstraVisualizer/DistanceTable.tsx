@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { GraphNode, AlgorithmStep } from './types/DijkstraTypes'
 import styles from './style/dijkstra.module.css'
 
@@ -12,10 +13,21 @@ export function DistanceTable({
   currentStep,
   sourceNode
 }: DistanceTableProps) {
+  const [sortByPriority, setSortByPriority] = useState(false)
+
   if (!sourceNode || !currentStep) {
     return (
       <div className={styles.distanceTable}>
-        <div className={styles.tableHeader}>Distanztabelle</div>
+        <div className={styles.tableHeaderWithToggle}>
+          <span>Distanztabelle</span>
+          <button
+            className={`${styles.priorityToggle} ${sortByPriority ? styles.active : ''}`}
+            onClick={() => setSortByPriority(!sortByPriority)}
+            title={sortByPriority ? 'Alphabetisch sortieren' : 'Nach Priority Queue sortieren'}
+          >
+            PQ
+          </button>
+        </div>
         <div className={styles.tablePlaceholder}>
           Wähle einen Startknoten aus
         </div>
@@ -23,12 +35,45 @@ export function DistanceTable({
     )
   }
 
-  // Sort nodes by label
-  const sortedNodes = [...nodes].sort((a, b) => a.label.localeCompare(b.label))
+  // Sort nodes either by label or by priority queue order
+  const sortedNodes = [...nodes].sort((a, b) => {
+    if (!sortByPriority) {
+      return a.label.localeCompare(b.label)
+    }
+
+    // Priority queue sorting: visited on top, then unvisited by distance
+    const aVisited = currentStep.visitedNodes.has(a.id)
+    const bVisited = currentStep.visitedNodes.has(b.id)
+    const aDistance = currentStep.distances.get(a.id) ?? Infinity
+    const bDistance = currentStep.distances.get(b.id) ?? Infinity
+
+    // Visited nodes come first (on top)
+    if (aVisited !== bVisited) {
+      return aVisited ? -1 : 1
+    }
+
+    // For visited nodes, sort by distance (already processed order)
+    // For unvisited nodes, sort by distance (smallest first - next to be processed)
+    if (aDistance !== bDistance) {
+      return aDistance - bDistance
+    }
+
+    // Finally by label for stable sort
+    return a.label.localeCompare(b.label)
+  })
 
   return (
     <div className={styles.distanceTable}>
-      <div className={styles.tableHeader}>Distanztabelle</div>
+      <div className={styles.tableHeaderWithToggle}>
+        <span>Distanztabelle</span>
+        <button
+          className={`${styles.priorityToggle} ${sortByPriority ? styles.active : ''}`}
+          onClick={() => setSortByPriority(!sortByPriority)}
+          title={sortByPriority ? 'Alphabetisch sortieren' : 'Nach Priority Queue sortieren'}
+        >
+          PQ
+        </button>
+      </div>
       <table>
         <thead>
           <tr>

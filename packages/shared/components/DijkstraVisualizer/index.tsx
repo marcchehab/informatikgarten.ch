@@ -29,8 +29,11 @@ export function DijkstraVisualizer({
   }))
 
   const [isFullscreen, setIsFullscreen] = useState(false)
+  const [tableWidth, setTableWidth] = useState(250)
   const containerRef = useRef<HTMLDivElement>(null)
+  const mainAreaRef = useRef<HTMLDivElement>(null)
   const animationTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const isDraggingDivider = useRef(false)
 
   // Derive current step from config
   const currentStep: AlgorithmStep | null = useMemo(() => {
@@ -71,6 +74,41 @@ export function DijkstraVisualizer({
       document.exitFullscreen().catch(err => {
         console.error('Failed to exit fullscreen:', err)
       })
+    }
+  }, [])
+
+  // Divider drag handlers
+  const handleDividerMouseDown = useCallback((e: React.MouseEvent) => {
+    e.preventDefault()
+    isDraggingDivider.current = true
+    document.body.style.cursor = 'col-resize'
+    document.body.style.userSelect = 'none'
+  }, [])
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isDraggingDivider.current || !mainAreaRef.current) return
+
+      const rect = mainAreaRef.current.getBoundingClientRect()
+      const newTableWidth = rect.right - e.clientX
+      const clampedWidth = Math.max(150, Math.min(500, newTableWidth))
+      setTableWidth(clampedWidth)
+    }
+
+    const handleMouseUp = () => {
+      if (isDraggingDivider.current) {
+        isDraggingDivider.current = false
+        document.body.style.cursor = ''
+        document.body.style.userSelect = ''
+      }
+    }
+
+    document.addEventListener('mousemove', handleMouseMove)
+    document.addEventListener('mouseup', handleMouseUp)
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove)
+      document.removeEventListener('mouseup', handleMouseUp)
     }
   }, [])
 
@@ -245,7 +283,7 @@ export function DijkstraVisualizer({
         onToggleFullscreen={toggleFullscreen}
       />
 
-      <div className={styles.mainArea}>
+      <div className={styles.mainArea} ref={mainAreaRef}>
         <DijkstraCanvas
           graph={config.graph}
           currentStep={currentStep}
@@ -255,11 +293,17 @@ export function DijkstraVisualizer({
           width={width}
           height={height}
         />
-        <DistanceTable
-          nodes={config.graph.nodes}
-          currentStep={currentStep}
-          sourceNode={config.sourceNode}
+        <div
+          className={styles.divider}
+          onMouseDown={handleDividerMouseDown}
         />
+        <div style={{ width: tableWidth, flexShrink: 0 }}>
+          <DistanceTable
+            nodes={config.graph.nodes}
+            currentStep={currentStep}
+            sourceNode={config.sourceNode}
+          />
+        </div>
       </div>
 
       <ControlPanel
