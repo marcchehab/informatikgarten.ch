@@ -109,7 +109,7 @@ Machen Sie diese Leiter aus Quadraten nach mit einer **Variabel `quadrate`** fü
 
 ### `n`-Eck advanced
 
-Sie können eine Variabel um 1 erhöhen, indem Sie sie mit sich selbst plus 1 überschreiben – also so:
+Sie können eine Variabel um 1 erhöhen, indem Sie sie mit sich selbst plus 1 überschreiben - also so:
 ```turtle
 zahl = 3
 print("Jetzt hat die Variabel den Wert: ", zahl)

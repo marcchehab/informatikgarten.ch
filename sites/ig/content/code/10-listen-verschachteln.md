@@ -20,7 +20,7 @@ hauptliste = [
 ]
 ```
 
-In diesem Beispiel besteht die Liste `hauptliste` aus drei Elementen, die alle ebenfalls Listen sind:
+In diesem Beispiel besteht die Liste `hauptliste` aus drei Elementen, die alle ebenfalls Listen sind:
 
 0) Die Liste `[1,2,3,4]`
 1) Die Liste `[5,6]`
@@ -43,7 +43,7 @@ for element in hauptliste:
 ```
 ## Verschachtelte Listen mit verschachtelten `for`-Schleifen durchlaufen
 
-Sie können verschachtelte Listen durchlaufen, indem Sie auch verschachtelte `for`-Schleifen verwenden. Hier ist ein Beispiel:
+Sie können verschachtelte Listen durchlaufen, indem Sie auch verschachtelte `for`-Schleifen verwenden. Hier ist ein Beispiel:
 
 ```turtle
 hauptliste = [
@@ -89,9 +89,9 @@ bild = [
 
 Man mit der Turtle auch perfekt quadratische Pixel zeichnen. Die Zutaten sind folgende:
 
-1. Wir zeichnen keine Linien, also setzen wir von Beginn an den Stift ab mit `eva.penup()`.
-2. Man kann der Turtle eine andere Form geben - z.B. eben ein Quadrat mit `eva.shape('square')`
-3. Nun kann man das Bild der Turtle “stempeln” mit `eva.stamp()`
+1. Wir zeichnen keine Linien, also setzen wir von Beginn an den Stift ab mit `eva.penup()`.
+2. Man kann der Turtle eine andere Form geben - z.B. eben ein Quadrat mit `eva.shape('square')`
+3. Nun kann man das Bild der Turtle “stempeln” mit `eva.stamp()`
 
 Ein Beispiel:
 

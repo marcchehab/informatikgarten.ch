@@ -12,7 +12,7 @@ title: Lernplattformen
 
 Die Auswahl geeigneter Lernplattformen ist ein entscheidender Faktor für den erfolgreichen Informatikunterricht. Verschiedene Plattformen bieten unterschiedliche didaktische Zugänge, die gezielt auf die kognitiven Fähigkeiten, Vorkenntnisse und Interessen der jeweiligen Altersstufe abgestimmt sind und damit den progressiven Kompetenzaufbau unterstützen. Also ganz im Einklang mit der Idee eines Spiralcurriculums, das wir in der letzten Lektion kennengelernt haben.
 
-Diese Plattformen ermöglichen einen stufengerechten Einstieg in informatische Konzepte – von spielerischen Zugängen ohne Computer, visuellen Programmierumgebungen für Anfänger bis hin zu textbasierten Sprachen für Fortgeschrittene. Die folgenden Abschnitte stellen verschiedene Lernplattformen vor und erläutern, für welche Schulstufen und Lernziele sie besonders geeignet sind, wobei der Fokus auf einem sinnvollen Aufbau liegt, der den in den Lehrplänen festgelegten Kompetenzzielen entspricht.
+Diese Plattformen ermöglichen einen stufengerechten Einstieg in informatische Konzepte - von spielerischen Zugängen ohne Computer, visuellen Programmierumgebungen für Anfänger bis hin zu textbasierten Sprachen für Fortgeschrittene. Die folgenden Abschnitte stellen verschiedene Lernplattformen vor und erläutern, für welche Schulstufen und Lernziele sie besonders geeignet sind, wobei der Fokus auf einem sinnvollen Aufbau liegt, der den in den Lehrplänen festgelegten Kompetenzzielen entspricht.
 
 ## XLogo
 

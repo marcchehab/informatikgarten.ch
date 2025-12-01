@@ -180,8 +180,8 @@ print(liste)
 
 > [!info] Zusammenfassung
 > ## Theorie: Listen
-> - Eine Liste ist eine **Sammlung von Elementen**. Das können Zahlen, Wörter oder andere Werte sein.
-> - In Python wird eine Liste durch eckige Klammern `[]` definiert.
+> - Eine Liste ist eine **Sammlung von Elementen**. Das können Zahlen, Wörter oder andere Werte sein.
+> - In Python wird eine Liste durch eckige Klammern `[]` definiert.
 > - Elemente in einer Liste sind durch Kommas getrennt.
 > - In Listen beginnt die Zählung der Positionen bei 0. Das erste Element hat also den Index 0, das zweite den Index 1, und so weiter.
 > - Sie können einen Teil der Liste auswählen, indem Sie seine Position in eckigen Klammern angeben:

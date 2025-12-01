@@ -16,7 +16,7 @@ Sie erstellen ein **Erklärvideo** zu einem frei gewählten Problem, dass Sie mi
 
 | Aspekt | Vorgabe |
 |--------|---------|
-| **Teamgrösse** | 1–3 Personen |
+| **Teamgrösse** | 1-3 Personen |
 | **Videolänge** | Mindestens 1 Minute pro Teammitglied |
 | **Zeit** | 6 Doppellektionen pro Teammitglied |
 | **Abgabe** | Video als MP4-Datei |

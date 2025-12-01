@@ -2,7 +2,7 @@
 title: Denken in Algorithmen mit Pseudocode
 display: hidden
 ---
-Der Begriff Algorithmus umfasst eine breite Spanne von Verfahren in der Mathematik und der Informatik. Folglich lesen sich Definitionen je nach Quelle ein wenig unterschiedlich.
+Der Begriff Algorithmus umfasst eine breite Spanne von Verfahren in der Mathematik und der Informatik. Folglich lesen sich Definitionen je nach Quelle ein wenig unterschiedlich.
 ## Was sind Algorithmen?
 
 Stellen Sie sich einen **Algorithmus wie ein Kochrezept** vor. Es ist eine genaue Anleitung, die Ihnen Schritt für Schritt sagt, was Sie tun müssen, um ein bestimmtes Ergebnis oder Ziel zu erreichen. Bei einem Rezept folgen Sie den Anweisungen, um ein Gericht zu kochen. Bei einem Algorithmus folgen Sie den Anweisungen, um ein bestimmtes Problem zu lösen oder eine Aufgabe zu erledigen.
@@ -46,9 +46,9 @@ Tragen wir also folgende Definition in unser Theorieheft ein. Merken Sie sich da
 
 ## Algorithmus, Pseudocode, Code
 
-Algorithmen können abstrakt beschrieben werden mit **Flussdiagrammen** oder Pseudocode. Wir konzentrieren uns hier auf **Pseudocode**, den wir bereits gebraucht haben. Pseudocode ist einfach eine logische Beschreibung des Algorithmus in natürlicher Sprache–wobei er bei Fortgeschrittenen durchaus sehr technisch werden kann.
+Algorithmen können abstrakt beschrieben werden mit **Flussdiagrammen** oder Pseudocode. Wir konzentrieren uns hier auf **Pseudocode**, den wir bereits gebraucht haben. Pseudocode ist einfach eine logische Beschreibung des Algorithmus in natürlicher Sprache-wobei er bei Fortgeschrittenen durchaus sehr technisch werden kann.
 
-Algorithmen können aber auch einer **Programmiersprache implementiert oder umgesetzt** werden. Das heisst: Auch der Programmier-Code beschreibt eigentlich einfach den Algorithmus–einfach auf eine Weise, die der Computer umsetzen kann.
+Algorithmen können aber auch einer **Programmiersprache implementiert oder umgesetzt** werden. Das heisst: Auch der Programmier-Code beschreibt eigentlich einfach den Algorithmus-einfach auf eine Weise, die der Computer umsetzen kann.
 
 > [!info] Eintrag ins Theorieheft
 > 

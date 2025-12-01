@@ -331,12 +331,12 @@ Wir haben das SVG von Svgviewer.dev in Inkscape geöffnet und editiert. Das sah 
 > ### Auflösung
 > Einer der Hauptunterschiede zwischen Raster- und Vektordateien ist deren Auflösung. Die Auflösung einer **Rasterdatei** wird in DPI (dots per inch) oder PPI (pixels per inch) angegeben. Wenn man in eine Rastergrafik hineinzoomt oder ihre Grösse vergrössert, beginnt man, die einzelnen Pixel zu erkennen.
 > 
-> **Rasterdateien** nutzen meist mehr Farben, ermöglichen eine umfangreichere Farbbearbeitung und zeigen feinere Licht- und Schatteneffekte als Vektoren – verlieren jedoch an Bildqualität, wenn sie in der Grösse verändert werden. Ein einfacher Weg, um festzustellen, ob ein Bild eine Raster- oder Vektorgrafik ist, besteht darin, es zu vergrössern. Wenn das Bild unscharf oder pixelig wird, handelt es sich wahrscheinlich um eine Rasterdatei.
+> **Rasterdateien** nutzen meist mehr Farben, ermöglichen eine umfangreichere Farbbearbeitung und zeigen feinere Licht- und Schatteneffekte als Vektoren - verlieren jedoch an Bildqualität, wenn sie in der Grösse verändert werden. Ein einfacher Weg, um festzustellen, ob ein Bild eine Raster- oder Vektorgrafik ist, besteht darin, es zu vergrössern. Wenn das Bild unscharf oder pixelig wird, handelt es sich wahrscheinlich um eine Rasterdatei.
 > 
 > Für **Vektorbilder** ist die Auflösung kein Problem. Man kann Vektoren unendlich skalieren, umformen und anpassen, ohne an Bildqualität zu verlieren. Vektordateien sind beliebt für Bilder, die in einer Vielzahl von Grössen erscheinen müssen, wie z.B. ein Logo, das sowohl auf einer Visitenkarte als auch auf einem Plakat passen muss.
 > 
 > ### Verwendungszwecke
-> Digitale Fotos sind Rasterdateien. Viele Digitalkameras schiessen automatisch Fotos und speichern sie als Rasterdateien – und die Bilder, die man online sieht, sind oft auch Rastergrafiken. Rasterdateien werden auch häufig für die Bearbeitung von Bildern, Fotos und Grafiken verwendet.
+> Digitale Fotos sind Rasterdateien. Viele Digitalkameras schiessen automatisch Fotos und speichern sie als Rasterdateien - und die Bilder, die man online sieht, sind oft auch Rastergrafiken. Rasterdateien werden auch häufig für die Bearbeitung von Bildern, Fotos und Grafiken verwendet.
 > 
 > **Vektordateien** eignen sich besser für digitale Illustrationen, komplexe Grafiken und Logos. Das liegt daran, dass die Auflösung von Vektoren beim Skalieren gleich bleibt, was sie für eine Vielzahl von Druckformaten geeignet macht. Das Vektorformat SVG ist ein etablierter Web-Standard und wird auf Webseiten oft gebraucht, um kleine Symbole zu animieren (z.B. der Play-Knopf auf Youtube).
 > 
@@ -380,18 +380,18 @@ Wir haben das SVG von Svgviewer.dev in Inkscape geöffnet und editiert. Das sah 
 > $$Pixelbreite \times \text{Pixelh\"ohe} \times ( \text{Farbtiefe pro Kanal} \times \text{Anzahl Farbkan\"ale} )$$
 > ![[ginf-b02-colordepth-comparison.png]]
 > 
-> Aufgepasst: Die Farbtiefe wird teils pro Farbkanal und teils pro Pixel angegeben – das ist ein grosser Unterschied! Gang und gäbe ist z.B. eine Farbtiefe von **8-Bit pro Farbkanal**. Ein RGB-Bild hat drei Farben, also ist die entsprechende **Farbtiefe pro Pixel 24-Bit**.
+> Aufgepasst: Die Farbtiefe wird teils pro Farbkanal und teils pro Pixel angegeben - das ist ein grosser Unterschied! Gang und gäbe ist z.B. eine Farbtiefe von **8-Bit pro Farbkanal**. Ein RGB-Bild hat drei Farben, also ist die entsprechende **Farbtiefe pro Pixel 24-Bit**.
 > 
 > Gängige Formate für Rastergrafiken sind jpg, png, webp, gif. In der Praxis komprimieren all diese Formate die Datenmenge mit verschiedenen Algorithmen.
 > 
 > ### Vektorgrafiken
 > 
-> Vektorgrafiken werden mit geometrischen Formen beschrieben: z.B. Kurven, Kreise, Linien, etc. Ihre kleinste Einheit ist also eine Figur – Pixel haben sie nicht. 
+> Vektorgrafiken werden mit geometrischen Formen beschrieben: z.B. Kurven, Kreise, Linien, etc. Ihre kleinste Einheit ist also eine Figur - Pixel haben sie nicht. 
 > 
 > Vektorgrafiken lassen sich **ohne Qualitätsverlust** vergrössern. PDFs bestehen hauptsächlich aus Vektorgrafiken. Typische Beispiele sind Schriftarten, Logos und Grafiken mit scharfen Linien.
 > 
 > ![[rastervektor-1.svg]]
 > 
-> Das verbreitetste Grafikformat für Vektoren ist SVG, das Teil der modernen Webstandards ist und sich nahtlos in Webseiten integriert. Als solche können SVG-Elemente direkt animiert werden – wie z.B. der Play-Button bei Youtube.
+> Das verbreitetste Grafikformat für Vektoren ist SVG, das Teil der modernen Webstandards ist und sich nahtlos in Webseiten integriert. Als solche können SVG-Elemente direkt animiert werden - wie z.B. der Play-Button bei Youtube.
 > 
 > Neben solch einfachen Formen wie Kreisen und Rechtecken, können Sie mit Vektorgrafiken Pfade aus einer Serie von **Bézier-Kurven** ausdrücken. In Vektorgrafik-Programmen wird jeder **Pfadpunkt** mit bis zu zwei **Handles** dargestellt.

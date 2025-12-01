@@ -54,9 +54,9 @@ Nun zeichnen Sie den Beginn Ihres eigenen QR-Codes. Wir haben im Video gesehen: 
 
 > [!NOTE]- Bilder und Audio auf QR-Codes speichern? Und wieso verwenden wir nicht "alphanumerisch"?
 > 
-> Ja, Sie könnten theoretisch Binärdaten jedweder Art speichern – also auch Bilder, Audio oder ganze Programme. Das Problem: Woher soll der Leser wissen, um was für Daten es sich handelt? QR-Codes speichern sehr wenig Meta-Daten – das sind "Daten über Daten", wie z. B. die Kodierung oder den Dateityp. Wir haben bloss auf den ersten vier Bits die Möglichkeit zu sagen, dass es sich um Binärdaten handelt. Aber darüber hinaus gibt es keine festgelegte Struktur.
+> Ja, Sie könnten theoretisch Binärdaten jedweder Art speichern - also auch Bilder, Audio oder ganze Programme. Das Problem: Woher soll der Leser wissen, um was für Daten es sich handelt? QR-Codes speichern sehr wenig Meta-Daten - das sind "Daten über Daten", wie z. B. die Kodierung oder den Dateityp. Wir haben bloss auf den ersten vier Bits die Möglichkeit zu sagen, dass es sich um Binärdaten handelt. Aber darüber hinaus gibt es keine festgelegte Struktur.
 > 
-> Das bedeutet, dass der Empfänger entweder vorher wissen muss, was für eine Art von Datei sich im QR-Code befindet, oder man muss eine eigene Konvention festlegen, z. B. indem man am Anfang der Daten eine kleine Kennung speichert (etwa `"PNG"` für ein Bild oder `"MP3"` für eine Audiodatei). In der Praxis werden daher oft **URLs** verwendet, die auf eine Datei im Internet verweisen – so kann der Browser oder das Betriebssystem automatisch das richtige Programm zum Öffnen wählen.
+> Das bedeutet, dass der Empfänger entweder vorher wissen muss, was für eine Art von Datei sich im QR-Code befindet, oder man muss eine eigene Konvention festlegen, z. B. indem man am Anfang der Daten eine kleine Kennung speichert (etwa `"PNG"` für ein Bild oder `"MP3"` für eine Audiodatei). In der Praxis werden daher oft **URLs** verwendet, die auf eine Datei im Internet verweisen - so kann der Browser oder das Betriebssystem automatisch das richtige Programm zum Öffnen wählen.
 > 
 > Im Übrigen wählen wir Binärdaten, damit Sie die ASCII-Tabelle verwenden können, die überall in der Informatik vorkommt. Alphanumerische QR-Codes könnten Buchstaben, Zahlen und einige wenige Symbole kompakter speichern, aber dann müssten Sie eine spezielle Kodierung verwenden, die Ihnen anderweitig wenig bringt.
 
@@ -631,7 +631,7 @@ Mit dem Abfüllen der Daten ist Ihr QR-Code noch nicht fertig. Es fehlen noch dr
 Wir schauen uns die Fehlerbehebung noch genauer an.
 ### Error Correction im QR-Code
 
-QR-Codes sind erstaunlich robust – selbst wenn ein Teil des Codes beschädigt oder unleserlich ist, kann er oft noch korrekt gelesen werden. Die Fehlerkorrektur in QR-Codes basiert auf dem **Reed-Solomon-Code**, einer mathematischen Technik aus der Informationstheorie. Im Prinzip löst der Reed-Solomon-Code das gleiche Problem wie die Prüfziffer bei EAN-13-Barcodes: Wir speichern nicht nur die eigentlichen Daten, sondern auch zusätzliche Prüfwerte, die helfen, **Fehler zu erkennen**. Aber der Reed-Solomon-Code kann Fehler nicht nur erkennen, sondern sogar auch noch **korrigieren**! 
+QR-Codes sind erstaunlich robust - selbst wenn ein Teil des Codes beschädigt oder unleserlich ist, kann er oft noch korrekt gelesen werden. Die Fehlerkorrektur in QR-Codes basiert auf dem **Reed-Solomon-Code**, einer mathematischen Technik aus der Informationstheorie. Im Prinzip löst der Reed-Solomon-Code das gleiche Problem wie die Prüfziffer bei EAN-13-Barcodes: Wir speichern nicht nur die eigentlichen Daten, sondern auch zusätzliche Prüfwerte, die helfen, **Fehler zu erkennen**. Aber der Reed-Solomon-Code kann Fehler nicht nur erkennen, sondern sogar auch noch **korrigieren**! 
 
 Der Reed-Solomon-Code wird zum Beispiel verwendet um: bei CDs, DVDs und Bluerays Kratzer auszugleichen, oder um die gesendeten Daten der Voyager-Raumsonden abzusichern - die am weitesten von der Erde entfernten Objekte, die je von Menschen gebaut wurden.
 

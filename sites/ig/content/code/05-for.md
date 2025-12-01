@@ -119,7 +119,7 @@ Tipp für die nächste Aufgabe: Die mathematischen Grundoperationen kann man bei
 
 ### $n$-Eck
 
-Machen Sie ein Fünfeck, ein Sechseck und ein Siebeneck – diesmal indem Sie die Rechnung für den Winkel direkt in den Code schreiben.
+Machen Sie ein Fünfeck, ein Sechseck und ein Siebeneck - diesmal indem Sie die Rechnung für den Winkel direkt in den Code schreiben.
 
 > [!solution]- Lösung
 > 
@@ -157,7 +157,7 @@ Zeichnen Sie einen Kreis.
 > 	eva.forward(50)
 > 	eva.right(360/ecken)
 > ```
-> Wobei 360 ineffizient und unnötig ist – eine kleinere Zahl sieht ebenfalls kreisförmig aus.
+> Wobei 360 ineffizient und unnötig ist - eine kleinere Zahl sieht ebenfalls kreisförmig aus.
 
 ### Stern
 

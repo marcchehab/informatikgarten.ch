@@ -94,7 +94,7 @@ Eine Funktion kann alle anderen Funktionen gebrauchen.
 ![Pasted image 20230904192315](Pasted-image-20230904192315.png)
 
 > [!question]- Nutzen Sie Ihre Funktion `rechteck()` in einer zweiten Funktion
-> `treppe(stufen)`, die uns eine Treppe mit Anzahl `stufen` zeichnet – oben
+> `treppe(stufen)`, die uns eine Treppe mit Anzahl `stufen` zeichnet - oben
 > beispielsweise mit `treppen(8)` aufgerufen.
 >
 > ```python
@@ -211,10 +211,10 @@ Wiederholungsschleife verändert.
 > **Funktionen** sind Unterprogramme, die eine bestimmte Aufgabe erfüllen. Man
 > muss eine Funktion:
 >
-> -   Mit **`def` zuerst definieren** – der Funktion also einen <span
+> -   Mit **`def` zuerst definieren** - der Funktion also einen <span
 >     style={{backgroundColor: "#12C2FF", color: "black", padding:"2px", borderRadius:"3px"}}>Namen</span>
 >     geben und bestimmen, was sie tut (Linie 1 - 4).
-> -   Die Funktion **ausführen** – der Computer findet die Funktion im Speicher
+> -   Die Funktion **ausführen** - der Computer findet die Funktion im Speicher
 >     anhand ihres <span
 >     style={{backgroundColor: "#12C2FF", color: "black", padding:"2px", borderRadius:"3px"}}>Namens</span>
 >     (Linie 5).

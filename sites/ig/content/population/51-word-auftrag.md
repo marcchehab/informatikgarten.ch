@@ -7,7 +7,7 @@ In dieser Übung wenden Sie die Techniken aus der [Einführung zur Textverarbeit
 
 ## Ausgangslage
 
-Sie erhalten eine **unformatierte ODT-Datei** mit einem kurzen Text über Wölfe in der Schweiz. Der Text enthält bereits Überschriften, Fliesstext und einige Aussagen, die belegt werden müssen – aber noch keine Formatierung.
+Sie erhalten eine **unformatierte ODT-Datei** mit einem kurzen Text über Wölfe in der Schweiz. Der Text enthält bereits Überschriften, Fliesstext und einige Aussagen, die belegt werden müssen - aber noch keine Formatierung.
 
 **Download:** [unformatiert.odt](/population/unformatiert.odt)
 

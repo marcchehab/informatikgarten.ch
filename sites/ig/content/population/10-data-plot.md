@@ -95,7 +95,7 @@ Das folgende Beispiel zeigt eine Polynom-Trendlinie der Ordnung 2 (Parabel), um 
 
 ### Potenz Trendlinie
 
-Eine Potenz Trendlinie ist eine gekrümmte Linie, die am besten mit Datensätzen verwendet wird, die Messungen vergleichen, die mit einer bestimmten Geschwindigkeit steigen – z. B. die Beschleunigung eines Rennwagens in Intervallen von einer Sekunde. Sie können keine Stromtrendlinie erstellen, wenn Ihre Daten null oder negative Werte enthalten.
+Eine Potenz Trendlinie ist eine gekrümmte Linie, die am besten mit Datensätzen verwendet wird, die Messungen vergleichen, die mit einer bestimmten Geschwindigkeit steigen - z. B. die Beschleunigung eines Rennwagens in Intervallen von einer Sekunde. Sie können keine Stromtrendlinie erstellen, wenn Ihre Daten null oder negative Werte enthalten.
 
 Im folgenden Beispiel werden Beschleunigungsdaten angezeigt, indem die Entfernung in Metern nach Sekunden dargestellt wird. Der R-Quadratwert hat eine nahezu perfekte Anpassung der Linie an die Daten.
 

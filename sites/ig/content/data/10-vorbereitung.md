@@ -178,7 +178,7 @@ Wie viele Megabyte Speicherplatz bräuchten Sie für ein RGB-Bild von 1800px Bre
 
 ### Vergrösserung von Bildern
 
-Ein Vektorbild wird aktuell auf Ihrem Handy mit einer Bildschirmauflösung von 2532px \* 1170px angezeigt. Nun möchten Sie das gleiche Bild auf ein 25 Meter \* 10 Meter Poster an die Fassade eines Kinos drucken. Bei einer typischen Druckauflösung von 150dpi gibt das ein Bild von ungefähr 147638 \* 59055 Pixel ! Was passiert ungefähr mit der Datenmenge? Begründen Sie Ihre Antwort.
+WEin Vektorbild wird aktuell auf Ihrem Handy mit einer Bildschirmauflösung von 2532px \* 1170px angezeigt. Nun möchten Sie das gleiche Bild auf ein 25 Meter \* 10 Meter Poster an die Fassade eines Kinos drucken. Bei einer typischen Druckauflösung von 150dpi gibt das ein Bild von ungefähr 147638 \* 59055 Pixel ! Was passiert ungefähr mit der Datenmenge? Begründen Sie Ihre Antwort.
 
 > [!solution]- Lösung
 > 

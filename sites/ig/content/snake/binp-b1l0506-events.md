@@ -3,7 +3,7 @@ title: Eventsteuerung und keyCodes
 ---
 ## Eventsteuerung: Ereignisse lösen etwas aus
 
-Ob bei unserem Spiel, in komplizierteren Games, auf Webseiten, in Computerprogrammen – überall wo Sie **Interaktivität** erleben, braucht es die Grundidee, dass ein **Ereignis** etwas auslöst. Z.B. Klicken Sie auf diese Frage.
+Ob bei unserem Spiel, in komplizierteren Games, auf Webseiten, in Computerprogrammen - überall wo Sie **Interaktivität** erleben, braucht es die Grundidee, dass ein **Ereignis** etwas auslöst. Z.B. Klicken Sie auf diese Frage.
 
 > [!question]- Was passiert wenn Sie hier klicken?
 > 

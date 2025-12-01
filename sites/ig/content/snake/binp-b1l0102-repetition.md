@@ -139,7 +139,7 @@ eva.forward(100) # Eva geht 100 Pixel nach vorn
 > xeck(5)
 > ```
 > - **Funktionen** sind Teilprogramme, die etwas **tun**. Man erkennt sie an den **runden Klammern**, z.B. `print(...)`.
-> - Funktionen können **Werte verarbeiten**, die in ihre vordefinierten **Parameter** abgefüllt werden. In diesem Beispiel definiert die Funktion `xeck(ecken)` ein Parameter `ecken`, das dann jeweils beim Aufrufen der Funktion definiert wird–hier `xeck(5)`.
+> - Funktionen können **Werte verarbeiten**, die in ihre vordefinierten **Parameter** abgefüllt werden. In diesem Beispiel definiert die Funktion `xeck(ecken)` ein Parameter `ecken`, das dann jeweils beim Aufrufen der Funktion definiert wird-hier `xeck(5)`.
 > - **Variabeln *speichern* etwas**, **Funktionen *tun* etwas**.
 > 
 > ## Turtle

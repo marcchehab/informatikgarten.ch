@@ -151,7 +151,7 @@ Die `while`-Schleife ist nützlich, wenn man nicht im Voraus weiss, wie oft der 
 > 
 > ## Theorie: Einfache Steuerung
 > 
-> - Mit `eva.setHeading(...)` haben wir der Turtle einen **absoluten Winkel** auf dem Bildschirm vorgegeben – `0` ist nach oben, `90` nach rechts, `180` nach unten, `270` nach links, etc.
+> - Mit `eva.setHeading(...)` haben wir der Turtle einen **absoluten Winkel** auf dem Bildschirm vorgegeben - `0` ist nach oben, `90` nach rechts, `180` nach unten, `270` nach links, etc.
 > 	```python
 > 	def steuern(key): 
 > 		if key.keyCode == KEY_UP:

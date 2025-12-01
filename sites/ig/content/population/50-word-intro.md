@@ -144,8 +144,8 @@ Standardmässig sind Kopf- und Fusszeilen im ganzen Dokument gleich. Um sie pro 
 
 Zitieren ist keine lästige Pflicht, sondern ein Grundpfeiler wissenschaftlicher Arbeit:
 
-- **Ehrlichkeit**: Sie zeigen transparent, welche Gedanken von Ihnen stammen und welche von anderen. Fremde Ideen als eigene auszugeben ist ein Plagiat – ein schwerwiegendes Vergehen in der Wissenschaft.
-- **Absicherung**: Wenn Sie eine Aussage mit einer seriösen Quelle belegen, zeigen Sie, dass Sie sorgfältig recherchiert haben. Sollte sich die Quelle später als fehlerhaft erweisen, haben Sie dennoch wissenschaftlich korrekt gearbeitet – anders als bei unbelegten Behauptungen.
+- **Ehrlichkeit**: Sie zeigen transparent, welche Gedanken von Ihnen stammen und welche von anderen. Fremde Ideen als eigene auszugeben ist ein Plagiat - ein schwerwiegendes Vergehen in der Wissenschaft.
+- **Absicherung**: Wenn Sie eine Aussage mit einer seriösen Quelle belegen, zeigen Sie, dass Sie sorgfältig recherchiert haben. Sollte sich die Quelle später als fehlerhaft erweisen, haben Sie dennoch wissenschaftlich korrekt gearbeitet - anders als bei unbelegten Behauptungen.
 - **Nachprüfbarkeit**: Ihre Leser können Ihre Quellen selbst überprüfen und sich ein eigenes Bild machen.
 - **Würdigung**: Sie anerkennen die geistige Arbeit anderer Menschen.
 - **Glaubwürdigkeit**: Gut belegte Aussagen wirken überzeugender als unbelegte Behauptungen.
@@ -227,7 +227,7 @@ Nachname, Vorname: "Titel des Artikels". In: Zeitschrift, Band (Jahr), S. X-Y.
 
 ### Quellenverzeichnis (Bibliografie)
 
-Am Ende Ihrer Arbeit fügen Sie ein **Quellenverzeichnis** ein. Hier listen Sie alle verwendeten Quellen nochmals vollständig auf – diesmal **alphabetisch nach Nachnamen sortiert** und ohne Seitenzahlen.
+Am Ende Ihrer Arbeit fügen Sie ein **Quellenverzeichnis** ein. Hier listen Sie alle verwendeten Quellen nochmals vollständig auf - diesmal **alphabetisch nach Nachnamen sortiert** und ohne Seitenzahlen.
 
 **Aufbau:**
 - Neue Seite mit der Überschrift "Quellenverzeichnis" oder "Literaturverzeichnis"

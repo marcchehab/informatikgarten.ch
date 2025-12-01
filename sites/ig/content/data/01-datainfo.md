@@ -231,7 +231,7 @@ print("Das Produkt ist", ergebnis)
 	    Weil `input()` einen String liefert und `*` dann die Zeichenkette wiederholt.
 	</Option>
 	
-	<Option feedback="Nicht ganz – die Eingabe ist nicht das Problem, sondern die Art, wie sie interpretiert wird.">
+	<Option feedback="Nicht ganz - die Eingabe ist nicht das Problem, sondern die Art, wie sie interpretiert wird.">
 	    Weil die User eine falsche Zahl eingeben könnten.
 	</Option>
 </Question>

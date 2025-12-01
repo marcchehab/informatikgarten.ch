@@ -38,7 +38,7 @@ Der Maqueen-Roboter ist so konstruiert, dass die Patrol-Sensoren direkt mit den 
 - **Linker Sensor**: Pin 13
 - **Rechter Sensor**: Pin 14
 
-Die Sensoren liefern bereits ein **digitales Signal** – das bedeutet, die Elektronik im Sensor wandelt die analoge Lichtintensität bereits in ein einfaches 0 oder 1 um. Der micro:bit muss also nur diesen digitalen Wert einlesen.
+Die Sensoren liefern bereits ein **digitales Signal** - das bedeutet, die Elektronik im Sensor wandelt die analoge Lichtintensität bereits in ein einfaches 0 oder 1 um. Der micro:bit muss also nur diesen digitalen Wert einlesen.
 
 ### Die Funktion `read_patrol()` in der Bibliothek `maqueen.py`
 
@@ -83,7 +83,7 @@ Bringt man p- und n-dotierte Schichten zusammen, entsteht ein **Übergang**. An 
 
 #### Der photoelektrische Effekt
 
-Wenn Licht (Photonen) auf den Halbleiter trifft, kann es Elektronen aus ihren Bindungen lösen – vorausgesetzt, die Photonenenergie ist gross genug. 
+Wenn Licht (Photonen) auf den Halbleiter trifft, kann es Elektronen aus ihren Bindungen lösen - vorausgesetzt, die Photonenenergie ist gross genug. 
 
 Ein einfacher pn-Übergang (Photodiode) erzeugt nur einen sehr kleinen Strom. Der **Fototransistor** löst dieses Problem durch eingebaute Verstärkung:
 

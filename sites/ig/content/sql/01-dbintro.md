@@ -24,23 +24,23 @@ All diese Probleme lösen relationale Datenbanken. Sie bestehen auch aus Tabelle
 
 Wir steigen in das Thema ein mit einer Sprache, die Millionen von Datenbanken verstehen...
 
-## SQL – Eine Sprache, viele Datenbanken
+## SQL - Eine Sprache, viele Datenbanken
 
 Stellen Sie sich vor, Sie lernen Autofahren. Ihre Fahrlehrerin bringt Ihnen bei, **wie man lenkt, schaltet und bremst**. Sobald Sie es beherrschen, können Sie nicht nur einen Toyota fahren, sondern auch einen Peugeot, einen BMW, einen Ford, einen Volvo, einen Fiat, einen Hyundai oder sogar einen Traktor...
 
 Genauso ist es mit der **"Structured Query Language" - SQL**. Lernen Sie SQL einmal, können Sie mit einer Vielzahl von Datenbanken sprechen. Einige Beispiele:
 
-- **SQLite** – Winzig, läuft sogar auf Ihrem Smartphone
-- **PostgreSQL** – Flexibel und mächtig, ideal für komplexe Daten
-- **MySQL** – Beliebt für Websites, z. B. WordPress
-- **Microsoft SQL Server** – Oft in Unternehmen im Einsatz
-- **Oracle Database** – Für riesige Unternehmenssysteme
+- **SQLite** - Winzig, läuft sogar auf Ihrem Smartphone
+- **PostgreSQL** - Flexibel und mächtig, ideal für komplexe Daten
+- **MySQL** - Beliebt für Websites, z. B. WordPress
+- **Microsoft SQL Server** - Oft in Unternehmen im Einsatz
+- **Oracle Database** - Für riesige Unternehmenssysteme
 - ... und viele mehr!
 
 Jede dieser Datenbanken hat ihre eigenen Besonderheiten, aber sie alle sprechen **SQL**. Das bedeutet:
 - Die Grundbefehle zum **Abrufen (SELECT)**, **Einfügen (INSERT)**, **Ändern (UPDATE)** und **Löschen (DELETE)** sind überall gleich.
 - Einmal gelernt, können Sie mit SQL **Daten abfragen und verwalten**, egal welche Datenbank dahintersteckt.
-- Selbst wenn Sie von MySQL auf PostgreSQL oder von SQLite auf SQL Server wechseln – Ihr Wissen bleibt nützlich!
+- Selbst wenn Sie von MySQL auf PostgreSQL oder von SQLite auf SQL Server wechseln - Ihr Wissen bleibt nützlich!
 
 Kurz gesagt: SQL ist der Führerschein für Datenbanken. Sie lernen eine Sprache und können damit viele Systeme steuern. 🚗💨
 

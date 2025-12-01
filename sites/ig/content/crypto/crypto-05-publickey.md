@@ -11,7 +11,7 @@ title: Asymmetrische Kryptografie
 ![[crypto-05-publickey-rsa-photo.png]]
 *V.l.n.r: Adi Shamir, Ron Rivest, and Len Adleman. Photo: Dan Wrights RSA-Algorithmuskurs auf imps.mcmaster.ca.*
 
-Kurz nach Diffie und Hellman veröffentlichten drei Forscher – Ronald Rivest, Adi Shamir und Leonard Adleman – im Jahr 1977 das **RSA-Kryptosystem**. Sie entdeckten, dass man mit diskreten Logarithmen durch die geschickte Wahl der Zahlen ein System schaffen kann, bei dem **zwei Schlüssel jeweils in umgekehrter Richtung eine Einbahnstrasse schaffen**:
+Kurz nach Diffie und Hellman veröffentlichten drei Forscher - Ronald Rivest, Adi Shamir und Leonard Adleman - im Jahr 1977 das **RSA-Kryptosystem**. Sie entdeckten, dass man mit diskreten Logarithmen durch die geschickte Wahl der Zahlen ein System schaffen kann, bei dem **zwei Schlüssel jeweils in umgekehrter Richtung eine Einbahnstrasse schaffen**:
 
 > Wenn man einen Klartext mit einem der Schlüssel verschlüsselt, kann er ausschliesslich mit dem anderen Schlüssel wieder entschlüsselt werden.
 

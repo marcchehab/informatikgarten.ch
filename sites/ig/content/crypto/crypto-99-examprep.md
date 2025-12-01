@@ -189,11 +189,11 @@ Was ist das Diskrete Logarithmusproblem (DLP)? Erklären Sie, wie das eine "Einb
 
 > [!solution]- Lösung
 > 
-> Das Diskrete Logarithmusproblem besagt, dass es schwierig ist, den Exponenten $k$ zu finden, selbst wenn man die Basis $g$, den Modulo $p$ und das Ergebnis $K$ kennt.
+> Das Diskrete Logarithmusproblem besagt, dass es schwierig ist, den Exponenten $k$ zu finden, selbst wenn man die Basis $g$, den Modulo $p$ und das Ergebnis $K$ kennt.
 > 
 > ![[crypto-dlp.excalidraw]]
 > 
-> Es ist keine Art bekannt, mathematisch herzuleiten, wie oft $k$ die Zahl $g^k$ um die Uhr von $\mod{p}$ gedreht hat. Anders gesagt: Wir haben bloss den Rest der Division durch $p$ und wissen nicht, wie viele Ganze erzeugt wurden.
+> Es ist keine Art bekannt, mathematisch herzuleiten, wie oft $k$ die Zahl $g^k$ um die Uhr von $\mod{p}$ gedreht hat. Anders gesagt: Wir haben bloss den Rest der Division durch $p$ und wissen nicht, wie viele Ganze erzeugt wurden.
 > 
 > ![[crypto-04-diffie-hellman-dlp-clock.excalidraw]]
 

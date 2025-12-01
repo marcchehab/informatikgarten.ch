@@ -32,9 +32,9 @@ ship.shapes = register_shape_dir("spaceship")
 while running:
 
 	# ...
-    ship.shape(next(ship.shapes))
+    ship.shape(next(ship.shapes))
 	# ...
-    
+    
 ```
 
 Die Funktion `register_shape_dir()` registriert alle Dateien im Ordner als Shapes im Turtle-Modul und kreiert aus der Liste einen zyklischen Iterator. Iteratoren sind alle Datenstrukturen, bei der man "nächstes Element" sagen kann und es kommt immer

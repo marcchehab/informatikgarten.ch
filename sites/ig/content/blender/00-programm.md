@@ -3,7 +3,7 @@ title: Programm & Übersicht
 ---
 # Variowoche Blender & VFX
 
-<center>**22.09. – 26.09.2025**</center>
+<center>**22.09. - 26.09.2025**</center>
 ## Organisatorisches
 
 Wir starten **am Montag, 22. September, um 8:35 in S109.** Als Richtwert: Tage gehen mindestens von 8:35 bis 15:45.

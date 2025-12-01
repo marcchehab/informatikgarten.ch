@@ -221,7 +221,7 @@ Wir haben hier die Funktion mit Dezimalzahlen erklärt. In Wahrheit funktioniert
 
 Der Little Man Computer (LMC) ist ein idealisiertes Modell eines Computers, das zum Lernen der grundlegenden Mechanismen genutzt wird. Natürlich geschieht fast keine produktive Arbeit auf diesem Level, sondern wir verwenden **Programmiersprachen.** 
 ### Binärcode (Hex-Notation)
-Der grundlegendste Code, den ein Computer verstehen kann, ist Binärcode – eine Folge von Nullen und Einsen. Diese repräsentieren direkt die Maschinenbefehle, die der Prozessor ausführt. Im Kontext des LMC umfasst dies einfache Befehle wie Laden, Speichern, Addieren, Subtrahieren, Springen, wenn Null, und so weiter.
+Der grundlegendste Code, den ein Computer verstehen kann, ist Binärcode - eine Folge von Nullen und Einsen. Diese repräsentieren direkt die Maschinenbefehle, die der Prozessor ausführt. Im Kontext des LMC umfasst dies einfache Befehle wie Laden, Speichern, Addieren, Subtrahieren, Springen, wenn Null, und so weiter.
 
 ![[memory-adressen.png]]
 ### Assembler
