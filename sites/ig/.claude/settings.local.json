@@ -20,7 +20,8 @@
       "WebFetch(domain:shiki.style)",
       "Bash(pnpm build:*)",
       "Bash(npx tsc:*)",
-      "Bash(git restore:*)"
+      "Bash(git restore:*)",
+      "WebFetch(domain:www.netlogoweb.org)"
     ],
     "deny": [],
     "ask": []
