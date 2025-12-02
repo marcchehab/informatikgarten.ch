@@ -206,23 +206,6 @@ Versuchen Sie, **eine Blume mit fünf Blüten** zu zeichnen. Überlegen Sie sich
 > 
 > ![[blume.mp4]]
 
-### Kreisraster
-
-Erstellen Sie ein Raster aus Kreisen. Sie können dazu die Befehle `eva.penup()`, `eva.pendown()`, `eva.goto(x,y)` und `eva.circle(r)` verwenden. 
-
-![[kreisraster.png]]
-
-> [!solution]- Lösung
-> 
-> ```python
-> for i in range(5):  # 5 Reihen
->     for j in range(5):  # 5 Spalten
->         eva.penup()
->         eva.goto(j * 60, -i * 60)  # Verschiebt sich horizontal und vertikal
->         eva.pendown()
->         eva.circle(20)  # Zeichnet einen Kreis mit Radius 20
-> ```
-
 ### Quadratspirale
 
 Eine Spirale aus grösser werdenden Quadraten.
