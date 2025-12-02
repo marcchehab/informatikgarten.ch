@@ -211,7 +211,7 @@ b) Was ist der kürzeste Weg jetzt?
 > Der kürzeste Weg ist **A → B → D → E → F** mit Kosten 10.
 
 > [!warning] CIDR-Schreibweise
-> Die Schreibweise `/24` ist eine Kurzform für die Subnetmaske `255.255.255.0`. Die Zahl gibt an, wie viele Bytes zum Netzwerkteil gehören (mal 8):
+> Die Schreibweise `/24` ist eine Kurzform für die Subnetmaske `255.255.255.0`. Die Zahl gibt an, wie viele Bits zum Netzwerkteil gehören (Anzahl Bytes mal 8):
 > - `/24` = 3 Bytes = `255.255.255.0`
 > - `/16` = 2 Bytes = `255.255.0.0`
 > - `/8` = 1 Byte = `255.0.0.0`
