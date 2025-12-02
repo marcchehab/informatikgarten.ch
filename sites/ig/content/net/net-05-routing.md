@@ -181,6 +181,10 @@ Die "Kosten" einer Verbindung können verschiedene Faktoren berücksichtigen:
 - **Auslastung** (überlastete Verbindungen vermeiden)
 - **Zuverlässigkeit** (stabile Verbindungen bevorzugen)
 
+> [!info] Dijkstra im grossen Massstab?
+>
+> OSPF und Dijkstra funktionieren gut, solange alle Router zur **gleichen Organisation** gehören und offen Informationen austauschen. Aber was passiert, wenn Pakete von der Swisscom zu Google müssen? Das Internet besteht aus tausenden unabhängiger Netzwerke - wie werden die verbunden? Mehr dazu in der [nächsten Lektion](net-07-hierarchy).
+
 ## Übungsaufgaben
 
 ### Aufgabe 1: Dijkstra von Hand
