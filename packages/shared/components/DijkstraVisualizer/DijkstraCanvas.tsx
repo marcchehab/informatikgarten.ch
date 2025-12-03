@@ -138,7 +138,7 @@ function NodeComponent({
         fill={fill}
         stroke={stroke}
         strokeWidth={strokeWidth}
-        className={`${styles.node} ${state === NodeState.CURRENT && !isDragging ? styles.pulsing : ''}`}
+        className={`${styles.node} ${isDragging ? styles.nodeDragging : ''} ${state === NodeState.CURRENT && !isDragging ? styles.pulsing : ''}`}
       />
       <text
         x={node.x}

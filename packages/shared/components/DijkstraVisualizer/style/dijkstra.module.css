@@ -56,7 +56,11 @@
 
 /* Node styling */
 .node {
-  transition: all 0.3s ease;
+  transition: fill 0.3s ease, stroke 0.3s ease, stroke-width 0.3s ease, filter 0.3s ease;
+}
+
+.nodeDragging {
+  transition: none;
 }
 
 .nodeGroup:hover .node {
@@ -383,10 +387,97 @@
   margin: 0;
   border-radius: 0;
   z-index: 9999;
-  background-color: var(--bg-base, #1a1a2e);
+  background-color: #f5f5f5;
+  color: #333;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+:global(.dark) .fullscreen {
+  background-color: #1a1a2e;
+  color: #eee;
+}
+
+/* Light mode fullscreen overrides */
+.fullscreen .distanceTable {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.fullscreen .tableHeader,
+.fullscreen .tableHeaderWithToggle {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.fullscreen .controlPanel {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.fullscreen .graphSettings {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.fullscreen .weightLabel {
+  fill: #333;
+}
+
+.fullscreen .distanceLabel {
+  fill: #666;
+}
+
+.fullscreen .stepInfo,
+.fullscreen .tablePlaceholder,
+.fullscreen .distanceTable th,
+.fullscreen .priorityToggle {
+  color: #666;
+}
+
+.fullscreen .stepDescription {
+  color: #333;
+}
+
+.fullscreen .canvas {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+:global(.dark) .fullscreen .canvas {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+:global(.dark) .fullscreen .distanceTable {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+:global(.dark) .fullscreen .tableHeader,
+:global(.dark) .fullscreen .tableHeaderWithToggle {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+:global(.dark) .fullscreen .controlPanel {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+:global(.dark) .fullscreen .graphSettings {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+:global(.dark) .fullscreen .weightLabel {
+  fill: #ddd;
+}
+
+:global(.dark) .fullscreen .distanceLabel {
+  fill: #888;
+}
+
+:global(.dark) .fullscreen .stepInfo,
+:global(.dark) .fullscreen .tablePlaceholder,
+:global(.dark) .fullscreen .distanceTable th,
+:global(.dark) .fullscreen .priorityToggle {
+  color: #888;
+}
+
+:global(.dark) .fullscreen .stepDescription {
+  color: #ddd;
 }
 
 .fullscreen .mainArea {
