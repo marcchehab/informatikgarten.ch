@@ -1,21 +1,18 @@
 ---
-title: Prüfungsvorbereitung für F1e
+title: Prüfungsvorbereitung Programmieren 1
 display: hidden
 ---
+
 > [!success] Hinweise zur Prüfung
 > 
 > Diese Prüfungsvorbereitung ist dazu da, dass Sie die Art der Fragestellungen abschätzen können.
-> - Stoffumfang: bis und mit "5 for-Schleifen verschachteln" im Kapitel "B Programmieren" auf Informatikgarten. Dort finden Sie auch die Lernziele.
-> - Einige Teile dieser Kapitel haben wir nicht besprochen, die sind **NICHT Teil der Prüfung**:
-> 	- In "Erste Schritte mit Python": Alles ab "Python lokal installieren"
-> 	- In "for-Schleife verstehen": "range() genauer steuern" und die Plotter-Übung
-> 	- In "for-Schleifen verschachteln": Alle Übungen ab "n-Eck advanced"
-> - Sie finden [hier](https://exam.net/student?code=yhzGpg) eine technische Vorschau auf Exam.net, um den Programmiereditor zu versuchen.
+> - Stoffumfang: bis und mit "for-Schleifen verschachtelln" im Kapitel "Programmieren 1" auf Informatikgarten. Ich habe einige Übungen aus den Lektionen entfernt, die nicht Teil des Prüfungsstoffs sind.
+> - Sie werden [diese Befehlsliste](/pubfiles/befehlsliste_turtle1.pdf) an der Prüfung erhalten.
+> - Sie finden [hier](https://exam.net/student?code=mYLZA7) eine technische Vorschau auf Exam.net, um den Programmiereditor zu versuchen. (Und [hier](https://exam.net/student?code=nigjY9) ohne strenge Sicherheitsvorschriften)
 
 ## Theorie
 
 Benennen Sie die folgenden Teile im Code.
-
 ![[examprep-code-benennen.excalidraw]]
 
 > [!solution]- Lösung
@@ -36,6 +33,8 @@ print("Ende")
 ```
 
 Die korrekte Antwort wäre `Anfang:X:Ende`
+
+![[code-examprep-print0.mp4]]
 
 Hier die Programme:
 
@@ -133,6 +132,22 @@ print("X")
 > `["red","blue"]:red:red:["red","blue"]:blue:blue:X`
 > 
 > ![[code-examprep-print6.mp4]]
+
+### 7
+
+```python
+for j in range(3):
+    for i in range(2,5,2):
+	    print(i-j)
+print("X")
+```
+
+> [!solution]- Lösung mit Videoerklärung 📺
+> 
+> `2:4:1:3:0:2:X`
+> 
+> ![[code-examprep-print7.mp4]]
+
 ## for-Schleife mit Turtle
 
 Zeichnen Sie mit der Turtle ein Rechteck mit Breite 100 und Höhe 50.
@@ -162,7 +177,7 @@ Zeichnen Sie mit der Turtle eine flache Treppe mit drei Stufen. Der Winkel ist a
 > import turtle
 > eva = turtle.Turtle()
 > 
-> for i in range(3):
+> for i in range(4):
 > 	eva.forward(50)
 > 	eva.right(60)
 > 	eva.forward(50)
@@ -172,6 +187,7 @@ Zeichnen Sie mit der Turtle eine flache Treppe mit drei Stufen. Der Winkel ist a
 Es ist kalt draussen! Bauen Sie mit Eva ein Iglu. Alle Seiten sind 50 Schritte lang, die Wände sind perfekt senkrecht.
 
 ![[99-examprep-iglu.excalidraw]]
+
 > [!solution]- Lösung mit Videoerklärung 📺
 > 
 > ```python
@@ -218,15 +234,13 @@ Zeichnen Sie eine Treppe aus fünf Rechtecken mit for-Schleifen. Die Rechtecke s
 > import turtle
 > eva = turtle.Turtle()
 > 
-> quadratfarben = ["violet", "orange", "red"]
-> 
-> for quadratfarbe in range(5):
-> 	for seite in range(3):
-> 		eva.forward(60)
-> 		eva.right(90)
-> 		eva.forward(30)
-> 		eva.right(90)
-> 	eva.right(180)
+> for rechteck in range(5):
+>     for i in range(3):
+>         eva.forward(80)
+>         eva.right(90)
+>         eva.forward(40)
+>         eva.right(90)
+>     eva.right(180)
 > ```
 
 Zeichnen Sie mit der Turtle folgende Figur mit for-Schleifen.
@@ -249,3 +263,69 @@ Zeichnen Sie mit der Turtle folgende Figur mit for-Schleifen.
 > 	eva.right(180)
 > ```
 
+### Kreissektor
+![[kreissektor.png]]
+
+> [!solution]- Zeichnen Sie einen Kreissektor mit Innenwinkel 120 Grad und einem Radius von 50
+> 
+> ```python
+> import turtle
+> eva = turtle.Turtle()
+> 
+> eva.forward(50)
+> eva.right(90)
+> for i in range(120):
+>     eva.forward(314/360)
+>     eva.right(1)
+> eva.right(90)
+> eva.forward(50)
+> ```
+
+### Omega
+
+Zeichnen Sie ein symmetrisch Omega. Der Umfang des vollständigen Kreises wäre 720 Schritte. Die restlichen Grössen sind angegeben.
+
+![[99-examprep-gym-omega.excalidraw]]
+
+
+> [!solution]- Lösung mit Videoerklärung 📺
+> 
+> ```python
+> import turtle
+> eva = turtle.Turtle()
+> 
+> eva.forward(100)
+> eva.left(160)
+> for i in range(320):
+>     eva.forward(2)
+>     eva.right(1)
+> eva.left(160)
+> eva.forward(100)
+> 
+> turtle.done()
+> ```
+> 
+> ![[omega.mp4]]
+
+## Turtle zeichnen
+
+Zeichnen Sie, was die Turtle bei folgendem Programm zeichnen würde. Nehmen Sie dazu an, die Häuschen seien jeweils 10 Turtle-Schritte gross. 
+
+```python
+import turtle
+eva = turtle.Turtle()
+
+for j in range(2):
+	for i in range(3):
+		eva.forward(30)
+		eva.right(90)
+		eva.forward(20)
+		eva.right(90)
+	eva.right(180)
+```
+
+![[examprep-turtle-vorlage.excalidraw]]
+
+> [!solution]- Lösung
+> 
+> ![[99-examprep-gym-draw1-solution.excalidraw]]

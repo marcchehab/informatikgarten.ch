@@ -1,4 +1,5 @@
 ---
+title: Prüfungsvorbereitung Programmieren 1
 display: hidden
 ---
 
@@ -260,24 +261,6 @@ Zeichnen Sie mit der Turtle folgende Figur mit for-Schleifen.
 > 		eva.forward(50)
 > 		eva.right(90)
 > 	eva.right(180)
-> ```
-
-### Kreissektor
-![[kreissektor.png]]
-
-> [!solution]- Zeichnen Sie einen Kreissektor mit Innenwinkel 120 Grad und einem Radius von 50
-> 
-> ```python
-> import turtle
-> eva = turtle.Turtle()
-> 
-> eva.forward(50)
-> eva.right(90)
-> for i in range(120):
->     eva.forward(314/360)
->     eva.right(1)
-> eva.right(90)
-> eva.forward(50)
 > ```
 
 ### Omega
