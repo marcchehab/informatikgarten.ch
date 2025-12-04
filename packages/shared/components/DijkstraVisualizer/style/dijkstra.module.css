@@ -92,9 +92,13 @@
 
 .distanceLabel {
   font-size: 11px;
-  fill: var(--text-muted, #888);
+  fill: #666;
   pointer-events: none;
   user-select: none;
+}
+
+:global(.dark) .distanceLabel {
+  fill: #888;
 }
 
 /* Edge styling */
@@ -105,9 +109,13 @@
 .weightLabel {
   font-size: 12px;
   font-weight: 600;
-  fill: var(--text-primary, #ddd);
+  fill: #333;
   pointer-events: none;
   user-select: none;
+}
+
+:global(.dark) .weightLabel {
+  fill: #ddd;
 }
 
 /* Distance Table */
