@@ -191,7 +191,9 @@ print(len(farbliste)) # Gibt 5 aus, weil die Liste 5 Elemente hat
 > - `eva.penup()` setzt den Stift ab
 > - `eva.pendown()` setzt den Stift wieder aufs Papier
 
-> [!solution]- Lösung
+> [!solution]- Lösung mit Videoerklärung 📺
+> 
+> ![[farblinie.mp4]]
 > 
 > ```python
 > import turtle
