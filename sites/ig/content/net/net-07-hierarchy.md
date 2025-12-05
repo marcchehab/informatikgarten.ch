@@ -78,9 +78,11 @@ Nicht alle autonomen Systeme sind gleich. Das Internet hat eine hierarchische St
 
 ### Tier 1 - Die Spitze der Pyramide
 
-**Tier-1-Provider** sind die grossen Backbone-Netzwerke wie Lumen (ehemals Level 3), NTT, Cogent oder Telia. Sie haben eine besondere Eigenschaft: Sie können das **gesamte Internet erreichen, ohne jemandem Geld für Transit zu bezahlen**.
+**Tier-1-Provider** sind die grossen Backbone-Netzwerke wie Arelion, NTT, Cogent oder Telia. Sie haben eine besondere Eigenschaft: Sie können das **gesamte Internet erreichen, ohne jemandem Geld für Transit zu bezahlen**.
 
-Das erreichen sie durch **Settlement-Free Peering**: Die grossen Provider verbinden sich untereinander kostenlos, weil beide Seiten gleichermassen profitieren.
+Das erreichen sie durch **Settlement-Free Peering**: Die grossen Provider verbinden sich untereinander kostenlos, weil beide Seiten gleichermassen profitieren. Hier ein Beispiel des Netzwerkes des Tier-1-Providers Arelion, das Sie [hier interaktiv anschauen können](https://www.arelion.com/products-and-services/internet-and-cloud/ip-transit).
+
+![](arelion.png)
 
 ### Tier 2 - Regionale Provider
 
