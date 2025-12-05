@@ -78,7 +78,7 @@ export function DistanceTable({
         <thead>
           <tr>
             <th>Knoten</th>
-            <th>Distanz</th>
+            <th>Gesamtdistanz</th>
             <th>Vorgänger</th>
           </tr>
         </thead>
