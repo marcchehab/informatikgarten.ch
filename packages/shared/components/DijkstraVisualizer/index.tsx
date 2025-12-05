@@ -194,6 +194,18 @@ export function DijkstraVisualizer({
     })
   }, [])
 
+  const handleEdgeWeightChange = useCallback((edgeId: string, newWeight: number) => {
+    setConfig(prev => {
+      const newEdges = prev.graph.edges.map(edge =>
+        edge.id === edgeId ? { ...edge, weight: newWeight } : edge
+      )
+      return {
+        ...prev,
+        graph: { ...prev.graph, edges: newEdges }
+      }
+    })
+  }, [])
+
   const play = useCallback(() => {
     setConfig(prev => {
       if (prev.steps.length === 0) return prev
@@ -323,6 +335,7 @@ export function DijkstraVisualizer({
           targetNode={config.targetNode}
           onNodeClick={handleNodeClick}
           onNodeMove={handleNodeMove}
+          onEdgeWeightChange={handleEdgeWeightChange}
           width={width}
           height={height}
         />
@@ -330,11 +343,12 @@ export function DijkstraVisualizer({
           className={styles.divider}
           onMouseDown={handleDividerMouseDown}
         />
-        <div style={{ width: tableWidth, flexShrink: 0 }}>
+        <div style={{ width: tableWidth, flexShrink: 0, height: isFullscreen ? '100%' : height }}>
           <DistanceTable
             nodes={config.graph.nodes}
             currentStep={currentStep}
             sourceNode={config.sourceNode}
+            autoScroll={config.animationState === AnimationState.PLAYING}
           />
         </div>
       </div>

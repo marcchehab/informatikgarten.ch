@@ -1,6 +1,10 @@
 import { useState, useRef } from 'react'
 import styles from './style/dijkstra.module.css'
 
+const MIN_NODES = 3
+const SLIDER_MAX = 30
+const ABSOLUTE_MAX = 200
+
 interface GraphSettingsProps {
   nodeCount: number
   isDirected: boolean
@@ -22,14 +26,17 @@ export function GraphSettings({
 }: GraphSettingsProps) {
   const [isDragging, setIsDragging] = useState(false)
   const [dragValue, setDragValue] = useState(nodeCount)
+  const [isEditingCount, setIsEditingCount] = useState(false)
+  const [editValue, setEditValue] = useState('')
   const sliderRef = useRef<HTMLInputElement>(null)
 
   // Use dragValue while dragging, otherwise use nodeCount prop
   const displayValue = isDragging ? dragValue : nodeCount
+  const sliderValue = Math.min(displayValue, SLIDER_MAX)
 
   const handleSliderStart = () => {
     setIsDragging(true)
-    setDragValue(nodeCount)
+    setDragValue(Math.min(nodeCount, SLIDER_MAX))
   }
 
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,17 +50,62 @@ export function GraphSettings({
     setIsDragging(false)
   }
 
+  const handleCountClick = () => {
+    setIsEditingCount(true)
+    setEditValue(String(nodeCount))
+  }
+
+  const handleCountSubmit = () => {
+    const newCount = parseInt(editValue, 10)
+    if (!isNaN(newCount) && newCount >= MIN_NODES && newCount <= ABSOLUTE_MAX) {
+      onNodeCountChange(newCount)
+    }
+    setIsEditingCount(false)
+    setEditValue('')
+  }
+
+  const handleCountCancel = () => {
+    setIsEditingCount(false)
+    setEditValue('')
+  }
+
   return (
     <div className={styles.graphSettings}>
       <div className={styles.settingGroup}>
-        <label htmlFor="node-count">Knoten: {displayValue}</label>
+        <label htmlFor="node-count">
+          Knoten:{' '}
+          {isEditingCount ? (
+            <input
+              type="number"
+              min={MIN_NODES}
+              max={ABSOLUTE_MAX}
+              value={editValue}
+              onChange={e => setEditValue(e.target.value)}
+              onBlur={handleCountSubmit}
+              onKeyDown={e => {
+                if (e.key === 'Enter') handleCountSubmit()
+                if (e.key === 'Escape') handleCountCancel()
+              }}
+              autoFocus
+              className={styles.nodeCountInput}
+            />
+          ) : (
+            <span
+              onClick={handleCountClick}
+              className={styles.nodeCountValue}
+              title="Klicken für grössere Werte (max. 200)"
+            >
+              {displayValue}
+            </span>
+          )}
+        </label>
         <input
           ref={sliderRef}
           id="node-count"
           type="range"
-          min="5"
-          max="30"
-          value={displayValue}
+          min={MIN_NODES}
+          max={SLIDER_MAX}
+          value={sliderValue}
           onMouseDown={handleSliderStart}
           onTouchStart={handleSliderStart}
           onChange={handleSliderChange}

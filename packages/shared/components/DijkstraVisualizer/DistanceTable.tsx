@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import type { GraphNode, AlgorithmStep } from './types/DijkstraTypes'
 import styles from './style/dijkstra.module.css'
 
@@ -6,14 +6,27 @@ interface DistanceTableProps {
   nodes: GraphNode[]
   currentStep: AlgorithmStep | null
   sourceNode: string | null
+  autoScroll?: boolean
 }
 
 export function DistanceTable({
   nodes,
   currentStep,
-  sourceNode
+  sourceNode,
+  autoScroll = false
 }: DistanceTableProps) {
   const [sortByPriority, setSortByPriority] = useState(true)
+  const currentRowRef = useRef<HTMLTableRowElement>(null)
+
+  // Auto-scroll to current node when it changes
+  useEffect(() => {
+    if (autoScroll && currentRowRef.current) {
+      currentRowRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      })
+    }
+  }, [autoScroll, currentStep?.currentNode])
 
   if (!sourceNode || !currentStep) {
     return (
@@ -74,56 +87,62 @@ export function DistanceTable({
           PQ
         </button>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Knoten</th>
-            <th>Gesamtdistanz{sortByPriority && ' ↓'}</th>
-            <th>Vorgänger</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortedNodes.map(node => {
-            const distance = currentStep.distances.get(node.id)
-            const previous = currentStep.previousNodes.get(node.id)
-            const previousNode = previous
-              ? nodes.find(n => n.id === previous)
-              : null
+      <div className={styles.tableScrollContainer}>
+        <table>
+          <thead>
+            <tr>
+              <th>Knoten</th>
+              <th>Gesamtdistanz{sortByPriority && ' ↓'}</th>
+              <th>Vorgänger</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedNodes.map(node => {
+              const distance = currentStep.distances.get(node.id)
+              const previous = currentStep.previousNodes.get(node.id)
+              const previousNode = previous
+                ? nodes.find(n => n.id === previous)
+                : null
 
-            const isCurrent = currentStep.currentNode === node.id
-            const isVisited = currentStep.visitedNodes.has(node.id)
-            const isInQueue = currentStep.queueNodes.has(node.id)
-            const isSource = node.id === sourceNode
+              const isCurrent = currentStep.currentNode === node.id
+              const isVisited = currentStep.visitedNodes.has(node.id)
+              const isInQueue = currentStep.queueNodes.has(node.id)
+              const isSource = node.id === sourceNode
 
-            const rowClass = isCurrent
-              ? styles.currentRow
-              : isVisited
-                ? styles.visitedRow
-                : isInQueue
-                  ? styles.inQueueRow
-                  : undefined
+              const rowClass = isCurrent
+                ? styles.currentRow
+                : isVisited
+                  ? styles.visitedRow
+                  : isInQueue
+                    ? styles.inQueueRow
+                    : undefined
 
-            return (
-              <tr key={node.id} className={rowClass}>
-                <td>
-                  <span className={styles.nodeCell}>
-                    {node.label}
-                    {isSource && <span className={styles.sourceMarker}>*</span>}
-                  </span>
-                </td>
-                <td>
-                  {distance === undefined
-                    ? '-'
-                    : distance === Infinity
-                      ? '∞'
-                      : distance}
-                </td>
-                <td>{previousNode ? previousNode.label : '-'}</td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </table>
+              return (
+                <tr
+                  key={node.id}
+                  className={rowClass}
+                  ref={isCurrent ? currentRowRef : undefined}
+                >
+                  <td>
+                    <span className={styles.nodeCell}>
+                      {node.label}
+                      {isSource && <span className={styles.sourceMarker}>*</span>}
+                    </span>
+                  </td>
+                  <td>
+                    {distance === undefined
+                      ? '-'
+                      : distance === Infinity
+                        ? '∞'
+                        : distance}
+                  </td>
+                  <td>{previousNode ? previousNode.label : '-'}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }

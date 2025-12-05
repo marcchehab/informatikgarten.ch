@@ -67,15 +67,25 @@ export function generateRandomGraph(
   // Generate node positions
   const positions = generateNodePositions(nodeCount, width, height)
 
-  // Create nodes with labels (A-Z for small graphs, numbers for larger)
+  // Create nodes with labels (A-Z, then Aa, Ab, Ac, ...)
   for (let i = 0; i < nodeCount; i++) {
     const pos = positions[i]
     if (!pos) continue
+    let label: string
+    if (i < 26) {
+      // A-Z for first 26 nodes
+      label = String.fromCharCode(65 + i)
+    } else {
+      // Aa, Ab, Ac, ... for nodes 27+
+      const prefix = String.fromCharCode(65 + Math.floor((i - 26) / 26))
+      const suffix = String.fromCharCode(97 + ((i - 26) % 26))
+      label = prefix + suffix
+    }
     nodes.push({
       id: `node-${i}`,
       x: pos.x,
       y: pos.y,
-      label: nodeCount <= 26 ? String.fromCharCode(65 + i) : String(i)
+      label
     })
   }
 

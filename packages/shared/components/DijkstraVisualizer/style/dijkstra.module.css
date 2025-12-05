@@ -114,18 +114,77 @@
   user-select: none;
 }
 
+.weightEditable {
+  pointer-events: auto;
+  cursor: pointer;
+  transition: fill 0.2s;
+}
+
+.weightEditable:hover {
+  fill: #3b82f6;
+}
+
+.weightHitArea {
+  pointer-events: auto;
+}
+
+.weightHitArea:hover + .weightLabel {
+  fill: #3b82f6;
+}
+
+.weightInput {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #3b82f6;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  background: white;
+  color: #333;
+  outline: none;
+  padding: 0;
+}
+
+.weightInput::-webkit-inner-spin-button,
+.weightInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.weightInput[type=number] {
+  -moz-appearance: textfield;
+}
+
 :global(.dark) .weightLabel {
   fill: #ddd;
+}
+
+:global(.dark) .weightEditable:hover {
+  fill: #60a5fa;
+}
+
+:global(.dark) .weightInput {
+  background: #1f2937;
+  color: #ddd;
+  border-color: #60a5fa;
 }
 
 /* Distance Table */
 .distanceTable {
   width: 100%;
   height: 100%;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
   background-color: rgba(0, 0, 0, 0.15);
   border-radius: 8px;
   border: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.tableScrollContainer {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
 }
 
 .tableHeader {
@@ -313,6 +372,55 @@
 .nodeCountSlider {
   width: 120px;
   cursor: pointer;
+}
+
+.nodeCountValue {
+  cursor: pointer;
+  padding: 0.1rem 0.3rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  min-width: 2ch;
+  display: inline-block;
+  text-align: center;
+}
+
+.nodeCountValue:hover {
+  background-color: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+}
+
+.nodeCountInput {
+  width: 50px;
+  border: 2px solid #3b82f6;
+  border-radius: 4px;
+  text-align: center;
+  font-size: inherit;
+  font-weight: inherit;
+  background: white;
+  color: #333;
+  outline: none;
+  padding: 0.1rem 0.2rem;
+}
+
+.nodeCountInput::-webkit-inner-spin-button,
+.nodeCountInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.nodeCountInput[type=number] {
+  -moz-appearance: textfield;
+}
+
+:global(.dark) .nodeCountValue:hover {
+  background-color: rgba(96, 165, 250, 0.2);
+  color: #60a5fa;
+}
+
+:global(.dark) .nodeCountInput {
+  background: #1f2937;
+  color: #ddd;
+  border-color: #60a5fa;
 }
 
 .toggle {

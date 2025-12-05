@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import type { Graph, GraphNode, GraphEdge, AlgorithmStep } from './types/DijkstraTypes'
 import { NodeState } from './types/DijkstraTypes'
 import { NODE_COLORS, NODE_STROKE_COLORS, EDGE_COLORS, SOURCE_BORDER_COLOR, NODE_RADIUS } from './utils/colorScheme'
@@ -11,6 +11,7 @@ interface DijkstraCanvasProps {
   targetNode: string | null
   onNodeClick: (nodeId: string, ctrlKey: boolean) => void
   onNodeMove: (nodeId: string, x: number, y: number) => void
+  onEdgeWeightChange?: (edgeId: string, newWeight: number) => void
   width: number
   height: number
 }
@@ -47,12 +48,26 @@ function EdgeComponent({
   edge,
   sourceNode,
   targetNode,
-  currentStep
+  currentStep,
+  isEditable,
+  onWeightClick,
+  isEditing,
+  editValue,
+  onEditChange,
+  onEditSubmit,
+  onEditCancel
 }: {
   edge: GraphEdge
   sourceNode: GraphNode
   targetNode: GraphNode
   currentStep: AlgorithmStep | null
+  isEditable: boolean
+  onWeightClick: (edgeId: string, x: number, y: number) => void
+  isEditing: boolean
+  editValue: string
+  onEditChange: (value: string) => void
+  onEditSubmit: () => void
+  onEditCancel: () => void
 }) {
   const { stroke, strokeWidth } = getEdgeStyle(edge.id, currentStep)
 
@@ -79,6 +94,9 @@ function EdgeComponent({
   const perpX = -dy / length * 12
   const perpY = dx / length * 12
 
+  const labelX = midX + perpX
+  const labelY = midY + perpY
+
   return (
     <g>
       <line
@@ -91,15 +109,53 @@ function EdgeComponent({
         markerEnd={edge.directed ? 'url(#arrowhead)' : undefined}
         className={styles.edge}
       />
-      <text
-        x={midX + perpX}
-        y={midY + perpY}
-        textAnchor="middle"
-        dominantBaseline="central"
-        className={styles.weightLabel}
-      >
-        {edge.weight}
-      </text>
+      {isEditing ? (
+        <foreignObject x={labelX - 20} y={labelY - 12} width={40} height={24}>
+          <input
+            type="number"
+            min="1"
+            max="99"
+            value={editValue}
+            onChange={e => onEditChange(e.target.value)}
+            onBlur={onEditSubmit}
+            onKeyDown={e => {
+              if (e.key === 'Enter') onEditSubmit()
+              if (e.key === 'Escape') onEditCancel()
+            }}
+            autoFocus
+            className={styles.weightInput}
+          />
+        </foreignObject>
+      ) : (
+        <g
+          onClick={isEditable ? (e) => {
+            e.stopPropagation()
+            onWeightClick(edge.id, labelX, labelY)
+          } : undefined}
+          style={{ cursor: isEditable ? 'pointer' : 'default' }}
+        >
+          {isEditable && (
+            <rect
+              x={labelX - 12}
+              y={labelY - 10}
+              width={24}
+              height={20}
+              fill="transparent"
+              rx={4}
+              className={styles.weightHitArea}
+            />
+          )}
+          <text
+            x={labelX}
+            y={labelY}
+            textAnchor="middle"
+            dominantBaseline="central"
+            className={`${styles.weightLabel} ${isEditable ? styles.weightEditable : ''}`}
+          >
+            {edge.weight}
+          </text>
+        </g>
+      )}
     </g>
   )
 }
@@ -170,6 +226,7 @@ export function DijkstraCanvas({
   targetNode,
   onNodeClick,
   onNodeMove,
+  onEdgeWeightChange,
   width,
   height
 }: DijkstraCanvasProps) {
@@ -179,8 +236,39 @@ export function DijkstraCanvas({
   const hasDragged = useRef(false)
   const ctrlKeyRef = useRef(false)
 
+  // Edge weight editing state
+  const [editingEdge, setEditingEdge] = useState<string | null>(null)
+  const [editValue, setEditValue] = useState('')
+
+  // Edges are editable when no source node is selected (algorithm hasn't started)
+  const isEditable = !sourceNode && !!onEdgeWeightChange
+
   // Create a map for quick node lookup
   const nodeMap = new Map(graph.nodes.map(n => [n.id, n]))
+
+  const handleWeightClick = useCallback((edgeId: string) => {
+    const edge = graph.edges.find(e => e.id === edgeId)
+    if (edge) {
+      setEditingEdge(edgeId)
+      setEditValue(String(edge.weight))
+    }
+  }, [graph.edges])
+
+  const handleEditSubmit = useCallback(() => {
+    if (editingEdge && onEdgeWeightChange) {
+      const newWeight = parseInt(editValue, 10)
+      if (!isNaN(newWeight) && newWeight >= 1 && newWeight <= 99) {
+        onEdgeWeightChange(editingEdge, newWeight)
+      }
+    }
+    setEditingEdge(null)
+    setEditValue('')
+  }, [editingEdge, editValue, onEdgeWeightChange])
+
+  const handleEditCancel = useCallback(() => {
+    setEditingEdge(null)
+    setEditValue('')
+  }, [])
 
   const getSVGPoint = useCallback((clientX: number, clientY: number) => {
     if (!svgRef.current) return { x: 0, y: 0 }
@@ -282,6 +370,13 @@ export function DijkstraCanvas({
               sourceNode={source}
               targetNode={target}
               currentStep={currentStep}
+              isEditable={isEditable}
+              onWeightClick={handleWeightClick}
+              isEditing={editingEdge === edge.id}
+              editValue={editValue}
+              onEditChange={setEditValue}
+              onEditSubmit={handleEditSubmit}
+              onEditCancel={handleEditCancel}
             />
           )
         })}
