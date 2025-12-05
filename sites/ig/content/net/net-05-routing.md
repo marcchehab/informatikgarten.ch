@@ -77,7 +77,7 @@ Die Farben zeigen den Zustand: <span style={{background: 'rgba(16, 185, 129, 0.3
 **Schritt 0 - Initialisierung:**
 
 <table className="dijkstra-table">
-<thead><tr><th>Knoten</th><th>Distanz</th><th>Vorgänger</th></tr></thead>
+<thead><tr><th>Knoten</th><th>Distanz von A</th><th>Vorgänger</th></tr></thead>
 <tbody>
 <tr style={{background: 'rgba(59, 130, 246, 0.15)'}}><td>A</td><td>0</td><td>-</td></tr>
 <tr><td>B</td><td>∞</td><td>-</td></tr>
@@ -94,7 +94,7 @@ Nachbarn von A: B (Kosten 4), C (Kosten 2)
 - Distanz zu C: min(∞, 0+2) = 2
 
 <table className="dijkstra-table">
-<thead><tr><th>Knoten</th><th>Distanz</th><th>Vorgänger</th></tr></thead>
+<thead><tr><th>Knoten</th><th>Distanz von A</th><th>Vorgänger</th></tr></thead>
 <tbody>
 <tr style={{background: 'rgba(245, 158, 11, 0.25)'}}><td>A</td><td>0</td><td>-</td></tr>
 <tr style={{background: 'rgba(59, 130, 246, 0.15)'}}><td>C</td><td>2</td><td>A</td></tr>
@@ -111,7 +111,7 @@ Nachbarn von C: D (Kosten 1), E (Kosten 5)
 - Distanz zu E: min(∞, 2+5) = 7
 
 <table className="dijkstra-table">
-<thead><tr><th>Knoten</th><th>Distanz</th><th>Vorgänger</th></tr></thead>
+<thead><tr><th>Knoten</th><th>Distanz von A</th><th>Vorgänger</th></tr></thead>
 <tbody>
 <tr style={{background: 'rgba(16, 185, 129, 0.15)'}}><td>A</td><td>0</td><td>-</td></tr>
 <tr style={{background: 'rgba(245, 158, 11, 0.25)'}}><td>C</td><td>2</td><td>A</td></tr>
@@ -128,7 +128,7 @@ Nachbarn von D: B (Kosten 3), E (Kosten 2)
 - Distanz zu E: min(7, 3+2) = 5 (Verbesserung!)
 
 <table className="dijkstra-table">
-<thead><tr><th>Knoten</th><th>Distanz</th><th>Vorgänger</th></tr></thead>
+<thead><tr><th>Knoten</th><th>Distanz von A</th><th>Vorgänger</th></tr></thead>
 <tbody>
 <tr style={{background: 'rgba(16, 185, 129, 0.15)'}}><td>A</td><td>0</td><td>-</td></tr>
 <tr style={{background: 'rgba(16, 185, 129, 0.15)'}}><td>C</td><td>2</td><td>A</td></tr>
@@ -144,7 +144,7 @@ Nachbar von B: D (bereits besucht)
 - Keine Aktualisierungen nötig.
 
 <table className="dijkstra-table">
-<thead><tr><th>Knoten</th><th>Distanz</th><th>Vorgänger</th></tr></thead>
+<thead><tr><th>Knoten</th><th>Distanz von A</th><th>Vorgänger</th></tr></thead>
 <tbody>
 <tr style={{background: 'rgba(16, 185, 129, 0.15)'}}><td>A</td><td>0</td><td>-</td></tr>
 <tr style={{background: 'rgba(16, 185, 129, 0.15)'}}><td>C</td><td>2</td><td>A</td></tr>
@@ -157,7 +157,7 @@ Nachbar von B: D (bereits besucht)
 **Schritt 5 - Besuche E (kleinste Distanz in Queue: 5):**
 
 <table className="dijkstra-table">
-<thead><tr><th>Knoten</th><th>Distanz</th><th>Vorgänger</th></tr></thead>
+<thead><tr><th>Knoten</th><th>Distanz von A</th><th>Vorgänger</th></tr></thead>
 <tbody>
 <tr style={{background: 'rgba(16, 185, 129, 0.15)'}}><td>A</td><td>0</td><td>-</td></tr>
 <tr style={{background: 'rgba(16, 185, 129, 0.15)'}}><td>C</td><td>2</td><td>A</td></tr>
