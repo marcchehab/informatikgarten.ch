@@ -78,7 +78,7 @@ export function DistanceTable({
         <thead>
           <tr>
             <th>Knoten</th>
-            <th>Gesamtdistanz</th>
+            <th>Gesamtdistanz{sortByPriority && ' ↓'}</th>
             <th>Vorgänger</th>
           </tr>
         </thead>
