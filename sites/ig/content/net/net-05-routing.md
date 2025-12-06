@@ -189,7 +189,7 @@ Die "Kosten" einer Verbindung können verschiedene Faktoren berücksichtigen:
 
 ### Aufgabe 1: Dijkstra von Hand
 
-Kreieren Sie sich im [interaktiven Dijkstra-Visualizer](net-06-dijkstra-visualizer) ein Internet mit 6 bis 9 Routern. Lösen Sie auf 
+Kreieren Sie sich im [interaktiven Dijkstra-Visualizer](net-06-dijkstra-visualizer) ein Internet mit 6 bis 9 Routern. Versuchen Sie jeweils die nächten Schritte vorauszusagen, bevor Sie die Schritte durchführen.
 
 ### Aufgabe 2: Alternative Wege
 
