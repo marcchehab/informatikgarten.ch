@@ -6,7 +6,6 @@ title: Routing und Pfadfindung
 >
 > - Sie verstehen, wie Router den besten Weg für Pakete durch ein Netzwerk finden.
 > - Sie können den Dijkstra-Algorithmus anhand eines einfachen Netzwerks von Hand durchführen.
-> - Sie verstehen, warum Routing-Protokolle für das Internet unverzichtbar sind.
 
 In der letzten Lektion haben wir gesehen, dass Router Pakete an andere Router weiterleiten, wenn sie das Zielnetzwerk nicht kennen. Aber wie findet ein Paket den **besten Weg** durch ein Netzwerk mit vielen Routern? Das ist die Aufgabe von **Routing-Algorithmen**.
 
