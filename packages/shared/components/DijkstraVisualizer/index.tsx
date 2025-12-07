@@ -162,8 +162,17 @@ export function DijkstraVisualizer({
       }
 
       // Regular click sets source node
-      // If clicking same source, do nothing
-      if (prev.sourceNode === nodeId) return prev
+      // If clicking same source, clear it (deselect)
+      if (prev.sourceNode === nodeId) {
+        return {
+          ...prev,
+          sourceNode: null,
+          targetNode: null,
+          steps: [],
+          currentStepIndex: -1,
+          animationState: AnimationState.IDLE
+        }
+      }
 
       // If clicking target node, clear target
       const newTarget = prev.targetNode === nodeId ? null : prev.targetNode
