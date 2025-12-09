@@ -107,7 +107,7 @@ print("X")
 farbliste = ["red","blue"]
 for farbe in farbliste:
     print(farbliste)
-print("X")
+print("X") 
 ```
 
 > [!solution]- Lösung mit Videoerklärung 📺
