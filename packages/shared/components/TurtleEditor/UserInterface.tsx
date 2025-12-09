@@ -21,6 +21,7 @@ export default function UserInterface(props: any) {
     const [output, setOutput] = props.outputState
     const [currentRunLevel, setCurrentRunLevel] = props.runlevel
     const height = props.height
+    const className = props.className
     const hideCanvasButtons = props.hideCanvasButtons
     const hideEditorId = props.hideEditorId
     const [position, setPosition] = useState({
@@ -100,7 +101,7 @@ export default function UserInterface(props: any) {
     // }
     return (
         <div
-            className={cn(s.turtlewrapper, fullscreen && s.fullscreen)}
+            className={cn(s.turtlewrapper, fullscreen && s.fullscreen, className)}
             // {
             //     fullscreen ? 'turtlewrapper fullscreen' : 'turtlewrapper'
             // }

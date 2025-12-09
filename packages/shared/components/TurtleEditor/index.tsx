@@ -31,6 +31,7 @@ export const TurtleEditor = ({
     id,
     children,
     height,
+    className,
     theme: themeProp,
     hideCanvasButtons = false,
     hideEditorId = false
@@ -38,6 +39,7 @@ export const TurtleEditor = ({
     id: string
     children: string
     height?: string
+    className?: string
     theme?: 'dark' | 'light'
     hideCanvasButtons?: boolean
     hideEditorId?: boolean
@@ -201,6 +203,7 @@ export const TurtleEditor = ({
                 outputState={[output, setOutput]}
                 runlevel={[currentRunLevel, setCurrentRunLevel]}
                 height={height}
+                className={className}
                 hideCanvasButtons={hideCanvasButtons}
                 hideEditorId={hideEditorId}
             />

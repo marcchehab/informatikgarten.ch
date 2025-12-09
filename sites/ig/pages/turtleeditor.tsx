@@ -17,11 +17,9 @@ for i in range(4):
 export default function TurtleEditorPage() {
     return (
         <Providers>
-            <div className={s.fullHeight}>
-                <TurtleEditor id="standalone-turtle-editor" height="100%" theme="dark" hideCanvasButtons hideEditorId>
-                    {defaultCode}
-                </TurtleEditor>
-            </div>
+            <TurtleEditor id="standalone-turtle-editor" className={s.fullHeight} theme="dark" hideCanvasButtons hideEditorId>
+                {defaultCode}
+            </TurtleEditor>
         </Providers>
     )
 }
