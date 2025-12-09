@@ -32,13 +32,15 @@ export const TurtleEditor = ({
     children,
     height,
     theme: themeProp,
-    hideCanvasButtons = false
+    hideCanvasButtons = false,
+    hideEditorId = false
 }: {
     id: string
     children: string
     height?: string
     theme?: 'dark' | 'light'
     hideCanvasButtons?: boolean
+    hideEditorId?: boolean
 }) => {
     // State
     const [currentRunLevel, setCurrentRunLevel] = useState(RunLevel.stopped)
@@ -200,6 +202,7 @@ export const TurtleEditor = ({
                 runlevel={[currentRunLevel, setCurrentRunLevel]}
                 height={height}
                 hideCanvasButtons={hideCanvasButtons}
+                hideEditorId={hideEditorId}
             />
             {/* TODO: Add feedback component again
             {isTeacherCS() && <Feedback c={configRef.current} />} */}

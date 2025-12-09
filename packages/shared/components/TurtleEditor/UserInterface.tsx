@@ -22,6 +22,7 @@ export default function UserInterface(props: any) {
     const [currentRunLevel, setCurrentRunLevel] = props.runlevel
     const height = props.height
     const hideCanvasButtons = props.hideCanvasButtons
+    const hideEditorId = props.hideEditorId
     const [position, setPosition] = useState({
         top: undefined as number | undefined,
         left: undefined as number | undefined
@@ -32,6 +33,7 @@ export default function UserInterface(props: any) {
     const [redoBool, setRedo] = useState(false)
     c.setRedo = setRedo
     const [fontSize, setFontSize] = useState(14)
+    const [copied, setCopied] = useState(false)
 
     const hasTurtle = c.initCode.includes('turtle')
 
@@ -131,6 +133,19 @@ export default function UserInterface(props: any) {
                     />
                     <div className={cn(s.fontsizecontrols)}>
                         <a
+                            title="Copy Code"
+                            className={cn(s.turtlebutton)}
+                            onClick={() => {
+                                const code = c.codeeditorRef.current?.getValue() || ''
+                                navigator.clipboard.writeText(code).then(() => {
+                                    setCopied(true)
+                                    setTimeout(() => setCopied(false), 2000)
+                                })
+                            }}
+                        >
+                            <FeatherIcon size="16" icon={copied ? "check" : "copy"} />
+                        </a>
+                        <a
                             title="Decrease Font Size"
                             className={cn(
                                 s.turtlebutton,
@@ -163,9 +178,11 @@ export default function UserInterface(props: any) {
                         className={cn(s.turtleeditorcontrols, s.right)}
                         ref={c.codeControlRef}
                     >
-                        <span className="text-xs italic text-gray-500 opacity-60 pointer-events-none select-none z-40">
-                            {c.idRef.current}
-                        </span>
+                        {!hideEditorId && (
+                            <span className="text-xs italic text-gray-500 opacity-60 pointer-events-none select-none z-40">
+                                {c.idRef.current}
+                            </span>
+                        )}
                         <a
                             title="Undo"
                             className={cn(

@@ -3,22 +3,25 @@
 import { TurtleEditor } from 'shared/components'
 import Providers from 'shared/lib/Providers'
 import 'shared/components/TurtleEditor/style/turtle.global.css'
+import s from './turtleeditor.module.css'
 
 const defaultCode = `import turtle
 
-t = turtle.Turtle()
+eva = turtle.Turtle()
 
 for i in range(4):
-    t.forward(100)
-    t.left(90)
+    eva.forward(100)
+    eva.left(90)
 `
 
 export default function TurtleEditorPage() {
     return (
         <Providers>
-            <TurtleEditor id="standalone-turtle-editor" height="100vh" theme="dark" hideCanvasButtons>
-                {defaultCode}
-            </TurtleEditor>
+            <div className={s.fullHeight}>
+                <TurtleEditor id="standalone-turtle-editor" height="100%" theme="dark" hideCanvasButtons hideEditorId>
+                    {defaultCode}
+                </TurtleEditor>
+            </div>
         </Providers>
     )
 }
