@@ -1,7 +1,7 @@
 ---
-title: Auftrag Agent-Based Modelling
+title: Auftrag Agent-Based Modeling
 ---
-# Auftrag: Agent-Based Modelling
+# Auftrag: Agent-Based Modeling
 
 Sie sollen ein **Textdokument** termingerecht im Arbeitsauftrag auf Teams abgeben:
 - Benennen Sie die Datei nach dem Muster `Nachname_Vorname_Klasse_ABM.docx`
@@ -31,7 +31,7 @@ Für das Fach Ginw ist dieser Auftrag **8 Punkte** wert.
 > [!NOTE] Was muss zitiert werden?
 >
 > Zitieren Sie alles, was **nicht in diesem Dokument generiertes Wissen** ist:
-> - Definitionen und Fachbegriffe (z.B. "Was ist Agent-Based Modelling?")
+> - Definitionen und Fachbegriffe (z.B. "Was ist Agent-Based Modeling?")
 > - Fakten und Zahlen (z.B. "NetLogo wurde 1999 entwickelt")
 > - Aussagen aus dem NetLogo-Modell (z.B. "Schafe entwickeln grössere Schritte, weil...")
 > - Wissenschaftliche Erkenntnisse (z.B. zum Lotka-Volterra-Modell)
@@ -53,7 +53,7 @@ Ihr Dokument soll nach dem Inhaltsverzeichnis folgende Abschnitte enthalten:
 ### 1. Einführung (1-2 Seiten)
 
 Erklären Sie in eigenen Worten:
-- Was ist **Agent-Based Modelling**? Wie unterscheidet es sich von mathematischen Modellen?
+- Was ist **Agent-Based Modeling**? Wie unterscheidet es sich von mathematischen Modellen?
 - Was ist **NetLogo** und wofür wird es verwendet?
 - Beschreiben Sie kurz das **Modell, das Sie in dieser Arbeit verwenden**: Welche Agenten gibt es, und welchen Regeln folgen sie?
 
@@ -79,7 +79,7 @@ Wählen Sie **eine** der folgenden Kernfragen und beantworten Sie diese ausführ
 
 > [!QUESTION] Kernfrage E: Grenzen der Modellierung
 > 
-> Welche Aspekte der Realität bildet das Wolf-Schaf-Modell ab, und welche nicht? Diskutieren Sie die Stärken und Schwächen von Agent-Based Modelling im Vergleich zu realen Ökosystemen.
+> Welche Aspekte der Realität bildet das Wolf-Schaf-Modell ab, und welche nicht? Diskutieren Sie die Stärken und Schwächen von Agent-Based Modeling im Vergleich zu realen Ökosystemen.
 
 **Anforderungen an die Beantwortung:**
 - Beziehen Sie sich auf Ihre eigenen Beobachtungen aus der Simulation

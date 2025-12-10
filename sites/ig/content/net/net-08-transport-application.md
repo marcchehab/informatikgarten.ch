@@ -3,41 +3,22 @@ title: Transport- und Anwendungsschicht
 ---
 > [!success] Lernziele
 > 
-> - Sie kennen die Aufgaben der vier Schichten des TCP/IP-Referenzmodells.
-> - Sie können beschreiben, welches Problem die Transport-Schicht löst und was Ports sind.
-> - Sie kennen den Unterschied zwischen Server und Client.
-> - Sie können einige wichtige Protokolle den Schichten des TCP/IP-Referenzmodells zuordnen, namentlich: Ethernet, Wi-Fi, IP, TCP, HTTP/HTTPS.
+> - Sie können beschreiben, welche zwei Hauptprobleme TCP auf der Transport-Schicht wie löst:
+> 	- eine stabile Verbindung aufbauen
+> 	- die richtige Anwendung am dem Zielcomputer adressieren
 > 
-> ## Was nicht
+> ## Was nicht Prüfungsstoff ist
+> - Sie müssen nicht alles auf dieser Seite lernen, nur was wir im Unterricht unter obigem Lernziel besprochen haben.
 > - Sie müssen das OSI-Modell _nicht_ auswendig lernen.
 > - Sie müssen *keine* Port-Nummern auswendig lernen.
-> - Sie müssen *nicht* wissen, wie genau HTTPS oder DHCP funktionieren, das sind bloss Beispiele.
+> - Sie müssen *nicht* wissen, wie HTTPS oder DHCP funktionieren, das sind bloss Beispiele.
 
-Wir haben bislang zwei von vier Schichten des TCP/IP-Referenzmodells kennengelernt. Wir haben gesehen, wie sich eine **Hierarchie aus Abstraktionsschichten** bildet, die Ordnung schafft und klare Verantwortungen zuweist. Höhere Schichten verlassen sich darauf, dass die Schichten darunter korrekt implementiert wurden. 
+Wir haben gesehen: **Netzwerkverkehr wird mehrfach verschachtelt**. Daraus bildet sich eine **Hierarchie aus Abstraktionsschichten**, die Ordnung schafft und diesen Ebenen klare Verantwortungen zuweist. Höhere Schichten (also kleinere Pakete) verlassen sich darauf, dass die Schichten unter ihnen korrekt implementiert wurden.
 
 Es gibt ein generelles, abstraktes 7-Schichtenmodell für die Netzwerkkommunikation ([das OSI-Modell](https://de.wikipedia.org/wiki/OSI-Modell#Die_sieben_Schichten)). Wir lernen hier das in der Praxis nützlichere TCP/IP-Referenzmodell, das das OSI-Modell (links) auf vier Schichten zusammenfasst (Mitte).
 ![[net-04-tcp-tcpip-modell.excalidraw]]
 
-## Transportschicht
-
-### An welcher Tür klopfe ich an?
-
-Wie bei der Post muss man neben dem Ziel-Computer noch genauer angeben, "wer" oder "was" die Daten erhalten soll. Das geschieht mit dem sogenannten **"Port" - also welche "Tür"**. 
-
-Wenn Sie im Internet surfen, verbinden Sie sich ständig mit Webservern, die standardmässig auf **Port 443 (HTTPS)** laufen (unverschlüsselt auch **Port 80 (HTTP)**). Das macht Ihr Browser automatisch, ohne dass Sie das merken. 
-
-Wenn Sie aber den Port selbst manuell definieren wollen, können Sie ihn mit einem Doppelpunkt nach der IP angegeben. Drei Beispiele:
-- Wenn Sie `https://192.168.1.4{:text}` im Browser eingeben, wird der Browser versuchen, über den Standardport `443` eine HTTPS-Verbindung mit dem Webserver aufzubauen.
-- Wenn Sie `http://192.168.1.4{:text}` im Browser eingeben, versucht der Browser eine unverschlüsselte HTTP-Verbindung über Port `80` aufzubauen.
-- Wenn Sie `http://192.168.1.4:3000{:text}` eingeben, wird der Browser eine HTTP-Verbindung über Port `3000` aufbauen.
-
-Weitere übliche Ports finden Sie [hier auf Wikipedia](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers#Well-known_ports).
-
-> [!note] Ein Versuch
-> 
-> Ich lasse auf meinem Laptop einen HTTP-Webserver laufen. Meine IP-Adresse sage ich Ihnen in der Lektion. Versuchen Sie mal, die Webseite aufzurufen!
-
-### Das Transmission Control Protocol (TCP)
+## Transportschicht mit TCP
 
 Mit dem Internetprotokoll können wir grundsätzlich bereits Pakete zwischen zwei Computern auf dem ganzen Planeten hin- und herschicken. Das ist toll, aber: 
 - Wie bauen wir eine **Verbindung** auf, die über mehrere Pakete hinweg bestehen bleibt? 
@@ -46,17 +27,16 @@ Mit dem Internetprotokoll können wir grundsätzlich bereits Pakete zwischen zwe
 
 Das sind Probleme, die das Transmission Control Protocol (TCP) löst. Es regelt die grundlegenden Operationen der Verbindung: Verbindungsaufbau, Datenaustausch, Zustellung ans richtige Programm, und ein geregeltes Verbindungsende.
 
-> [!NOTE]- Details zu TCP-Handshake & Datenaustausch (optional, nur falls es Sie interessiert)
-> 
-> Sagen wir ein Browser (Client) möchte eine Verbindung mit einem Webserver aufbauen.
-> 
-> - **Schritt 1 - SYN:** Der Client sendet ein SYN-Paket (Synchronize) an den Server, um eine Verbindung anzufordern. Dieses Paket enthält eine zufällige Sequenznummer A.
-> - **Schritt 2 - SYN-ACK:** Der Server antwortet mit einem SYN-ACK-Paket (Synchronize-Acknowledge). Dieses Paket enthält eine eigene zufällige Sequenznummer B und bestätigt den Empfang des SYN-Pakets des Clients durch Erhöhung von A um 1.
-> - **Schritt 3 - ACK:** Der Client sendet ein ACK-Paket (Acknowledge) zurück an den Server, um den Empfang des SYN-ACK-Pakets zu bestätigen. Dies geschieht durch Erhöhung von B um 1.
-> 
-> Diesen Prozess nennt man einen TCP-Handshake. Nach diesen drei Schritten ist die TCP-Verbindung hergestellt und beide Stellen können sich sicher sein, dass sie tatsächlich miteinander kommunizieren. 
-> 
-> Nun können sie Daten ausgetauschen. Sie nutzen dabei die Werte von **SYN** und **ACK** weiter, um mitzuzählen und zu bestätigen, **wie viele Bytes gesendet und empfangen wurden**.
+### Verbindungsaufbau & Datenaustausch
+
+Sagen wir ein Browser (Client) möchte eine Verbindung mit einem Webserver aufbauen.
+
+- **Schritt 1 - SYN:** Der Client sendet ein SYN-Paket (Synchronize) an den Server, um eine Verbindung anzufordern. Dieses Paket enthält eine zufällige Sequenznummer A.
+- **Schritt 2 - SYN-ACK:** Der Server antwortet mit einem SYN-ACK-Paket (Synchronize-Acknowledge). Dieses Paket enthält eine eigene zufällige Sequenznummer B und bestätigt den Empfang des SYN-Pakets des Clients durch Erhöhung von A um 1.
+- **Schritt 3 - ACK:** Der Client sendet ein ACK-Paket (Acknowledge) zurück an den Server, um den Empfang des SYN-ACK-Pakets zu bestätigen. Dies geschieht durch Erhöhung von B um 1.
+
+Diesen Prozess nennt man einen TCP-Handshake. Nach diesen drei Schritten ist die TCP-Verbindung hergestellt und beide Stellen können sich sicher sein, dass sie tatsächlich miteinander kommunizieren. Nun können sie Daten ausgetauschen. Sie nutzen dabei die Werte von **SYN** und **ACK** weiter, um mitzuzählen und zu bestätigen, **wie viele Bytes gesendet und empfangen wurden**. So können Sie also auch wissen, ob Daten unterwegs verloren gingen.
+### An welcher Tür klopfe ich an?
 
 Am sichtbarsten für Nutzer ist TCPs Art, den Netzwerkverkehr verschiedener Programme auf demselben Computer zu unterscheiden. Bei unserer Postanalogie ist die Idee ähnlich dem Namen über einer Adresse: Mit der Adresse (IP) haben wir das richtige Haus (Gerät/Host) gefunden, nun müssen wir die richtige Person (Programm) in diesem Haus finden.
 
@@ -70,17 +50,31 @@ TCP nutzt dazu nicht die Namen der Programme, sondern sogenannte **Ports**. Das 
 
 ![[net-04-tcp-2024-03-15-09.26.01.excalidraw]]
 
+
+Wenn Sie im Internet surfen, verbinden Sie sich ständig mit Webservern, die standardmässig auf **Port 443 (HTTPS)** laufen (unverschlüsselt auch **Port 80 (HTTP)**). Das macht Ihr Browser automatisch, ohne dass Sie das merken.
+
+Wenn Sie aber den Port selbst manuell definieren wollen, können Sie ihn mit einem Doppelpunkt nach der IP angegeben. Drei Beispiele:
+- Wenn Sie `https://192.168.1.4{:text}` im Browser eingeben, wird der Browser versuchen, über den Standardport `443` eine HTTPS-Verbindung mit dem Webserver aufzubauen.
+- Wenn Sie `http://192.168.1.4{:text}` im Browser eingeben, versucht der Browser eine unverschlüsselte HTTP-Verbindung über Port `80` aufzubauen.
+- Wenn Sie `http://192.168.1.4:3000{:text}` eingeben, wird der Browser eine HTTP-Verbindung über Port `3000` aufbauen.
+
+Weitere übliche Ports finden Sie [hier auf Wikipedia](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers#Well-known_ports).
+
+> [!note] Ein Versuch
+> 
+> Ich lasse auf meinem Laptop einen HTTP-Webserver laufen. Meine IP-Adresse sage ich Ihnen in der Lektion. Versuchen Sie mal, die Webseite aufzurufen!
+
 Die Portnummern können Sie frei bestimmen, aber folgende Regeln gelten im Internet:
 - 0-1023 sind reserviert für etablierte Anwendungen wie HTTPS (Webserver), SMTP/POP (Email), SSH (Kommandozeile), etc.
 - 1024-49151 sind für Server-Applikationen vorgesehen (z.B. ein Game-Server),
 - 49152-65535 sind für Client-Applikationen vorgesehen (z.B. ein Browser oder Game-Client).
 
-### UDP - verbindungslose Übertragung (optional)
+### UDP - verbindungslose Übertragung (nicht Prüfungsstoff)
 
 Im Vergleich zu TCP ist das Protokoll UDP einfacher: Es merkt sich keine Verbindung und verifiziert auch nicht, ob Pakete angekommen sind. UDP ermöglicht so eine schnelle, verbindungslose Kommunikation, da es keine Handshakes für Verbindungsbestätigungen durchführt. Es ist ideal für Anwendungen, bei denen Geschwindigkeit wichtiger ist als Zuverlässigkeit, wie z.B. Live-Streaming oder Online-Spiele. UDP bietet keine Garantie für die Reihenfolge der Pakete, sie können in beliebiger Reihenfolge ankommen.
 
 UDP kennt einzig **Ports** und eine Art, um fehlerhafte Pakete zu erkennen.
-## Server-Client-Verbindung
+## Server-Client-Verbindung (nicht Prüfungsstoff)
 Die meisten Netzwerkverbindungen werden zwischen einem Server-Programm und einem Client-Programm aufgebaut.
 - Das **Server**-Programm **läuft immer** und wartet, bis jemand mit ihm eine Verbindung aufbauen will. Ein **Webserver** wie informatikgarten.ch läuft immer, egal ob Sie gerade hier sind oder nicht. Es steht immer in den Ports 443 (reserviert für HTTPS) und 80 (reserviert für das alte, unverschlüsselte HTTP).
 - Ein **Client**-Programm **läuft nicht immer** und baut dann eine Verbindung mit dem Server auf, wenn er benötigt wird. Ihr **Internet-Browser**, in dem Sie diese Webseite anschauen, ist ein Client-Programm. Wenn Sie informatikgarten.ch aufrufen, wählt der Browser automatisch irgendeinen Port im Client-Bereich und nutzt ihn für die Verbindung mit dem Webserver informatikgarten.ch. Sobald Sie den Browser schliessen, beendet der Browser die Verbindung und damit den Port - aber der Server läuft natürlich weiter.
@@ -90,7 +84,7 @@ Die meisten Netzwerkverbindungen werden zwischen einem Server-Programm und einem
 > Ein kleiner Hinweis: "Server" kann sowohl das Server-Programm meinen, das ständig läuft, oder den Computer, auf dem das Programm ständig läuft. Es gibt spezielle Server-Computer, die oft in einem klimatisierten Server-Raum in 19-Zoll-Schränke eingebaut werden und dazu gemacht sind, immer zu laufen.
 > 
 > ![[net-04-transport-application-20240614105409.png]]
-## Die Anwendungsschicht
+## Die Anwendungsschicht (nicht Prüfungsstoff)
 Mit diesem Beispiel sind wir bereits in der Anwendungsschicht. Die ersten drei Schichten des TCP/IP-Modells lösen die gesamte Verbindungslogik für die Programme, die eine Verbindung für eine gewisse Anwendung aufbauen wollen. Die Programme müssen sich also nicht mehr um die grundlegende Logik der Netzwerkverbindung kümmern.
 
 Nun gibt es **viele verschiedene Anwendungen**: Schauen Sie eine Webseite an? Ein Videocall? Ein Multiplayer-Spiel? All das sind **Anwendungen, die definieren müssen, was für Informationen sie wie austauschen**. Mehr müssen Sie sich dazu nicht merken.
@@ -132,12 +126,12 @@ Wenn Sie Ihren Computer an ein unbekanntes Netzwerk hängen und keine IP-Adresse
 Diesen Austausch habe ich bei mir zuhause mit einem Netzwerk-Paket-Sniffer aufgezeichnet:
 ![[net-04-tcp-2024-03-15-12.49.32.excalidraw]]
 
-## Abschliessender Überblick
+## Abschliessender Überblick (nicht Prüfungsstoff)
 
 ![[net-04-transport-application-2024-03-17-17.22.11.excalidraw]]
 
 
-## Wie eine Webseite im Browser aufgebaut wird
+## Wie eine Webseite im Browser aufgebaut wird (nicht Prüfungsstoff)
 
 ### 1. DNS-Auflösung der URL
 - **Nutzer gibt URL ein**: z.B. `informatikgarten.ch`
