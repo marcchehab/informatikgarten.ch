@@ -2,7 +2,7 @@
 title: Die Hierarchie des Internets
 ---
 
-> [!success] Lernziele
+> [!success] Lernziele **(nicht Prüfungsstoff im Dezember 2025)**
 >
 > - Sie verstehen, warum Dijkstra typischerweise nur innerhalb eines Netzwerks eines Autonomen Systems (AS) funktioniert.
 > - Sie wissen, dass das globale Internet ebenso von **Politik und Wirtschaft** zusammengehalten wird wie von Algorithmen.
