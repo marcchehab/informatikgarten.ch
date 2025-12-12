@@ -62,7 +62,7 @@ Weitere übliche Ports finden Sie [hier auf Wikipedia](https://en.wikipedia.org/
 
 > [!note] Ein Versuch
 > 
-> Ich lasse auf meinem Laptop einen HTTP-Webserver laufen. Meine IP-Adresse sage ich Ihnen in der Lektion. Versuchen Sie mal, die Webseite aufzurufen!
+> Ich lasse auf meinem Laptop einen HTTP-Webserver auf Port 8080 laufen. Meine IP-Adresse sage ich Ihnen in der Lektion. Versuchen Sie mal, die Webseite aufzurufen!
 
 Die Portnummern können Sie frei bestimmen, aber folgende Regeln gelten im Internet:
 - 0-1023 sind reserviert für etablierte Anwendungen wie HTTPS (Webserver), SMTP/POP (Email), SSH (Kommandozeile), etc.
