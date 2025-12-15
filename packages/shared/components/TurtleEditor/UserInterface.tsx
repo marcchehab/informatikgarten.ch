@@ -10,6 +10,7 @@ import { autosaveHandler, resetCode } from './utils/autosave'
 import { browseHistory } from './utils/browseHistory'
 import {
     grabCanvasHandler,
+    grabCanvasTouchHandler,
     handleDocClick,
     initHResizer,
     initScaler
@@ -138,10 +139,24 @@ export default function UserInterface(props: any) {
                             className={cn(s.turtlebutton)}
                             onClick={() => {
                                 const code = c.codeeditorRef.current?.getValue() || ''
-                                navigator.clipboard.writeText(code).then(() => {
-                                    setCopied(true)
-                                    setTimeout(() => setCopied(false), 2000)
-                                })
+                                navigator.clipboard.writeText(code)
+                                    .then(() => {
+                                        setCopied(true)
+                                        setTimeout(() => setCopied(false), 2000)
+                                    })
+                                    .catch(() => {
+                                        // Fallback for restricted environments (e.g. Safe Exam Browser)
+                                        // Select all text in the editor so user can Ctrl+C manually
+                                        c.codeeditorRef.current?.focus()
+                                        c.codeeditorRef.current?.setSelection(
+                                            c.codeeditorRef.current.getModel()?.getFullModelRange() || {
+                                                startLineNumber: 1,
+                                                startColumn: 1,
+                                                endLineNumber: 1,
+                                                endColumn: 1
+                                            }
+                                        )
+                                    })
                             }}
                         >
                             <FeatherIcon size="16" icon={copied ? "check" : "copy"} />
@@ -248,6 +263,9 @@ export default function UserInterface(props: any) {
                         onMouseDown={(
                             e: React.MouseEvent<HTMLDivElement, MouseEvent>
                         ) => grabCanvasHandler(e, c, setPosition)}
+                        onTouchStart={(e: React.TouchEvent<HTMLDivElement>) =>
+                            grabCanvasTouchHandler(e, c, setPosition)
+                        }
                         style={{
                             position: 'absolute',
                             top: position.top,

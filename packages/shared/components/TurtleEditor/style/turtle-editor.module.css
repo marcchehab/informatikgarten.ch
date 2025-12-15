@@ -111,12 +111,9 @@
     }
 }
 
-.monacoeditor section {
-    position: absolute !important;
-}
-
 .monacoeditor {
     position: relative;
+    touch-action: manipulation; /* Improve touch/pointer consistency on iPad */
 
 
     .turtleeditorcontrols {
@@ -185,6 +182,7 @@
     overflow: hidden;
     cursor: grab;
     z-index: var(--z-base);
+    touch-action: none; /* Allow custom touch handling for drag/pinch-zoom */
 
     & .graphicswrapper {
         position: absolute;
@@ -258,6 +256,7 @@
     background-color: rgba(255, 255, 255);
     opacity: 0.3;
     z-index: var(--z-resizer);
+    touch-action: none; /* Enable touch dragging */
 
     &:hover {
         opacity: 0.8;
@@ -272,11 +271,11 @@
     }
 
     &::before {
-        width: 4px;
-        margin-left: -4px;
+        width: 10px;
+        margin-left: -10px;
     }
 
     &::after {
-        width: 13px;
+        width: 10px;
     }
 }
