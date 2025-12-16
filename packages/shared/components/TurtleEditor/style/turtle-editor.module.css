@@ -111,6 +111,11 @@
     }
 }
 
+/* Constrain Monaco editor section to prevent it from pushing output row out of view */
+.monacoeditor :global(section) {
+    position: absolute !important;
+}
+
 .monacoeditor {
     position: relative;
     touch-action: manipulation; /* Improve touch/pointer consistency on iPad */
