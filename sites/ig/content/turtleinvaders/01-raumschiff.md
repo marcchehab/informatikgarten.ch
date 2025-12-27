@@ -435,7 +435,7 @@ Probleme, die Sie sehr wahrscheinlich überwinden möchten, sind folgende:
 
 ## Exkursion zu Datentypen
 
-In Python sind alle **primitiven Datentypen** wie Boolesche Werte (`bool`), Ganzzahlen (`int`), Gleitkommazahlen (`float`) und Zeichenketten (`str`) **immutable** (unveränderlich). Das bedeutet, dass ihre Werte nach der Erstellung nicht mehr an Ort und Stelle verändert werden können. Wenn Sie den Wert einer dieser Datentypen ändern, wird im Speicher ein neues Objekt erstellt, und die Variable wird auf dieses neue Objekt verweisen. Deswegen mussten wir bei der Steuerung das `global` Keyword verwenden: Weil wir *de facto* die Speicherposition des Variabel ändern.
+In Python sind alle **primitiven Datentypen** wie Boolesche Werte (`bool`), Ganzzahlen (`int`), Gleitkommazahlen (`float`) und Zeichenketten (`str`) **immutable** (unveränderlich). Das bedeutet, dass ihre Werte nach der Erstellung nicht mehr an Ort und Stelle verändert werden können. Wenn Sie den Wert einer dieser Datentypen ändern, wird im Speicher ein neues Objekt erstellt, und die Variable wird auf dieses neue Objekt verweisen. Deswegen mussten wir bei der Steuerung das `global` Keyword verwenden: Weil wir *de facto* die Speicherposition der Variabel ändern.
 
 Listen sind der einzige **strukturierte Datentyp**, den Sie bislang kennen. Strukturiert bedeutet, dass Listen mehrere andere Datentypen in sich tragen können. Als Analogie können Sie sich ein **Bücherregal** vorstellen, dass allerlei Objekte enthalten kann.
 
