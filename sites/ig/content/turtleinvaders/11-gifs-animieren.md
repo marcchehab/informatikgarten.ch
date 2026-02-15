@@ -3,7 +3,7 @@ title: "Zusatz: Gifs animieren?"
 ---
 Das Turtle-Modul spielt animierte Gifs nicht ab. Es gibt auch keine Möglichkeit, ihm das beizubringen. Aber man kann mit etwas Aufwand das Verhalten fingieren.
 
-Erstellen Sie für ein "animiertes Gif" dazu einen Ordner "spaceship" mit allen Frames Ihrer Animation als einzelne Gifs. Sie können alle Frames Ihres Gifs z.B. mit www.ezgif.com als einzelne Gifs extrahieren.
+Erstellen Sie für ein "animiertes Gif" dazu einen Ordner "spaceship" mit allen Frames Ihrer Animation als einzelne Gifs. Sie können alle Frames Ihres Gifs z.B. mit www.ezgif.com als einzelne Gifs extrahieren. Wichtig ist: Alle Frames **müssen** gifs sein, da register_shape() nur .gif Dateien akkzeptiert.
 
 Die Grundidee ist, dass Sie nun alle diese Gifs als Shapes in Turtle registrieren und dann einfach regelmässig das Shape Ihrer Turtle ändern.
 
